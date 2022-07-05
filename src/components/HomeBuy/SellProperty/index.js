@@ -4,7 +4,7 @@ import arrow from '../../images/arrow.svg'
 import { StepContent, StepDevelopped, Steps, TextContent } from "./SellPropert.styles";
 import Step from '../../images/step.svg'
 const SellProperty =() =>{
-    const [step1, setStep1] = useState(false);
+    const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
     const [step3, setStep3] = useState(false);
     const [step4, setStep4] = useState(false);

@@ -29,7 +29,8 @@ const Header = () => {
             <ContactContent>
                 <TextMenu>Fr</TextMenu>
                 <Button><TextMenu style={{
-                    color: 'white'
+                    color: 'white',
+                    fontWeight: 700
                 }}>Get In Touch</TextMenu></Button>
                 <TextMenu style={{
                     fontWeight: 400

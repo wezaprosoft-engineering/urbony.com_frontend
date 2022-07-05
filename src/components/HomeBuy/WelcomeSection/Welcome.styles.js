@@ -1,15 +1,19 @@
 import styled from "styled-components";
-import background from '../../images/background.svg'
+import background from '../../images/background-image.png'
 
 export const Wrapper = styled.div`
    background-image: url(${background});
    backdrop-filter: blur(7px);
     min-height: 787px;
+    
+    
+    
 `;
 
 export const Content = styled.div`
     width: 100%;
-    height: 100%;
+    min-height: 787px;
+    background-color: rgba(46, 15, 89,0.6);
     
     
 `;
@@ -18,7 +22,8 @@ export const WelcomeText = styled.div`
    width: 500px;
    
    padding-top: 33px;
-   margin-left: 108px;
+   margin-left: 80px;
+   color: white;
 `;
 
 export const Toggle = styled.div`
@@ -100,6 +105,7 @@ export const Search = styled.button`
     border-color: transparent;
     display: flex;
     cursor: pointer;
+    border-radius: 5px;
 `;
 export const SearchIcon = styled.img`
     width: 20px;
