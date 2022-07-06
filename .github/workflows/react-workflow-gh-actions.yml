@@ -24,7 +24,7 @@ jobs:
         run: npm ci
       - name: Run the tests and generate coverage report
         run: npm test -- --coverage
-      - name: Check your syntax
+      - name: Check code syntax
         run: npm run eslint
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
