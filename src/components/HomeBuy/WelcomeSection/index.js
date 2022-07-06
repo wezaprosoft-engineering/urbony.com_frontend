@@ -2,8 +2,7 @@ import React, {useState} from "react";
 import { TextMenu } from "../Header/Header.styles";
 import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper } from "./Welcome.styles";
 import search from '../../images/search-icon.svg'
-import Select from 'react-select';
-import { setGlobalState, useGlobalState } from "../../state";
+import { useGlobalState } from "../../state";
 const Welcome = () =>{
     const [buy, setBuy] = useState(true);
     const [rent, setRent] = useState(false);
