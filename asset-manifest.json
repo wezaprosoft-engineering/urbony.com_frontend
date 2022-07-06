@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/urbony.com_frontend/static/css/main.073c9b0a.css",
-    "main.js": "/urbony.com_frontend/static/js/main.aba10d3e.js",
+    "main.js": "/urbony.com_frontend/static/js/main.3a42f433.js",
     "static/js/787.4e535460.chunk.js": "/urbony.com_frontend/static/js/787.4e535460.chunk.js",
     "static/media/background-image.png": "/urbony.com_frontend/static/media/background-image.bee0c5c1f042448a73dc.png",
     "static/media/house1.png": "/urbony.com_frontend/static/media/house1.7585e161bedccc6c94cb.png",
@@ -26,11 +26,11 @@
     "static/media/arrow.svg": "/urbony.com_frontend/static/media/arrow.d18aae00f3e13ed259a90f8dcf9fbd63.svg",
     "static/media/step.svg": "/urbony.com_frontend/static/media/step.f11fe48e3fb5f927723c5ae494164822.svg",
     "main.073c9b0a.css.map": "/urbony.com_frontend/static/css/main.073c9b0a.css.map",
-    "main.aba10d3e.js.map": "/urbony.com_frontend/static/js/main.aba10d3e.js.map",
+    "main.3a42f433.js.map": "/urbony.com_frontend/static/js/main.3a42f433.js.map",
     "787.4e535460.chunk.js.map": "/urbony.com_frontend/static/js/787.4e535460.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.aba10d3e.js"
+    "static/js/main.3a42f433.js"
   ]
 }
