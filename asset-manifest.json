@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/urbony.com_frontend/static/css/main.073c9b0a.css",
-    "main.js": "/urbony.com_frontend/static/js/main.2c0c83a3.js",
+    "main.js": "/urbony.com_frontend/static/js/main.aba10d3e.js",
     "static/js/787.4e535460.chunk.js": "/urbony.com_frontend/static/js/787.4e535460.chunk.js",
     "static/media/background-image.png": "/urbony.com_frontend/static/media/background-image.bee0c5c1f042448a73dc.png",
     "static/media/house1.png": "/urbony.com_frontend/static/media/house1.7585e161bedccc6c94cb.png",
     "static/media/house2.png": "/urbony.com_frontend/static/media/house2.65a990aa64e1a35dd59f.png",
     "static/media/house3.png": "/urbony.com_frontend/static/media/house3.d5816cba6f2833c33450.png",
-    "static/media/logo.svg": "/urbony.com_frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/logo.svg": "/urbony.com_frontend/static/media/logo.78b9b3330c6e84cce91306979467a8bc.svg",
     "static/media/whatsapp.svg": "/urbony.com_frontend/static/media/whatsapp.503375c0b6769605ad0905ca7c67b969.svg",
     "static/media/instagram.svg": "/urbony.com_frontend/static/media/instagram.ff040648ea83564fadf3def7582cefea.svg",
     "static/media/footerwhatsapp.svg": "/urbony.com_frontend/static/media/footerwhatsapp.29cc7703dbbea1048ce52b47045f75c8.svg",
@@ -26,11 +26,11 @@
     "static/media/arrow.svg": "/urbony.com_frontend/static/media/arrow.d18aae00f3e13ed259a90f8dcf9fbd63.svg",
     "static/media/step.svg": "/urbony.com_frontend/static/media/step.f11fe48e3fb5f927723c5ae494164822.svg",
     "main.073c9b0a.css.map": "/urbony.com_frontend/static/css/main.073c9b0a.css.map",
-    "main.2c0c83a3.js.map": "/urbony.com_frontend/static/js/main.2c0c83a3.js.map",
+    "main.aba10d3e.js.map": "/urbony.com_frontend/static/js/main.aba10d3e.js.map",
     "787.4e535460.chunk.js.map": "/urbony.com_frontend/static/js/787.4e535460.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.2c0c83a3.js"
+    "static/js/main.aba10d3e.js"
   ]
 }
