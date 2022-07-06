@@ -1,7 +1,7 @@
 import React from "react";
 import { TextMenu } from "../Header/Header.styles";
 import { Content, Wrapper } from "./Navbar.styles";
-import { setGlobalState, useGlobalState } from "../../state";
+import { useGlobalState } from "../../state";
 
 const NavBar = () =>{
     const [corporate] = useGlobalState("corporate")

@@ -16,14 +16,7 @@ const Welcome = () =>{
         setBuy(true);
         
     }
-    const houses = [
-        { label: "Single-Family Homes", value: 1 },
-        { label: "Townhomes", value: 2 },
-        { label: "Apartments", value: 3 },
-        { label: "Multifamily Homes", value: 4 },
-        { label: "Semi-Detached Home", value: 5 },
-        { label: "Tiny Home", value: 6 },
-      ];
+   
       
     return(
         <Wrapper>

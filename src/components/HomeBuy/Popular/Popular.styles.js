@@ -48,6 +48,8 @@ export const HomeCards = styled.div`
     min-height: 529px;
     background: rgba(217, 217, 217, 1);
     margin: 10px;
+    margin-left: 20px;
+    margin-right: 30px;
     border-radius: 5px 5px 5px 5px;
 `;
 export const CardsContainer = styled.div`
