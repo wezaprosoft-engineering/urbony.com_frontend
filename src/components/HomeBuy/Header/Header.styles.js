@@ -23,7 +23,7 @@ export const MenuContent = styled.div`
     justify-content: space-between;
     padding: 5px;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 50px;
     
 `;
 
@@ -75,5 +75,7 @@ background-color: rgba(217,11,66,1);
 border-color: transparent;
 color: white;
 cursor: pointer;
+border-radius: 10px;
+font-weight: ;
 `;
 

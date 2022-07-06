@@ -8,6 +8,6 @@ export const Content= styled.div`
     display: flex;
     padding: 7px 0;
     margin: 0 auto;
-    margin-left: 40px;
+    margin-left: 72px;
     transition: all 2s;
 `;

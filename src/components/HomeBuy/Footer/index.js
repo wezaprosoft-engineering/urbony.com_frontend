@@ -37,7 +37,9 @@ const Footer = () => {
                     marginBottom: 13
                 }}><img src={Location} style={{
                     marginRight: 10,
-                }}/> Boulevard de l’Uprona N°91, 3ème Étage, Bujumbura, Burundi</div>
+                }}/> Boulevard de l’Uprona N°91, 3ème Étage, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bujumbura, Burundi</div>
                 <div style={{
                     marginBottom: 13
                 }}><img src={Call} style={{
