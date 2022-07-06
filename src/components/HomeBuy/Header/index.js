@@ -19,7 +19,7 @@ const Header = () => {
     <Wrapper>
         <Content>
             <MenuContent>
-                <Logo src={urbonyLogo}/>
+                <Logo alt="logo" src={urbonyLogo}/>
                 
                 {!Corporate ? <TextMenuHeader onClick={handleResidential}>RESIDENTIAL</TextMenuHeader>: <TextMenu onClick={handleResidential}>RESIDENTIAL</TextMenu>}
                 {Corporate ? <TextMenuHeader onClick={handleCorporate}>CORPORATE</TextMenuHeader>: <TextMenu onClick={handleCorporate}>CORPORATE</TextMenu>}

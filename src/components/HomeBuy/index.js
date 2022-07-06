@@ -15,7 +15,7 @@ function Home_buy(){
     const [corporate] = useGlobalState("corporate")
     return (
         <>
-        <Header/>
+        <Header />
         <NavBar/>
         <Welcome/>
         <Popular/>
