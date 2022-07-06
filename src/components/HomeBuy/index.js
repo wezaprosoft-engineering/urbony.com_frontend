@@ -8,7 +8,7 @@ import PropertyManagement from "./PropertyManagement";
 import SellerRequestForm from "./SellerRequestForm";
 import SellProperty from "./SellProperty";
 import Welcome from "./WelcomeSection";
-import {setGlobalState, useGlobalState} from '../state'
+import {useGlobalState} from '../state'
 
 function Home_buy(){
 

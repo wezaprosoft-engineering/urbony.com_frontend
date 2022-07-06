@@ -107,7 +107,7 @@ const SellProperty =() =>{
                     <StepContent>
                         <h2>Search for a tenant</h2>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>A first contact completely for free</h3>
