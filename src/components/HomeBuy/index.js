@@ -10,7 +10,7 @@ import SellProperty from "./SellProperty";
 import Welcome from "./WelcomeSection";
 import {useGlobalState} from '../state'
 
-function Home_buy(){
+function HomeBuy(){
 
     const [corporate] = useGlobalState("corporate")
     return (
@@ -30,4 +30,4 @@ function Home_buy(){
 }
 
 
-export default Home_buy;
+export default HomeBuy;

@@ -64,8 +64,9 @@ cursor: pointer;
 `;
 
 export const LogoWhatsapp = styled.img`
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
 `;
 
 export const Button = styled.button`
@@ -76,6 +77,6 @@ border-color: transparent;
 color: white;
 cursor: pointer;
 border-radius: 10px;
-font-weight: ;
+//font-weight: ;
 `;
 

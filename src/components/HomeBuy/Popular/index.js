@@ -8,8 +8,7 @@ import Statistic from '../../images/statistic.svg'
 import House1 from '../../images/house1.png'
 import House2 from '../../images/house2.png'
 import House3 from '../../images/house3.png'
-import { Button, TextMenu } from "../Header/Header.styles";
-import { setGlobalState, useGlobalState } from "../../state";
+import { useGlobalState } from "../../state";
 
 
 const Popular = () => {
@@ -57,7 +56,6 @@ const Popular = () => {
                 </Title>
                 {Corporate ? <CorporateContent>
                     {offices ? <h2 style={{
-                    color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700,
                     textDecoration: 'underline',
@@ -71,7 +69,7 @@ const Popular = () => {
                 }} onClick={handleOffice}>Offices</h2>}
                     
                 {stores ? <h2 style={{
-                    color: "rgba(46,15,89,1)",
+                    
                     size: 35,
                     fontWeight: 700,
                     textDecoration: 'underline',
@@ -86,7 +84,6 @@ const Popular = () => {
                 
                 {industrial
                  ? <h2 style={{
-                    color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700,
                     textDecoration: 'underline',
@@ -109,7 +106,7 @@ const Popular = () => {
 
                 <Home>
                     <HomeCards>
-                        <img src={House1} style={{
+                        <img alt="house" src={House1} style={{
                             width: 406,
                             height: 334
                         }}/>
@@ -117,7 +114,7 @@ const Popular = () => {
                             display: 'flex',
                             
                             marginLeft: 12
-                        }}><img src={Location} style={{
+                        }}><img alt="location-icon" src={Location} style={{
                             marginRight: 10
                         }}/> <h4>Boulevard de l'Uprona</h4></div>
                         <CardsContainer>
@@ -126,7 +123,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={Bed} style={{
+                        <img alt="bed-icon" src={Bed} style={{
                             marginRight: 10
                         }}/><h5>4 Bed</h5>
                         </div>
@@ -135,7 +132,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={House} style={{
+                        <img alt="house-icon" src={House} style={{
                             marginRight: 10
                         }}/>  <h5>10 x 10 m</h5>
                         </div>
@@ -144,7 +141,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={Statistic} style={{
+                        <img alt="size-icon" src={Statistic} style={{
                             marginRight: 10
                         }}/>
                             <h5>1600m</h5>
@@ -155,15 +152,20 @@ const Popular = () => {
                             
                         }}>
                             <CardButton>Book Now</CardButton>
-                            <div><h3>BIF</h3></div>
                             <div style={{
-                                color: 'rgba(46,15,89,1)'
-                            }}><h3>100,000,000</h3></div>
+                                color: 'rgba(46,15,89,1)',
+                                display: "flex",
+                            }}>
+                                <div style={{
+                                    marginRight: 7,
+                                    color: 'black'
+                                }}><h3>BIF</h3></div>
+                                <h3>100,000,000</h3></div>
                             
                         </CardsContainer>
                     </HomeCards>
                     <HomeCards>
-                        <img src={House2} style={{
+                        <img alt="house" src={House2} style={{
                             width: 406,
                             height: 334
                         }}/>
@@ -171,7 +173,7 @@ const Popular = () => {
                             display: 'flex',
                             
                             marginLeft: 12
-                        }}><img src={Location} style={{
+                        }}><img alt="location-icon" src={Location} style={{
                             marginRight: 10
                         }}/> <h4>Boulevard de l'Uprona</h4></div>
                         <CardsContainer>
@@ -180,7 +182,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={Bed} style={{
+                        <img alt="bed-icon" src={Bed} style={{
                             marginRight: 10
                         }}/><h5>4 Bed</h5>
                         </div>
@@ -189,7 +191,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={House} style={{
+                        <img alt="house-icon" src={House} style={{
                             marginRight: 10
                         }}/>  <h5>10 x 10 m</h5>
                         </div>
@@ -198,7 +200,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={Statistic} style={{
+                        <img alt="size-icon" src={Statistic} style={{
                             marginRight: 10
                         }}/>
                             <h5>1600m</h5>
@@ -209,15 +211,20 @@ const Popular = () => {
                             
                         }}>
                             <CardButton>Book Now</CardButton>
-                            <div><h3>BIF</h3></div>
                             <div style={{
-                                color: 'rgba(46,15,89,1)'
-                            }}><h3>100,000,000</h3></div>
+                                color: 'rgba(46,15,89,1)',
+                                display: "flex",
+                            }}>
+                                <div style={{
+                                    marginRight: 7,
+                                    color: 'black'
+                                }}><h3>BIF</h3></div>
+                                <h3>100,000,000</h3></div>
                             
                         </CardsContainer>
                     </HomeCards>
                     <HomeCards>
-                        <img src={House3} style={{
+                        <img alt="house" src={House3} style={{
                             width: 406,
                             height: 334
                         }}/>
@@ -225,7 +232,7 @@ const Popular = () => {
                             display: 'flex',
                             
                             marginLeft: 12
-                        }}><img src={Location} style={{
+                        }}><img alt="location-icon" src={Location} style={{
                             marginRight: 10
                         }}/> <h4>Boulevard de l'Uprona</h4></div>
                         <CardsContainer>
@@ -234,7 +241,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={Bed} style={{
+                        <img alt="bed-icon" src={Bed} style={{
                             marginRight: 10
                         }}/><h5>4 Bed</h5>
                         </div>
@@ -243,7 +250,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={House} style={{
+                        <img alt="house-icon" src={House} style={{
                             marginRight: 10
                         }}/>  <h5>10 x 10 m</h5>
                         </div>
@@ -252,7 +259,7 @@ const Popular = () => {
                             
                             margin: 12
                         }}>
-                        <img src={Statistic} style={{
+                        <img alt="size-icon" src={Statistic} style={{
                             marginRight: 10
                         }}/>
                             <h5>1600m</h5>
@@ -263,10 +270,15 @@ const Popular = () => {
                             
                         }}>
                             <CardButton>Book Now</CardButton>
-                            <div><h3>BIF</h3></div>
                             <div style={{
-                                color: 'rgba(46,15,89,1)'
-                            }}><h3>100,000,000</h3></div>
+                                color: 'rgba(46,15,89,1)',
+                                display: "flex",
+                            }}>
+                                <div style={{
+                                    marginRight: 7,
+                                    color: 'black'
+                                }}><h3>BIF</h3></div>
+                                <h3>100,000,000</h3></div>
                             
                         </CardsContainer>
                     </HomeCards>

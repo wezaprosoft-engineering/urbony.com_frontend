@@ -113,31 +113,31 @@ const SellProperty =() =>{
                         <h3>A first contact completely for free</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Contact avec un expert de l'immobilier</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>An essential step to get started</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>In-depth visit of your property by one of our experts</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Document analysis (expenses, plans ,leases, etc.)</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Submission of an evaluation file ("Example: Focus on My Property")</h3>
@@ -167,25 +167,25 @@ const SellProperty =() =>{
                     <StepContent>
                         <h2>We prepare your sales file in every aspect:</h2>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Legal</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Technical</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Administrative - Urban Planning</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Good information ensures a sale with total peace of mind!</h3>
@@ -216,44 +216,44 @@ const SellProperty =() =>{
                     }}>
                         <h2>Let's get started: the Urbony machine is launched!</h2>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Follow-up of our applicants: people living in Burundi and abroad</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>30% of our sales are made in the first 3 weeks</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Photo report by a professional</h3>
                         </TextContent>
                         <h2>At advertising level: </h2>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Your property in XL format on all major specialized websites in real estate</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Your property in XL format on all major specialized websites in real estate</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Your property in the most important "paper" media</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Your property on social media (Facebook, Instagram, Twitter, ...)</h3>
@@ -282,25 +282,25 @@ const SellProperty =() =>{
                     <StepContent>
                         <h2>The sale becomes reality!</h2>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Negotiation of the sale consditions</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>verification of the financial ability of the buyer</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Completion of the sales agreement with your notary</h3>
                         </TextContent>
                         <TextContent>
-                        <img src={Step} style={{
+                        <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
                         <h3>Support until the deed of sale</h3>

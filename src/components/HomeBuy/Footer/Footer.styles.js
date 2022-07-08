@@ -33,9 +33,9 @@ flex-wrap: wrap;
 `
 export const Button = styled.button`
     width: 80px;
-    height: 80px;
+    height: 75px;
     background-color: #FF0000;
-    border-radius: 100%;
+    border-radius: 100% 100% 100% 100%;
     border-color: transparent;
     margin-top: 250px;
     cursor: pointer;

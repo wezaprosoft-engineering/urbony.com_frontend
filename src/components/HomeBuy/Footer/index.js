@@ -35,17 +35,17 @@ const Footer = () => {
                 <FooterTitle>Get In Touch</FooterTitle>
                 <div style={{
                     marginBottom: 13
-                }}><img src={Location} style={{
+                }}><img src={Location} alt="location" style={{
                     marginRight: 10,
                 }}/> Boulevard de l’Uprona N°91, 3ème Étage, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bujumbura, Burundi</div>
                 <div style={{
                     marginBottom: 13
-                }}><img src={Call} style={{
+                }}><img src={Call} alt="phone-call" style={{
                     marginRight: 10
                 }}/> +257 61 100 800</div>
-                <div><img src={WhatsApp} style={{
+                <div><img src={WhatsApp} alt="whatsapp" style={{
                     marginRight: 10
                 }}/> +257 75 78 89</div>
                 </Footerservices>
@@ -53,13 +53,13 @@ const Footer = () => {
                     width: '12%'
                 }}><FooterTitle>Follow Us</FooterTitle>
                 <SocialMedia>
-                    <img src={Facebook}/>
-                    <img src={Instagram}/>
-                    <img src={Twitter}/>
-                    <img src={Youtube}/>
+                    <img src={Facebook} alt="facebook"/>
+                    <img src={Instagram} alt="instagram"/>
+                    <img src={Twitter} alt="twitter"/>
+                    <img src={Youtube} alt="youtube"/>
                 </SocialMedia>
                 </Footerservices>
-                <Button onClick={Top}><img src={Arrow}/></Button>
+                <Button onClick={Top}><img src={Arrow} alt="arrow scroll-up"/></Button>
             </FooterContent>
             
         </Wrapper>

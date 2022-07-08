@@ -1,9 +1,9 @@
 import './App.css';
-import Home_buy from './components/HomeBuy';
+import HomeBuy from './components/HomeBuy';
 
 function App() {
   return (
-    <Home_buy/>
+    <HomeBuy/>
   );
 }
 
