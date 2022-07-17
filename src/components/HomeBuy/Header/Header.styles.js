@@ -39,6 +39,7 @@ export const Logo = styled.img`
     width: 262px;
     height: 78px;
     margin-right: 60px;
+    cursor: pointer;
 `;
 export const TextMenu = styled.h2`
 font-weight: 500;

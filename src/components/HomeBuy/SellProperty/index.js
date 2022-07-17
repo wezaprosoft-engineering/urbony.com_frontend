@@ -3,7 +3,7 @@ import { Arrow, Content, Head, Line, Title, Wrapper } from "../Popular/Popular.s
 import arrow from '../../images/arrow.svg'
 import { StepContent, StepDevelopped, Steps, TextContent } from "./SellPropert.styles";
 import Step from '../../images/step.svg'
-const SellProperty =() =>{
+const SellProperty = props =>{
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
     const [step3, setStep3] = useState(false);
@@ -63,7 +63,7 @@ const SellProperty =() =>{
                 <Title>
                     <Head>
                         <Line/>
-                        <h3>Sell your property</h3>
+                        <h3>{props.title}</h3>
                     </Head>
                     <Head style={{
                         color: "rgba(217,11,66,1)"
@@ -75,8 +75,8 @@ const SellProperty =() =>{
                 <div style={{
                         color: "rgba(46,15,89,1)"
                         }}>
-                <h2>Consider selling properties in Burundi?</h2>
-                <h3>You're at the right place</h3>
+                <h2>{props.title1}</h2>
+                <h3>{props.proposition}</h3>
                 </div>
 
                 <div style={{
@@ -84,7 +84,7 @@ const SellProperty =() =>{
                 }}>
                     <h3 style={{
                         fontWeight: 400
-                    }}>Stages of selling your property: complete expertise and support for the sale of your property : apartment, house, land, villa, investment property.</h3>
+                    }}>{props.step}</h3>
                 </div>
                 <Steps><div
                 style={{

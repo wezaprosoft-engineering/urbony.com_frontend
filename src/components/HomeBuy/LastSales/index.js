@@ -1,19 +1,22 @@
 import React from "react";
-import { Content, Head, Line, Title, Wrapper, Arrow, Home, HomeCards, CardImage, DetailsRow, CardsContainer, Locationrow, CardButton } from "../Popular/Popular.styles";
+import { Content, Head, Line, Title, Wrapper, Arrow, Home } from "../Popular/Popular.styles";
 import arrow from '../../images/arrow.svg'
 import House1 from '../../images/house1.png'
-import Location from '../../images/location.svg'
-import Bed from '../../images/bed.svg'
-import House from '../../images/house.svg'
-import Statistic from '../../images/statistic.svg'
+import HomeCard from "../HomeCards";
 
-const LastSales = () =>{
+
+const LastSales = props =>{
+    
     return(
         <Wrapper>
-            <Content>
+             <Content style={{
+                margin: `${props.margin}`
+            }}>
                 <Title>
                     <Head>
-                        <Line/>
+                        <Line style={{
+                            border: '3px solid rgba(46,15,89,1)'
+                        }}/>
                         <h3>Our last sales</h3>
                     </Head>
 
@@ -30,137 +33,12 @@ const LastSales = () =>{
                 </Title>
 
                 <Home>
-                    <HomeCards>
-                        <CardImage src={House1}/>
-                        <Locationrow><img src={Location} alt="location-icon" style={{
-                            marginRight: 10
-                        }}/> <h4>Boulevard de l'Uprona</h4></Locationrow>
-                        <CardsContainer>
-                        <DetailsRow>
-                            <img src={Bed} alt="bed" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>4 Bed</h5>
-                        </DetailsRow>
-                        <DetailsRow>
-                            <img src={House} alt="house-icon" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>10 x 10 m</h5>
-                        </DetailsRow>
-                        <DetailsRow>
-                            <img src={Statistic} alt="size-icon" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>1600m</h5>
-                        </DetailsRow>
-                        </CardsContainer>
-
-                        <CardsContainer>
-                            <CardButton style={{
-                                backgroundColor: 'rgba(46,15,89,1)'
-                            }}>SOLD</CardButton>
-                            <div style={{
-                                color: 'rgba(46,15,89,1)',
-                                display: "flex",
-                            }}>
-                                <div style={{
-                                    marginRight: 7,
-                                    color: 'black'
-                                }}><h3>BIF</h3></div>
-                                <h3>100,000,000</h3></div>
-                            
-                        </CardsContainer>
-                        
-                    </HomeCards>
-                    <HomeCards>
-                        <CardImage src={House1}/>
-                        <Locationrow><img src={Location} alt="location-icon" style={{
-                            marginRight: 10
-                        }}/> <h4>Boulevard de l'Uprona</h4></Locationrow>
-                        <CardsContainer>
-                        <DetailsRow>
-                            <img src={Bed} alt="bed" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>4 Bed</h5>
-                        </DetailsRow>
-                        <DetailsRow>
-                            <img src={House} alt="house-icon" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>10 x 10 m</h5>
-                        </DetailsRow>
-                        <DetailsRow>
-                            <img src={Statistic} alt="size-icon" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>1600m</h5>
-                        </DetailsRow>
-                        </CardsContainer>
-
-                        <CardsContainer>
-                            <CardButton style={{
-                                backgroundColor: 'rgba(46,15,89,1)'
-                            }}>SOLD</CardButton>
-                            <div style={{
-                                color: 'rgba(46,15,89,1)',
-                                display: "flex",
-                            }}>
-                                <div style={{
-                                    marginRight: 7,
-                                    color: 'black'
-                                }}><h3>BIF</h3></div>
-                                <h3>100,000,000</h3></div>
-                            
-                        </CardsContainer>
-                        
-                    </HomeCards>
-                    <HomeCards>
-                        <CardImage src={House1}/>
-                        <Locationrow><img src={Location} alt="location-icon" style={{
-                            marginRight: 10
-                        }}/> <h4>Boulevard de l'Uprona</h4></Locationrow>
-                        <CardsContainer>
-                        <DetailsRow>
-                            <img src={Bed} alt="bed" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>4 Bed</h5>
-                        </DetailsRow>
-                        <DetailsRow>
-                            <img src={House} alt="house-icon" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>10 x 10 m</h5>
-                        </DetailsRow>
-                        <DetailsRow>
-                            <img src={Statistic} alt="size-icon" style={{
-                            marginRight: 10
-                        }}/>
-                            <h5>1600m</h5>
-                        </DetailsRow>
-                        </CardsContainer>
-
-                        <CardsContainer>
-                            <CardButton style={{
-                                backgroundColor: 'rgba(46,15,89,1)'
-                            }}>SOLD</CardButton>
-                            <div style={{
-                                color: 'rgba(46,15,89,1)',
-                                display: "flex",
-                            }}>
-                                <div style={{
-                                    marginRight: 7,
-                                    color: 'black'
-                                }}><h3>BIF</h3></div>
-                                <h3>100,000,000</h3></div>
-                            
-                        </CardsContainer>
-                        
-                    </HomeCards>
+                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
+                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
+                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
                 </Home>
             </Content>
+            
         </Wrapper>
     )
 }
