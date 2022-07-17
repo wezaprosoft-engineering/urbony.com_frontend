@@ -1,8 +1,10 @@
 import React from "react";
 import { CardButton, Content, Head, Line, Title, Wrapper } from "../Popular/Popular.styles";
 import { Container, InputRequest, RequestForm, Star} from "./SellerRequestForm.styles";
-
-const SellerRequestForm = () => {
+import { useGlobalState } from "../../state";
+const SellerRequestForm = props => {
+    const [rent] = useGlobalState("rent")
+    
     return (
         <Wrapper style={{
             height: '1000px'
@@ -11,8 +13,7 @@ const SellerRequestForm = () => {
                 <Title>
                     <Head>
                         <Line/>
-                        <h3>You too can sell better, faster and easier with Urbony!</h3>
-                    </Head>
+                        <h3>{props.text}</h3>                   </Head>
                 </Title>
                 <RequestForm>
                     <Container>
@@ -62,11 +63,17 @@ const SellerRequestForm = () => {
                     <h4>I have read and accept the general conditions and the privacy policy of the site <Star>*</Star></h4>
                     </div>
                     <div style={{width: '100%'}}><h3>Fields marked <Star>*</Star> are mandatory</h3></div>
-                    <CardButton 
+                    {rent? <CardButton 
                     style={{
-                        width : '100%'
+                        width : '100%',
+                        backgroundColor: 'red'
                     }}
-                    >Submit Request</CardButton>
+                    >Submit Request</CardButton>: <CardButton 
+                    style={{
+                        width : '100%',
+                        
+                    }}
+                    >Submit Request</CardButton>}
                     
                     
                 </RequestForm>

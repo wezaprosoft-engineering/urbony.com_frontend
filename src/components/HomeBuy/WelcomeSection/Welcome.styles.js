@@ -4,7 +4,7 @@ import background from '../../images/background-image.png'
 export const Wrapper = styled.div`
    background-image: url(${background});
    backdrop-filter: blur(7px);
-    min-height: 787px;
+    
     
     
     
@@ -88,6 +88,7 @@ justify-content: space-between;
 
 export const OverlayContent = styled.div`
     margin: auto auto auto auto;
+    color: rgba(46,15,89,1)
 `; 
 export const Input = styled.input`
 width: 150px;

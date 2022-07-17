@@ -7,19 +7,54 @@ import { setGlobalState, useGlobalState } from "../../state";
 const Header = () => {
 
     const handleCorporate = () =>{
-        setGlobalState("corporate", true)
+        setGlobalState("corporate", true);
+        setGlobalState("sell", false);
+        setGlobalState("buy", false);
+        setGlobalState("rent", false);
+        setGlobalState("realEstate", false);
+        setGlobalState("management", false);
+        setGlobalState("aboutUs", false);
+        setGlobalState("getIntouch", false);
         
     }
     const handleResidential = () =>{
-        setGlobalState("corporate", false)
+        setGlobalState("corporate", false);
+        setGlobalState("sell", false);
+        setGlobalState("buy", false);
+        setGlobalState("rent", false);
+        setGlobalState("realEstate", false);
+        setGlobalState("management", false);
+        setGlobalState("aboutUs", false);
+        setGlobalState("getIntouch", false);
         
+    }
+    const getIntouch = () =>{
+        setGlobalState("getIntouch", true);
+        setGlobalState("sell", false);
+        setGlobalState("buy", false);
+        setGlobalState("rent", false);
+        setGlobalState("realEstate", false);
+        setGlobalState("management", false);
+        setGlobalState("aboutUs", false);
+        setGlobalState("corporate", false);
+        setGlobalState("residential", false);
+    }
+
+    const Welcome = () =>{
+        setGlobalState("getIntouch", false);
+        setGlobalState("sell", false);
+        setGlobalState("buy", false);
+        setGlobalState("rent", false);
+        setGlobalState("realEstate", false);
+        setGlobalState("management", false);
+        setGlobalState("aboutUs", false);
     }
     const [Corporate] = useGlobalState("corporate");
     return(
     <Wrapper>
         <Content>
             <MenuContent>
-                <Logo alt="logo" src={urbonyLogo}/>
+                <Logo alt="logo" src={urbonyLogo} onClick={Welcome}/>
                 
                 {!Corporate ? <TextMenuHeader onClick={handleResidential}>RESIDENTIAL</TextMenuHeader>: <TextMenu onClick={handleResidential}>RESIDENTIAL</TextMenu>}
                 {Corporate ? <TextMenuHeader onClick={handleCorporate}>CORPORATE</TextMenuHeader>: <TextMenu onClick={handleCorporate}>CORPORATE</TextMenu>}
@@ -31,7 +66,7 @@ const Header = () => {
                 <Button><TextMenu style={{
                     color: 'white',
                     fontWeight: 700
-                }}>Get In Touch</TextMenu></Button>
+                }} onClick={getIntouch}>Get In Touch</TextMenu></Button>
                 <TextMenu style={{
                     fontWeight: 400
                 }}>or</TextMenu>
