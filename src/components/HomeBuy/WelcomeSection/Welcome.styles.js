@@ -4,7 +4,8 @@ import background from '../../images/background-image.png'
 export const Wrapper = styled.div`
    background-image: url(${background});
    backdrop-filter: blur(7px);
-    
+   background-size: cover;
+   
     
     
     
@@ -12,6 +13,8 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
     width: 100%;
+    padding: 10px;
+    height: auto;
     min-height: 787px;
     background-color: rgba(46, 15, 89,0.6);
     
@@ -77,13 +80,20 @@ export const TextButton2 = styled.h3`
 
 export const Overlay = styled.div`
 width: 90%;
-height: 319px;
-margin: 100px auto auto auto;
+min-height: 319px;
 background-color: white;
 border-radius: 0 0 45px 45px;
+
+margin-top: 100px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 20px;
+`;
+export const SubOverlay = styled.div`
 display: flex;
 justify-content: space-between;
-
+width: 100%;
+padding-top: 50px
 `;
 
 export const OverlayContent = styled.div`
@@ -112,4 +122,27 @@ export const SearchIcon = styled.img`
     width: 20px;
     height: 20px;
     margin-top: 15px;
+`;
+
+export const More = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: auto 350px auto 62px;
+    h3{
+        color: rgba(46,15,89,1);
+        font-weight: 700;
+        size: 25px;
+    };
+`;
+
+export const MoreContent = styled.div`
+display: flex;
+align-items: center;
+h4{
+    font-weight: 400;
+    size: 15px;
+};
+`;
+export const Check = styled.input`
+margin-right: 10px;
 `;

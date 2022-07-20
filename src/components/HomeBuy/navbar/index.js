@@ -14,6 +14,7 @@ const NavBar = () =>{
     const [offices] = useGlobalState("offices")
     const [commercialSpace] = useGlobalState("commercialSpace")
     const [industrialSpace] = useGlobalState("industrialSpace")
+    const [getIntouch] = useGlobalState("getIntouch")
 
     const makeSell = ()=>{
         setGlobalState("sell", true)
@@ -92,18 +93,18 @@ const NavBar = () =>{
     }
     return(
         <Wrapper>{corporate ? <Content>
-            {offices ? <TextMenu2>OFFICES</TextMenu2>:<TextMenu onClick={makeOffices}>OFFICES</TextMenu>}
-            {commercialSpace? <TextMenu2>COMMERCIAL SPACE</TextMenu2>: <TextMenu onClick={makeCommercialSpace}>COMMERCIAL SPACE</TextMenu>}
+            {offices && !getIntouch ? <TextMenu2>OFFICES</TextMenu2>:<TextMenu onClick={makeOffices}>OFFICES</TextMenu>}
+            {commercialSpace && !getIntouch ? <TextMenu2>COMMERCIAL SPACE</TextMenu2>: <TextMenu onClick={makeCommercialSpace}>COMMERCIAL SPACE</TextMenu>}
             {industrialSpace ? <TextMenu2>INDUSTRIAL SPACE</TextMenu2>: <TextMenu onClick={makeIndustrialSpace}>INDUSTRIAL SPACE</TextMenu>}
-            {management ? <TextMenu2>MANAGEMENT</TextMenu2>: <TextMenu onClick={makeManagement}>MANAGEMENT</TextMenu>}
-            {aboutUs ? <TextMenu2>ABOUT US</TextMenu2>: <TextMenu onClick={makeAboutUs}>ABOUT US</TextMenu>}
+            {management && !getIntouch  ? <TextMenu2>MANAGEMENT</TextMenu2>: <TextMenu onClick={makeManagement}>MANAGEMENT</TextMenu>}
+            {aboutUs && !getIntouch  ? <TextMenu2>ABOUT US</TextMenu2>: <TextMenu onClick={makeAboutUs}>ABOUT US</TextMenu>}
             </Content> : <Content>
-            {sell ? <TextMenu2>SELL</TextMenu2>: <TextMenu onClick={makeSell}>SELL</TextMenu>}
-            {buy ? <TextMenu2>BUY</TextMenu2>: <TextMenu onClick={makeBuy}>BUY</TextMenu>}
-            {rent ? <TextMenu2>RENT</TextMenu2>: <TextMenu onClick={makeRent}>RENT</TextMenu>}
-            {realEstate ? <TextMenu2>REAL ESTATE PROJECTS</TextMenu2>: <TextMenu onClick={makeRealEstate}>REAL ESTATE PROJECTS</TextMenu>}
-            {management ? <TextMenu2>MANAGEMENT</TextMenu2>: <TextMenu onClick={makeManagement}>MANAGEMENT</TextMenu>}
-            {aboutUs ? <TextMenu2>ABOUT US</TextMenu2>: <TextMenu onClick={makeAboutUs}>ABOUT US</TextMenu>}
+            {sell && !getIntouch ? <TextMenu2>SELL</TextMenu2>: <TextMenu onClick={makeSell}>SELL</TextMenu>}
+            {buy && !getIntouch ? <TextMenu2>BUY</TextMenu2>: <TextMenu onClick={makeBuy}>BUY</TextMenu>}
+            {rent && !getIntouch ? <TextMenu2>RENT</TextMenu2>: <TextMenu onClick={makeRent}>RENT</TextMenu>}
+            {realEstate && !getIntouch ? <TextMenu2>REAL ESTATE PROJECTS</TextMenu2>: <TextMenu onClick={makeRealEstate}>REAL ESTATE PROJECTS</TextMenu>}
+            {management && !getIntouch ? <TextMenu2>MANAGEMENT</TextMenu2>: <TextMenu onClick={makeManagement}>MANAGEMENT</TextMenu>}
+            {aboutUs && !getIntouch ? <TextMenu2>ABOUT US</TextMenu2>: <TextMenu onClick={makeAboutUs}>ABOUT US</TextMenu>}
             </Content>}
             
         </Wrapper>
