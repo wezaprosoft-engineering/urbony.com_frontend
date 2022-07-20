@@ -6,13 +6,21 @@ import House2 from '../../images/house2.png'
 import House3 from '../../images/house3.png'
 import { useGlobalState } from "../../state";
 import HomeCard from '../HomeCards/index';
+import CorporateCards from "../CorporateCards";
 
 
-const Popular = () => {
+const Popular = props => {
     const [Corporate] = useGlobalState("corporate")
     const [offices, setOffices] = useState(true)
     const [stores, setStores] = useState(false)
     const [industrial, setIndustrial] = useState(false)
+
+    const [Industrial] = useGlobalState("industrialSpace")
+    const [Offices] = useGlobalState("offices")
+    const [Commercial] = useGlobalState("commercialSpace")
+
+
+    
 
     const handleOffice = () =>{
         setOffices(true)
@@ -31,7 +39,9 @@ const Popular = () => {
     }
     return(
         <Wrapper>
-            <Content>
+            <Content style={{
+                margin:`${props.margin}`
+            }}>
                 <Title>
                     <Head>
                         
@@ -55,42 +65,42 @@ const Popular = () => {
                     {offices ? <h2 style={{
                     size: 35,
                     fontWeight: 700,
-                    textDecoration: 'underline',
+                    textDecoration: `${props.underline}`,
                     color: 'red'
-                }} >Offices</h2>: <h2 style={{
+                }} >{props.Offices}</h2>: <h2 style={{
                     color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700,
                     cursor: "pointer"
                     
-                }} onClick={handleOffice}>Offices</h2>}
+                }} onClick={handleOffice}>{props.Offices}</h2>}
                     
                 {stores ? <h2 style={{
                     
                     size: 35,
                     fontWeight: 700,
-                    textDecoration: 'underline',
+                    textDecoration: `${props.underline}`,
                     color: 'red'
-                }}>Stores</h2>: <h2 style={{
+                }}>{props.Stores}</h2>: <h2 style={{
                     color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700,
                     cursor: "pointer"
                     
-                }} onClick={handleStores}>Stores</h2>}
+                }} onClick={handleStores}>{props.Stores}</h2>}
                 
                 {industrial
                  ? <h2 style={{
                     size: 35,
                     fontWeight: 700,
-                    textDecoration: 'underline',
+                    textDecoration: `${props.underline}`,
                     color: 'red'
-                }}>Industrial</h2>: <h2 style={{
+                }}>{props.Industrial}</h2>: <h2 style={{
                     color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700,
                     cursor: "pointer"
-                }} onClick={handleIndustrial}>Industrial</h2>}
+                }} onClick={handleIndustrial}>{props.Industrial}</h2>}
                 
 
                 </CorporateContent>: <h2 style={{
@@ -99,13 +109,17 @@ const Popular = () => {
                     fontWeight: 700
                 }}>Our Popular Homes</h2>}
                 
-                
-
-                <Home>
+                {Industrial || Commercial || Offices ? <Home>
+                    <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
+                    <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
+                    <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
+                </Home>: <Home>
                     <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1} />
                     <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House2} />
                     <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House3} />
-                </Home>
+                </Home>}
+
+                
                 
             </Content>
         </Wrapper>

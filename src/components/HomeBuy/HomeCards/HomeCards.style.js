@@ -16,6 +16,7 @@ margin: 10px;
 align-items: center;
 
 
+
 `;
 
 export const CardButton = styled.button`

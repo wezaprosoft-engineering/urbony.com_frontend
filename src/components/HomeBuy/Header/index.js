@@ -15,6 +15,9 @@ const Header = () => {
         setGlobalState("management", false);
         setGlobalState("aboutUs", false);
         setGlobalState("getIntouch", false);
+        setGlobalState("offices", false);
+        setGlobalState("commercialSpace", false);
+        setGlobalState("industrialSpace", false);
         
     }
     const handleResidential = () =>{
@@ -26,6 +29,9 @@ const Header = () => {
         setGlobalState("management", false);
         setGlobalState("aboutUs", false);
         setGlobalState("getIntouch", false);
+        setGlobalState("offices", false);
+        setGlobalState("commercialSpace", false);
+        setGlobalState("industrialSpace", false);
         
     }
     const getIntouch = () =>{
@@ -38,23 +44,17 @@ const Header = () => {
         setGlobalState("aboutUs", false);
         setGlobalState("corporate", false);
         setGlobalState("residential", false);
+        setGlobalState("offices", false);
+        setGlobalState("commercialSpace", false);
+        setGlobalState("industrialSpace", false);
     }
 
-    const Welcome = () =>{
-        setGlobalState("getIntouch", false);
-        setGlobalState("sell", false);
-        setGlobalState("buy", false);
-        setGlobalState("rent", false);
-        setGlobalState("realEstate", false);
-        setGlobalState("management", false);
-        setGlobalState("aboutUs", false);
-    }
     const [Corporate] = useGlobalState("corporate");
     return(
     <Wrapper>
         <Content>
             <MenuContent>
-                <Logo alt="logo" src={urbonyLogo} onClick={Welcome}/>
+                <Logo alt="logo" src={urbonyLogo}/>
                 
                 {!Corporate ? <TextMenuHeader onClick={handleResidential}>RESIDENTIAL</TextMenuHeader>: <TextMenu onClick={handleResidential}>RESIDENTIAL</TextMenu>}
                 {Corporate ? <TextMenuHeader onClick={handleCorporate}>CORPORATE</TextMenuHeader>: <TextMenu onClick={handleCorporate}>CORPORATE</TextMenu>}
