@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/urbony.com_frontend/static/css/main.073c9b0a.css",
-    "main.js": "/urbony.com_frontend/static/js/main.65bc59cf.js",
+    "main.js": "/urbony.com_frontend/static/js/main.19625f4a.js",
     "static/js/787.4e535460.chunk.js": "/urbony.com_frontend/static/js/787.4e535460.chunk.js",
     "static/media/realEstate.png": "/urbony.com_frontend/static/media/realEstate.4629ae30fc39be602d8e.png",
     "static/media/Getintouch.png": "/urbony.com_frontend/static/media/Getintouch.960cba01bb49345207e7.png",
@@ -13,6 +13,7 @@
     "static/media/house2.png": "/urbony.com_frontend/static/media/house2.65a990aa64e1a35dd59f.png",
     "static/media/housebuy3.png": "/urbony.com_frontend/static/media/housebuy3.997ac39ea18a1d72b75b.png",
     "static/media/house3.png": "/urbony.com_frontend/static/media/house3.d5816cba6f2833c33450.png",
+    "static/media/office.jpeg": "/urbony.com_frontend/static/media/office.32f94d7b95f74d71429e.jpeg",
     "static/media/logo.svg": "/urbony.com_frontend/static/media/logo.78b9b3330c6e84cce91306979467a8bc.svg",
     "static/media/whatsapp.svg": "/urbony.com_frontend/static/media/whatsapp.503375c0b6769605ad0905ca7c67b969.svg",
     "static/media/instagram.svg": "/urbony.com_frontend/static/media/instagram.ff040648ea83564fadf3def7582cefea.svg",
@@ -25,8 +26,8 @@
     "static/media/footercall.svg": "/urbony.com_frontend/static/media/footercall.2e3f2da70ef74741cdb804d2096cc7e2.svg",
     "static/media/getintouchcall.svg": "/urbony.com_frontend/static/media/getintouchcall.529292e2934bb9d815741df2c00e6d30.svg",
     "static/media/statistic.svg": "/urbony.com_frontend/static/media/statistic.4efded5024f5222381e38b52594e43e0.svg",
-    "static/media/facebook.svg": "/urbony.com_frontend/static/media/facebook.fc9d4c9d72a05e0e062dfd192ed2bbf4.svg",
     "index.html": "/urbony.com_frontend/index.html",
+    "static/media/facebook.svg": "/urbony.com_frontend/static/media/facebook.fc9d4c9d72a05e0e062dfd192ed2bbf4.svg",
     "static/media/bad.svg": "/urbony.com_frontend/static/media/bad.7950e10eb7319671212334a799ae9f4c.svg",
     "static/media/search-icon.svg": "/urbony.com_frontend/static/media/search-icon.771389ee855edd8a3eed7178b994596c.svg",
     "static/media/arrow_up.svg": "/urbony.com_frontend/static/media/arrow_up.c23c793d70f95343566a8f575e2b3a09.svg",
@@ -34,15 +35,18 @@
     "static/media/footerlocation.svg": "/urbony.com_frontend/static/media/footerlocation.1e24bf913199f7430f7450d5ef83989f.svg",
     "static/media/location.svg": "/urbony.com_frontend/static/media/location.c04417aabb0d1bf7dc433576ed1157d4.svg",
     "static/media/bed.svg": "/urbony.com_frontend/static/media/bed.e53217478696753acc2aaed6ede82e0f.svg",
+    "static/media/step2.svg": "/urbony.com_frontend/static/media/step2.d4d60574af161097a9f809a229ed7919.svg",
     "static/media/nice.svg": "/urbony.com_frontend/static/media/nice.2c31b2ad7e4206f80230d6fd1380dcb5.svg",
     "static/media/arrow.svg": "/urbony.com_frontend/static/media/arrow.d18aae00f3e13ed259a90f8dcf9fbd63.svg",
+    "static/media/arrow_up2.svg": "/urbony.com_frontend/static/media/arrow_up2.9df37f80dca467b3eea0930232d54f30.svg",
+    "static/media/arrow_down.svg": "/urbony.com_frontend/static/media/arrow_down.3197da1299643fc59d31c4d63e19d4c7.svg",
     "static/media/step.svg": "/urbony.com_frontend/static/media/step.f11fe48e3fb5f927723c5ae494164822.svg",
     "main.073c9b0a.css.map": "/urbony.com_frontend/static/css/main.073c9b0a.css.map",
-    "main.65bc59cf.js.map": "/urbony.com_frontend/static/js/main.65bc59cf.js.map",
+    "main.19625f4a.js.map": "/urbony.com_frontend/static/js/main.19625f4a.js.map",
     "787.4e535460.chunk.js.map": "/urbony.com_frontend/static/js/787.4e535460.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.65bc59cf.js"
+    "static/js/main.19625f4a.js"
   ]
 }
