@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check } from "./Welcome.styles";
+import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MenuNav } from "./Welcome.styles";
 import search from '../../images/search-icon.svg'
 import { useGlobalState } from "../../state";
 import ArrowDown from '../../images/arrow_down.svg'
 import ArrowUp from '../../images/arrow_up2.svg'
+import SearchMin from '../../images/searchmin.svg'
 
 const Details = props =>{
     return(
@@ -24,6 +25,7 @@ const Welcome = () =>{
     const [rent, setRent] = useState(false);
     const [corporate] = useGlobalState("corporate");
     const [more, setMore] = useState(false);
+    const [mobileMenu] = useGlobalState("mobileMenu");
     const Rent = () =>{
         setBuy(false);
         setRent(true);
@@ -148,9 +150,32 @@ const Welcome = () =>{
                     {rent ? <Button onClick={Rent}><TextButton2>RENT</TextButton2></Button> : <Button2 onClick={Rent}><TextButton2>RENT</TextButton2></Button2>}
                    
                 </Toggle>
+                <Select>
+                <option value="Select" disabled>Select type of property</option>
+                        <option value="Single Family Homes">Single Family Homes</option>
+                        <option value="Town Homes">Town Homes</option>
+                        <option value="Apartments">Apartments</option>
+                        <option value="Tiny home">Tiny home</option>
+                </Select>
+                <Input2 placeholder="Enter location of property"/>
+                <Input2 placeholder={rent? "Enter minimum rent": "Enter minimum price"} type="number"/>
+                <Input2 placeholder={rent? "Enter minimum rent": "Enter minimum price"} type="number"/>
+                <Input2 placeholder="Enter Bedroom(s)"/>
+                <WelcomeButton>
+                    <div style={{
+                        display: 'flex',
+                        margin: 'auto auto auto auto',
+                        paddingLeft: 130,
+                        paddingRight: 130,
+                    }}><img alt="search-min" src={SearchMin}/><h3>SEARCH</h3></div>
+                </WelcomeButton>
                 {corporate? <Overlays location="Location or area"/>: <Overlays location="Location of property"/>}
                 
             </Content>
+            {mobileMenu ? <MenuNav>
+
+            </MenuNav>: null}
+            
         </Wrapper>
     )
 }

@@ -5,7 +5,12 @@ export const Wrapper = styled.div`
    background-image: url(${background});
    backdrop-filter: blur(7px);
    background-size: cover;
-   
+   @media screen and (max-width: 414px){
+        max-width: 414px;
+        background-size: cover;
+        
+        
+    }
     
     
     
@@ -13,10 +18,15 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
     width: 100%;
-    padding: 10px;
+    padding-top: 10px;
     height: auto;
     min-height: 787px;
     background-color: rgba(46, 15, 89,0.6);
+    @media screen and (max-width: 414px){
+        min-height: 490px;
+        text-align: center;
+    }
+
     
     
 `;
@@ -27,6 +37,9 @@ export const WelcomeText = styled.div`
    padding-top: 33px;
    margin-left: 80px;
    color: white;
+   @media screen and (max-width: 414px){
+       display: none;
+    }
 `;
 
 export const Toggle = styled.div`
@@ -40,8 +53,14 @@ export const Toggle = styled.div`
     text-align: center;
     padding: 5px;
     margin: 100px auto auto auto;
+    transition: all 2s;
     
-    
+    @media screen and (max-width: 414px){
+       width: 247px;
+       height: 37px;
+       margin: 15px auto 40px auto;
+
+    }
 `;
 
 export const Button = styled.button`
@@ -52,6 +71,12 @@ export const Button = styled.button`
     cursor: pointer;
     color: rgba(255, 255, 255, 1);
     transition: all 2s;
+    @media screen and (max-width: 414px){
+       width: 127px;
+       height: 38px;
+       margin: auto auto auto auto;
+       
+    }
     
 `;
 export const Button2 = styled.button`
@@ -60,22 +85,105 @@ export const Button2 = styled.button`
     border-color: transparent;
     cursor: pointer;
     color: rgba(46, 15, 89, 1);
+    @media screen and (max-width: 414px){
+        width: 119.57px;
+       height: 29.89px;
+       margin: auto auto auto auto;
+    }
     
 `;
 
 export const TextButton = styled.h3`
-    
-    
     font-weight: 700;
     size: 25px;
     font-style: "Roboto";
+    @media screen and (max-width: 414px){
+        size: 15px;
+        margin: auto auto auto auto;
+    }
 `;
 export const TextButton2 = styled.h3`
-    
-    
     font-weight: 700;
     size: 25px;
     font-style: "Roboto";
+    @media screen and (max-width: 414px){
+        size: 15px;
+        margin: auto auto auto auto;
+    }
+`;
+
+export const Input2 = styled.input`
+     @media screen and (min-width: 415px){
+        display: none;
+    };
+    @media screen and (max-width: 414px){
+        width: 365px;
+        height: 45px;
+        border-radius: 10px;
+        margin: 10px auto 10px auto;
+        font-weight: 700;
+        size: 15px;
+        color: rgba(46,15,89,1);
+    }
+`;
+export const Select = styled.select`
+ @media screen and (min-width: 415px){
+        display: none;
+        option{
+            display: none;
+        }
+    };
+    @media screen and (max-width: 414px){
+        width: 365px;
+        height: 45px;
+        border-radius: 10px;
+        margin: 10px auto 10px auto;
+        font-weight: 700;
+        size: 15px;
+        color: rgba(46,15,89,1);
+
+       
+    }
+
+`;
+
+export const WelcomeButton = styled.button`
+    @media screen and (min-width: 415px){
+        display: none;
+    };
+
+    @media screen and (max-width: 414px){
+        width: 365px;
+        height: 45px;
+        border-radius: 10px;
+        margin: 10px auto auto auto;
+        background-color: rgba(217,11,66,1);
+        border-color: transparent;
+        justify-content: center;
+        align-items: center;
+
+        h3{
+            color: white;
+            margin-left: 7px;
+        }
+    }
+
+`;
+
+export const MenuNav = styled.div`
+ @media screen and (min-width: 415px){
+        display: none;
+    };
+
+    @media screen and (max-width: 414px){
+        width: 100%;
+        height: 525px;
+        background-color: rgba(46,15,89,1);
+        z-index: 999;
+        top: 0;
+        position: absolute;
+        
+    }
 `;
 
 export const Overlay = styled.div`
@@ -88,6 +196,9 @@ margin-top: 100px;
 margin-left: auto;
 margin-right: auto;
 margin-bottom: 20px;
+@media screen and (max-width: 414px){
+       display: none;
+    }
 `;
 export const SubOverlay = styled.div`
 display: flex;

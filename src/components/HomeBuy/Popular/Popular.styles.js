@@ -3,10 +3,16 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     min-height: 712px;
     flex-grow: 999;
+    @media screen and (max-width: 414px){
+       display: none;
+    }
 `;
 
 export const Content = styled.div`
-    margin: 60px
+    margin: 60px;
+    @media screen and (max-width: 414px){
+       display: none;
+    }
 `;
 
 export const Title = styled.div`

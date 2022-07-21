@@ -6,6 +6,9 @@ export const Wrapper = styled.div`
     padding: 0 20px;
    
     border-color: lightyellow;
+    @media screen and (max-width: 414px){
+        width: 100%;
+    }
 `;
 
 export const Content = styled.div`
@@ -15,6 +18,10 @@ export const Content = styled.div`
     max-width: var(--maxWidth);
     padding: 7px 0;
     margin: 0 auto;
+    @media screen and (max-width: 414px){
+        width: 100%;
+        
+    }
 `;
 
 export const MenuContent = styled.div`
@@ -24,7 +31,14 @@ export const MenuContent = styled.div`
     padding: 5px;
     align-items: center;
     margin-left: 50px;
-    
+    @media screen and (max-width: 414px){
+        margin-left: 0px;
+        padding: 0px;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+   
 `;
 
 export const ContactContent = styled.div`
@@ -34,12 +48,31 @@ export const ContactContent = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-right: 30px;
+    @media screen and (max-width: 414px){
+        display: none;
+    }
 `;
 export const Logo = styled.img`
     width: 262px;
     height: 78px;
     margin-right: 60px;
     cursor: pointer;
+    @media screen and (max-width: 414px){
+        width: 264px;
+        height: 78px;
+        margin-right: 25px;
+        padding-right: 45px;
+    }
+`;
+export const MenuButton = styled.img`
+@media screen and (min-width: 415px){
+    display: none
+}
+@media screen and (max-width: 414px){
+        
+        margin-left: 20px;
+        
+    }
 `;
 export const TextMenu = styled.h2`
 font-weight: 500;
@@ -49,6 +82,9 @@ line-height: 23.44px;
 padding-left: 10px;
 padding-right: 10px;
 cursor: pointer;
+@media screen and (max-width: 414px){
+        display: none;
+    }
 
 `;
 export const TextMenuHeader = styled.h2`
@@ -61,7 +97,48 @@ padding-right: 10px;
 text-decoration: underline;
 color: rgba(217,11,66,1);
 cursor: pointer;
+@media screen and (max-width: 414px){
+        display: none;
+    }
+`;
+export const TextMenu1 = styled.h4`
+font-weight: 500;
+font-style: "Roboto";
+size: 20px;
+line-height: 23.44px;
+padding-left: 10px;
+padding-right: 10px;
+cursor: pointer;
+@media screen and (min-width: 415px){
+        display: none;
+    }
+    @media screen and (max-width: 414px){
+        font-weight: 500;
+        font-style: "Roboto";
+        size: 15px;
+        line-height: 17.58px;
+        padding-left: 10px;
+        padding-right: 10px;
+        cursor: pointer;
+    }
 
+`;
+export const TextMenuHeader1 = styled.h4`
+
+@media screen and (min-width: 415px){
+        display: none;
+    }
+@media screen and (max-width: 414px){
+    font-weight: 500;
+    font-style: "Roboto";
+    size: 15px;
+    line-height: 17.58px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: underline;
+    color: rgba(217,11,66,1);
+    cursor: pointer;
+}
 `;
 
 export const LogoWhatsapp = styled.img`

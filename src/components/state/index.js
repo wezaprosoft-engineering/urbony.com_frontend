@@ -13,6 +13,7 @@ const {setGlobalState, useGlobalState} = createGlobalState({
     offices: false,
     commercialSpace: false,
     industrialSpace: false,
+    mobileMenu: false,
     
 });
 

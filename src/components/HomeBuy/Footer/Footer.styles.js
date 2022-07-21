@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     height: 444px;
     background-color: rgba(33, 11, 64,1);
+    @media screen and (max-width: 414px){
+       display: none;
+    }
 `;
 export const FooterContent = styled.div`
 display: flex;
