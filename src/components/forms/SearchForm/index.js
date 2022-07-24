@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import { MoreContent, Check, Overlay, SubOverlay, More } from "./SearchForm.styles";
+import { MoreContent, Check, Overlay, SubOverlay, More, OverlayContent, Input, Search, SearchIcon } from "./SearchForm.styles";
 import ArrowDown from '../../../assets/images/arrow_down.svg'
 import ArrowUp from '../../../assets/images/arrow_up2.svg'
-import SearchMin from '../../../assets/images/searchmin.svg'
 import search from '../../../assets/images/search-icon.svg'
+import { TextMenu } from "../../Header/Header.styles";
+import { useGlobalState } from "../../../store/state";
 
 const Details = props =>{
     return(
@@ -18,6 +19,7 @@ const Details = props =>{
 }
 const SearchForm = props => {
     const [more, setMore] = useState(false);
+    const [homeBuy] = useGlobalState("homeBuy")
 
     const MoreFilters = () =>{
         setMore(true)
@@ -42,7 +44,7 @@ const SearchForm = props => {
             <option value="Tiny home">Tiny home</option>
             </select></OverlayContent>
         <OverlayContent><h2>WHERE</h2><Input placeholder={props.location}/></OverlayContent>
-        <OverlayContent>{buy ? <h2>PRICE</h2>: <h2>RENT/MONTH</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/><Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number"/></div></OverlayContent>
+        <OverlayContent>{homeBuy ? <h2>PRICE</h2>: <h2>RENT/MONTH</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/><Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number"/></div></OverlayContent>
         <OverlayContent><h2>BEDROOM(S)</h2><Input placeholder="Select"/></OverlayContent>
         
         <OverlayContent><Search><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>SEARCH</TextMenu></Search></OverlayContent>
