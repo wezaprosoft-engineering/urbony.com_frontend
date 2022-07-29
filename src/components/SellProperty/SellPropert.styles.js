@@ -21,12 +21,13 @@ export const StepDevelopped = styled.div`
     max-width: 1167px;
     min-height: 410px;
     border: 2px solid #2E0F59;
+    overflow: auto;
     border-radius: 0px 0px 10px 10px;
     margin-bottom: 12px;
-
+    
 `;
 export const StepContent = styled.div`
-width: 1036px;
+max-width: 1036px;
 height: 257px;
 padding-left: 20px;
 `;

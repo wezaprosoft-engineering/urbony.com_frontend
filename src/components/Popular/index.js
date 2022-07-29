@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React ,{useState, useEffect} from "react";
 import { Arrow, Content, Head, Home, Line, Title, Wrapper,  CorporateContent } from "./Popular.styles";
 import arrow from '../../assets/images/arrow.svg'
 import House1 from '../../assets/images/house1.png'
@@ -18,7 +18,12 @@ const Popular = props => {
     const [Industrial] = useGlobalState("industrialSpace")
     const [Offices] = useGlobalState("offices")
     const [Commercial] = useGlobalState("commercialSpace")
-
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
 
     
 
@@ -42,6 +47,7 @@ const Popular = props => {
             <Content style={{
                 margin:`${props.margin}`
             }}>
+                {screen? null: 
                 <Title>
                     <Head>
                         
@@ -60,8 +66,16 @@ const Popular = props => {
                         
                     </Head>
                    
-                </Title>
-                {Corporate ? <CorporateContent>
+                </Title>}
+                {Corporate ? 
+                <>
+                <h2 style={{
+                    color: "rgba(46,15,89,1)",
+                    size: 35,
+                    fontWeight: 700
+                }}>Our Latest deal</h2>
+                <CorporateContent>
+                    
                     {offices ? <h2 style={{
                     size: 35,
                     fontWeight: 700,
@@ -103,7 +117,7 @@ const Popular = props => {
                 }} onClick={handleIndustrial}>{props.Industrial}</h2>}
                 
 
-                </CorporateContent>: <h2 style={{
+                </CorporateContent></>: <h2 style={{
                     color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700
@@ -114,9 +128,14 @@ const Popular = props => {
                     <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
                     <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
                 </Home>: <Home>
+                    {screen ? 
+                        <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1} />
+                    
+                    : <>
                     <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1} />
                     <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House2} />
-                    <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House3} />
+                    <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House3} /></>}
+                    
                 </Home>}
 
                 

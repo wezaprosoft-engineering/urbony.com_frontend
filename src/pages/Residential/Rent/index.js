@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import { Content, Head, Line, Title, Wrapper, Home, HomeCards, Arrow } from "../../../components/Popular/Popular.styles";
+import React, {useState, useEffect} from "react";
+import { Content, Head, Line, Title, Wrapper, Home, Arrow } from "../../../components/Popular/Popular.styles";
 import Step from '../../../assets/images/step.svg'
-import { CardText } from "../Buy/Buy.styles";
+import { CardText, AppartmentCard } from "../Buy/Buy.styles";
 import { Button } from "../../../components/Header/Header.styles";
 import HouseBuy1 from '../../../assets/images/housebuy1.png'
 import HouseBuy2 from '../../../assets/images/housebuy2.png'
@@ -13,6 +13,7 @@ import { Input } from "../../../components/WelcomeSection/Welcome.styles";
 import LastSales from "../../../components/LastSales";
 import SellerRequestForm from "../../../components/forms/SellerRequestForm";
 import HomeCard from "../../../components/HomeCards";
+
 
 
 const Rent = () => {
@@ -27,6 +28,12 @@ const Rent = () => {
         setRentOut(false)
         setLiveIn(true)
     }
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     return(
         <>
         <Wrapper>
@@ -40,8 +47,29 @@ const Rent = () => {
                 </Title>
 
                 <h2>Do you want to: </h2>
-                
-                <div style={{
+                {screen ? <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: 390,
+                    color: 'rgba(46,15,89,1)'
+                }}> 
+                {liveIn ? <h4 style={{
+                    color: 'red',
+                    textDecoration: 'underline 5px'
+                }}>Rent Property to Live in</h4>:<h4 style={{
+                    cursor: 'pointer'
+                }} onClick={LiveIn}>Rent property to Live In</h4>}
+                {rentOut?
+                <h4 style={{
+                    color: 'red',
+                    textDecoration: 'underline 5px'
+                }}>Rent out my own Property</h4>: <h4 style={{
+                    cursor: 'pointer'
+                }} onClick={RentOut}>Rent out my own Property</h4>}
+                    
+                    
+                    
+                </div>: <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     width: 450,
@@ -63,7 +91,8 @@ const Rent = () => {
                     
                     
                     
-                </div>
+                </div>}
+                
                 {rentOut ? <>
                 
 
@@ -71,36 +100,27 @@ const Rent = () => {
                     marginTop: 30,
                     marginBottom: 130,
                 }}>
-                    <HomeCards style={{
+                    <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy1})`,
-                        backgroundSize: 'cover'
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>Apartments</h2>
+                            <h2>Apartments</h2>
                         </CardText>
-                    </HomeCards>
-                    <HomeCards style={{
+                    </AppartmentCard>
+                    <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy2})`,
-                        backgroundSize: 'cover'
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>House</h2>
+                            <h2>House</h2>
                         </CardText>
-                    </HomeCards>
-                    <HomeCards style={{
+                    </AppartmentCard>
+                    <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy3})`,
-                        backgroundSize: 'cover'
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>Brand New Property</h2>
+                            <h2>Brand New Property</h2>
                         </CardText>
-                    </HomeCards>
+                    </AppartmentCard>
                 </Home>
 
                 <Head  style={{
@@ -247,36 +267,27 @@ const Rent = () => {
                     marginTop: 30,
                     marginBottom: 130,
                 }}>
-                    <HomeCards style={{
+                   <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy1})`,
-                        backgroundSize: 'cover'
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>Apartments</h2>
+                            <h2>Apartments</h2>
                         </CardText>
-                    </HomeCards>
-                    <HomeCards style={{
+                    </AppartmentCard>
+                    <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy2})`,
-                        backgroundSize: 'cover'
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>House</h2>
+                            <h2>House</h2>
                         </CardText>
-                    </HomeCards>
-                    <HomeCards style={{
+                    </AppartmentCard>
+                    <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy3})`,
-                        backgroundSize: 'cover'
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>Brand New Property</h2>
+                            <h2>Brand New Property</h2>
                         </CardText>
-                    </HomeCards>
+                    </AppartmentCard>
                 </Home>
                 <Head style={{
                     marginBottom: 150
@@ -289,6 +300,7 @@ const Rent = () => {
                             fontWeight: 500
                         }}>Our properties for rent</h2>
                     </Title>
+                    {screen ? null: 
                     <Title>
                     <h2 style={{
                             fontWeight: 500
@@ -305,7 +317,8 @@ const Rent = () => {
                             marginLeft: 20,
                             borderColor: 'transparent'
                         }}/>
-                    </Title>
+                    </Title>}
+                    
                 </Head>
 
                 <Home>
@@ -331,16 +344,15 @@ const Rent = () => {
                     
                 }}>Our Popular Homes</h1>
                     </Title>
+                    {screen? null:
                     <Head style={{
                         color: "rgba(217,11,66,1)"
                         }}>
                         <h3>Explore All</h3>
                         <Arrow src={arrow}/>
-                        
-                        
-                        
-                        
                     </Head>
+                    }
+                    
                 </Head>
 
                 <Home style={{

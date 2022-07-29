@@ -50,7 +50,7 @@ const Footer = () => {
                 }}/> +257 75 78 89</div>
                 </Footerservices>
                 <Footerservices style={{
-                    width: '12%'
+                    
                 }}><FooterTitle>Follow Us</FooterTitle>
                 <SocialMedia>
                     <img src={Facebook} alt="facebook"/>

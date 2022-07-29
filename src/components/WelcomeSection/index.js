@@ -1,21 +1,43 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MenuNav } from "./Welcome.styles";
+import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading, Checked } from "./Welcome.styles";
 import search from '../../assets/images/search-icon.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import ArrowDown from '../../assets/images/arrow_down.svg'
 import ArrowUp from '../../assets/images/arrow_up2.svg'
 import SearchMin from '../../assets/images/searchmin.svg'
+import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
+import MenuNav from "../MenuNav";
+
+
 
 
 
 const Details = props =>{
+    const [checked, setChecked] = useState(false)
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     return(
         <>
-        <MoreContent>
+        {screen ? <MoreContent>
+            {checked ? <>
+            <Check type='checkbox' checked={checked} onChange={() => setChecked(false)}/>
+            <h4>{props.detail}</h4> 
+            </>: <>
+            <Checked onClick={() => setChecked(true)}></Checked>
+        <h4>{props.detail}</h4> 
+            </>}
+        
+        
+        </MoreContent>: <MoreContent>
         <Check type='checkbox'/>
         <h4>{props.detail}</h4> 
-        </MoreContent>
+        </MoreContent>}
+        
                                
         </>)
    
@@ -28,6 +50,7 @@ const Welcome = () =>{
     const [mobileMenu] = useGlobalState("mobileMenu");
     const [homeBuy] = useGlobalState("homeBuy");
     const [homeRent] = useGlobalState("homeRent")
+    const [moreMobile, setMoreMobile] = useState(false)
     const Rent = () =>{
         setGlobalState("homeBuy", false);
         setGlobalState("homeRent", true)
@@ -141,6 +164,7 @@ const Welcome = () =>{
         )
     }
     return(
+        
         <Wrapper>
             <Content>
                 <WelcomeText>
@@ -148,6 +172,7 @@ const Welcome = () =>{
                     <h3>The first real estate network created by real estate agents for real estate agents</h3>
                     <h4>You too can sell better, faster and easier with Urbony!</h4>
                 </WelcomeText>
+                
 
                 <Toggle>
                     {homeBuy ? <Button onClick={Buy}><TextButton>BUY</TextButton></Button>: <Button2 onClick={Buy}><TextButton>BUY</TextButton></Button2>}
@@ -173,14 +198,66 @@ const Welcome = () =>{
                         paddingRight: 130,
                     }}><img alt="search-min" src={SearchMin}/><h3>SEARCH</h3></div>
                 </WelcomeButton>
+                <MoreContentMobile>
+                    <img src={ArrowUpMobile} alt='arrow-up-mobile' style={{
+                        marginRight: 10
+                    }}/>
+                    {moreMobile ? <h4 onClick={() => setMoreMobile(false)}>Less Filters</h4>: <h4 onClick={() => setMoreMobile(true)}>More Filters</h4>}
+                    
+                </MoreContentMobile>
+                {moreMobile ? <More>
+                        <Heading>
+                            <h3>Internal Features</h3>
+                            <MoreContentDetails>
+                            <Details detail='Aircon'/>
+                            <Details detail='Alarm'/>
+                            <Details detail='A Backup Generator'/>
+                            <Details detail='En Suite Fibre'/>
+                            <Details detail='Internet'/>
+                            <Details detail='Furnished'/>
+                            <Details detail='Serviced'/>
+                            <Details detail='Service Charge Included'/>
+                            <Details detail='Walk In Closet'/>
+                            </MoreContentDetails>
+                        </Heading>
+                        <Heading>
+                            <h3>External Features</h3>
+                            <MoreContentDetails>
+                            <Details detail='Balcony'/>
+                            <Details detail='BBQ'/>
+                            <Details detail='Borehole'/>
+                            <Details detail='CCTV'/>
+                            <Details detail='Electric Fence'/>
+                            <Details detail='Garden'/>
+                            <Details detail='Gym'/>
+                            <Details detail='Parking'/>
+                            <Details detail='Staff Quarters'/>
+                            <Details detail='Swimming'/>
+                            <Details detail='Pool'/>
+                            <Details detail='Wheelchair Access'/>
+                            </MoreContentDetails>
+                            </Heading>
+                        <Heading>
+                            <h3>Nearby</h3>
+                            <MoreContentDetails>
+                            <Details detail='Bus Stop'/>
+                            <Details detail='Golf Course'/>
+                            <Details detail='Hospital'/>
+                            <Details detail='Scenic View'/>
+                            <Details detail='School'/>
+                            <Details detail='Sea View'/>
+                            </MoreContentDetails>
+                        </Heading>
+                    </More>: null}
+                
+                
                 {corporate? <Overlays location="Location or area"/>: <Overlays location="Location of property"/>}
                 
             </Content>
-            {mobileMenu ? <MenuNav>
-
-            </MenuNav>: null}
-            
+            {mobileMenu ? <MenuNav/>: null}
+           
         </Wrapper>
+        
     )
 }
 

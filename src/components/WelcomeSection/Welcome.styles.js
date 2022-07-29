@@ -171,21 +171,7 @@ export const WelcomeButton = styled.button`
 
 `;
 
-export const MenuNav = styled.div`
- @media screen and (min-width: 415px){
-        display: none;
-    };
 
-    @media screen and (max-width: 414px){
-        width: 100%;
-        height: 525px;
-        background-color: rgba(46,15,89,1);
-        z-index: 999;
-        top: 0;
-        position: absolute;
-        
-    }
-`;
 
 export const Overlay = styled.div`
 width: 90%;
@@ -240,21 +226,92 @@ export const More = styled.div`
     display: flex;
     justify-content: space-between;
     margin: auto 350px auto 62px;
+    flex-wrap: wrap;
     h3{
         color: rgba(46,15,89,1);
         font-weight: 700;
         size: 25px;
     };
+    @media screen  and (max-width: 414px){
+        padding: 2px;
+        
+        margin: 0px 0px 0px 0px;
+        
+        
+
+        h3{
+        color: white;
+        
+        
+        
+    };
+    }
 `;
 
 export const MoreContent = styled.div`
 display: flex;
 align-items: center;
+
 h4{
     font-weight: 400;
     size: 15px;
 };
+@media screen and (max-width: 414px)  {
+    color: white;
+    width: 210px;
+}
 `;
+export const MoreContentMobile = styled.div`
+display: flex;
+align-items: center;
+color: white;
+margin: auto auto auto auto;
+justify-content: center;
+
+@media screen and (min-width: 415px){
+    display: none;
+}
+h4{
+    font-weight: 700;
+    size: 15px;
+};
+
+`;
+
 export const Check = styled.input`
 margin-right: 10px;
+
+@media screen and (max-width: 414px){
+   box-sizing: border-box;
+   border: 1px solid #FFFFFF;
+   margin-right: 3px;
+   height: 15px;
+   width: 15px;
+   
+}
+`;
+export const Heading = styled.div`
+display: contents;
+
+@media screen and (min-width: 415px){
+    display: none;
+    
+}
+`;
+export const MoreContentDetails = styled.div`
+@media screen and (max-width: 414px){
+   
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+}
+`;
+export const Checked = styled.span`
+height: 15px;
+  width: 15px;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  margin-right: 1px;
+  box-sizing: border-box;
+  margin-left: 6px;
 `;

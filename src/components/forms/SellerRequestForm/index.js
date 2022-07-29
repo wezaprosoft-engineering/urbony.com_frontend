@@ -1,9 +1,10 @@
 import React from "react";
 import { CardButton, Content, Head, Line, Title, Wrapper } from "../../Popular/Popular.styles";
-import { Container, InputRequest, RequestForm, Star} from "./SellerRequestForm.styles";
+import { Container, InputRequest, RequestForm, Select, Star} from "./SellerRequestForm.styles";
 import { useGlobalState } from "../../../store/state";
 const SellerRequestForm = props => {
     const [rent] = useGlobalState("rent")
+    
     
     return (
         <Wrapper style={{
@@ -13,7 +14,9 @@ const SellerRequestForm = props => {
                 <Title>
                     <Head>
                         <Line/>
-                        <h3>{props.text}</h3>                   </Head>
+                        <h3 style={{
+                            color: 'rgba(46,15,89,1)'
+                        }}>{props.text}</h3>                   </Head>
                 </Title>
                 <RequestForm>
                     <Container>
@@ -38,21 +41,14 @@ const SellerRequestForm = props => {
                     </Container>
                     <Container>
                         <h2>Type of property<Star>*</Star></h2>
-                        <select style={{
-                            width: 513,
-                            height: 45,
-                            fontSize: 20,
-                            fontWeight: 400,
-                            color: 'rgba(46,15,89,1)',
-                            borderRadius: 5
-                        }}>
-                            <option disabled>Select type of property</option>
+                        <Select>
+                        <option disabled>Select type of property</option>
                             <option value="Commercial Property">Commercial Property</option>
                             <option value="Industrial Property">Industrial Property</option>
                             <option value="Retail Property">Retail Property</option>
                             <option value="Mixed-use Property">Mixed-use Property</option>
-
-                        </select>
+                        </Select>
+                        
                     </Container>
                     <div style={{
                         display: 'flex',

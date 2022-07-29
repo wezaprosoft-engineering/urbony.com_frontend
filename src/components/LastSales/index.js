@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Content, Head, Line, Title, Wrapper, Arrow, Home } from "../Popular/Popular.styles";
 import arrow from '../../assets/images/arrow.svg'
 import House1 from '../../assets/images/house1.png'
@@ -6,6 +6,12 @@ import HomeCard from "../HomeCards";
 
 
 const LastSales = props =>{
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     
     return(
         <Wrapper>
@@ -33,10 +39,16 @@ const LastSales = props =>{
                 </Title>
 
                 <Home>
+                    {screen ? 
+                        <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
+                    
+                    : <>
                     <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
                     <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
-                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
+                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/> </>}
+                    
                 </Home>
+                
             </Content>
             
         </Wrapper>

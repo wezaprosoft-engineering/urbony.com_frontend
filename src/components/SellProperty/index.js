@@ -10,49 +10,38 @@ const SellProperty = props =>{
     const [step4, setStep4] = useState(false);
 
     const Step1 = () => {
-    
             setStep1(true)
             setStep2(false)
             setStep3(false)
             setStep4(false)
-        
-       
     }
     const offStep1 = () =>{
         setStep1(false)
     }
     const Step2 = () => {
-        if (step1 || step3){
-            setStep1(false)
+        setStep1(false)
         setStep2(true)
         setStep3(false)
-        setStep4(false)
-        }
-        
+        setStep4(false)        
     }
     const offStep2 = () =>{
         setStep2(false)
     }
     const Step3 = () => {
-        if (step2 || step4){
-            setStep1(false)
+        setStep1(false)
         setStep2(false)
         setStep3(true)
         setStep4(false)
-        }
-        
+             
     }
     const offStep3 = () =>{
         setStep3(false)
     }
     const Step4 = () => {
-        if (step3){
-            setStep1(false)
+        setStep1(false)
         setStep2(false)
         setStep3(false)
         setStep4(true)
-        }
-        
     }
     const offStep4 = () =>{
         setStep4(false)

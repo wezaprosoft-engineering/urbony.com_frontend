@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import { Content, Head, Home, HomeCards, Line, Title, Wrapper } from "../../../components/Popular/Popular.styles";
-import { CardText } from "./Buy.styles";
+import { Content, Head, Home, Line, Title, Wrapper } from "../../../components/Popular/Popular.styles";
+import { CardText, AppartmentCard } from "./Buy.styles";
 import HouseBuy1 from '../../../assets/images/housebuy1.png'
 import HouseBuy2 from '../../../assets/images/housebuy2.png'
 import HouseBuy3 from '../../../assets/images/housebuy3.png'
 import LastSales from "../../../components/LastSales";
+import PropertyForSell from "../../../components/PropertyForSell";
+import Popular from "../../../components/Popular";
 
 
 const Buy = () =>{
@@ -56,39 +58,35 @@ const Buy = () =>{
                     marginTop: 30,
                     marginBottom: 130,
                 }}>
-                    <HomeCards style={{
+                    <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy1})`,
-                        backgroundSize: 'cover'
+                        
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>Apartments</h2>
+                            <h2>Apartments</h2>
                         </CardText>
-                    </HomeCards>
-                    <HomeCards style={{
+                    </AppartmentCard >
+                    <AppartmentCard  style={{
                         backgroundImage: `url(${HouseBuy2})`,
-                        backgroundSize: 'cover'
+                        
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>House</h2>
+                            <h2>House</h2>
                         </CardText>
-                    </HomeCards>
-                    <HomeCards style={{
+                    </AppartmentCard >
+                    <AppartmentCard  style={{
                         backgroundImage: `url(${HouseBuy3})`,
-                        backgroundSize: 'cover'
+                        
                     }}>
                         <CardText>
-                            <h2 style={{
-                                paddingTop: 35
-                            }}>Brand New Property</h2>
+                            <h2>Brand New Property</h2>
                         </CardText>
-                    </HomeCards>
+                    </AppartmentCard >
                 </Home>
             </Content>
         </Wrapper>
+        <PropertyForSell/>
+        <Popular/>
         <LastSales/>
         </>
     )

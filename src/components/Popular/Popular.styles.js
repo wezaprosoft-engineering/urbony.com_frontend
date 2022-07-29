@@ -4,14 +4,14 @@ export const Wrapper = styled.div`
     min-height: 712px;
     flex-grow: 999;
     @media screen and (max-width: 414px){
-       display: none;
+        min-height: 530px;
     }
 `;
 
 export const Content = styled.div`
     margin: 60px;
     @media screen and (max-width: 414px){
-       display: none;
+       margin: 10px;
     }
 `;
 
@@ -27,6 +27,9 @@ export const Line = styled.hr`
     border: 5px solid;
     color: rgba(46, 15, 89, 1);
     margin: 24px 12px 0px 0px;
+    @media screen and (max-width: 414px){
+        display: none;
+    }
 `;
 
 export const Head = styled.div`
@@ -35,6 +38,9 @@ export const Head = styled.div`
     
     height: 0px;
     margin-bottom: 72px;
+    @media screen and (max-width: 414px){
+        
+    }
 `;
 export const Arrow = styled.img`
 width: 30px;
