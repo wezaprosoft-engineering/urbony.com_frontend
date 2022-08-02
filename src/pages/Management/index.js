@@ -1,27 +1,32 @@
-import React from "react";
-
-import { Content as Content1, Wrapper, WelcomeText } from "../../components/WelcomeSection/Welcome.styles";
+import React, {useState, useEffect} from "react";
+import { EstimationButton, EstmationContent, Estimator } from "../GetInTouch/GetInTouch.styles";
+import {  Wrapper} from "../../components/WelcomeSection/Welcome.styles";
 import { CardButton, Content, Head, Line, Title } from "../../components/Popular/Popular.styles";
-import { Benefits, ManagementCard, ManagementContact, ManagementContent } from "./Management.styles";
+import { Benefits, ManagementCard, ManagementContact, ManagementContent, ManagementText, ManagementContentUpper, ManagementOffer } from "./Management.styles";
 import Nice from '../../assets/images/nice.svg'
 import Bad from '../../assets/images/bad.svg'
-import { Button } from "../../components/Header/Header.styles";
 import Estimation from '../../assets/images/estimation.svg'
 import SellerRequestForm from "../../components/forms/SellerRequestForm";
 import SellProperty from "../../components/SellProperty";
 const Management = () => {
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     return(
         <>
         <Wrapper>
-            <Content1>
-            <WelcomeText>
-                    <h2>Urbony Management: </h2>
-                    <h2>A Professional and transparent rental management</h2>
-                    <h3 style={{
+            <ManagementContentUpper>
+            <ManagementText>
+                    <h1>Urbony Management: </h1>
+                    <h1>A Professional and transparent rental management</h1>
+                    <h2 style={{
                         marginTop: 100
-                    }}>Discover our offers in rental management</h3>
-                </WelcomeText>
-            </Content1>
+                    }}>Discover our offers in rental management</h2>
+                </ManagementText>
+            </ManagementContentUpper>
         </Wrapper>
         <Wrapper style={{
             backgroundImage: 'none'
@@ -40,10 +45,10 @@ const Management = () => {
                 }}>Who calls upon our rental management services?</h1>
             </Head>
         </Title>
-        <Title>
+        <ManagementOffer>
             <ManagementContact>
                 <h2 style={{
-                    marginBottom: 50,
+                    
                     color: 'rgba(46,15,89,1)'
                 }}>Invest or landlord</h2>
                 <p>Many owners prefer not to deal with the obligations associated to property management 
@@ -66,7 +71,7 @@ const Management = () => {
                     for quality and professionalism.
                 </p>
             </ManagementContact>
-        </Title>
+        </ManagementOffer>
         </ManagementContent>
         <ManagementContent>
         <Title style={{
@@ -86,15 +91,21 @@ const Management = () => {
             display: 'flex',
             flexWrap: 'wrap'
         }}>
-            <ManagementCard>
+            {screen ? <ManagementCard style={{
+                height: 520
+            }}>
                 <h2 style={{
-                    marginTop: 52
+                    marginTop: 52,
+                    
                 }}>Basic offer</h2>
                 <h3>Simple Rental Management</h3>
                 <h2>as from</h2>
                 <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>excl. VAT / month</h2>
                 <Benefits>
-                    <img src={Nice} alt='nice'/>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
                         marginTop: 18
@@ -103,7 +114,10 @@ const Management = () => {
                         technical and administrative services </h4></div>
                 </Benefits>
                 <Benefits>
-                    <img src={Nice} alt='nice'/>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -111,39 +125,109 @@ const Management = () => {
                     <h4>A periodic management report </h4></div>
                 </Benefits>
                 <Benefits>
-                    <img src={Bad} alt='bad'/>
+                {screen ? <img src={Bad} alt='bad' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='bad'/>}
                     <div style={{
                         textAlign: 'left',
                         
                     }}>
                     <h4>“Unpaid rent” insurance  </h4></div>
                 </Benefits>
-                <CardButton style={{
+                
+                {screen ? <CardButton style={{
+                    width: 345,
+                    backgroundColor: 'red',
+                    fontWeight: 700,
+                    fontSize: '20px',
+                
+                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: 100
-                }}>REQUEST AN OFFER</CardButton>
-            </ManagementCard>
+                }}>REQUEST AN OFFER</CardButton>}
+            </ManagementCard>:<ManagementCard>
+                <h2 style={{
+                    marginTop: 52
+                }}>Basic offer</h2>
+                <h3>Simple Rental Management</h3>
+                <h2>as from</h2>
+                <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>excl. VAT / month</h2>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        marginTop: 18
+                    }}>
+                    <h4>A complete management mandate combining accounting, 
+                        technical and administrative services </h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>A periodic management report </h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='bad' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='bad'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>“Unpaid rent” insurance  </h4></div>
+                </Benefits>
+                
+                {screen ? <CardButton style={{
+                    width: 345,
+                    backgroundColor: 'red',
+                    fontWeight: 700,
+                    fontSize: '20px',
+                
+                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
+                    width: '70%',
+                    backgroundColor: 'red',
+                    fontWeight: 700,
+                    fontSize: '20px',
+                    marginTop: 100
+                }}>REQUEST AN OFFER</CardButton>}
+            </ManagementCard>}
+            
             <ManagementCard style={{
                 background: '#2E0F59',
                 color: 'white'
             }}>
-                <div style={{
+                {screen ? null:  <div style={{
                     backgroundColor: 'rgba(217, 11, 66, 1)',
                     height: 35,
                     borderRadius: '10px 10px 0px 0px',
                     fontSize: '25px',
                     fontWeight: 700,
                     color: 'white'
-                }}>Best Value</div>
+                }}>Best Value</div>}
+               
             <h2>Premium offer</h2>
                 <h3>Rental management with guarantee of unpaid rents</h3>
                 <h2>as from</h2>
                 <h2>10,000 BIF excl. VAT / month</h2>
                 <Benefits>
-                    <img src={Nice} alt='nice'/>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
                         marginTop: 18
@@ -152,7 +236,11 @@ const Management = () => {
                         from 10,000 BIF excl. VAT/month  </h4></div>
                 </Benefits>
                 <Benefits>
-                    <img src={Nice} alt='nice'/>
+                    {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    
                     <div style={{
                         textAlign: 'left',
                         marginTop: 18
@@ -161,7 +249,10 @@ const Management = () => {
                         technical and administrative services </h4></div>
                 </Benefits>
                 <Benefits>
-                    <img src={Nice} alt='nice'/>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -169,48 +260,59 @@ const Management = () => {
                     <h4>A periodic management report </h4></div>
                 </Benefits>
                 <Benefits>
-                    <img src={Nice} alt='nice'/>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
                         
                     }}>
                     <h4>“Unpaid rent” insurance  </h4></div>
                 </Benefits>
-                <CardButton style={{
+                {screen ? <CardButton style={{
+                    width: 345,
+                    backgroundColor: 'red',
+                    fontWeight: 700,
+                    fontSize: '20px',
+                
+                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>REQUEST AN OFFER</CardButton>
+                }}>REQUEST AN OFFER</CardButton>}
+                
             </ManagementCard>
+            {screen ?  <EstimationButton style={{
+                marginLeft: 50,
+                width: 282
+            }}>
+                    <EstmationContent style={{
+                        marginLeft: 40
+                    }}>
+                        GET FREE ESTIMATION
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>:  <EstimationButton style={{
+                    borderRadius: 10
+            }}>
+                    <EstmationContent>
+                        GET FREE ESTIMATION
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>}
+           
         </div>
-        <Button style={{
-                    backgroundColor: 'red',
-                    borderRadius: '10px',
-                    height : '55px',
-                    width: '100%',
-                    fontWeight: 700,
-                    fontSize: '35px',
-                    marginTop: 200,
-                    marginBottom: 150,
-                    
-                   }}><div style={{
-                    display: 'flex',
-                    
-                    width: 410,
-                    margin: 'auto auto auto auto'
-                    
-                   }}>Get Free Estimation <img src={Estimation} alt='estimation' style={{
-                    width: 30,
-                    height: 40,
-                    marginLeft: 13
-                   }}/></div></Button>
+        
+                   
         </ManagementContent>
         
         </Content>
         
         </Wrapper>
+        
         <SellerRequestForm text="Would you like your property Rented by us? Contact us for more information"/>
         </>
     )

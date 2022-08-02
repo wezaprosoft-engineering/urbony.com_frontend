@@ -28,8 +28,6 @@ export const Content = styled.div`
         text-align: center;
     }
 
-    
-    
 `;
 
 export const WelcomeText = styled.div`
@@ -174,7 +172,7 @@ export const WelcomeButton = styled.button`
 
 
 export const Overlay = styled.div`
-width: 90%;
+width: 95%;
 min-height: 319px;
 background-color: white;
 border-radius: 0 0 45px 45px;
@@ -304,6 +302,7 @@ export const MoreContentDetails = styled.div`
     -webkit-column-count: 2;
        -moz-column-count: 2;
             column-count: 2;
+            
 }
 `;
 export const Checked = styled.span`

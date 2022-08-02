@@ -2,6 +2,7 @@ import React from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import MenuNav from "../components/MenuNav";
 import NavBar from "../components/navbar";
 import AboutUs from "../pages/AboutUs";
 import CommercialSpace from "../pages/Corporate/CommercialSpace";
@@ -14,12 +15,15 @@ import Buy from "../pages/Residential/Buy";
 import RealEstate from "../pages/Residential/RealEstate";
 import Rent from "../pages/Residential/Rent";
 import Sell from "../pages/Residential/Sell";
+import { useGlobalState } from "../store/state";
 
 const Routing = () =>{
+    const [mobileMenu] = useGlobalState("mobileMenu")
     return(
         <Router>
             <Header/>
             <NavBar/>
+            {mobileMenu ? <MenuNav/>: null}
             <Routes>
                 <Route path="" element={<Home/>}/>
                 <Route path="/sell" element={<Sell/>}/>

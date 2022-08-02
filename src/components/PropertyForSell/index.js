@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
-import { Content, Head, Title, Wrapper, Home } from "../Popular/Popular.styles";
+import { Head, Title, Wrapper, Home } from "../Popular/Popular.styles";
 import House1 from '../../assets/images/house1.png'
 import HomeCard from "../HomeCards";
 import { Input } from "../WelcomeSection/Welcome.styles";
 import { Button } from "../Header/Header.styles";
+import { Content } from "./PropertyForSell.styles";
+import {useLocation} from 'react-router-dom'
 const PropertyForSell = props =>{
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -11,13 +13,14 @@ const PropertyForSell = props =>{
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+    const location = useLocation()
     return(
         
         <Wrapper style={{
             
         }}>
             <Content style={{
-                textAlign: 'center'
+                
             }}>
             <Head>
             <Title>
@@ -56,7 +59,7 @@ const PropertyForSell = props =>{
            </>}
          
            </Home>
-           {screen ? null: <Button style={{
+           {screen ? null:<>{location.pathname==='/buy' ? null: <Button style={{
             width: 467,
             height: 54,
             borderRadius: '5px',
@@ -64,7 +67,7 @@ const PropertyForSell = props =>{
             fontWeight: 700,
             fontSize: 25,
             marginTop: 100
-           }}>View All</Button>}
+           }}>View All</Button>}</> }
            
             </Content>
         </Wrapper>

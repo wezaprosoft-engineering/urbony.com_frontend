@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Button, FooterContent, Footerservices, FooterTitle, SocialMedia, Wrapper } from "./Footer.styles";
 import Location from '../../assets/images/footerlocation.svg'
 import Call from '../../assets/images/footercall.svg'
@@ -16,6 +16,12 @@ const Footer = () => {
             behavior: "smooth",
         });
     };
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     return(
         <Wrapper>
             <FooterContent>
@@ -52,14 +58,24 @@ const Footer = () => {
                 <Footerservices style={{
                     
                 }}><FooterTitle>Follow Us</FooterTitle>
-                <SocialMedia>
+                {screen ? <SocialMedia>
+                    <img src={Facebook} alt="facebook"/>
+                    <img src={Instagram} alt="instagram"/>
+                    <img src={Twitter} alt="twitter"/>
+                    <img src={Youtube} alt="youtube" style={{
+                        marginRight: 100
+                    }}/>
+                    <Button onClick={Top}><img src={Arrow} alt="arrow scroll-up"/></Button>
+                </SocialMedia>: <SocialMedia>
                     <img src={Facebook} alt="facebook"/>
                     <img src={Instagram} alt="instagram"/>
                     <img src={Twitter} alt="twitter"/>
                     <img src={Youtube} alt="youtube"/>
-                </SocialMedia>
+                </SocialMedia>}
+                
                 </Footerservices>
-                <Button onClick={Top}><img src={Arrow} alt="arrow scroll-up"/></Button>
+                {screen ? null: <Button onClick={Top}><img src={Arrow} alt="arrow scroll-up"/></Button>}
+                
             </FooterContent>
             
         </Wrapper>

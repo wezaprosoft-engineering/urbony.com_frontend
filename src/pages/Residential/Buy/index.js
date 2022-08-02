@@ -23,14 +23,18 @@ const Buy = () =>{
     }
     return(
         <>
+        
         <Wrapper>
+            
             <Content>
+            
                 <Title>
                     <Head>
                         <Line/>
                         <h3>Buying to live or invest?</h3>
                     </Head>
                 </Title>
+                
                 <h2>Do you want to buy :</h2>
                 <div style={{
                     display: 'flex',
@@ -58,6 +62,7 @@ const Buy = () =>{
                     marginTop: 30,
                     marginBottom: 130,
                 }}>
+                    
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy1})`,
                         
@@ -85,7 +90,9 @@ const Buy = () =>{
                 </Home>
             </Content>
         </Wrapper>
+        
         <PropertyForSell/>
+        
         <Popular/>
         <LastSales/>
         </>

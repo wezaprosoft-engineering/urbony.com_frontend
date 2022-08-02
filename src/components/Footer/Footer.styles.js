@@ -43,6 +43,11 @@ justify-content: space-between;
 flex-wrap: wrap;
 width: 70%;
 
+@media screen and (max-width: 414px){
+    
+    width: 87vw;
+}
+
 
 `
 export const Button = styled.button`
@@ -56,9 +61,7 @@ export const Button = styled.button`
     @media screen and (max-width: 414px){
         width: 70px;
         margin-top: 0px;
-        position: absolute;
-        top: 5240px;
-        right: 10px;
+        
         
     }
 `;

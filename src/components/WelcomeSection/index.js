@@ -7,10 +7,6 @@ import ArrowDown from '../../assets/images/arrow_down.svg'
 import ArrowUp from '../../assets/images/arrow_up2.svg'
 import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
-import MenuNav from "../MenuNav";
-
-
-
 
 
 const Details = props =>{
@@ -47,7 +43,7 @@ const Details = props =>{
 const Welcome = () =>{
     const [corporate] = useGlobalState("corporate");
     const [more, setMore] = useState(false);
-    const [mobileMenu] = useGlobalState("mobileMenu");
+
     const [homeBuy] = useGlobalState("homeBuy");
     const [homeRent] = useGlobalState("homeRent")
     const [moreMobile, setMoreMobile] = useState(false)
@@ -95,8 +91,9 @@ const Welcome = () =>{
                     
                     {more ? <div style={{
                         display: 'flex',
-                        marginLeft: 60,
-                        cursor: 'pointer'
+                        marginLeft: 70,
+                        cursor: 'pointer',
+                        lineHeight: 0
                     }} onClick={LessFilters}>
                         
                     <img src={ArrowUp} alt="arrow-up"/>
@@ -108,8 +105,9 @@ const Welcome = () =>{
                     }}>Less filters</h4>
                     </div>: <div style={{
                         display: 'flex',
-                        marginLeft: 60,
-                        cursor: 'pointer'
+                        marginLeft: 70,
+                        cursor: 'pointer',
+                        lineHeight: 0
                     }} onClick={MoreFilters}>
                         
                     <img src={ArrowDown} alt="arrow-down"/>
@@ -254,7 +252,7 @@ const Welcome = () =>{
                 {corporate? <Overlays location="Location or area"/>: <Overlays location="Location of property"/>}
                 
             </Content>
-            {mobileMenu ? <MenuNav/>: null}
+            
            
         </Wrapper>
         

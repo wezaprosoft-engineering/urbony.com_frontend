@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    min-height: 1900px
+    min-height: 1500px;
+    @media screen and(max-width: 414px){
+        min-height: 900px;
+    }
 `;
 
 export const Content = styled.div`
@@ -20,6 +23,11 @@ export const GetInTouchForm = styled.div`
     color: rgba(46,15,89,1);
     width: 90%;
     margin: auto auto auto auto;
+    
+
+    @media screen and (max-width: 414px){
+        margin: auto auto auto auto;
+    }
     
 `;
 export const GetInTouchInput = styled.input`
@@ -42,9 +50,11 @@ width: 893px;
 height: 118.29px;
 font-size: 20px;
 color: rgba(46,15,89,1);
+margin-right: 200px;
 @media screen and (max-width: 414px){
     width: 360px;
     height: 97px;
+    margin-right: 0px;
 }
 `;
 
@@ -54,6 +64,7 @@ height: 55px;
 background-color: red;
 font-weight: 700;
 font-size: 30px;
+
 margin-top: 10px;
 margin-bottom: 10px;
 border-color: transparent;
@@ -101,7 +112,7 @@ export const Estimator = styled.img`
 
 export const EstmationContent = styled.div`
     display: flex;
-    width: 410px;
+    width: 450px;
     margin: auto auto auto auto;
     
 

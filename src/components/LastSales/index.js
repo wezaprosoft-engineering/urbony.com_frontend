@@ -37,6 +37,7 @@ const LastSales = props =>{
 
     
                 </Title>
+                <h3>{props.corporate}</h3>
 
                 <Home>
                     {screen ? 

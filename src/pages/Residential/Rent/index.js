@@ -11,10 +11,7 @@ import House1 from '../../../assets/images/house1.png'
 import Estimation from '../../../assets/images/estimation.svg'
 import { Input } from "../../../components/WelcomeSection/Welcome.styles";
 import LastSales from "../../../components/LastSales";
-import SellerRequestForm from "../../../components/forms/SellerRequestForm";
 import HomeCard from "../../../components/HomeCards";
-
-
 
 const Rent = () => {
     const [rentOut, setRentOut] = useState(false)
@@ -34,10 +31,13 @@ const Rent = () => {
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+    
     return(
         <>
+        
         <Wrapper>
             <Content>
+                
                 <Title>
                     <Head>
                         <Line/>
@@ -368,7 +368,7 @@ const Rent = () => {
                 
             </Content>
         </Wrapper>
-        <SellerRequestForm  text="Would you like your property Rented by us? Contact us for more information"/>
+        
         </>
     )
 }

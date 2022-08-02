@@ -6,11 +6,12 @@ export const MenuContent = styled.div`
 
     @media screen and (max-width: 414px){
         width: 414px;
-        height: 590px;
+        height: 650px;
         background-color: rgba(46,15,89,1);
         z-index: 999;
-        top: 0;
+        
         position: absolute;
+        
         
         
     }
