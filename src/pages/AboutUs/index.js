@@ -1,30 +1,68 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Content, Wrapper } from "../../components/Popular/Popular.styles";
-
-import { Content as Content1, WelcomeText, Wrapper as Wrapper1 } from "../../components/WelcomeSection/Welcome.styles";
-import { AboutContent } from "./AboutUs.styles";
+import LocationBlack from '../../assets/images/location_black.svg'
+import WhatsAppBlack from '../../assets/images/whatsapp_black.svg'
+import CallBlack from '../../assets/images/call_black.svg'
+import { Content as Content1, Wrapper as Wrapper1 } from "../../components/WelcomeSection/Welcome.styles";
+import { AboutContent, AboutText } from "./AboutUs.styles";
 import Location from '../../assets/images/getintouchlocation.svg'
 import Call from '../../assets/images/getintouchcall.svg'
 import WhatsApp from '../../assets/images/getintouchwhatsapp.svg'
+import { ManagementContentUpper, ManagementText } from "../Management/Management.styles";
 const AboutUs =() =>{
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     return(
         <>
-        <Wrapper1>
-            <Content1 style={{
-                minHeight: 459.48
+        
+            {screen ? <Wrapper1><ManagementContentUpper style={{
+                height: 259
             }}>
-                <WelcomeText>
+            <ManagementText>
                 <h2>Urbony: A platform integrating real estate services.</h2>
-                </WelcomeText>
-            </Content1>
-        </Wrapper1>
+                </ManagementText>
+                
+            </ManagementContentUpper></Wrapper1>: <Wrapper1><Content1 style={{
+                minHeight: 300
+            }}>
+            <ManagementText>
+                <h1>Urbony: A platform integrating real estate services.</h1>
+                </ManagementText>
+                
+            </Content1></Wrapper1>}
+            
+            
+        
         <Wrapper>
             <Content>
-                <h2 style={{
+                {screen ? <h3  style={{
+                    fontWeight: 500,
+                    fontSize: 20
+                }}>
+                    A team of professionals who demonstrate every day a perfect knowledge of each of our businesses: 
+                </h3>: <h2 style={{
                     fontWeight: 500,
                     fontSize: 30
-                }}>A team of professionals who demonstrate every day a perfect knowledge of each of our businesses: </h2>
-                <div>
+                }}>A team of professionals who demonstrate every day a perfect knowledge of each of our businesses: </h2>}
+                
+
+                    {screen ? <AboutText>
+                        
+                        
+                            <h4>Residential Real Estate</h4>
+                            <h4>New Real Estate</h4>
+                            <h4>Corporate Real Estate</h4>
+                            <h4>Trustee(co-ownership)</h4>
+                            <h4>Rental Management</h4>
+                            <h4>Property Valuation</h4>
+                        
+                        </AboutText>: 
+                        <div>
+                        
                     <AboutContent>
                         <h3>Residential Real Estate</h3>
                         <h3>New Real Estate</h3>
@@ -37,19 +75,34 @@ const AboutUs =() =>{
                     <AboutContent>
                         <h3>Property Valuation</h3>
                     </AboutContent>
-                </div>
-                <p style={{
-                    fontSize: 25
+                    </div>}
+                    
+                    
+                {screen ? <><p style={{
+                    fontSize: 18
                 }}>We are aiming for a leading position thanks to the control of the market 
                     by each of our departments 
                     (Urbony rental and sales, Urbony Rental Management)</p>
                 <p style={{
-                    fontSize: 25
+                    fontSize: 18
                 }}>A commitment to pursue a single objective: "every day better serve its customers". 
                     An independent company active in the business of real estate transactions 
                     (purchase/sale and rental) and property administration 
                     (property management, rental and trustee management) 
-                    in the residential and professional sector.</p>
+                    in the residential and professional sector.</p></> : <><p style={{
+                    fontSize: 18
+                }}>We are aiming for a leading position thanks to the control of the market 
+                    by each of our departments 
+                    (Urbony rental and sales, Urbony Rental Management)</p>
+                <p style={{
+                    fontSize: 18
+                }}>A commitment to pursue a single objective: "every day better serve its customers". 
+                    An independent company active in the business of real estate transactions 
+                    (purchase/sale and rental) and property administration 
+                    (property management, rental and trustee management) 
+                    in the residential and professional sector.</p></>}
+
+                
 
                     <h2 style={{
                         marginBottom: 40,
@@ -63,34 +116,47 @@ const AboutUs =() =>{
                     justifyContent: 'center',
                     alignItems: 'center'
                     
-                }}><img src={Location} alt="location" style={{
+                }}>{screen ? <img src={LocationBlack} alt="location" style={{
                     marginRight: 10,
                     width: '18.75px',
                     height: '25px',
                     
-                }}/><h4> Boulevard de l’Uprona N°91, 3ème Étage, Bujumbura, Burundi</h4></div>
+                }}/>: <img src={Location} alt="location" style={{
+                    marginRight: 10,
+                    width: '18.75px',
+                    height: '25px',
+                    
+                }}/>}<h4> Boulevard de l’Uprona N°91, 3ème Étage, Bujumbura, Burundi</h4></div>
                 <div style={{
                     color: 'black',
                     display: "flex",
                     justifyContent: 'center',
                     alignItems: 'center',
                     width: 150
-                }}><img src={Call} alt="phone-call" style={{
+                }}> {screen ? <img src={CallBlack} alt="phone-call" style={{
                     marginRight: 10,
                     width: '18.75px',
                     height: '25px',
                     
-                }}/> <h4>+257 61 100 800</h4></div>
+                }}/>: <img src={Call} alt="phone-call" style={{
+                    marginRight: 10,
+                    width: '18.75px',
+                    height: '25px',
+                    
+                }}/>} <h4>+257 61 100 800</h4></div>
                 <div style={{
                     color: 'black',
                     justifyContent: 'center',
                     alignItems: 'center',
                     display: "flex",
                     width: 150
-                }}><img src={WhatsApp} alt="whatsapp" style={{
+                }}>{screen ? <img src={WhatsAppBlack} alt="whatsapp" style={{
                     marginRight: 10,
                     
-                }}/><h4> +257 75 78 89</h4></div>
+                }}/>: <img src={WhatsApp} alt="whatsapp" style={{
+                    marginRight: 10,
+                    
+                }}/>}<h4> +257 75 78 89</h4></div>
             </Content>
         </Wrapper>
         </>

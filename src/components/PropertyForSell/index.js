@@ -1,14 +1,26 @@
-import React from "react";
-import { Content, Head, Title, Wrapper, Home } from "../Popular/Popular.styles";
+import React, {useState, useEffect} from "react";
+import { Head, Title, Wrapper, Home } from "../Popular/Popular.styles";
 import House1 from '../../assets/images/house1.png'
 import HomeCard from "../HomeCards";
 import { Input } from "../WelcomeSection/Welcome.styles";
 import { Button } from "../Header/Header.styles";
+import { Content } from "./PropertyForSell.styles";
+import {useLocation} from 'react-router-dom'
 const PropertyForSell = props =>{
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
+    const location = useLocation()
     return(
-        <Wrapper>
+        
+        <Wrapper style={{
+            
+        }}>
             <Content style={{
-                textAlign: 'center'
+                
             }}>
             <Head>
             <Title>
@@ -17,7 +29,7 @@ const PropertyForSell = props =>{
                     color: 'rgba(46,15,89,1)'
                 }}>Our property for sell</h2>
             </Title>
-            <Title>
+            {screen? null: <Title>
                     <h2 style={{
                             fontWeight: 500
                         }}>Sort By: </h2>
@@ -33,17 +45,21 @@ const PropertyForSell = props =>{
                             marginLeft: 20,
                             borderColor: 'transparent'
                         }}/>
-                    </Title>
+                    </Title>}
+            
            </Head>
-           <Home>
-                    <HomeCard buttonText="Rent" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Rent" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Rent" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Rent" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Rent" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Rent" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+           <Home> {screen? <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />: 
+           <>
+                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+           </>}
+         
            </Home>
-           <Button style={{
+           {screen ? null:<>{location.pathname==='/buy' ? null: <Button style={{
             width: 467,
             height: 54,
             borderRadius: '5px',
@@ -51,7 +67,8 @@ const PropertyForSell = props =>{
             fontWeight: 700,
             fontSize: 25,
             marginTop: 100
-           }}>View All</Button>
+           }}>View All</Button>}</> }
+           
             </Content>
         </Wrapper>
     )
