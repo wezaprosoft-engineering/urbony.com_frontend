@@ -50,7 +50,7 @@ width: 893px;
 height: 118.29px;
 font-size: 20px;
 color: rgba(46,15,89,1);
-margin-right: 200px;
+margin-right: 50000px;
 @media screen and (max-width: 414px){
     width: 360px;
     height: 97px;
