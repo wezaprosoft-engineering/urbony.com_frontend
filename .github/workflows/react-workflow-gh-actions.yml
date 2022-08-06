@@ -34,14 +34,10 @@ jobs:
           token: '${{ secrets.CODECOV_TOKEN }}'
       - name: Building Project
         run: npm run build --if-present
-      - name: Deploy
-        run: |
-            git config --global user.name $user_name
-            git config --global user.email $user_email
-            git remote set-url origin https://${github_token}@github.com/${repository}
-            npm run deploy
+      - name: Deploy to Github Pages
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: build
         env:
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          github_token: '${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}'
-          repository: '${{ github.repository }}'
+          GITHUB_TOKEN: '${{secrets.REPO_TOKEN}}'
