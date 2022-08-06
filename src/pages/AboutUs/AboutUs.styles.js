@@ -19,13 +19,15 @@ margin-bottom: 30px;
 export const AboutText = styled.div`
 color: rgba(46,15,89,1);
 @media screen and (max-width: 414px) {
-
+    width: 93%;
     h4{
-        size: 18px
+        font-size: 15px;
+        
     }
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 10px;
             
 }
 `;
