@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     border-color: lightyellow;
     @media screen and (max-width: 414px){
         width: 100%;
+        padding: 0px;
     }
 `;
 
@@ -58,10 +59,16 @@ export const Logo = styled.img`
     margin-right: 60px;
     cursor: pointer;
     @media screen and (max-width: 414px){
-        width: 264px;
-        height: 78px;
-        margin-right: 25px;
-        padding-right: 45px;
+        width: 200px;
+        height: 70px;
+        margin-right: 10px;
+        padding-right: 15%;
+    }
+    @media screen and (max-width: 320px){
+        width: 180px;
+        height: 70px;
+        margin-right: 0px;
+        padding-right: 15%;
     }
 `;
 export const MenuButton = styled.img`
@@ -70,7 +77,12 @@ export const MenuButton = styled.img`
 }
 @media screen and (max-width: 414px){
         
-        margin-left: 20px;
+        margin-left: 70px;
+        
+    }
+    @media screen and (max-width: 360px){
+        
+        margin-left: 35px;
         
     }
 `;

@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
     flex-grow: 999;
     @media screen and (max-width: 414px){
         min-height: 530px;
+        margin-top: 70px;
+        margin-bottom: 30px;
     }
 `;
 
@@ -101,4 +103,9 @@ export const CorporateContent = styled.div`
 display: flex;
 justify-content: space-between;
 width: 400px;
+
+@media screen and (max-width: 414px){
+    width: 100%;
+    overflow-y: scroll
+}
 `;

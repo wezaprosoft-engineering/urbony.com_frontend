@@ -7,7 +7,7 @@ export const SellWrapper = styled.div`
    width: 100%;
    height: 787px;
    @media screen and (max-width: 414px){
-        max-width: 414px;
+        width: 100%;
         background-size: cover;
         height: 470px;
         

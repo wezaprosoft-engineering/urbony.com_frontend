@@ -46,7 +46,7 @@ const GetInTouch = () => {
                         marginBottom: 40
                     }}>You can also reach us through</h2>
                     <div style={{
-                    width: 355,
+                    width: screen ? 300: 355,
                     color: 'black',
                     display: 'flex',
                     justifyContent: 'center',

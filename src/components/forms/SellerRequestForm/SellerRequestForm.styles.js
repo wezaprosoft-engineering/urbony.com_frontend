@@ -7,7 +7,16 @@ display: flex;
 flex-wrap: wrap;
 @media screen and (max-width: 414px) {
     width: 100%;
+    
 }
+`;
+
+export const Content = styled.div`
+    margin: 60px;
+    @media screen and (max-width: 414px){
+       margin: 10px;
+       
+    }
 `;
 
 export const InputRequest = styled.input`
@@ -22,7 +31,7 @@ font-size: 20px;
 color: rgba(46 ,15, 89,1);
 
 @media screen and (max-width: 414px) {
-    width: 378px;
+    width: 95%;
     height: 45px;
 }
 `;
@@ -35,7 +44,7 @@ export const Select = styled.select`
     color: rgba(46,15,89,1);
 
     @media screen and (max-width: 414px) {
-    width: 378px;
+    width: 95%;
     height: 45px;
 }
 `;
@@ -46,4 +55,20 @@ color: rgba(217, 11, 66,1);
 
 export const Container = styled.div`
 margin: 5px;
+@media screen and (max-width: 414px) {
+    width: 100%;
+
+}
+`;
+export const SubmitButton = styled.button`
+    width: 100%;
+    height: 41px;
+    font-weight: 700;
+    color: white;
+    background-color: rgba(217, 11, 66 ,1);
+    border-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+
+  
 `;

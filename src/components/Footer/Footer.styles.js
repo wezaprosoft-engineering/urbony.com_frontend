@@ -4,7 +4,8 @@ export const Wrapper = styled.div`
     height: 444px;
     background-color: rgba(33, 11, 64,1);
     @media screen and (max-width: 414px){
-       height: auto
+       height: auto;
+       margin-top: 50px;
     }
 `;
 export const FooterContent = styled.div`

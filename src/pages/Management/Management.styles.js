@@ -25,7 +25,7 @@ margin: 20px;
 text-align: center;
 
 @media screen and (max-width: 414px) {
-    width: 383px;
+    width: 100%;
     height: 625px;
 }
 `;
@@ -47,10 +47,11 @@ export const ManagementText = styled.div`
    @media screen and (max-width: 414px){
        margin-left: 0px;
        padding-left: 0px;
-        width: 370px;
+        width: 95%;
         justify-content: left;
         margin-left: 10px;
         margin-top: 80px;
+        
     }
 `;
 
@@ -63,6 +64,7 @@ export const ManagementContentUpper = styled.div`
     background-color: rgba(46, 15, 89,0.6);
     @media screen and (max-width: 414px){
         min-height: 490px;
+        
         
     }
 

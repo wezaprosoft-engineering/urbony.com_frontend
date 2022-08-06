@@ -7,6 +7,7 @@ export const Container = styled.div`
     margin-left: -50vw;
     margin-right: -50vw;
     height: 352px;
+    padding-top: 0.1px;
     
 
 @media screen and (min-width: 415px) {
@@ -77,6 +78,7 @@ justify-content: space-between;
 margin-top: 150px;
 margin-left: 3px;
 margin-right: 3px;
+
 
 `;
 

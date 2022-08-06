@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    min-height: 1500px;
+    width: 100%;
     @media screen and(max-width: 414px){
-        min-height: 900px;
+        margin: 0px; padding: 0ox
     }
 `;
 
 export const Content = styled.div`
-    
+    width: 100%;
+    min-height: 700px;
+    @media screen and (max-width: 414px) {
+        margin: 0px; 
+        padding: 0px
+    }
 `;
 
 export const ImageBackground = styled.img`
@@ -16,6 +21,9 @@ export const ImageBackground = styled.img`
     height: 549px;
     @media screen and (max-width: 414px) {
         height: 150px;
+        width: 100%;
+        margin: 0px; 
+        padding: 0px
     }
 `;
 
@@ -26,7 +34,8 @@ export const GetInTouchForm = styled.div`
     
 
     @media screen and (max-width: 414px){
-        margin: auto auto auto auto;
+        margin: auto 10px 0px auto;
+        padding: 0px;
     }
     
 `;
@@ -34,14 +43,17 @@ export const GetInTouchInput = styled.input`
 width: 893px;
 height: 55px;
 margin-bottom: 10px;
-margin-right: 500px;
+
 border-radius: 5px;
 font-size: 20px;
 color: rgba(46,15,89,1);
 
 @media screen and (max-width: 414px){
-    width: 360px;
+    width: 90%;
     height: 40px;
+    
+    
+    
 }
 `;
 
@@ -50,11 +62,16 @@ width: 893px;
 height: 118.29px;
 font-size: 20px;
 color: rgba(46,15,89,1);
-margin-right: 50000px;
+margin-right: 10%;
 @media screen and (max-width: 414px){
-    width: 360px;
+    width: 90%;
     height: 97px;
-    margin-right: 0px;
+    margin-right: 0%;
+}
+@media screen and (max-width: 360px){
+    width: 90%;
+    height: 97px;
+    margin-right: 0%;
 }
 `;
 
@@ -71,7 +88,7 @@ border-color: transparent;
 color: white;
 cursor: pointer;
 @media screen and (max-width: 414px) {
-    width: 360px;
+    width: 90%;
     height: 42px;
     border-radius: 5px;
     font-size: 20px;
@@ -91,7 +108,7 @@ export const EstimationButton = styled.button`
     cursor: pointer;
 
     @media screen and (max-width: 414px){
-        width: 360px;
+        width: 90%;
         height: 39px;
         border-radius: 10px;
         font-size: 15px;
@@ -118,7 +135,7 @@ export const EstmationContent = styled.div`
 
     @media screen and (max-width: 414px){
         width: 260px;
-        margin: auto auto auto 90px;
+        margin: auto auto auto 17%;
         align-items: center;
     }
 `;
