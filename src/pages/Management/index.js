@@ -15,6 +15,8 @@ const Management = () => {
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+    
+    
     return(
         <>
         <Wrapper>
@@ -75,7 +77,7 @@ const Management = () => {
         </ManagementContent>
         <ManagementContent>
         <Title style={{
-            marginBottom: 100
+            marginBottom: 200
         }}>
             <Head>
                 <Line style={{
@@ -83,7 +85,7 @@ const Management = () => {
                     marginRight: 0
                 }}/>
                 <h1 style={{
-                    color: 'rgba(46,15,89,1)'
+                    color: 'rgba(46,15,89,1)',
                 }}>Rental management fees: two formulas to control your costs according to your needs.</h1>
             </Head>
         </Title>
@@ -92,7 +94,7 @@ const Management = () => {
             flexWrap: 'wrap'
         }}>
             {screen ? <ManagementCard style={{
-                height: 520
+                height: '20%'
             }}>
                 <h2 style={{
                     marginTop: 52,
@@ -137,7 +139,7 @@ const Management = () => {
                 </Benefits>
                 
                 {screen ? <CardButton style={{
-                    width: 345,
+                    width: '100%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
@@ -205,8 +207,86 @@ const Management = () => {
                     marginTop: 100
                 }}>REQUEST AN OFFER</CardButton>}
             </ManagementCard>}
-            
-            <ManagementCard style={{
+            {screen ? <ManagementCard style={{
+                background: '#2E0F59',
+                color: 'white',
+                height: '20%'
+            }}>
+                {screen ? null:  <div style={{
+                    backgroundColor: 'rgba(217, 11, 66, 1)',
+                    height: 35,
+                    borderRadius: '10px 10px 0px 0px',
+                    fontSize: '25px',
+                    fontWeight: 700,
+                    color: 'white'
+                }}>Best Value</div>}
+               
+            <h2>Premium offer</h2>
+                <h3>Rental management with guarantee of unpaid rents</h3>
+                <h2>as from</h2>
+                <h2>10,000 BIF excl. VAT / month</h2>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        marginTop: 18
+                    }}>
+                    <h4>Rental management with unpaid rent guarantee 
+                        from 10,000 BIF excl. VAT/month  </h4></div>
+                </Benefits>
+                <Benefits>
+                    {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    
+                    <div style={{
+                        textAlign: 'left',
+                        marginTop: 18
+                    }}>
+                    <h4>A complete management mandate combining accounting, 
+                        technical and administrative services </h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>A periodic management report </h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>“Unpaid rent” insurance  </h4></div>
+                </Benefits>
+                {screen ? <CardButton style={{
+                    width: '100%',
+                    backgroundColor: 'red',
+                    fontWeight: 700,
+                    fontSize: '20px',
+                
+                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
+                    width: '70%',
+                    backgroundColor: 'red',
+                    fontWeight: 700,
+                    fontSize: '20px',
+                
+                }}>REQUEST AN OFFER</CardButton>}
+                
+            </ManagementCard>: <ManagementCard style={{
                 background: '#2E0F59',
                 color: 'white'
             }}>
@@ -271,11 +351,11 @@ const Management = () => {
                     <h4>“Unpaid rent” insurance  </h4></div>
                 </Benefits>
                 {screen ? <CardButton style={{
-                    width: 345,
+                    width: '100%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
-                
+                   
                 }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
@@ -284,9 +364,10 @@ const Management = () => {
                 
                 }}>REQUEST AN OFFER</CardButton>}
                 
-            </ManagementCard>
+            </ManagementCard>}
+            
             {screen ?  <EstimationButton style={{
-                marginLeft: 50,
+                marginLeft: '8%',
                 width: 282
             }}>
                     <EstmationContent style={{

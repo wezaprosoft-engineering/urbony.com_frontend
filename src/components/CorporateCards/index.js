@@ -71,10 +71,11 @@ const CorporateCards = props =>{
     </HomeCards>
     <Container style={{
         backgroundImage: `url(${props.housePicture})`,
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        
     }}>
-        <ArrowContainer>
-            <ArrowCircle>
+        <ArrowContainer >
+            <ArrowCircle onClick={props.prev}>
                 <img src={ArrowLeft} alt="arrow-left" style={{
                     marginLeft: 17,
                     
@@ -82,7 +83,7 @@ const CorporateCards = props =>{
 
                 }}/>
             </ArrowCircle>
-            <ArrowCircle>
+            <ArrowCircle onClick={props.next}>
             <img src={ArrowRight} alt="arrow-right" style={{
                     marginLeft: 22,
                     
@@ -146,7 +147,8 @@ const CorporateCards = props =>{
         }}>
             <CardButton style={{
                 backgroundColor: `${props.buttonColor}`,
-                marginLeft: 10
+                marginLeft: 10,
+                marginRight: 6
             }}>{props.buttonText}</CardButton>
             <div style={{
                 color: 'white',
@@ -155,6 +157,7 @@ const CorporateCards = props =>{
             }}>
                 <div style={{
                     marginRight: 7,
+                    
                     
                 }}><h3>BIF</h3></div>
                 <h3>100,000,000</h3></div>

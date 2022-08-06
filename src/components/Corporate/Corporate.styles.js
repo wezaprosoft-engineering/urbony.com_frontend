@@ -4,14 +4,18 @@ export const H2 = styled.h2`
 color: red;
 text-decoration: 3px underline;
 @media screen and (max-width:414px){
-    font-size: 20px;
+    font-size: 15px;
+    margin-right: 13px;
+    margin-left: 5px;
 }
 `;
 
 export const NOFocus = styled.h2`
 cursor: pointer;
 @media screen and (max-width:414px){
-    font-size: 20px;
+    font-size: 15px;
+    margin-right: 13px;
+    margin-left: 5px;
 }
 `;
 export const Step = styled.div`
@@ -34,11 +38,12 @@ export const CorporateText = styled.div`
    @media screen and (max-width: 414px){
        margin-left: 0px;
        padding-left: 0px;
-        width: 370px;
+        width: 95%;
         justify-content: left;
         margin-left: 10px;
         margin-top: 80px;
         padding-top: 0px;
+        margin-right: 10px;
     }
 `;
 

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
    backdrop-filter: blur(7px);
    background-size: cover;
    @media screen and (max-width: 414px){
-        max-width: 414px;
+        max-width: 100%;
         background-size: cover;
         
         
@@ -116,7 +116,7 @@ export const Input2 = styled.input`
         display: none;
     };
     @media screen and (max-width: 414px){
-        width: 365px;
+        width: 90%;
         height: 45px;
         border-radius: 10px;
         margin: 10px auto 10px auto;
@@ -133,7 +133,7 @@ export const Select = styled.select`
         }
     };
     @media screen and (max-width: 414px){
-        width: 365px;
+        width: 90%;
         height: 45px;
         border-radius: 10px;
         margin: 10px auto 10px auto;
@@ -152,7 +152,7 @@ export const WelcomeButton = styled.button`
     };
 
     @media screen and (max-width: 414px){
-        width: 365px;
+        width: 90%;
         height: 45px;
         border-radius: 10px;
         margin: 10px auto auto auto;

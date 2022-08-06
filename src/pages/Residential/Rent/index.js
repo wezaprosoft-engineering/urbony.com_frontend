@@ -50,7 +50,9 @@ const Rent = () => {
                 {screen ? <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    width: 390,
+                    width: '100%',
+                    overflowY: 'auto',
+                    
                     color: 'rgba(46,15,89,1)'
                 }}> 
                 {liveIn ? <h4 style={{

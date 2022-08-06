@@ -12,7 +12,7 @@ box-sizing: border-box;
 margin-top: 200px;
 
 @media screen and (max-width: 414px) {
-    width: 372px;
+    width: 95%;
     height: 782px;
     display: inline;
     border-radius: 0px;
@@ -28,7 +28,7 @@ background-size: cover;
 width: 50%;
 
 @media screen and (max-width: 414px){
-    width: 372px;
+    width: 100%;
     height: 170px;
     background-size: cover;
 }
@@ -37,7 +37,7 @@ width: 50%;
 export const TextContent= styled.div`
 width: 60%;
 @media screen and (max-width: 414px) {
-    width: 372px;
+    width: 100%;
     height: 482px;
 }
 `;

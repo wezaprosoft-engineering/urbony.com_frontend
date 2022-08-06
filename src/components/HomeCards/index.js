@@ -80,7 +80,7 @@ const HomeCard = props =>{
         backgroundSize: 'cover'
     }}>
         <ArrowContainer>
-            <ArrowCircle>
+            <ArrowCircle onClick={props.prev}>
                 <img src={ArrowLeft} alt="arrow-left" style={{
                     marginLeft: 17,
                     
@@ -88,7 +88,7 @@ const HomeCard = props =>{
 
                 }}/>
             </ArrowCircle>
-            <ArrowCircle>
+            <ArrowCircle onClick={props.next}>
             <img src={ArrowRight} alt="arrow-right" style={{
                     marginLeft: 22,
                     

@@ -2,7 +2,10 @@ import React, {useState, useEffect} from "react";
 import { Content, Head, Line, Title, Wrapper, Arrow, Home } from "../Popular/Popular.styles";
 import arrow from '../../assets/images/arrow.svg'
 import House1 from '../../assets/images/house1.png'
+import House2 from '../../assets/images/house2.png'
+import House3 from '../../assets/images/house3.png'
 import HomeCard from "../HomeCards";
+import { useGlobalState, setGlobalState } from "../../store/state";
 
 
 const LastSales = props =>{
@@ -12,6 +15,24 @@ const LastSales = props =>{
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+
+    const [card1] = useGlobalState("lastsellcard1")
+    const [card2] = useGlobalState("lastsellcard2")
+    const Card1 = () =>{
+        setGlobalState("lastsellcard1", true)
+        setGlobalState("lastsellcard2", false)
+        setGlobalState("lastsellcard3", false)
+    }
+    const Card2 = () =>{
+        setGlobalState("lastsellcard1", false)
+        setGlobalState("lastsellcard2", true)
+        setGlobalState("lastsellcard3", false)
+    }
+    const Card3 = () =>{
+        setGlobalState("lastsellcard1", false)
+        setGlobalState("lastsellcard2", false)
+        setGlobalState("lastsellcard3", true)
+    }
     
     return(
         <Wrapper>
@@ -40,9 +61,15 @@ const LastSales = props =>{
                 <h3>{props.corporate}</h3>
 
                 <Home>
-                    {screen ? 
-                        <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
-                    
+                    {screen ?<>
+                        {card1 ?
+                            <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1} next={Card2}/>:<>
+                            {card2 ? <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House2} next={Card3} prev={Card1}/>: 
+                            
+                            <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House3} prev={Card2}/>}
+                            </>
+                        }
+                        </>
                     : <>
                     <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
                     <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>

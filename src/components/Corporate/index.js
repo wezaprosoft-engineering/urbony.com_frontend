@@ -47,6 +47,8 @@ const Corporates = props =>{
         setBuyer(false)
         setOwner(true)
     }
+   
+
     return(
         <>
         <Wrapper1 style={{
@@ -71,7 +73,16 @@ const Corporates = props =>{
                     </Title>
                 </Head>
                 {screen ? <div style={{
-                    color: 'rgba(46,15,89,1)'
+                    color: 'rgba(46,15,89,1)',
+                    display: 'flex',
+                    whiteSpace: 'nowrap',
+                    overflow: 'auto',
+                    justifyContent: 'space-between',
+                    
+                    
+                    
+                    
+                    
                 }}>
                     {tenant? <H2>{props.tenant}</H2>:<NOFocus onClick={makeTenant}>{props.tenant}</NOFocus> }
                     {buyer? <H2>{props.buyer}</H2>:<NOFocus onClick={makeBuyer}>{props.buyer}</NOFocus> }
@@ -88,13 +99,13 @@ const Corporates = props =>{
                 </Head>}
                 
                 {tenant? <>
-                    {location.pathname==='/offices' ? <CorporateCardContent>
+                    {location.pathname==='/offices' ? <><CorporateCardContent>
                     <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText='Serviced offices'/>
                     <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText='Coworking Desk'/>
                     <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText='Enterprise Office'/>
                     <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText='Private offices'/>
                    
-                </CorporateCardContent>: <>{
+                </CorporateCardContent></>: <>{
                     location.pathname==='/commercial-space' ?
                     <CorporateCardContent>
                     <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText='Small space'/>
@@ -166,7 +177,7 @@ const Corporates = props =>{
                 
                 </>}</>}
                 {location.pathname==='/industrial-space'? <>{screen? <Button style={{
-                    width: 368,
+                    width: '95%',
                     height: 45,
                     backgroundColor:'rgba(255,0,0,1)',
                     fontSize: 18,

@@ -25,7 +25,7 @@ margin: 20px;
 text-align: center;
 
 @media screen and (max-width: 414px) {
-    width: 383px;
+    width: 100%;
     height: 625px;
 }
 `;
