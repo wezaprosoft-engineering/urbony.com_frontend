@@ -216,6 +216,8 @@ const Welcome = () =>{
                             <Details detail='Serviced'/>
                             <Details detail='Service Charge Included'/>
                             <Details detail='Walk In Closet'/>
+                            <Details detail='Lift/elevator'/>
+                            <Details detail='Gym'/>
                             </MoreContentDetails>
                         </Heading>
                         <Heading>
@@ -227,11 +229,9 @@ const Welcome = () =>{
                             <Details detail='CCTV'/>
                             <Details detail='Electric Fence'/>
                             <Details detail='Garden'/>
-                            <Details detail='Gym'/>
                             <Details detail='Parking'/>
                             <Details detail='Staff Quarters'/>
-                            <Details detail='Swimming'/>
-                            <Details detail='Pool'/>
+                            <Details detail='Swimming Pool'/>
                             <Details detail='Wheelchair Access'/>
                             </MoreContentDetails>
                             </Heading>

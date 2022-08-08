@@ -235,7 +235,7 @@ export const More = styled.div`
         size: 25px;
     };
     @media screen  and (max-width: 414px){
-        padding: 2px;
+        padding: 0px;
         
         margin: 0px 0px 0px 0px;
         
@@ -260,7 +260,7 @@ h4{
 };
 @media screen and (max-width: 414px)  {
     color: white;
-    width: 210px;
+    width: 160px;
 }
 `;
 export const MoreContentMobile = styled.div`
