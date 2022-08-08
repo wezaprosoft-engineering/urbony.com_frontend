@@ -71,7 +71,7 @@ const Welcome = () =>{
                     <SubOverlay>
                     <OverlayContent><h2>TYPE</h2><select style={{
                         width: 150,
-                        height: 60,
+                        height: '65px',
                         fontWeight: 400,
                         fontSize: 'large'
                     }}>
@@ -91,7 +91,7 @@ const Welcome = () =>{
                     
                     {more ? <div style={{
                         display: 'flex',
-                        marginLeft: 70,
+                        marginLeft: 60,
                         cursor: 'pointer',
                         lineHeight: 0
                     }} onClick={LessFilters}>
@@ -105,7 +105,7 @@ const Welcome = () =>{
                     }}>Less filters</h4>
                     </div>: <div style={{
                         display: 'flex',
-                        marginLeft: 70,
+                        marginLeft: 60,
                         cursor: 'pointer',
                         lineHeight: 0
                     }} onClick={MoreFilters}>
@@ -130,6 +130,8 @@ const Welcome = () =>{
                             <Details detail='Serviced'/>
                             <Details detail='Service Charge Included'/>
                             <Details detail='Walk In Closet'/>
+                            <Details detail='Lift/Elevator'/>
+                            <Details detail='Gym'/>
                         </div>
                         <div>
                             <h3>External Features</h3>
@@ -139,11 +141,9 @@ const Welcome = () =>{
                             <Details detail='CCTV'/>
                             <Details detail='Electric Fence'/>
                             <Details detail='Garden'/>
-                            <Details detail='Gym'/>
                             <Details detail='Parking'/>
                             <Details detail='Staff Quarters'/>
-                            <Details detail='Swimming'/>
-                            <Details detail='Pool'/>
+                            <Details detail='Swimming Pool'/>
                             <Details detail='Wheelchair Access'/>
                         </div>
                         <div>

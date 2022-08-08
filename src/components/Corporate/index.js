@@ -165,10 +165,10 @@ const Corporates = props =>{
                     </Step>  
                 </StepDetail>
                 {location.pathname==='/industrial-space' && owner ? null: <Button style={{
-                    width: 785,
-                    height: 55,
+                    width: screen? '95%' :785,
+                    height: screen? 40: 55,
                     backgroundColor:'rgba(255,0,0,1)',
-                    fontSize: 25,
+                    fontSize: screen? 15: 25,
                     fontWeight: 800,
                     marginTop: 80,
                     marginBottom: 80
