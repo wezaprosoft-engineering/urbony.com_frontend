@@ -50,10 +50,10 @@ const Footer = () => {
                     marginBottom: 13
                 }}><img src={Call} alt="phone-call" style={{
                     marginRight: 10
-                }}/> +257 61 100 800</div>
+                }}/> +257 75 78 89</div>
                 <div><img src={WhatsApp} alt="whatsapp" style={{
                     marginRight: 10
-                }}/> +257 75 78 89</div>
+                }}/> +41 76 679 74 63</div>
                 </Footerservices>
                 <Footerservices style={{
                     

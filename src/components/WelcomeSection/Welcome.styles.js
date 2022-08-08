@@ -188,16 +188,19 @@ margin-bottom: 20px;
 export const SubOverlay = styled.div`
 display: flex;
 justify-content: space-between;
-width: 100%;
-padding-top: 50px
+width: 90%;
+padding-top: 50px;
+margin: auto auto auto auto;
+
 `;
 
 export const OverlayContent = styled.div`
     margin: auto auto auto auto;
-    color: rgba(46,15,89,1)
+    color: rgba(46,15,89,1);
+   
 `; 
 export const Input = styled.input`
-width: 150px;
+width: 90%;
 height: 60px;
 font-weight: 500;
 font-size: large;
@@ -205,14 +208,15 @@ color: rgba(0,0,0,1);
 `;
 
 export const Search = styled.button`
-    width: 150px;
-    height: 60px;
+    width: 100%;
+    height: 65px;
     margin-top: 70px;
     background-color: rgba(217, 11, 66,1);
     border-color: transparent;
     display: flex;
     cursor: pointer;
     border-radius: 5px;
+    margin-left: -0.8vw;
 `;
 export const SearchIcon = styled.img`
     width: 20px;
@@ -231,7 +235,7 @@ export const More = styled.div`
         size: 25px;
     };
     @media screen  and (max-width: 414px){
-        padding: 2px;
+        padding: 0px;
         
         margin: 0px 0px 0px 0px;
         
@@ -256,7 +260,7 @@ h4{
 };
 @media screen and (max-width: 414px)  {
     color: white;
-    width: 210px;
+    width: 160px;
 }
 `;
 export const MoreContentMobile = styled.div`

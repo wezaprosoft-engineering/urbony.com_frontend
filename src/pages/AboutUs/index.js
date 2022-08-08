@@ -151,7 +151,7 @@ const AboutUs =() =>{
                     width: '18.75px',
                     height: '25px',
                     
-                }}/>} <h4>+257 61 100 800</h4></div>
+                }}/>} <h4>+257 75 78 89</h4></div>
                 <div style={{
                     color: 'black',
                     justifyContent: 'center',
@@ -165,7 +165,7 @@ const AboutUs =() =>{
                 }}/>: <img src={WhatsApp} alt="whatsapp" style={{
                     marginRight: 10,
                     
-                }}/>}<h4> +257 75 78 89 76 </h4></div>
+                }}/>}<h4> +41 76 679 74 63 </h4></div>
             </Content>
         </Wrapper>
         </>

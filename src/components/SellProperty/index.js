@@ -105,7 +105,7 @@ const SellProperty = props =>{
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Contact avec un expert de l'immobilier</h3>
+                        <h3>Contact with a real estate expert</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
