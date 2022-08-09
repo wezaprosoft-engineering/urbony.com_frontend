@@ -208,10 +208,10 @@ const Popular = props => {
                     {screen ?
                         <>
                         {card1 ?
-                            <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1} next={Card2}/>:<>
-                            {card2 ? <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House2} next={Card3} prev={Card1}/>: 
+                            <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House1} next={Card2}/>:<>
+                            {card2 ? <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House2} next={Card3} prev={Card1}/>: 
                             
-                            <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House3} prev={Card2}/>}
+                            <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House3} prev={Card2}/>}
                             </>
                         }
                         </>
@@ -220,9 +220,9 @@ const Popular = props => {
                         
                     : <>
                     
-                    <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House2} />
-                    <HomeCard buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House3} /></>}
+                    <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House2} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House3} /></>}
                     
                 </Home>}
 

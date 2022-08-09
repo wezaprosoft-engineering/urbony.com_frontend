@@ -40,14 +40,21 @@ const PropertyForSell = props =>{
             
         }}>
             <Content style={{
-                
+                margin: props.margin
             }}>
             <Head>
             <Title>
-                <h2 style={{
-                    fontWeight: 500,
-                    color: 'rgba(46,15,89,1)'
-                }}>Our property for sell</h2>
+                {
+                    location.pathname==='/rent'? <h2 style={{
+                        fontWeight: 500,
+                        color: 'rgba(46,15,89,1)'
+                    }}>Our property for rent</h2>:
+                    <h2 style={{
+                        fontWeight: 500,
+                        color: 'rgba(46,15,89,1)'
+                    }}>Our property for sell</h2>
+                }
+                
             </Title>
             {screen? null: <Title>
                     <h2 style={{
@@ -70,24 +77,25 @@ const PropertyForSell = props =>{
            </Head>
            <Home> {screen? <>
                         {card1 ?
-                            <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0, 1)" housePicture={House1} next={Card2}/>:<>
-                            {card2 ? <HomeCard buttonText="Book Now" buttonColor="rgba(255, 0, 0, 1)" housePicture={House2} next={Card3} prev={Card1}/>: 
+                            <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} next={Card2}/>:<>
+                            {card2 ? <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House2} next={Card3} prev={Card1}/>: 
                             
-                            <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0, 1)" housePicture={House3} prev={Card2}/>}
+                            <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House3} prev={Card2}/>}
                             </>
                         }
                         </>: 
            <>
-                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
-                    <HomeCard buttonText="Buy" buttonColor="rgba(255, 0, 0 ,1)" housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"}housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
            </>}
          
            </Home>
-           {screen ? null:<>{location.pathname==='/buy' ? null: <Button style={{
+           {screen ? null:<>{location.pathname==='/buy' || location.pathname==='/rent'? null: <>
+           <Button style={{
             width: 467,
             height: 54,
             borderRadius: '5px',
@@ -95,7 +103,7 @@ const PropertyForSell = props =>{
             fontWeight: 700,
             fontSize: 25,
             marginTop: 100
-           }}>View All</Button>}</> }
+           }}>View All</Button></>}</> }
            
             </Content>
         </Wrapper>

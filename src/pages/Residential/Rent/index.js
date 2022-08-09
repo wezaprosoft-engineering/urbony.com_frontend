@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from "react";
-import { Content, Head, Line, Title, Wrapper, Home, Arrow } from "../../../components/Popular/Popular.styles";
+import { Content, Head, Line, Title, Wrapper, Home } from "../../../components/Popular/Popular.styles";
 import Step from '../../../assets/images/step.svg'
 import { CardText, AppartmentCard } from "../Buy/Buy.styles";
 import { Button } from "../../../components/Header/Header.styles";
 import HouseBuy1 from '../../../assets/images/housebuy1.png'
 import HouseBuy2 from '../../../assets/images/housebuy2.png'
 import HouseBuy3 from '../../../assets/images/housebuy3.png'
-import arrow from '../../../assets/images/arrow.svg'
-import House1 from '../../../assets/images/house1.png'
 import Estimation from '../../../assets/images/estimation.svg'
-import { Input } from "../../../components/WelcomeSection/Welcome.styles";
 import LastSales from "../../../components/LastSales";
-import HomeCard from "../../../components/HomeCards";
+import { EstimationButton, EstmationContent, Estimator } from "../../GetInTouch/GetInTouch.styles";
+import Popular from "../../../components/Popular";
+import PropertyForSell from "../../../components/PropertyForSell";
 
 const Rent = () => {
     const [rentOut, setRentOut] = useState(false)
@@ -50,16 +49,18 @@ const Rent = () => {
                 {screen ? <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    width: '100%',
-                    overflowY: 'auto',
+                    whiteSpace: 'nowrap',
+                    overflow: 'auto',
                     
                     color: 'rgba(46,15,89,1)'
                 }}> 
                 {liveIn ? <h4 style={{
                     color: 'red',
-                    textDecoration: 'underline 5px'
+                    textDecoration: 'underline 5px',
+                    marginRight: screen ? 10 : 0
                 }}>Rent Property to Live in</h4>:<h4 style={{
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    marginRight: screen ? 10 : 0
                 }} onClick={LiveIn}>Rent property to Live In</h4>}
                 {rentOut?
                 <h4 style={{
@@ -200,69 +201,23 @@ const Rent = () => {
                     and supervises the important stages of the relationship with your tenants.
                 </h3>
                 <Button style={{
-                    width: 741,
-                    height: 70,
+                    width: screen ? '95%': 741,
+                    height: screen? 30:70,
                     borderRadius: 5,
                     backgroundColor: 'red',
                     fontWeight: 700,
-                    fontSize: '35px',
+                    fontSize: screen? 15:'35px',
                     marginBottom: 100,
                 }}>Our Management Offer</Button>
 
-<Head  style={{
-                        marginBottom: 150
-                    }}>
-                    <Title>
-                        <Line style={{
-                            border: '2px solid',
-                            marginTop: 40
-                        }}/>
-                        <h1 style={{
-                   
-                    
-                }}>Our Popular Homes</h1>
-                    </Title>
-                    <Head style={{
-                        color: "rgba(217,11,66,1)"
-                        }}>
-                        <h3>Explore All</h3>
-                        <Arrow src={arrow}/>
-                        
-                        
-                        
-                        
-                    </Head>
-                </Head>
-
-                <Home style={{
-                    marginBottom: 175
-                }}>
-                    <HomeCard housePicture={House1} buttonColor='red' buttonText='Rent'/>
-                    <HomeCard housePicture={House1} buttonColor='red' buttonText='Rent'/>
-                    <HomeCard housePicture={House1} buttonColor='red' buttonText='Rent'/>
-                </Home>
-                <Button style={{
-                    backgroundColor: 'red',
-                    borderRadius: '10px',
-                    height : '55px',
-                    width: '95%',
-                    fontWeight: 700,
-                    fontSize: '35px',
-                    marginTop: 200,
-                    marginBottom: 200,
-                    
-                    
-                   }}><div style={{
-                    display: 'flex',
-                    
-                    width: 410,
-                    margin: 'auto auto auto auto'
-                    
-                   }}>Get Free Estimation <img src={Estimation} alt='estimation' style={{
-                    width: 30,
-                    height: 40,
-                    marginLeft: 13
-                   }}/></div></Button>
+                <Popular margin='0px'/>
+                <EstimationButton>
+                    <EstmationContent>
+                        GET FREE ESTIMATION
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>
+                
 
                 </>: <>
                 <Home style={{
@@ -291,79 +246,8 @@ const Rent = () => {
                         </CardText>
                     </AppartmentCard>
                 </Home>
-                <Head style={{
-                    marginBottom: 150
-                }}>
-                    <Title style={{
-                        color: 'rgba(46,15,89,1)',
-                        
-                    }}>
-                        <h2 style={{
-                            fontWeight: 500
-                        }}>Our properties for rent</h2>
-                    </Title>
-                    {screen ? null: 
-                    <Title>
-                    <h2 style={{
-                            fontWeight: 500
-                        }}>Sort By: </h2>
-                        <Input placeholder='Price' type='number' style={{
-                            backgroundColor: 'rgba(46,15,89,1)',
-                            textAlign: 'center',
-                            width: 255,
-                            height: 45,
-                            borderRadius: 5,
-                            color: 'white',
-                            fontWeight: 500,
-                            marginTop: 10,
-                            marginLeft: 20,
-                            borderColor: 'transparent'
-                        }}/>
-                    </Title>}
-                    
-                </Head>
-
-                <Home>
-                <HomeCard housePicture={House1} buttonColor='rgba(46,15,89,1)' buttonText='SOLD'/>
-                <HomeCard housePicture={House1} buttonColor='rgba(46,15,89,1)' buttonText='SOLD'/>
-                <HomeCard housePicture={House1} buttonColor='rgba(46,15,89,1)' buttonText='SOLD'/>
-                <HomeCard housePicture={House1} buttonColor='rgba(46,15,89,1)' buttonText='SOLD'/>
-                <HomeCard housePicture={House1} buttonColor='rgba(46,15,89,1)' buttonText='SOLD'/>
-                <HomeCard housePicture={House1} buttonColor='rgba(46,15,89,1)' buttonText='SOLD'/>
-                </Home>
-
-                <Head  style={{
-                        marginTop: 150,
-                        marginBottom: 120,
-                    }}>
-                    <Title>
-                        <Line style={{
-                            border: '2px solid',
-                            marginTop: 40
-                        }}/>
-                        <h1 style={{
-                   
-                    
-                }}>Our Popular Homes</h1>
-                    </Title>
-                    {screen? null:
-                    <Head style={{
-                        color: "rgba(217,11,66,1)"
-                        }}>
-                        <h3>Explore All</h3>
-                        <Arrow src={arrow}/>
-                    </Head>
-                    }
-                    
-                </Head>
-
-                <Home style={{
-                    marginBottom: 175
-                }}>
-                    <HomeCard housePicture={House1} buttonColor='red' buttonText='Rent'/>
-                    <HomeCard housePicture={House1} buttonColor='red' buttonText='Rent'/>
-                    <HomeCard housePicture={House1} buttonColor='red' buttonText='Rent'/>
-                </Home>
+                <PropertyForSell margin='0px'/>
+                <Popular margin='0px'/>
                 <LastSales margin='0px'/>
 
                 </>}
