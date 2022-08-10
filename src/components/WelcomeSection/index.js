@@ -40,7 +40,7 @@ const Details = props =>{
 }
 
 
-const Welcome = () =>{
+const Welcome = props =>{
     const [corporate] = useGlobalState("corporate");
     const [more, setMore] = useState(false);
 
@@ -81,9 +81,37 @@ const Welcome = () =>{
                         <option value="Apartments">Apartments</option>
                         <option value="Tiny home">Tiny home</option>
                         </select></OverlayContent>
-                    <OverlayContent><h2>WHERE</h2><Input placeholder={props.location}/></OverlayContent>
+                        <OverlayContent><h2>WHERE</h2><select style={{
+                        width: '99%',
+                        height: '65px',
+                        fontWeight: 400,
+                        fontSize: 'large'
+                    }}>
+                        <option value="Select" >{props.location}</option>
+                        <option value="Bubanza">Bubanza</option>
+                        <option value="Bujumbura Mairie">Bujumbura Mairie</option>
+                        <option value="Bujumbura Rural">Bujumbura Rural</option>
+                        <option value="Cibitoke">Cibitoke</option>
+                        <option value="Muramvya">Muramvya</option>
+                        <option value="Mwaro">Mwaro</option>
+                        <option value="Cankuzo">Cankuzo</option>
+                        <option value="Gitega">Gitega</option>
+                        <option value="Rutana">Rutana</option>
+                        <option value="Ruyigi">Ruyigi</option>
+                        <option value="Karusi">Karusi</option>
+                        <option value="Kayanza">Kayanza</option>
+                        <option value="Kirundo">Kirundo</option>
+                        <option value="Muyinga">Muyinga</option>
+                        <option value="Ngozi">Ngozi</option>
+                        <option value="Bururi">Bururi</option>
+                        <option value="Makamba">Makamba</option>
+                        <option value="Rumonge">Rumonge</option>
+                        </select></OverlayContent>
                     <OverlayContent>{homeBuy ? <h2>PRICE</h2>: <h2>RENT/MONTH</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/><Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number"/></div></OverlayContent>
-                    <OverlayContent><h2>BEDROOM(S)</h2><Input placeholder="Select"/></OverlayContent>
+                    {corporate ? 
+                    <OverlayContent><h2>AREA</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
+                    <OverlayContent><h2>BEDROOM(S)</h2><Input placeholder="Select"/></OverlayContent>}
+                    
                     
                     <OverlayContent><Search><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>SEARCH</TextMenu></Search></OverlayContent>
                     </SubOverlay>
@@ -184,10 +212,31 @@ const Welcome = () =>{
                         <option value="Apartments">Apartments</option>
                         <option value="Tiny home">Tiny home</option>
                 </Select>
-                <Input2 placeholder="Enter location of property"/>
+                <Select>
+                <option value="Select" >Location of property</option>
+                        <option value="Bubanza">Bubanza</option>
+                        <option value="Bujumbura Mairie">Bujumbura Mairie</option>
+                        <option value="Bujumbura Rural">Bujumbura Rural</option>
+                        <option value="Cibitoke">Cibitoke</option>
+                        <option value="Muramvya">Muramvya</option>
+                        <option value="Mwaro">Mwaro</option>
+                        <option value="Cankuzo">Cankuzo</option>
+                        <option value="Gitega">Gitega</option>
+                        <option value="Rutana">Rutana</option>
+                        <option value="Ruyigi">Ruyigi</option>
+                        <option value="Karusi">Karusi</option>
+                        <option value="Kayanza">Kayanza</option>
+                        <option value="Kirundo">Kirundo</option>
+                        <option value="Muyinga">Muyinga</option>
+                        <option value="Ngozi">Ngozi</option>
+                        <option value="Bururi">Bururi</option>
+                        <option value="Makamba">Makamba</option>
+                        <option value="Rumonge">Rumonge</option>
+                </Select>
                 <Input2 placeholder={homeRent? "Enter minimum rent": "Enter minimum price"} type="number"/>
                 <Input2 placeholder={homeRent? "Enter minimum rent": "Enter minimum price"} type="number"/>
-                <Input2 placeholder="Enter Bedroom(s)"/>
+                {corporate ? <Input2 placeholder="Area" type="number"/>:<Input2 placeholder="Enter Bedroom(s)"/>}
+                
                 <WelcomeButton>
                     <div style={{
                         display: 'flex',

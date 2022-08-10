@@ -46,7 +46,7 @@ const GetInTouch = () => {
                         marginBottom: 40
                     }}>You can also reach us through</h2>
                     <div style={{
-                    width: screen ? 300: 355,
+                    width: screen ? 300: 500,
                     color: 'black',
                     display: 'flex',
                     justifyContent: 'center',
@@ -68,7 +68,7 @@ const GetInTouch = () => {
                     display: "flex",
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: 150
+                    width: screen?160:160
                 }}>{screen ? <img src={CallBlack} alt="phone-call" style={{
                     marginRight: 10,
                     width: '18.75px',
@@ -79,13 +79,13 @@ const GetInTouch = () => {
                     width: '18.75px',
                     height: '25px',
                     
-                }}/>} <h4>+257 75 78 89</h4></div>
+                }}/>} <h4>+257 75 78 89 74</h4></div>
                 <div style={{
                     color: 'black',
                     justifyContent: 'center',
                     alignItems: 'center',
                     display: "flex",
-                    width: 160
+                    width: screen ? 160:180
                 }}>{screen ? <img src={WhatsAppBlack} alt="whatsapp" style={{
                     marginRight: 10,
                     
