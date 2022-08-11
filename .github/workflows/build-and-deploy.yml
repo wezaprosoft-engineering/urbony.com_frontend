@@ -50,7 +50,6 @@ jobs:
           remote-host:  ${{ secrets.FTP_SERVER }}
           remote-user: ${{ secrets.FTP_USER }}
           remote-password:  ${{ secrets.FTP_PASSWORD }}
-          remote-path: "/public_html"
           sync: "full"
           local-path: "build/"
         
