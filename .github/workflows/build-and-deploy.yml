@@ -46,11 +46,11 @@ jobs:
       - name: Deploy to Urbony.com
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server:  SERVER
+          server: SERVER
           username: USER
           password: PASSWORD
           local-dir: "build/"
-        env: 
-         SERVER: "${{secrets.FTP_SERVER}}"
-         USER: "${{secrets.FTP_USER}}"
-         PASSWORD: "${{secrets.FTP_PASSWORD}}"
+        env:
+          SERVER: "${{secrets.FTP_SERVER}}"
+          USER: "${{secrets.FTP_USER}}"
+          PASSWORD: "${{secrets.FTP_PASSWORD}}"
