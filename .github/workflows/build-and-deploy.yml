@@ -46,6 +46,7 @@ jobs:
       - name: Deploy to Urbony.com
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server:  urbony.com
-          username: "ca6gi_urbony"
-          password: "Skype257"
+          server:  "${{secrets.FTP_SERVER}}"
+          username: "${{secrets.FTP_USER}}"
+          password: "${{secrets.FTP_PASSWORD}}"
+          local-dir: "build/"
