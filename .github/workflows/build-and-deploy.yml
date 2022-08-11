@@ -1,5 +1,5 @@
 name: Build and Deploy Website
-'on':
+"on":
   push:
     branches:
       - main
@@ -14,16 +14,16 @@ jobs:
         node-version:
           - 14.x
     steps:
-      - name: 'Checkout'
+      - name: "Checkout"
         uses: actions/checkout@v3
-      - name: 'Use Node.js ${{ matrix.node-version }}'
+      - name: "Use Node.js ${{ matrix.node-version }}"
         uses: actions/setup-node@v3
         with:
-          node-version: '${{ matrix.node-version }}'
+          node-version: "${{ matrix.node-version }}"
       - name: Install dependencies
         run: |
-           unset CI
-           npm ci
+          unset CI
+          npm ci
       - name: Run the tests and generate coverage report
         run: npm test -- --coverage
       - name: Check code syntax
@@ -31,7 +31,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          token: '${{ secrets.CODECOV_TOKEN }}'
+          token: "${{ secrets.CODECOV_TOKEN }}"
       - name: Building Project
         run: npm run build --if-present
       - name: Deploy to Github Pages
@@ -40,12 +40,11 @@ jobs:
           target_branch: gh-pages
           build_dir: build
         env:
-          GITHUB_TOKEN: '${{secrets.REPO_TOKEN}}'
+          GITHUB_TOKEN: "${{secrets.REPO_TOKEN}}"
       - name: Deploy to Urbony.com
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-         server: ${{ secrets.FTP_SERVER}}
-         username:  ${{ secrets.FTP_USER }}
-         password: ${{ secrets.FTP_PASSWORD }}
-         local-dir: ${{ secrets.FTP_DIR }}
-        
+          server: ${{secrets.FTP_SERVER}}
+          username: ${{secrets.FTP_USER}}
+          password: ${{secrets.FTP_PASSWORD}}
+          local-dir: ${{secrets.FTP_DIR}}
