@@ -44,9 +44,13 @@ jobs:
       - name: List output files
         run: find build/ -print
       - name: Deploy to Urbony.com
-        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        uses: milanmk/actions-file-deployer@master
         with:
-          server: ${{secrets.FTP_SERVER}}
-          username: ${{secrets.FTP_USER}}
-          password: ${{secrets.FTP_PASSWORD}}
-          local-dir: ${{secrets.FTP_DIR}}
+          remote-protocol: "ftp"
+          remote-host:  ${{ secrets.FTP_SERVER }}
+          remote-user: ${{ secrets.FTP_USER }}
+          remote-password:  ${{ secrets.FTP_PASSWORD }}
+          remote-path: "/public_html"
+          sync: "full"
+          local-path: "build/"
+        
