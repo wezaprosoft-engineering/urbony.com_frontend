@@ -11,7 +11,7 @@ import WhatsApp from '../../assets/images/getintouchwhatsapp.svg'
 import { ManagementContentUpper, ManagementText } from "../Management/Management.styles";
 import { useTranslation } from "react-i18next";
 const AboutUs =() =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )

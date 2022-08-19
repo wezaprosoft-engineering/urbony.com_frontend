@@ -7,6 +7,7 @@ border-radius: 5px 5px 5px 5px;
 background-size: cover;
 margin: 10px;
 margin-bottom: 120px;
+font-family: "Robotto";
 @media screen and (max-width: 414px) {
     width: 340px;
     height: 133px;
@@ -21,9 +22,11 @@ export const CardText = styled.div`
     text-align: center;
     color: white;
     border-radius: 0px 0px 5px 5px;
+    font-family: "Robotto";
 
     h2{
         padding-top: 35px;
+        font-family: "Robotto";
     }
 
     @media screen and (max-width: 414px){

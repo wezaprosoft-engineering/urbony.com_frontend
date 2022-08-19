@@ -17,7 +17,7 @@ const Footer = () => {
             behavior: "smooth",
         });
     };
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )

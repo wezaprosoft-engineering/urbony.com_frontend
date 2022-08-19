@@ -9,7 +9,7 @@ import { useGlobalState, setGlobalState } from "../../store/state";
 import { useTranslation } from "react-i18next";
 
 const LastSales = props =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )

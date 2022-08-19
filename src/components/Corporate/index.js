@@ -20,7 +20,7 @@ import { useTranslation } from "react-i18next";
 import {useLocation} from 'react-router-dom'
 import { EstimationButton, Estimator, EstmationContent } from "../../pages/GetInTouch/GetInTouch.styles";
 const Corporates = props =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [tenant, setTenant] = useState(true)
     const [buyer, setBuyer] = useState(false)
     const [owner, setOwner] = useState(false)

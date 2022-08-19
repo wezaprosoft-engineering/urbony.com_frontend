@@ -5,7 +5,7 @@ import { StepContent, StepDevelopped, Steps, TextContent } from "./SellPropert.s
 import Step from '../../assets/images/step.svg'
 import { useTranslation } from "react-i18next";
 const SellProperty = props =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
     const [step3, setStep3] = useState(false);

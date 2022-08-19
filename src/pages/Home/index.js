@@ -9,7 +9,7 @@ import { useGlobalState } from "../../store/state";
 import { useTranslation } from "react-i18next";
 
 const Home = ()=>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [corporate] = useGlobalState("corporate")
     return(
         <>

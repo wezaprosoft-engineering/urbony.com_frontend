@@ -12,7 +12,7 @@ import ArrowLeft from '../../assets/images/arrow_left.svg'
 import ArrowRight from '../../assets/images/arrow_rigt.svg'
 import { useTranslation } from "react-i18next";
 const HomeCard = props =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     return(
         <>
         <HomeCards>

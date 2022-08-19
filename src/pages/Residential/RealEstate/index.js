@@ -6,7 +6,7 @@ import Estate from '../../../assets/images/realEstate.png'
 import { useTranslation } from "react-i18next";
 
 const RealEstate = () =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )

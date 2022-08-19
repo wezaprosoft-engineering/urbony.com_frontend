@@ -17,7 +17,7 @@ import {useLocation} from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 
 const Popular = props => {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const location = useLocation()
     const [Corporate] = useGlobalState("corporate")
     const [offices, setOffices] = useState(true)

@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 
 const Details = props =>{
-    const {t, i18n} = useTranslation();
+    
     const [checked, setChecked] = useState(false)
    
     const [screen, setScreen] = useState(
@@ -44,7 +44,7 @@ const Details = props =>{
 
 
 const Welcome = props =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [corporate] = useGlobalState("corporate");
     const [more, setMore] = useState(false);
     const [screen, setScreen] = useState(

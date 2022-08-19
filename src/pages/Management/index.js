@@ -361,7 +361,7 @@ const Management = () => {
                 width: 282
             }}>
                     <EstmationContent style={{
-                        marginLeft: 40
+                        marginLeft: i18n.language==='fr'?10: 40
                     }}>
                         {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>

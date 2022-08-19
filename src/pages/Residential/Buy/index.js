@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 
 const Buy = () =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [liveIn, setLiveIn] = useState(true)
     const [invest, setInvest] = useState(false)
 

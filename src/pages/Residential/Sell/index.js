@@ -8,7 +8,7 @@ import { EstimationButton, Estimator, EstmationContent } from "../../GetInTouch/
 import { Content } from "../../../components/Popular/Popular.styles";
 import { useTranslation } from "react-i18next";
 const Sell = ()=>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )

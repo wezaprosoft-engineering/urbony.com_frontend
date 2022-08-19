@@ -37,12 +37,20 @@ const GetInTouch = () => {
                     
                     <Message placeholder={t('getInTouch.messageHolder')}/>
                    <Submit>{t('getInTouch.submit')}</Submit>
-                   <EstimationButton>
+                   {screen ? <EstimationButton>
+                    <EstmationContent style={{
+                        marginLeft: i18n.language==='fr'?10: 40
+                    }}>
+                        {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>:<EstimationButton>
                     <EstmationContent>
                         {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                   </EstimationButton>
+                   </EstimationButton>}
+                   
                    
                     <h2 style={{
                         marginBottom: 40

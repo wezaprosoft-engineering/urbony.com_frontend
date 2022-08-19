@@ -6,7 +6,7 @@ import {useNavigate, useLocation} from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 
 const NavBar = () =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
     const [corporate] = useGlobalState("corporate")

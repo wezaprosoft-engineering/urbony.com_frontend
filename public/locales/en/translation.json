@@ -225,7 +225,18 @@
         "text": "Do you want to buy :",
         "liveIn": "Rent Property To Live in",
         "invest": "Rent out my own Property",
-        "text2": "Our property for rent"
+        "text2": "Our property for rent",
+        "stepTitle": "Are you an owner?",
+        "stepTitle2": "Would you like to rent your property out?",
+        "step1": "Skills accumulated for more than 40 years",
+        "step2": "Unrivaled advertising striking force",
+        "step3": "Selection of potential tenants: check creditworthiness",
+        "step4": "One single point of contact for your file: a personalized relationship",
+        "step5": "Advice on the rental value of your property",
+        "step6": "Advice on the works to be carried out to upgrade your property",
+        "step7": "Whatever the kind of your property: house, apartment, villa, duplex, triplex, penthouse, studio, loft, ground floor",
+        "stepText": "Discover our rental management offer: our team assists you to get relieved of the daily management of your real estate properties and supervises the important stages of the relationship with your tenants.",
+        "button": "Our Management Offer"
     },
     "realEstate":{
         "title": "Our Real Estate Projects",

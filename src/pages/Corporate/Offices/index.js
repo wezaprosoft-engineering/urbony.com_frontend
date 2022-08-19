@@ -3,7 +3,7 @@ import Corporates from "../../../components/Corporate";
 import { useTranslation } from "react-i18next";
 
 const Offices = () =>{
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     return(
         <Corporates title={t('corporate.officeTitle')}
             tenant={t('corporate.officeSpaceTenant')}  buyer={t('corporate.officeSpaceBuyer')} owner={t('corporate.officeSpaceOwner')}

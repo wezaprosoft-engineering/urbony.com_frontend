@@ -9,7 +9,7 @@ export const MenuContent = styled.div`
         height: 650px;
         background-color: rgba(46,15,89,1);
         z-index: 999;
-        
+        font-family: "Roboto";
         position: absolute;
         
         
@@ -39,6 +39,7 @@ border-radius: 20px;
 font-weight: 700;
 font-size: 20px;
 color: white;
+font-family: "Roboto";
 border-color: transparent;
 margin-top: 13px;
 `;

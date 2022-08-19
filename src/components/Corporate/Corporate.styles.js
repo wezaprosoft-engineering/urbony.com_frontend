@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const H2 = styled.h2`
 color: red;
 text-decoration: 3px underline;
+font-family: "Robotto";
 @media screen and (max-width:414px){
     font-size: 15px;
     margin-right: 13px;
@@ -12,6 +13,7 @@ text-decoration: 3px underline;
 
 export const NOFocus = styled.h2`
 cursor: pointer;
+font-family: "Robotto";
 @media screen and (max-width:414px){
     font-size: 15px;
     margin-right: 13px;
@@ -22,16 +24,18 @@ export const Step = styled.div`
 display: flex;
 h3{
     font-weight: 400;
+    font-family: "Robotto";
 }
 `;
 
 export const StepDetail = styled.div`
 margin-left: 20px;
+font-family: "Robotto";
 `;
 
 export const CorporateText = styled.div`
    width: 500px;
-   
+   font-family: "Robotto";
    padding-top: 350px;
    margin-left: 80px;
    color: white;
@@ -52,6 +56,7 @@ export const CorporateContentUpper = styled.div`
     padding-top: 10px;
     padding-bottom: 10px;
     height: auto;
+    font-family: "Robotto";
     min-height: 787px;
     background-color: rgba(46, 15, 89,0.6);
     @media screen and (max-width: 414px){

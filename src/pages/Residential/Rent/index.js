@@ -139,55 +139,55 @@ const Rent = () => {
                         <h1 style={{
                     color: "rgba(46,15,89,1)",
                     
-                }}>Are you an owner?</h1>
+                }}>{t('rent.stepTitle')}</h1>
                     </Title>
                 </Head>
                     
                 <h2 style={{
                     marginBottom: 20,
-                }}>Would you like to rent your property out?</h2>
+                }}>{t('rent.stepTitle2')}</h2>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Skills accumulated for more than 40 years</h3></div>
+                    }}>{t('rent.step1')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Unrivaled advertising striking force</h3></div>
+                    }}>{t('rent.step2')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Selection of potential tenants: check creditworthiness</h3></div>
+                    }}>{t('rent.step3')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>One single point of contact for your file: a personalized relationship</h3></div>
+                    }}>{t('rent.step4')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Advice on the rental value of your property</h3></div>
+                    }}>{t('rent.step5')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Advice on the works to be carried out to upgrade your property</h3></div>
+                    }}>{t('rent.step6')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
@@ -195,12 +195,11 @@ const Rent = () => {
                     marginBottom: 120
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Whatever the kind of your property: house, apartment, villa, duplex, triplex, penthouse, studio, loft, ground floor</h3></div>
+                    }}>{t('rent.step7')}</h3></div>
                 <h3 style={{
                 fontWeight: 400,
                 marginBottom: 100,
-                }}>Discover our rental management offer: our team assists you to get relieved of the daily management of your real estate properties
-                    and supervises the important stages of the relationship with your tenants.
+                }}>{t('rent.stepText')}
                 </h3>
                 <Button style={{
                     width: screen ? '95%': 741,
@@ -210,15 +209,23 @@ const Rent = () => {
                     fontWeight: 700,
                     fontSize: screen? 15:'35px',
                     marginBottom: 100,
-                }}>Our Management Offer</Button>
+                }}>{t('rent.button')}</Button>
 
                 <Popular margin='0px'/>
-                <EstimationButton>
-                    <EstmationContent>
-                        GET FREE ESTIMATION
+                {screen ? <EstimationButton>
+                    <EstmationContent style={{
+                        marginLeft: i18n.language==='fr'?10: 40
+                    }}>
+                    {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                   </EstimationButton>
+                   </EstimationButton>:<EstimationButton>
+                    <EstmationContent>
+                    {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>}
+                
                 
 
                 </>: <>

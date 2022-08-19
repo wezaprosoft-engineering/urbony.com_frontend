@@ -10,6 +10,7 @@ margin-right: 20px;
 
 export const CorporateCardAppartmentText = styled.div`
     width: 100%;
+    font-family: "Robotto";
     height: 50px;
     background-color: rgba(46,15,89,0.6);
     font-weight: 700;

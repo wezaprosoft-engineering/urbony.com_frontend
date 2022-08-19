@@ -206,7 +206,8 @@ margin: auto auto auto auto;
 export const OverlayContent = styled.div`
     margin: auto auto auto auto;
     color: rgba(46,15,89,1);
-   
+    margin-left: 1%;
+    
 `; 
 export const Input = styled.input`
 width: 90%;
