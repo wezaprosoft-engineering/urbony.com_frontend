@@ -5,6 +5,7 @@ width: 1060px;
 height: 650px;
 display: flex;
 flex-wrap: wrap;
+font-family: "Roboto";
 @media screen and (max-width: 414px) {
     width: 100%;
     
@@ -13,6 +14,7 @@ flex-wrap: wrap;
 
 export const Content = styled.div`
     margin: 60px;
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
        margin: 10px;
        
@@ -29,6 +31,7 @@ box-sizing: border-box;
 font-weight: 400;
 font-size: 20px;
 color: rgba(46 ,15, 89,1);
+font-family: "Roboto";
 
 @media screen and (max-width: 414px) {
     width: 95%;
@@ -42,6 +45,7 @@ export const Select = styled.select`
     font-weight: 400;
     border-radius: 5px;
     color: rgba(46,15,89,1);
+    font-family: "Roboto";
 
     @media screen and (max-width: 414px) {
     width: 95%;
@@ -50,7 +54,7 @@ export const Select = styled.select`
 `;
 export const Star = styled.span`
 color: rgba(217, 11, 66,1);
-
+font-family: "Roboto";
 `;
 
 export const Container = styled.div`
@@ -69,6 +73,7 @@ export const SubmitButton = styled.button`
     border-color: transparent;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Roboto";
 
   
 `;

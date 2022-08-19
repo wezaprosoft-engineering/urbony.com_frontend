@@ -90,6 +90,7 @@ export const TextMenu = styled.h2`
 font-weight: 500;
 font-style: "Roboto";
 size: 20px;
+font-family: "Roboto";
 line-height: 23.44px;
 padding-left: 10px;
 padding-right: 10px;
@@ -103,6 +104,7 @@ export const TextMenuHeader = styled.h2`
 font-weight: 500;
 font-style: "Roboto";
 size: 20px;
+font-family: "Roboto";
 line-height: 23.44px;
 padding-left: 10px;
 padding-right: 10px;

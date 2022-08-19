@@ -14,9 +14,10 @@ import PrivateOffices from '../../assets/images/PrivateOffices.png'
 import Warehouses from '../../assets/images/Warehouses.png'
 import Depots from '../../assets/images/Depots.png'
 import {useLocation} from 'react-router-dom'
-
+import { useTranslation } from "react-i18next";
 
 const Popular = props => {
+    const {t, i18n} = useTranslation();
     const location = useLocation()
     const [Corporate] = useGlobalState("corporate")
     const [offices, setOffices] = useState(true)
@@ -97,13 +98,13 @@ const Popular = props => {
                     <Head>
                         
                     <Line/>
-                    {Corporate ? <h3>Our Latest Deals</h3>:<h3>Popular</h3>}
+                    {Corporate ? <h3>{t('popular.corporateTitle')}</h3>:<h3>{t('popular.title')}</h3>}
                     </Head>
 
                     <Head style={{
                         color: "rgba(217,11,66,1)"
                         }}>
-                        <h3>Explore All</h3>
+                        <h3>{t('popular.explore')}</h3>
                         <Arrow src={arrow}/>
                         
                         
@@ -118,7 +119,7 @@ const Popular = props => {
                     color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700
-                }}>Our Latest deal</h2>
+                }}>{t('popular.corporateTitle')}</h2>
                 <CorporateContent>
                     
                     {offices ? <h2 style={{
@@ -166,32 +167,32 @@ const Popular = props => {
                     color: "rgba(46,15,89,1)",
                     size: 35,
                     fontWeight: 700
-                }}>Our Popular Homes</h2>}
+                }}>{t('popular.popularHomes')}</h2>}
                 
                 {Industrial || Commercial || Offices ? <>{
                     screen ? <>
                         { <>
                             {
                                 location.pathname==='/offices'? <>
-                                {corporatecard1 ? <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={CoworkingDesk} next={CorporateCard2}/>:
+                                {corporatecard1 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={CoworkingDesk} next={CorporateCard2}/>:
                             <>
-                            {corporatecard2 ? <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={EnterpriseOffice} prev={CorporateCard1} next={CorporateCard3}/>:
+                            {corporatecard2 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={EnterpriseOffice} prev={CorporateCard1} next={CorporateCard3}/>:
                             
-                            <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={PrivateOffices} prev={CorporateCard2}/>}
+                            <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={PrivateOffices} prev={CorporateCard2}/>}
                             </>
                               }  </>: <>{
                                     location.pathname==='/commercial-space'?
-                                    <>{corporatecard1 ? <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={EnterpriseOffice} next={CorporateCard2}/>:
+                                    <>{corporatecard1 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={EnterpriseOffice} next={CorporateCard2}/>:
                                     <>
-                                    {corporatecard2 ? <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={PrivateOffices} prev={CorporateCard1} next={CorporateCard3}/>:
+                                    {corporatecard2 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={PrivateOffices} prev={CorporateCard1} next={CorporateCard3}/>:
                                     
-                                    <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={CoworkingDesk} prev={CorporateCard2}/>}
+                                    <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={CoworkingDesk} prev={CorporateCard2}/>}
                                     </>}</>: <>
-                                    {corporatecard1 ? <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={Warehouses} next={CorporateCard2}/>:
+                                    {corporatecard1 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={Warehouses} next={CorporateCard2}/>:
                             <>
-                            {corporatecard2 ? <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={Depots} prev={CorporateCard1} next={CorporateCard3}/>:
+                            {corporatecard2 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={Depots} prev={CorporateCard1} next={CorporateCard3}/>:
                             
-                            <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={Servicedoffices} prev={CorporateCard2}/>}
+                            <CorporateCards buttonText={t('Card.book')}buttonColor="rgba(217, 11, 66 ,1)" housePicture={Servicedoffices} prev={CorporateCard2}/>}
                             </>
                                 }</>
                                 }</>
@@ -200,18 +201,18 @@ const Popular = props => {
                             
                         }
                     </>:<Home>
-                    <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
-                    <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
-                    <CorporateCards buttonText="Book Now" buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
+                    <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
+                    <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
+                    <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
                 </Home>
                 }</>: <Home>
                     {screen ?
                         <>
                         {card1 ?
-                            <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House1} next={Card2}/>:<>
-                            {card2 ? <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House2} next={Card3} prev={Card1}/>: 
+                            <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'): t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House1} next={Card2}/>:<>
+                            {card2 ? <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'): t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House2} next={Card3} prev={Card1}/>: 
                             
-                            <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House3} prev={Card2}/>}
+                            <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'): t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House3} prev={Card2}/>}
                             </>
                         }
                         </>
@@ -220,9 +221,9 @@ const Popular = props => {
                         
                     : <>
                     
-                    <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House1} />
-                    <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House2} />
-                    <HomeCard buttonText={location.pathname==='/rent'? 'Rent': 'Book Now'} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House3} /></>}
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'):  t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'): t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House2} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'): t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House3} /></>}
                     
                 </Home>}
 

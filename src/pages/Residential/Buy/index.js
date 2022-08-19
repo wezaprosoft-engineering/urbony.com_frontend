@@ -7,9 +7,11 @@ import HouseBuy3 from '../../../assets/images/housebuy3.png'
 import LastSales from "../../../components/LastSales";
 import PropertyForSell from "../../../components/PropertyForSell";
 import Popular from "../../../components/Popular";
+import { useTranslation } from "react-i18next";
 
 
 const Buy = () =>{
+    const {t, i18n} = useTranslation();
     const [liveIn, setLiveIn] = useState(true)
     const [invest, setInvest] = useState(false)
 
@@ -31,11 +33,11 @@ const Buy = () =>{
                 <Title>
                     <Head>
                         <Line/>
-                        <h3>Buying to live or invest?</h3>
+                        <h3>{t('buy.title')}</h3>
                     </Head>
                 </Title>
                 
-                <h2>Do you want to buy :</h2>
+                <h2>{t('buy.text')}</h2>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -45,16 +47,16 @@ const Buy = () =>{
                 <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 4px'
-                }}>To Live in</h4>: <h4 style={{
+                }}>{t('buy.liveIn')}</h4>: <h4 style={{
                     cursor: 'pointer'
-                }} onClick={LiveIn}>To Live in</h4>}
+                }} onClick={LiveIn}>{t('buy.liveIn')}</h4>}
                     
                     {invest ? <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 4px'
-                }}>To Invest</h4>:<h4 style={{
+                }}>{t('buy.invest')}</h4>:<h4 style={{
                     cursor: 'pointer'
-                }} onClick={Invest}>To Invest</h4>}
+                }} onClick={Invest}>{t('buy.invest')}</h4>}
                     
                 </div>
 
@@ -68,7 +70,7 @@ const Buy = () =>{
                         
                     }}>
                         <CardText>
-                            <h2>Apartments</h2>
+                            <h2>{t('buy.apartments')}</h2>
                         </CardText>
                     </AppartmentCard >
                     <AppartmentCard  style={{
@@ -76,7 +78,7 @@ const Buy = () =>{
                         
                     }}>
                         <CardText>
-                            <h2>House</h2>
+                            <h2>{t('buy.house')}</h2>
                         </CardText>
                     </AppartmentCard >
                     <AppartmentCard  style={{
@@ -84,7 +86,7 @@ const Buy = () =>{
                         
                     }}>
                         <CardText>
-                            <h2>Brand New Property</h2>
+                            <h2>{t('buy.brandNewProperty')}</h2>
                         </CardText>
                     </AppartmentCard >
                 </Home>

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
+
 export const Wrapper = styled.div`
     width: 100%;
+    font-family: "Roboto";
     @media screen and(max-width: 414px){
         margin: 0px; padding: 0ox
     }
@@ -10,6 +12,7 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
     width: 100%;
     min-height: 700px;
+    font-family: "Roboto";
     @media screen and (max-width: 414px) {
         margin: 0px; 
         padding: 0px
@@ -31,7 +34,7 @@ export const GetInTouchForm = styled.div`
     color: rgba(46,15,89,1);
     width: 90%;
     margin: auto auto auto auto;
-    
+    font-family: "Roboto";
 
     @media screen and (max-width: 414px){
         margin: auto 10px 0px auto;
@@ -43,7 +46,7 @@ export const GetInTouchInput = styled.input`
 width: 893px;
 height: 55px;
 margin-bottom: 10px;
-
+font-family: "Roboto";
 border-radius: 5px;
 font-size: 20px;
 color: rgba(46,15,89,1);
@@ -63,6 +66,7 @@ height: 118.29px;
 font-size: 20px;
 color: rgba(46,15,89,1);
 margin-right: 10%;
+font-family: "Roboto";
 @media screen and (max-width: 414px){
     width: 90%;
     height: 97px;
@@ -81,7 +85,7 @@ height: 55px;
 background-color: red;
 font-weight: 700;
 font-size: 30px;
-
+font-family: "Roboto";
 margin-top: 10px;
 margin-bottom: 10px;
 border-color: transparent;
@@ -106,7 +110,7 @@ export const EstimationButton = styled.button`
     color: white;
     border-color: transparent;
     cursor: pointer;
-
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
         width: 90%;
         height: 39px;
@@ -128,13 +132,14 @@ export const Estimator = styled.img`
 `;
 
 export const EstmationContent = styled.div`
+
     display: flex;
-    width: 450px;
+    width: 650px;
     margin: auto auto auto auto;
     
 
     @media screen and (max-width: 414px){
-        width: 260px;
+        width: 270px;
         margin: auto auto auto 17%;
         align-items: center;
     }

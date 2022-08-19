@@ -8,7 +8,9 @@ import Bad from '../../assets/images/bad.svg'
 import Estimation from '../../assets/images/estimation.svg'
 import SellerRequestForm from "../../components/forms/SellerRequestForm";
 import SellProperty from "../../components/SellProperty";
+import { useTranslation } from "react-i18next";
 const Management = () => {
+    const {t, i18n} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -22,18 +24,18 @@ const Management = () => {
         <Wrapper>
             <ManagementContentUpper>
             <ManagementText>
-                    <h1>Urbony Management: </h1>
-                    <h1>A Professional and transparent rental management</h1>
+                    <h1>{t('management.first')}</h1>
+                    <h1>{t('management.third')}</h1>
                     <h2 style={{
                         marginTop: 100
-                    }}>Discover our offers in rental management</h2>
+                    }}>{t('management.third')}</h2>
                 </ManagementText>
             </ManagementContentUpper>
         </Wrapper>
         <Wrapper style={{
             backgroundImage: 'none'
         }}>
-        <SellProperty title="Property management" title1="Urbony Management: A Professional and transparent rental management" step="No matter the situation of your property, we take full control management. Trevi Management is a team dedicated to the daily management of your real estate properties, and it helps you with all important steps of the relationship with your tenants. In addition to the collection of your rents, we become the single point of contact with your tenant and you no longer have to worry about the administrative and technical management of your property (works, maintenance, claims)."/>
+        <SellProperty title={t('sellProperty.corporateTitle')} title1={t('sellProperty.corporateTitle1')} step={t('sellProperty.corporateStep')}/>
         <Content>
             <ManagementContent>
         <Title>
@@ -44,7 +46,7 @@ const Management = () => {
                 }}/>
                 <h1 style={{
                     color: 'rgba(46,15,89,1)'
-                }}>Who calls upon our rental management services?</h1>
+                }}>{t('management.title')}</h1>
             </Head>
         </Title>
         <ManagementOffer>
@@ -52,26 +54,20 @@ const Management = () => {
                 <h2 style={{
                     
                     color: 'rgba(46,15,89,1)'
-                }}>Invest or landlord</h2>
-                <p>Many owners prefer not to deal with the obligations associated to property management 
-                    and entrust us with the rental management of their properties.</p>
+                }}>{t('management.title1')}</h2>
+                <p>{t('management.text1')}</p>
             </ManagementContact>
             <ManagementContact>
                 <h2 style={{
                     color: 'rgba(46,15,89,1)'
-                }}>Member of the african diaspora and expatriates</h2>
-                <p>Many people who work for international or Panafrican institutions and accept an assignment abroad for a few years, 
-                    entrust us with the rental and management of their real estate for the duration of their stay abroad.
-                </p>
+                }}>{t('management.title2')}</h2>
+                <p>{t('management.text2')}</p>
             </ManagementContact>
             <ManagementContact>
                 <h2 style={{
                     color: 'rgba(46,15,89,1)'
-                }}>Private assets company or condominium</h2>
-                <p>We manage large property holdings owned by companies or joint owners while respecting the interests of each party, 
-                    in complete independence and objectivity with a permanent concern 
-                    for quality and professionalism.
-                </p>
+                }}>{t('management.title3')}</h2>
+                <p>{t('management.text3')}</p>
             </ManagementContact>
         </ManagementOffer>
         </ManagementContent>
@@ -86,7 +82,7 @@ const Management = () => {
                 }}/>
                 <h1 style={{
                     color: 'rgba(46,15,89,1)',
-                }}>Rental management fees: two formulas to control your costs according to your needs.</h1>
+                }}>{t('management.cardTitle')}</h1>
             </Head>
         </Title>
         <div style={{
@@ -99,10 +95,10 @@ const Management = () => {
                 <h2 style={{
                     marginTop: 52,
                     
-                }}>Basic offer</h2>
-                <h3>Simple Rental Management</h3>
-                <h2>as from</h2>
-                <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>excl. VAT / month</h2>
+                }}>{t('management.card1Content1')}</h2>
+                <h3>{t('management.card1Content2')}</h3>
+                <h2>{t('management.asFrom')}</h2>
+                <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>{t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
@@ -112,8 +108,7 @@ const Management = () => {
                         textAlign: 'left',
                         marginTop: 18
                     }}>
-                    <h4>A complete management mandate combining accounting, 
-                        technical and administrative services </h4></div>
+                    <h4>{t('management.completeManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -124,7 +119,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>A periodic management report </h4></div>
+                    <h4>{t('management.periodicManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Bad} alt='bad' style={{
@@ -135,7 +130,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>“Unpaid rent” insurance  </h4></div>
+                    <h4>{t('management.rentInsurance')}</h4></div>
                 </Benefits>
                 
                 {screen ? <CardButton style={{
@@ -144,20 +139,20 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
+                }}>{t('management.request')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: 100
-                }}>REQUEST AN OFFER</CardButton>}
+                }}>{t('management.request')}</CardButton>}
             </ManagementCard>:<ManagementCard>
                 <h2 style={{
                     marginTop: 52
-                }}>Basic offer</h2>
-                <h3>Simple Rental Management</h3>
-                <h2>as from</h2>
-                <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>excl. VAT / month</h2>
+                }}>{t('management.card1Content1')}</h2>
+                <h3>{t('management.card1Content2')}</h3>
+                <h2>{t('management.asFrom')}</h2>
+                <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>{t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
@@ -167,8 +162,7 @@ const Management = () => {
                         textAlign: 'left',
                         marginTop: 18
                     }}>
-                    <h4>A complete management mandate combining accounting, 
-                        technical and administrative services </h4></div>
+                    <h4>{t('management.completeManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -179,7 +173,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>A periodic management report </h4></div>
+                    <h4>{t('management.periodicManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Bad} alt='bad' style={{
@@ -190,7 +184,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>“Unpaid rent” insurance  </h4></div>
+                    <h4>{t('management.rentInsurance')}</h4></div>
                 </Benefits>
                 
                 {screen ? <CardButton style={{
@@ -199,13 +193,13 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
+                }}>{t('management.request')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: 100
-                }}>REQUEST AN OFFER</CardButton>}
+                }}>{t('management.request')}</CardButton>}
             </ManagementCard>}
             {screen ? <ManagementCard style={{
                 background: '#2E0F59',
@@ -219,12 +213,12 @@ const Management = () => {
                     fontSize: '25px',
                     fontWeight: 700,
                     color: 'white'
-                }}>Best Value</div>}
+                }}>{t('management.card2Content1')}</div>}
                
-            <h2>Premium offer</h2>
-                <h3>Rental management with guarantee of unpaid rents</h3>
-                <h2>as from</h2>
-                <h2>10,000 BIF excl. VAT / month</h2>
+            <h2>{t('management.card2Content2')}</h2>
+                <h3>{t('management.card2Content3')}</h3>
+                <h2>{t('management.asFrom')}</h2>
+                <h2>10,000 BIF {t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
@@ -234,8 +228,7 @@ const Management = () => {
                         textAlign: 'left',
                         marginTop: 18
                     }}>
-                    <h4>Rental management with unpaid rent guarantee 
-                        from 10,000 BIF excl. VAT/month  </h4></div>
+                    <h4>{t('management.card2Content4')}</h4></div>
                 </Benefits>
                 <Benefits>
                     {screen ? <img src={Nice} alt='nice' style={{
@@ -247,8 +240,7 @@ const Management = () => {
                         textAlign: 'left',
                         marginTop: 18
                     }}>
-                    <h4>A complete management mandate combining accounting, 
-                        technical and administrative services </h4></div>
+                    <h4>{t('management.completeManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -259,7 +251,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>A periodic management report </h4></div>
+                    <h4>{t('management.periodicManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -270,7 +262,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>“Unpaid rent” insurance  </h4></div>
+                    <h4>{t('management.rentInsurance')}</h4></div>
                 </Benefits>
                 {screen ? <CardButton style={{
                     width: '100%',
@@ -278,13 +270,13 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
+                }}>{t('management.request')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>REQUEST AN OFFER</CardButton>}
+                }}>{t('management.request')}</CardButton>}
                 
             </ManagementCard>: <ManagementCard style={{
                 background: '#2E0F59',
@@ -297,12 +289,12 @@ const Management = () => {
                     fontSize: '25px',
                     fontWeight: 700,
                     color: 'white'
-                }}>Best Value</div>}
+                }}>{t('management.card2Content1')}</div>}
                
-            <h2>Premium offer</h2>
-                <h3>Rental management with guarantee of unpaid rents</h3>
-                <h2>as from</h2>
-                <h2>10,000 BIF excl. VAT / month</h2>
+            <h2>{t('management.card2Content2')}</h2>
+                <h3>{t('management.card2Content3')}</h3>
+                <h2>{t('management.asFrom')}</h2>
+                <h2>10,000 BIF {t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
@@ -312,8 +304,7 @@ const Management = () => {
                         textAlign: 'left',
                         marginTop: 18
                     }}>
-                    <h4>Rental management with unpaid rent guarantee 
-                        from 10,000 BIF excl. VAT/month  </h4></div>
+                    <h4>{t('management.card2Content4')}</h4></div>
                 </Benefits>
                 <Benefits>
                     {screen ? <img src={Nice} alt='nice' style={{
@@ -325,8 +316,7 @@ const Management = () => {
                         textAlign: 'left',
                         marginTop: 18
                     }}>
-                    <h4>A complete management mandate combining accounting, 
-                        technical and administrative services </h4></div>
+                    <h4>{t('management.completeManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -337,7 +327,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>A periodic management report </h4></div>
+                    <h4>{t('management.periodicManagement')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -348,7 +338,7 @@ const Management = () => {
                         textAlign: 'left',
                         
                     }}>
-                    <h4>“Unpaid rent” insurance  </h4></div>
+                    <h4>{t('management.rentInsurance')}</h4></div>
                 </Benefits>
                 {screen ? <CardButton style={{
                     width: '100%',
@@ -356,13 +346,13 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                    
-                }}>REQUEST AN OFFER</CardButton>: <CardButton style={{
+                }}>{t('management.request')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>REQUEST AN OFFER</CardButton>}
+                }}>{t('management.request')}</CardButton>}
                 
             </ManagementCard>}
             
@@ -373,14 +363,14 @@ const Management = () => {
                     <EstmationContent style={{
                         marginLeft: 40
                     }}>
-                        GET FREE ESTIMATION
+                        {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
                    </EstimationButton>:  <EstimationButton style={{
                     borderRadius: 10
             }}>
                     <EstmationContent>
-                        GET FREE ESTIMATION
+                    {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
                    </EstimationButton>}
@@ -394,7 +384,7 @@ const Management = () => {
         
         </Wrapper>
         
-        <SellerRequestForm text="Would you like your property Rented by us? Contact us for more information"/>
+        <SellerRequestForm text={t('Welcome.text2')}/>
         </>
     )
 }

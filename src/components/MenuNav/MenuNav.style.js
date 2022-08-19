@@ -28,6 +28,7 @@ h3{
     color: white;
     font-weight: 700;
     font-size: 20px;
+    font-family: "Roboto";
 }
 `;
 export const MenuButton = styled.button`

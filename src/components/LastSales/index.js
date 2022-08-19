@@ -6,9 +6,10 @@ import House2 from '../../assets/images/house2.png'
 import House3 from '../../assets/images/house3.png'
 import HomeCard from "../HomeCards";
 import { useGlobalState, setGlobalState } from "../../store/state";
-
+import { useTranslation } from "react-i18next";
 
 const LastSales = props =>{
+    const {t, i18n} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -44,13 +45,13 @@ const LastSales = props =>{
                         <Line style={{
                             border: '3px solid rgba(46,15,89,1)'
                         }}/>
-                        <h3>Our last sales</h3>
+                        <h3>{t('lastSales.title')}</h3>
                     </Head>
 
                     <Head style={{
                         color: "rgba(217,11,66,1)"
                         }}>
-                        <h3>Explore All</h3>
+                        <h3>{t('popular.explore')}</h3>
                         <Arrow src={arrow}/>
                         
                     </Head>
@@ -63,17 +64,17 @@ const LastSales = props =>{
                 <Home>
                     {screen ?<>
                         {card1 ?
-                            <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1} next={Card2}/>:<>
-                            {card2 ? <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House2} next={Card3} prev={Card1}/>: 
+                            <HomeCard buttonText={t('Card.sold')} buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1} next={Card2}/>:<>
+                            {card2 ? <HomeCard buttonText={t('Card.sold')}buttonColor="rgba(46, 15, 89 ,1)" housePicture={House2} next={Card3} prev={Card1}/>: 
                             
-                            <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House3} prev={Card2}/>}
+                            <HomeCard buttonText={t('Card.sold')} buttonColor="rgba(46, 15, 89 ,1)" housePicture={House3} prev={Card2}/>}
                             </>
                         }
                         </>
                     : <>
-                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
-                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
-                    <HomeCard buttonText="SOLD" buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/> </>}
+                    <HomeCard buttonText={t('Card.sold')} buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
+                    <HomeCard buttonText={t('Card.sold')} buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/>
+                    <HomeCard buttonText={t('Card.sold')} buttonColor="rgba(46, 15, 89 ,1)" housePicture={House1}/> </>}
                     
                 </Home>
                 

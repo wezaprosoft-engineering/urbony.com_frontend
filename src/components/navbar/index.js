@@ -3,8 +3,10 @@ import { TextMenu } from "../Header/Header.styles";
 import { Content, Wrapper, TextMenu2 } from "./Navbar.styles";
 import { useGlobalState, setGlobalState } from "../../store/state";
 import {useNavigate, useLocation} from 'react-router-dom'
+import { useTranslation } from "react-i18next";
 
 const NavBar = () =>{
+    const {t, i18n} = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
     const [corporate] = useGlobalState("corporate")
@@ -148,18 +150,18 @@ const NavBar = () =>{
     })
     return(
         <Wrapper>{corporate ? <Content>
-            {offices && !getIntouch ? <TextMenu2>OFFICES</TextMenu2>:<TextMenu onClick={makeOffices}>OFFICES</TextMenu>}
-            {commercialSpace && !getIntouch ? <TextMenu2>COMMERCIAL SPACE</TextMenu2>: <TextMenu onClick={makeCommercialSpace}>COMMERCIAL SPACE</TextMenu>}
-            {industrialSpace ? <TextMenu2>INDUSTRIAL SPACE</TextMenu2>: <TextMenu onClick={makeIndustrialSpace}>INDUSTRIAL SPACE</TextMenu>}
-            {management && !getIntouch  ? <TextMenu2>MANAGEMENT</TextMenu2>: <TextMenu onClick={makeManagement}>MANAGEMENT</TextMenu>}
-            {aboutUs && !getIntouch  ? <TextMenu2>ABOUT US</TextMenu2>: <TextMenu onClick={makeAboutUs}>ABOUT US</TextMenu>}
+            {offices && !getIntouch ? <TextMenu2>{t('NavBar.offices')}</TextMenu2>:<TextMenu onClick={makeOffices}>{t('NavBar.offices')}</TextMenu>}
+            {commercialSpace && !getIntouch ? <TextMenu2>{t('NavBar.commercialSpace')}</TextMenu2>: <TextMenu onClick={makeCommercialSpace}>{t('NavBar.commercialSpace')}</TextMenu>}
+            {industrialSpace ? <TextMenu2>{t('NavBar.industrialSpace')}</TextMenu2>: <TextMenu onClick={makeIndustrialSpace}>{t('NavBar.industrialSpace')}</TextMenu>}
+            {management && !getIntouch  ? <TextMenu2>{t('NavBar.management')}</TextMenu2>: <TextMenu onClick={makeManagement}>{t('NavBar.management')}</TextMenu>}
+            {aboutUs && !getIntouch  ? <TextMenu2>{t('NavBar.aboutUs')}</TextMenu2>: <TextMenu onClick={makeAboutUs}>{t('NavBar.aboutUs')}</TextMenu>}
             </Content> : <Content>
-            {sell && !getIntouch ? <TextMenu2>SELL</TextMenu2>: <TextMenu onClick={makeSell}>SELL</TextMenu>}
-            {buy && !getIntouch ? <TextMenu2>BUY</TextMenu2>: <TextMenu onClick={makeBuy}>BUY</TextMenu>}
-            {rent && !getIntouch ? <TextMenu2>RENT</TextMenu2>: <TextMenu onClick={makeRent}>RENT</TextMenu>}
-            {realEstate && !getIntouch ? <TextMenu2>REAL ESTATE PROJECTS</TextMenu2>: <TextMenu onClick={makeRealEstate}>REAL ESTATE PROJECTS</TextMenu>}
-            {management && !getIntouch ? <TextMenu2>MANAGEMENT</TextMenu2>: <TextMenu onClick={makeManagement}>MANAGEMENT</TextMenu>}
-            {aboutUs && !getIntouch ? <TextMenu2>ABOUT US</TextMenu2>: <TextMenu onClick={makeAboutUs}>ABOUT US</TextMenu>}
+            {sell && !getIntouch ? <TextMenu2>{t('NavBar.sell')}</TextMenu2>: <TextMenu onClick={makeSell}>{t('NavBar.sell')}</TextMenu>}
+            {buy && !getIntouch ? <TextMenu2>{t('NavBar.buy')}</TextMenu2>: <TextMenu onClick={makeBuy}>{t('NavBar.buy')}</TextMenu>}
+            {rent && !getIntouch ? <TextMenu2>{t('NavBar.rent')}</TextMenu2>: <TextMenu onClick={makeRent}>{t('NavBar.rent')}</TextMenu>}
+            {realEstate && !getIntouch ? <TextMenu2>{t('NavBar.realEstate')}</TextMenu2>: <TextMenu onClick={makeRealEstate}>{t('NavBar.realEstate')}</TextMenu>}
+            {management && !getIntouch ? <TextMenu2>{t('NavBar.management')}</TextMenu2>: <TextMenu onClick={makeManagement}>{t('NavBar.management')}</TextMenu>}
+            {aboutUs && !getIntouch ? <TextMenu2>{t('NavBar.aboutUs')}</TextMenu2>: <TextMenu onClick={makeAboutUs}>{t('NavBar.aboutUs')}</TextMenu>}
             </Content>}
             
         </Wrapper>

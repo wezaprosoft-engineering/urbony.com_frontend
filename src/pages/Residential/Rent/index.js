@@ -11,8 +11,10 @@ import LastSales from "../../../components/LastSales";
 import { EstimationButton, EstmationContent, Estimator } from "../../GetInTouch/GetInTouch.styles";
 import Popular from "../../../components/Popular";
 import PropertyForSell from "../../../components/PropertyForSell";
+import { useTranslation } from "react-i18next";
 
 const Rent = () => {
+    const {t, i18n} = useTranslation();
     const [rentOut, setRentOut] = useState(false)
     const [liveIn, setLiveIn] = useState(true)
 
@@ -40,12 +42,12 @@ const Rent = () => {
                 <Title>
                     <Head>
                         <Line/>
-                        <h3>Renting to live or Renting out your Property?</h3>
+                        <h3>{t('rent.title')}</h3>
                         
                     </Head>
                 </Title>
 
-                <h2>Do you want to: </h2>
+                <h2>{t('rent.text')}</h2>
                 {screen ? <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -58,17 +60,17 @@ const Rent = () => {
                     color: 'red',
                     textDecoration: 'underline 5px',
                     marginRight: screen ? 10 : 0
-                }}>Rent Property to Live in</h4>:<h4 style={{
+                }}>{t('rent.liveIn')}</h4>:<h4 style={{
                     cursor: 'pointer',
                     marginRight: screen ? 10 : 0
-                }} onClick={LiveIn}>Rent property to Live In</h4>}
+                }} onClick={LiveIn}>{t('rent.liveIn')}</h4>}
                 {rentOut?
                 <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 5px'
-                }}>Rent out my own Property</h4>: <h4 style={{
+                }}>{t('rent.invest')}</h4>: <h4 style={{
                     cursor: 'pointer'
-                }} onClick={RentOut}>Rent out my own Property</h4>}
+                }} onClick={RentOut}>{t('rent.invest')}</h4>}
                     
                     
                     
@@ -81,16 +83,16 @@ const Rent = () => {
                 {liveIn ? <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 5px'
-                }}>Rent Property to Live in</h4>:<h4 style={{
+                }}>{t('rent.liveIn')}</h4>:<h4 style={{
                     cursor: 'pointer'
-                }} onClick={LiveIn}>Rent property to Live In</h4>}
+                }} onClick={LiveIn}>{t('rent.liveIn')}</h4>}
                 {rentOut?
                 <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 5px'
-                }}>Rent out my own Property</h4>: <h4 style={{
+                }}>{t('rent.invest')}</h4>: <h4 style={{
                     cursor: 'pointer'
-                }} onClick={RentOut}>Rent out my own Property</h4>}
+                }} onClick={RentOut}>{t('rent.invest')}</h4>}
                     
                     
                     
@@ -107,21 +109,21 @@ const Rent = () => {
                         backgroundImage: `url(${HouseBuy1})`,
                     }}>
                         <CardText>
-                            <h2>Apartments</h2>
+                            <h2>{t('buy.apartments')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy2})`,
                     }}>
                         <CardText>
-                            <h2>House</h2>
+                            <h2>{t('buy.house')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy3})`,
                     }}>
                         <CardText>
-                            <h2>Brand New Property</h2>
+                            <h2>{t('buy.brandNewProperty')}</h2>
                         </CardText>
                     </AppartmentCard>
                 </Home>
@@ -228,21 +230,21 @@ const Rent = () => {
                         backgroundImage: `url(${HouseBuy1})`,
                     }}>
                         <CardText>
-                            <h2>Apartments</h2>
+                            <h2>{t('buy.apartments')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy2})`,
                     }}>
                         <CardText>
-                            <h2>House</h2>
+                            <h2>{t('buy.house')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy3})`,
                     }}>
                         <CardText>
-                            <h2>Brand New Property</h2>
+                            <h2>{t('buy.brandNewProperty')}</h2>
                         </CardText>
                     </AppartmentCard>
                 </Home>

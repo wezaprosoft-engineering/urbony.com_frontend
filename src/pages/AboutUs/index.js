@@ -9,7 +9,9 @@ import Location from '../../assets/images/getintouchlocation.svg'
 import Call from '../../assets/images/getintouchcall.svg'
 import WhatsApp from '../../assets/images/getintouchwhatsapp.svg'
 import { ManagementContentUpper, ManagementText } from "../Management/Management.styles";
+import { useTranslation } from "react-i18next";
 const AboutUs =() =>{
+    const {t, i18n} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -23,14 +25,14 @@ const AboutUs =() =>{
                 height: 259
             }}>
             <ManagementText>
-                <h2>Urbony: A platform integrating real estate services.</h2>
+                <h2>{t('aboutUs.welcome')}</h2>
                 </ManagementText>
                 
             </ManagementContentUpper></Wrapper1>: <Wrapper1><Content1 style={{
                 minHeight: 300
             }}>
             <ManagementText>
-                <h1>Urbony: A platform integrating real estate services.</h1>
+                <h1>{t('aboutUs.welcome')}</h1>
                 </ManagementText>
                 
             </Content1></Wrapper1>}
@@ -46,37 +48,37 @@ const AboutUs =() =>{
                     fontSize: 20,
                     margin: 10
                 }}>
-                    A team of professionals who demonstrate every day a perfect knowledge of each of our businesses: 
+                    {t('aboutUs.title')}
                 </h3>: <h2 style={{
                     fontWeight: 500,
                     fontSize: 30
-                }}>A team of professionals who demonstrate every day a perfect knowledge of each of our businesses: </h2>}
+                }}>{t('aboutUs.title')}</h2>}
                 
 
                     {screen ? <AboutText>
                         
                         
-                            <h4>Residential Real Estate</h4>
-                            <h4>New Real Estate</h4>
-                            <h4>Corporate Real Estate</h4>
-                            <h4>Trustee(co-ownership)</h4>
-                            <h4>Rental Management</h4>
-                            <h4>Property Valuation</h4>
+                            <h4>{t('aboutUs.content1')}</h4>
+                            <h4>{t('aboutUs.content2')}</h4>
+                            <h4>{t('aboutUs.content3')}</h4>
+                            <h4>{t('aboutUs.content4')}</h4>
+                            <h4>{t('aboutUs.content5')}</h4>
+                            <h4>{t('aboutUs.content6')}</h4>
                         
                         </AboutText>: 
                         <div>
                         
                     <AboutContent>
-                        <h3>Residential Real Estate</h3>
-                        <h3>New Real Estate</h3>
-                        <h3>Corporate Real Estate</h3>
+                        <h3>{t('aboutUs.content1')}</h3>
+                        <h3>{t('aboutUs.content2')}</h3>
+                        <h3>{t('aboutUs.content3')}</h3>
                     </AboutContent>
                     <AboutContent>
-                        <h3>Trustee(co-ownership)</h3>
-                        <h3>Rental Management</h3>
+                        <h3>{t('aboutUs.content4')}</h3>
+                        <h3>{t('aboutUs.content5')}</h3>
                     </AboutContent>
                     <AboutContent>
-                        <h3>Property Valuation</h3>
+                        <h3>{t('aboutUs.content6')}</h3>
                     </AboutContent>
                     </div>}
                     
@@ -84,28 +86,16 @@ const AboutUs =() =>{
                 {screen ? <><p style={{
                     fontSize: 18,
                     margin: 10
-                }}>We are aiming for a leading position thanks to the control of the market 
-                    by each of our departments 
-                    (Urbony rental and sales, Urbony Rental Management)</p>
+                }}>{t('aboutUs.p1')}</p>
                 <p style={{
                     fontSize: 18,
                     margin: 10
-                }}>A commitment to pursue a single objective: "every day better serve its customers". 
-                    An independent company active in the business of real estate transactions 
-                    (purchase/sale and rental) and property administration 
-                    (property management, rental and trustee management) 
-                    in the residential and professional sector.</p></> : <><p style={{
+                }}>{t('aboutUs.p2')}</p></> : <><p style={{
                     fontSize: 18
-                }}>We are aiming for a leading position thanks to the control of the market 
-                    by each of our departments 
-                    (Urbony rental and sales, Urbony Rental Management)</p>
+                }}>{t('aboutUs.p1')}</p>
                 <p style={{
                     fontSize: 18
-                }}>A commitment to pursue a single objective: "every day better serve its customers". 
-                    An independent company active in the business of real estate transactions 
-                    (purchase/sale and rental) and property administration 
-                    (property management, rental and trustee management) 
-                    in the residential and professional sector.</p></>}
+                }}>{t('aboutUs.p2')}</p></>}
 
                 
 
@@ -114,9 +104,9 @@ const AboutUs =() =>{
                         marginTop: 200,
                         color: 'rgba(46,15,89,1)',
                         margin: screen ? 10: 0
-                    }}>You can also reach us through</h2>
+                    }}>{t('aboutUs.contact')}</h2>
                     <div style={{
-                    width: 355,
+                    width: screen ? 300:500,
                     color: 'black',
                     display: 'flex',
                     justifyContent: 'center',
@@ -139,7 +129,7 @@ const AboutUs =() =>{
                     display: "flex",
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: 150,
+                    width: 155,
                     margin: screen ? 5: 0
                 }}> {screen ? <img src={CallBlack} alt="phone-call" style={{
                     marginRight: 10,
@@ -151,13 +141,13 @@ const AboutUs =() =>{
                     width: '18.75px',
                     height: '25px',
                     
-                }}/>} <h4>+257 75 78 89</h4></div>
+                }}/>} <h4>+257 75 78 89 74</h4></div>
                 <div style={{
                     color: 'black',
                     justifyContent: 'center',
                     alignItems: 'center',
                     display: "flex",
-                    width: 150,
+                    width: 170,
                     margin: screen ? 5: 0
                 }}>{screen ? <img src={WhatsAppBlack} alt="whatsapp" style={{
                     marginRight: 10,

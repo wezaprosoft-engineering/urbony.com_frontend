@@ -6,7 +6,9 @@ import { SellWrapper } from "./Sell.styles";
 import Estimation from '../../../assets/images/estimation.svg'
 import { EstimationButton, Estimator, EstmationContent } from "../../GetInTouch/GetInTouch.styles";
 import { Content } from "../../../components/Popular/Popular.styles";
+import { useTranslation } from "react-i18next";
 const Sell = ()=>{
+    const {t, i18n} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -19,26 +21,26 @@ const Sell = ()=>{
         <SellWrapper>
         
         </SellWrapper>
-        <SellProperty title="Sell your property" title1="Consider selling properties in Burundi?" proposition="You're at the right place" step="Stages of selling your property: complete expertise and support for the sale of your property : apartment, house, land, villa, investment property."/>
+        <SellProperty title={t('sellProperty.residentialTitle')} title1={t('sellProperty.residentialTitle1')} proposition={t('sellProperty.residentialProposition')} step={t('sellProperty.residentialStep')}/>
         <LastSales/>
         <Content>
         {screen? <EstimationButton style={{
             marginLeft: '5%'
         }}><EstmationContent>
-            GET FREE ESTIMATION
+            {t('estimation.est')}
             <Estimator src={Estimation} alt='estimation'/>
             </EstmationContent></EstimationButton>: <EstimationButton style={{
             width: '80%',
             marginLeft: 90,
             borderRadius: 10
         }}><EstmationContent>
-            GET FREE ESTIMATION
+           {t('estimation.est')}
             <Estimator src={Estimation} alt='estimation'/>
             </EstmationContent></EstimationButton>}
         </Content>
         
         
-        <SellerRequestForm  text="You too can sell better, faster and easier with Urbony!"/>
+        <SellerRequestForm text={t('Welcome.text2')}/>
         </>
     )
 }

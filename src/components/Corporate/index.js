@@ -16,11 +16,11 @@ import PrivateOffices from '../../assets/images/PrivateOffices.png'
 import Warehouses from '../../assets/images/Warehouses.png'
 import Depots from '../../assets/images/Depots.png'
 
-
+import { useTranslation } from "react-i18next";
 import {useLocation} from 'react-router-dom'
 import { EstimationButton, Estimator, EstmationContent } from "../../pages/GetInTouch/GetInTouch.styles";
 const Corporates = props =>{
-
+    const {t, i18n} = useTranslation();
     const [tenant, setTenant] = useState(true)
     const [buyer, setBuyer] = useState(false)
     const [owner, setOwner] = useState(false)
@@ -57,7 +57,7 @@ const Corporates = props =>{
         }}>
             <CorporateContentUpper>
                 <CorporateText>
-                <h2>URBONY CORPORATE:</h2>
+                <h2>{t('corporate.title')}</h2>
                 <h2>{props.title}</h2>
                 </CorporateText>
             </CorporateContentUpper>
@@ -69,7 +69,7 @@ const Corporates = props =>{
                         <Line style={{
                             marginTop: 27
                         }}/>
-                        <h2>Are you an </h2>
+                        <h2>{t('corporate.corporateTitle')}</h2>
                     </Title>
                 </Head>
                 {screen ? <div style={{
@@ -100,68 +100,68 @@ const Corporates = props =>{
                 
                 {tenant? <>
                     {location.pathname==='/offices' ? <><CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText='Serviced offices'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText='Coworking Desk'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText='Enterprise Office'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText='Private offices'/>
+                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText={t('corporate.enterpriseOffice')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText={t('corporate.privateOffice')}/>
                    
                 </CorporateCardContent></>: <>{
                     location.pathname==='/commercial-space' ?
                     <CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText='Small space'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText='Large space'/>
+                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.smallSpace')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.largeSpace')}/>
                     
                    
                 </CorporateCardContent>: <CorporateCardContent>
-                <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText='Warehouses'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText='Depots'/>
+                <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText={t('corporate.warehouses')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText={t('corporate.depots')}/>
                    
                 </CorporateCardContent>
                 }</>}
                 </>: <>
                 {buyer ? <>
                 {location.pathname==='/offices' ? <CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText='Serviced offices'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText='Coworking Desk'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText='Enterprise Office'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText='Private offices'/>
+                <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText={t('corporate.enterpriseOffice')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText={t('corporate.privateOffice')}/>
                    
                 </CorporateCardContent>: <>{
                     location.pathname==='/commercial-space' ?
                     <CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText='Serviced offices'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText='Coworking Desk'/>
+                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')}/>
                     
                    
                 </CorporateCardContent>: <CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText='Warehouses'/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText='Depots'/>
+                <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText={t('corporate.warehouses')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText={t('corporate.depots')}/>
                    
                 </CorporateCardContent>
                 }</>}
                 </> :
                 <><h2>{props.owner1}</h2>
-                <h3>We offer a service attentive to your need in office real estate:</h3>
+                <h3>{t('corporate.stepTitle')}</h3>
                 <StepDetail>
                    <Step>
                     <img src={Step2} alt="step2"/>
-                    <h3>Very diverse portfolio in office spaces</h3>
+                    <h3>{t('corporate.step1')}</h3>
                     </Step>
                     <Step>
                     <img src={Step2} alt="step2"/>
-                    <h3>Present everywhere in Burundi</h3>
+                    <h3>{t('corporate.step2')}</h3>
                     </Step> 
                     <Step>
                     <img src={Step2} alt="step2"/>
-                    <h3>Personalized support: a single point of contact manages your file.</h3>
+                    <h3>{t('corporate.step3')}</h3>
                     </Step> 
                     <Step>
                     <img src={Step2} alt="step2"/>
-                    <h3>Objective advice on the quality and cost of the surfaces presented.</h3>
+                    <h3>{t('corporate.step4')}</h3>
                     </Step> 
                     <Step>
                     <img src={Step2} alt="step2"/>
-                    <h3>A good knowledge of your needs allows an optimal selection of the spaces presented: avoid wasting time</h3>
+                    <h3>{t('corporate.step5')}</h3>
                     </Step>  
                 </StepDetail>
                 {location.pathname==='/industrial-space' && owner ? null: <Button style={{
@@ -194,29 +194,29 @@ const Corporates = props =>{
                     marginBottom: 80
                 }}>{tenant ? <>{props.tenant2}</>:<>{buyer? <>{props.buyer2}</>: <>{props.owner2}</>}</>}</Button>}</>: null}
                 {location.pathname==='/offices'? 
-                <Popular margin="0px" Offices="Offices"/>:<>
+                <Popular margin="0px" Offices={t('popular.Offices')}/>:<>
                 {location.pathname==='comercial-space'? 
-                <Popular margin="0px" Offices="Stores"/>:
-                <Popular margin="0px" Offices="Industrial Spaces"/>}
+                <Popular margin="0px" Offices={t('popular.Stores')}/>:
+                <Popular margin="0px" Offices={t('popular.Industrial')}/>}
                 </>
             }
                 {screen ? <EstimationButton>
                     <EstmationContent>
-                        GET FREE ESTIMATION
+                    {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
                 </EstimationButton>: <EstimationButton style={{
                     borderRadius: 10
                 }}>
                     <EstmationContent>
-                        GET FREE ESTIMATION
+                    {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
                 </EstimationButton>}
                 
             </Content>
         </Wrapper>
-        <SellerRequestForm  text="You too can sell better, faster and easier with Urbony!"/>
+        <SellerRequestForm  text={t('Welcome.text2')}/>
         </>
     )
 }

@@ -23,6 +23,7 @@ export const Content = styled.div`
     height: auto;
     min-height: 787px;
     background-color: rgba(46, 15, 89,0.6);
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
         min-height: 490px;
         text-align: center;
@@ -32,7 +33,7 @@ export const Content = styled.div`
 
 export const WelcomeText = styled.div`
    width: 500px;
-   
+   font-family: "Roboto";
    padding-top: 33px;
    margin-left: 80px;
    color: white;
@@ -53,6 +54,7 @@ export const Toggle = styled.div`
     padding: 5px;
     margin: 100px auto auto auto;
     transition: all 2s;
+    font-family: "Roboto";
     
     @media screen and (max-width: 414px){
        width: 247px;
@@ -70,6 +72,7 @@ export const Button = styled.button`
     cursor: pointer;
     color: rgba(255, 255, 255, 1);
     transition: all 2s;
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
        width: 127px;
        height: 38px;
@@ -84,6 +87,7 @@ export const Button2 = styled.button`
     border-color: transparent;
     cursor: pointer;
     color: rgba(46, 15, 89, 1);
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
         width: 119.57px;
        height: 29.89px;
@@ -96,6 +100,7 @@ export const TextButton = styled.h3`
     font-weight: 700;
     size: 25px;
     font-style: "Roboto";
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
         size: 15px;
         margin: auto auto auto auto;
@@ -123,6 +128,7 @@ export const Input2 = styled.input`
         font-weight: 700;
         size: 15px;
         color: rgba(46,15,89,1);
+        font-family: "Roboto";
     }
 `;
 export const Select = styled.select`
@@ -140,6 +146,7 @@ export const Select = styled.select`
         font-weight: 700;
         size: 15px;
         color: rgba(46,15,89,1);
+        font-family: "Roboto";
 
        
     }
@@ -160,10 +167,12 @@ export const WelcomeButton = styled.button`
         border-color: transparent;
         justify-content: center;
         align-items: center;
+        font-family: "Roboto";
 
         h3{
             color: white;
             margin-left: 7px;
+            font-family: "Roboto";
         }
     }
 

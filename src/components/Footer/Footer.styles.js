@@ -5,14 +5,14 @@ export const Wrapper = styled.div`
     background-color: rgba(33, 11, 64,1);
     @media screen and (max-width: 414px){
        height: auto;
-       margin-top: 50px;
+       margin-top: 130px;
     }
 `;
 export const FooterContent = styled.div`
 display: flex;
 justify-content: space-between;
 padding: 50px;
-
+font-family: "Roboto";
 color: white;
     @media screen and (max-width: 414px){
         display: block;
