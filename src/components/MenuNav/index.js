@@ -3,11 +3,23 @@ import { Menu, MenuButton, MenuContent, MenuHeader } from "./MenuNav.style";
 import WhatsAppLogo from '../../assets/images/whatsapp_mobile.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import {useNavigate} from 'react-router-dom'
-
+import { useTranslation } from "react-i18next";
 const MenuNav = props =>{
+    const {t, i18n} = useTranslation();
     const [corporate] = useGlobalState("corporate")
     const navigate = useNavigate()
-    
+    function handleClick(){
+        if(i18n.language==='fr'){
+            i18n.changeLanguage('en')
+            setGlobalState('mobileMenu', false)
+        }
+        else{
+            i18n.changeLanguage('fr')
+            setGlobalState('mobileMenu', false)
+        }
+       // i18n.changeLanguage(lang)
+        
+    }
 
     const makeSell = ()=>{
         setGlobalState("sell", true)
@@ -134,25 +146,25 @@ const MenuNav = props =>{
     return(
         <MenuContent>
             <MenuHeader>
-                <h3>FR</h3>
-                <MenuButton onClick={getIntouch}>Get In touch</MenuButton>
+                <h3 onClick={handleClick}>{t('Header.en')}</h3>
+                <MenuButton onClick={getIntouch}>{t('Header.GetInTouch')}</MenuButton>
                 <img src={WhatsAppLogo} alt='whatsapp-logo'/>
             </MenuHeader>
             {corporate? <Menu>
-            <h3 onClick={makeOffices}>OFFICE</h3>
-            <h3 onClick={makeCommercialSpace}>COMMERCIAL SPACE</h3>
-            <h3 onClick={makeIndustrialSpace}>INDUSTRIAL SPACE</h3>
-            <h3 onClick={makeManagement}>MANAGEMENT</h3>
-            <h3 onClick={makeAboutUs}>ABOUT US</h3>
+            <h3 onClick={makeOffices}>{t('NavBar.offices')}</h3>
+            <h3 onClick={makeCommercialSpace}>{t('NavBar.commercialSpace')}</h3>
+            <h3 onClick={makeIndustrialSpace}>{t('NavBar.industrialSpace')}</h3>
+            <h3 onClick={makeManagement}>{t('NavBar.management')}</h3>
+            <h3 onClick={makeAboutUs}>{t('NavBar.aboutUs')}</h3>
         </Menu>:
 
             <Menu>
-            <h3 onClick={makeSell}>SELL</h3>
-            <h3 onClick={makeBuy}>BUY</h3>
-            <h3 onClick={makeRent}>RENT</h3>
-            <h3 onClick={makeRealEstate}>REAL ESTATE PROJECTS</h3>
-            <h3 onClick={makeManagement}>MANAGEMENT</h3>
-            <h3 onClick={makeAboutUs}>ABOUT US</h3>
+            <h3 onClick={makeSell}>{t('NavBar.sell')}</h3>
+            <h3 onClick={makeBuy}>{t('NavBar.buy')}</h3>
+            <h3 onClick={makeRent}>{t('NavBar.rent')}</h3>
+            <h3 onClick={makeRealEstate}>{t('NavBar.realEstate')}</h3>
+            <h3 onClick={makeManagement}>{t('NavBar.management')}</h3>
+            <h3 onClick={makeAboutUs}>{t('NavBar.aboutUs')}</h3>
         </Menu>}
             
         </MenuContent>

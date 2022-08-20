@@ -3,7 +3,9 @@ import { Arrow, Content, Head, Line, Title, Wrapper } from "../Popular/Popular.s
 import arrow from '../../assets/images/arrow.svg'
 import { StepContent, StepDevelopped, Steps, TextContent } from "./SellPropert.styles";
 import Step from '../../assets/images/step.svg'
+import { useTranslation } from "react-i18next";
 const SellProperty = props =>{
+    const {t} = useTranslation();
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
     const [step3, setStep3] = useState(false);
@@ -57,7 +59,7 @@ const SellProperty = props =>{
                     <Head style={{
                         color: "rgba(217,11,66,1)"
                         }}>
-                            <h3>Start Selling</h3>
+                            <h3>{t('sellProperty.start')}</h3>
                             <Arrow src={arrow}/>
                     </Head>
                 </Title>
@@ -79,7 +81,7 @@ const SellProperty = props =>{
                 style={{
                     paddingLeft: 30
                 }}
-                >Step 1</div>{
+                >{t('sellProperty.step1')}</div>{
                     step1 ? <div style={{
                         fontWeight: 800,
                         paddingRight: 30,
@@ -99,37 +101,37 @@ const SellProperty = props =>{
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>A first contact completely for free</h3>
+                        <h3>{t('sellProperty.step1Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Contact with a real estate expert</h3>
+                        <h3>{t('sellProperty.step1Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>An essential step to get started</h3>
+                        <h3>{t('sellProperty.step1Content3')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>In-depth visit of your property by one of our experts</h3>
+                        <h3>{t('sellProperty.step1Content4')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Document analysis (expenses, plans ,leases, etc.)</h3>
+                        <h3>{t('sellProperty.step1Content5')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Submission of an evaluation file ("Example: Focus on My Property")</h3>
+                        <h3>{t('sellProperty.step1Content6')}</h3>
                         </TextContent>
                         
                     </StepContent>
@@ -139,7 +141,7 @@ const SellProperty = props =>{
                 style={{
                     paddingLeft: 30
                 }}
-                >Step 2</div>
+                >{t('sellProperty.step2')}</div>
                 {
                     step2 ? <div style={{
                         fontWeight: 800,
@@ -154,30 +156,30 @@ const SellProperty = props =>{
                 </Steps>
                 {step2 ? <StepDevelopped>
                     <StepContent>
-                        <h2>We prepare your sales file in every aspect:</h2>
+                        <h2>{t('sellProperty.step2Title')}</h2>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Legal</h3>
+                        <h3>{t('sellProperty.step2Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Technical</h3>
+                        <h3>{t('sellProperty.step2Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Administrative - Urban Planning</h3>
+                        <h3>{t('sellProperty.step2Content3')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Good information ensures a sale with total peace of mind!</h3>
+                        <h3>{t('sellProperty.step2Content4')}</h3>
                         </TextContent>
                    
                     </StepContent>
@@ -186,7 +188,7 @@ const SellProperty = props =>{
                 style={{
                     paddingLeft: 30
                 }}
-                >Step 3</div>
+                >{t('sellProperty.step3')}</div>
                 {
                     step3 ? <div style={{
                         fontWeight: 800,
@@ -203,50 +205,45 @@ const SellProperty = props =>{
                     <StepContent style={{
                         height: '520px'
                     }}>
-                        <h2>Let's get started: the Urbony machine is launched!</h2>
+                        <h2>{t('sellProperty.step3Title')}</h2>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Follow-up of our applicants: people living in Burundi and abroad</h3>
+                        <h3>{t('sellProperty.step3Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>30% of our sales are made in the first 3 weeks</h3>
+                        <h3>{t('sellProperty.step3Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Photo report by a professional</h3>
+                        <h3>{t('sellProperty.step3Content3')}</h3>
                         </TextContent>
-                        <h2>At advertising level: </h2>
+                        <h2>{t('sellProperty.step3Title2')}</h2>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Your property in XL format on all major specialized websites in real estate</h3>
-                        </TextContent>
-                        <TextContent>
-                        <img alt="step3" src={Step} style={{
-                            marginRight: 10
-                        }}/>
-                        <h3>Your property in XL format on all major specialized websites in real estate</h3>
+                        <h3>{t('sellProperty.step3Content4')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Your property in the most important "paper" media</h3>
+                        <h3>{t('sellProperty.step3Content5')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Your property on social media (Facebook, Instagram, Twitter, ...)</h3>
+                        <h3>{t('sellProperty.step3Content6')}</h3>
                         </TextContent>
+                        
                         
                     </StepContent>
                 </StepDevelopped>:null}
@@ -254,7 +251,7 @@ const SellProperty = props =>{
                 style={{
                     paddingLeft: 30
                 }}
-                >Step 4</div>
+                >{t('sellProperty.step4')}</div>
                 {
                     step4? <div style={{
                         fontWeight: 800,
@@ -269,33 +266,33 @@ const SellProperty = props =>{
                 </Steps>
                 {step4 ? <StepDevelopped>
                     <StepContent>
-                        <h2>The sale becomes reality!</h2>
+                        <h2>{t('sellProperty.step4Title')}</h2>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Negotiation of the sale consditions</h3>
+                        <h3>{t('sellProperty.step4Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>verification of the financial ability of the buyer</h3>
+                        <h3>{t('sellProperty.step4Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Completion of the sales agreement with your notary</h3>
+                        <h3>{t('sellProperty.step4Content3')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
                             marginRight: 10
                         }}/>
-                        <h3>Support until the deed of sale</h3>
+                        <h3>{t('sellProperty.step4Content4')}</h3>
                         </TextContent>
-                       <h3>Congratulations, you sold your property at the best conditions.</h3>
-                       <h3>With Urbony, you knock on the right door!</h3>
+                       <h3>{t('sellProperty.step4Conclusion1')}</h3>
+                       <h3>{t('sellProperty.step4Conclusion2')}</h3>
                         
                     </StepContent>
                 </StepDevelopped>:null}

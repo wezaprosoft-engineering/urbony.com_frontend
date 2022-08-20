@@ -11,8 +11,10 @@ import LastSales from "../../../components/LastSales";
 import { EstimationButton, EstmationContent, Estimator } from "../../GetInTouch/GetInTouch.styles";
 import Popular from "../../../components/Popular";
 import PropertyForSell from "../../../components/PropertyForSell";
+import { useTranslation } from "react-i18next";
 
 const Rent = () => {
+    const {t, i18n} = useTranslation();
     const [rentOut, setRentOut] = useState(false)
     const [liveIn, setLiveIn] = useState(true)
 
@@ -40,12 +42,12 @@ const Rent = () => {
                 <Title>
                     <Head>
                         <Line/>
-                        <h3>Renting to live or Renting out your Property?</h3>
+                        <h3>{t('rent.title')}</h3>
                         
                     </Head>
                 </Title>
 
-                <h2>Do you want to: </h2>
+                <h2>{t('rent.text')}</h2>
                 {screen ? <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -58,17 +60,17 @@ const Rent = () => {
                     color: 'red',
                     textDecoration: 'underline 5px',
                     marginRight: screen ? 10 : 0
-                }}>Rent Property to Live in</h4>:<h4 style={{
+                }}>{t('rent.liveIn')}</h4>:<h4 style={{
                     cursor: 'pointer',
                     marginRight: screen ? 10 : 0
-                }} onClick={LiveIn}>Rent property to Live In</h4>}
+                }} onClick={LiveIn}>{t('rent.liveIn')}</h4>}
                 {rentOut?
                 <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 5px'
-                }}>Rent out my own Property</h4>: <h4 style={{
+                }}>{t('rent.invest')}</h4>: <h4 style={{
                     cursor: 'pointer'
-                }} onClick={RentOut}>Rent out my own Property</h4>}
+                }} onClick={RentOut}>{t('rent.invest')}</h4>}
                     
                     
                     
@@ -81,16 +83,16 @@ const Rent = () => {
                 {liveIn ? <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 5px'
-                }}>Rent Property to Live in</h4>:<h4 style={{
+                }}>{t('rent.liveIn')}</h4>:<h4 style={{
                     cursor: 'pointer'
-                }} onClick={LiveIn}>Rent property to Live In</h4>}
+                }} onClick={LiveIn}>{t('rent.liveIn')}</h4>}
                 {rentOut?
                 <h4 style={{
                     color: 'red',
                     textDecoration: 'underline 5px'
-                }}>Rent out my own Property</h4>: <h4 style={{
+                }}>{t('rent.invest')}</h4>: <h4 style={{
                     cursor: 'pointer'
-                }} onClick={RentOut}>Rent out my own Property</h4>}
+                }} onClick={RentOut}>{t('rent.invest')}</h4>}
                     
                     
                     
@@ -107,21 +109,21 @@ const Rent = () => {
                         backgroundImage: `url(${HouseBuy1})`,
                     }}>
                         <CardText>
-                            <h2>Apartments</h2>
+                            <h2>{t('buy.apartments')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy2})`,
                     }}>
                         <CardText>
-                            <h2>House</h2>
+                            <h2>{t('buy.house')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy3})`,
                     }}>
                         <CardText>
-                            <h2>Brand New Property</h2>
+                            <h2>{t('buy.brandNewProperty')}</h2>
                         </CardText>
                     </AppartmentCard>
                 </Home>
@@ -137,55 +139,55 @@ const Rent = () => {
                         <h1 style={{
                     color: "rgba(46,15,89,1)",
                     
-                }}>Are you an owner?</h1>
+                }}>{t('rent.stepTitle')}</h1>
                     </Title>
                 </Head>
                     
                 <h2 style={{
                     marginBottom: 20,
-                }}>Would you like to rent your property out?</h2>
+                }}>{t('rent.stepTitle2')}</h2>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Skills accumulated for more than 40 years</h3></div>
+                    }}>{t('rent.step1')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Unrivaled advertising striking force</h3></div>
+                    }}>{t('rent.step2')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Selection of potential tenants: check creditworthiness</h3></div>
+                    }}>{t('rent.step3')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>One single point of contact for your file: a personalized relationship</h3></div>
+                    }}>{t('rent.step4')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Advice on the rental value of your property</h3></div>
+                    }}>{t('rent.step5')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
                     fontWeight: 400
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Advice on the works to be carried out to upgrade your property</h3></div>
+                    }}>{t('rent.step6')}</h3></div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'normal',
@@ -193,12 +195,11 @@ const Rent = () => {
                     marginBottom: 120
                 }}>  <img src={Step} alt="step"/> <h3 style={{
                     fontWeight: 400
-                    }}>Whatever the kind of your property: house, apartment, villa, duplex, triplex, penthouse, studio, loft, ground floor</h3></div>
+                    }}>{t('rent.step7')}</h3></div>
                 <h3 style={{
                 fontWeight: 400,
                 marginBottom: 100,
-                }}>Discover our rental management offer: our team assists you to get relieved of the daily management of your real estate properties
-                    and supervises the important stages of the relationship with your tenants.
+                }}>{t('rent.stepText')}
                 </h3>
                 <Button style={{
                     width: screen ? '95%': 741,
@@ -208,15 +209,23 @@ const Rent = () => {
                     fontWeight: 700,
                     fontSize: screen? 15:'35px',
                     marginBottom: 100,
-                }}>Our Management Offer</Button>
+                }}>{t('rent.button')}</Button>
 
                 <Popular margin='0px'/>
-                <EstimationButton>
-                    <EstmationContent>
-                        GET FREE ESTIMATION
+                {screen ? <EstimationButton>
+                    <EstmationContent style={{
+                        marginLeft: i18n.language==='fr'?10: 40
+                    }}>
+                    {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                   </EstimationButton>
+                   </EstimationButton>:<EstimationButton>
+                    <EstmationContent>
+                    {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>}
+                
                 
 
                 </>: <>
@@ -228,21 +237,21 @@ const Rent = () => {
                         backgroundImage: `url(${HouseBuy1})`,
                     }}>
                         <CardText>
-                            <h2>Apartments</h2>
+                            <h2>{t('buy.apartments')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy2})`,
                     }}>
                         <CardText>
-                            <h2>House</h2>
+                            <h2>{t('buy.house')}</h2>
                         </CardText>
                     </AppartmentCard>
                     <AppartmentCard style={{
                         backgroundImage: `url(${HouseBuy3})`,
                     }}>
                         <CardText>
-                            <h2>Brand New Property</h2>
+                            <h2>{t('buy.brandNewProperty')}</h2>
                         </CardText>
                     </AppartmentCard>
                 </Home>

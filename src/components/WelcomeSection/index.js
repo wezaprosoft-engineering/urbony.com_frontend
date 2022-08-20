@@ -7,10 +7,13 @@ import ArrowDown from '../../assets/images/arrow_down.svg'
 import ArrowUp from '../../assets/images/arrow_up2.svg'
 import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
+import { useTranslation } from "react-i18next";
 
 
 const Details = props =>{
+    
     const [checked, setChecked] = useState(false)
+   
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -41,9 +44,15 @@ const Details = props =>{
 
 
 const Welcome = props =>{
+    const {t} = useTranslation();
     const [corporate] = useGlobalState("corporate");
     const [more, setMore] = useState(false);
-
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     const [homeBuy] = useGlobalState("homeBuy");
     const [homeRent] = useGlobalState("homeRent")
     const [moreMobile, setMoreMobile] = useState(false)
@@ -69,19 +78,41 @@ const Welcome = props =>{
         return(
             <Overlay>
                     <SubOverlay>
-                    <OverlayContent><h2>TYPE</h2><select style={{
+                    <OverlayContent><h2>{t('Welcome.type')}</h2>
+                    {corporate ? 
+                    <select style={{
                         width: 150,
                         height: '65px',
                         fontWeight: 400,
                         fontSize: 'large'
                     }}>
-                        <option value="Select" disabled>Select</option>
-                        <option value="Single Family Homes">Single Family Homes</option>
-                        <option value="Town Homes">Town Homes</option>
-                        <option value="Apartments">Apartments</option>
-                        <option value="Tiny home">Tiny home</option>
-                        </select></OverlayContent>
-                        <OverlayContent><h2>WHERE</h2><select style={{
+                        <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
+                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
+                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
+                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                        </select>
+                : <select style={{
+                    width: 150,
+                    height: '65px',
+                    fontWeight: 400,
+                    fontSize: 'large'
+                }}>
+                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
+                    <option value={t('Welcome.residentialOption2')}>{t('Welcome.residentialOption2')}</option>
+                    <option value={t('Welcome.residentialOption3')}>{t('Welcome.residentialOption3')}</option>
+                    <option value={t('Welcome.residentialOption4')}>{t('Welcome.residentialOption4')}</option>
+                    <option value={t('Welcome.residentialOption5')}>{t('Welcome.residentialOption5')}</option>
+                    <option value={t('Welcome.residentialOption6')} >{t('Welcome.residentialOption6')}</option>
+                    <option value={t('Welcome.residentialOption7')}>{t('Welcome.residentialOption7')}</option>
+                    <option value={t('Welcome.residentialOption8')}>{t('Welcome.residentialOption8')}</option>
+                    <option value={t('Welcome.residentialOption9')}>{t('Welcome.residentialOption9')}</option>
+                    <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
+                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
+                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                    
+                    </select>}
+                    </OverlayContent>
+                        <OverlayContent><h2>{t('Welcome.where')}</h2><select style={{
                         width: '99%',
                         height: '65px',
                         fontWeight: 400,
@@ -107,13 +138,13 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                         </select></OverlayContent>
-                    <OverlayContent>{homeBuy ? <h2>PRICE</h2>: <h2>RENT/MONTH</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/><Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number"/></div></OverlayContent>
+                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/><Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number"/></div></OverlayContent>
                     {corporate ? 
-                    <OverlayContent><h2>AREA</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
-                    <OverlayContent><h2>BEDROOM(S)</h2><Input placeholder="Select"/></OverlayContent>}
+                    <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
+                    <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select"/></OverlayContent>}
                     
                     
-                    <OverlayContent><Search><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>SEARCH</TextMenu></Search></OverlayContent>
+                    <OverlayContent><Search><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
                     </SubOverlay>
                     
                     
@@ -130,7 +161,7 @@ const Welcome = props =>{
                         marginLeft: 5,
                         fontWeight: 700,
                         size: 18
-                    }}>Less filters</h4>
+                    }}>{t('Welcome.lessFilters')}</h4>
                     </div>: <div style={{
                         display: 'flex',
                         marginLeft: 60,
@@ -144,44 +175,44 @@ const Welcome = props =>{
                         marginLeft: 5,
                         fontWeight: 700,
                         size: 18
-                    }}>More filters</h4>
+                    }}>{t('Welcome.moreFilters')}</h4>
                     </div>}
                     {more ? <More>
                         <div>
-                            <h3>Internal Features</h3>
-                            <Details detail='Aircon'/>
-                            <Details detail='Alarm'/>
-                            <Details detail='ABackup Generator'/>
-                            <Details detail='En Suite Fibre'/>
-                            <Details detail='Internet'/>
-                            <Details detail='Furnished'/>
-                            <Details detail='Serviced'/>
-                            <Details detail='Service Charge Included'/>
-                            <Details detail='Walk In Closet'/>
-                            <Details detail='Lift/Elevator'/>
-                            <Details detail='Gym'/>
+                            <h3>{t('Welcome.internal')}</h3>
+                            <Details detail={t('Welcome.internal1')}/>
+                            <Details detail={t('Welcome.internal2')}/>
+                            <Details detail={t('Welcome.internal3')}/>
+                            <Details detail={t('Welcome.internal4')}/>
+                            <Details detail={t('Welcome.internal5')}/>
+                            <Details detail={t('Welcome.internal6')}/>
+                            <Details detail={t('Welcome.internal7')}/>
+                            <Details detail={t('Welcome.internal8')}/>
+                            <Details detail={t('Welcome.internal9')}/>
+                            <Details detail={t('Welcome.internal10')}/>
+                            <Details detail={t('Welcome.internal11')}/>
                         </div>
                         <div>
-                            <h3>External Features</h3>
-                            <Details detail='Balcony'/>
-                            <Details detail='BBQ'/>
-                            <Details detail='Borehole'/>
-                            <Details detail='CCTV'/>
-                            <Details detail='Electric Fence'/>
-                            <Details detail='Garden'/>
-                            <Details detail='Parking'/>
-                            <Details detail='Staff Quarters'/>
-                            <Details detail='Swimming Pool'/>
-                            <Details detail='Wheelchair Access'/>
+                            <h3>{t('Welcome.external')}</h3>
+                            <Details detail={t('Welcome.external1')}/>
+                            <Details detail={t('Welcome.external2')}/>
+                            <Details detail={t('Welcome.external3')}/>
+                            <Details detail={t('Welcome.external4')}/>
+                            <Details detail={t('Welcome.external5')}/>
+                            <Details detail={t('Welcome.external6')}/>
+                            <Details detail={t('Welcome.external7')}/>
+                            <Details detail={t('Welcome.external8')}/>
+                            <Details detail={t('Welcome.external9')}/>
+                            <Details detail={t('Welcome.external10')}/>
                         </div>
                         <div>
-                            <h3>Nearby</h3>
-                            <Details detail='Bus Stop'/>
-                            <Details detail='Golf Course'/>
-                            <Details detail='Hospital'/>
-                            <Details detail='Scenic View'/>
-                            <Details detail='School'/>
-                            <Details detail='Sea View'/>
+                            <h3>{t('Welcome.nearby')}</h3>
+                            <Details detail={t('Welcome.nearby1')}/>
+                            <Details detail={t('Welcome.nearby2')}/>
+                            <Details detail={t('Welcome.nearby3')}/>
+                            <Details detail={t('Welcome.nearby4')}/>
+                            <Details detail={t('Welcome.nearby5')}/>
+                            <Details detail={t('Welcome.nearby6')}/>
                         </div>
                     </More>: null}
                     
@@ -195,25 +226,39 @@ const Welcome = props =>{
             <Content>
                 <WelcomeText>
                     <h2>URBONY</h2>
-                    <h3>The first real estate network created by real estate agents for real estate agents</h3>
-                    <h4>You too can sell better, faster and easier with Urbony!</h4>
+                    <h3>{t('Welcome.text1')}</h3>
+                    <h4>{t('Welcome.text2')}</h4>
                 </WelcomeText>
                 
 
                 <Toggle>
-                    {homeBuy ? <Button onClick={Buy}><TextButton>BUY</TextButton></Button>: <Button2 onClick={Buy}><TextButton>BUY</TextButton></Button2>}
-                    {homeRent ? <Button onClick={Rent}><TextButton2>RENT</TextButton2></Button> : <Button2 onClick={Rent}><TextButton2>RENT</TextButton2></Button2>}
+                    {homeBuy ? <Button onClick={Buy}><TextButton>{t('Welcome.buy')}</TextButton></Button>: <Button2 onClick={Buy}><TextButton>{t('Welcome.buy')}</TextButton></Button2>}
+                    {homeRent ? <Button onClick={Rent}><TextButton2>{t('Welcome.rent')}</TextButton2></Button> : <Button2 onClick={Rent}><TextButton2>{t('Welcome.rent')}</TextButton2></Button2>}
                    
                 </Toggle>
+                {corporate? <Select>
+                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
+                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
+                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
+                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                </Select>:
                 <Select>
-                <option value="Select" disabled>Select type of property</option>
-                        <option value="Single Family Homes">Single Family Homes</option>
-                        <option value="Town Homes">Town Homes</option>
-                        <option value="Apartments">Apartments</option>
-                        <option value="Tiny home">Tiny home</option>
-                </Select>
+                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
+                    <option value={t('Welcome.residentialOption2')}>{t('Welcome.residentialOption2')}</option>
+                    <option value={t('Welcome.residentialOption3')}>{t('Welcome.residentialOption3')}</option>
+                    <option value={t('Welcome.residentialOption4')}>{t('Welcome.residentialOption4')}</option>
+                    <option value={t('Welcome.residentialOption5')}>{t('Welcome.residentialOption5')}</option>
+                    <option value={t('Welcome.residentialOption6')} >{t('Welcome.residentialOption6')}</option>
+                    <option value={t('Welcome.residentialOption7')}>{t('Welcome.residentialOption7')}</option>
+                    <option value={t('Welcome.residentialOption8')}>{t('Welcome.residentialOption8')}</option>
+                    <option value={t('Welcome.residentialOption9')}>{t('Welcome.residentialOption9')}</option>
+                    <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
+                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
+                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                </Select>}
+                
                 <Select>
-                <option value="Select" >Location of property</option>
+                <option value="Select" >{t('Welcome.location')}</option>
                         <option value="Bubanza">Bubanza</option>
                         <option value="Bujumbura Mairie">Bujumbura Mairie</option>
                         <option value="Bujumbura Rural">Bujumbura Rural</option>
@@ -233,72 +278,73 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? "Enter minimum rent": "Enter minimum price"} type="number"/>
-                <Input2 placeholder={homeRent? "Enter minimum rent": "Enter minimum price"} type="number"/>
-                {corporate ? <Input2 placeholder="Area" type="number"/>:<Input2 placeholder="Enter Bedroom(s)"/>}
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number"/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number"/>
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')}/>}
                 
                 <WelcomeButton>
                     <div style={{
                         display: 'flex',
                         margin: 'auto auto auto auto',
-                        paddingLeft: 130,
+                        paddingLeft:  screen ? 85:130,
                         paddingRight: 130,
-                    }}><img alt="search-min" src={SearchMin}/><h3>SEARCH</h3></div>
+                        
+                    }}><img alt="search-min" src={SearchMin}/><h3>{t('Welcome.search')}</h3></div>
                 </WelcomeButton>
                 <MoreContentMobile>
                     <img src={ArrowUpMobile} alt='arrow-up-mobile' style={{
                         marginRight: 10
                     }}/>
-                    {moreMobile ? <h4 onClick={() => setMoreMobile(false)}>Less Filters</h4>: <h4 onClick={() => setMoreMobile(true)}>More Filters</h4>}
+                    {moreMobile ? <h4 onClick={() => setMoreMobile(false)}>{t('Welcome.lessFilters')}</h4>: <h4 onClick={() => setMoreMobile(true)}>{t('Welcome.moreFilters')}</h4>}
                     
                 </MoreContentMobile>
                 {moreMobile ? <More>
                         <Heading>
-                            <h3>Internal Features</h3>
+                        <h3>{t('Welcome.internal')}</h3>
                             <MoreContentDetails>
-                            <Details detail='Aircon'/>
-                            <Details detail='Alarm'/>
-                            <Details detail='A Backup Generator'/>
-                            <Details detail='En Suite Fibre'/>
-                            <Details detail='Internet'/>
-                            <Details detail='Furnished'/>
-                            <Details detail='Serviced'/>
-                            <Details detail='Service Charge Included'/>
-                            <Details detail='Walk In Closet'/>
-                            <Details detail='Lift/elevator'/>
-                            <Details detail='Gym'/>
+                            <Details detail={t('Welcome.internal1')}/>
+                            <Details detail={t('Welcome.internal2')}/>
+                            <Details detail={t('Welcome.internal3')}/>
+                            <Details detail={t('Welcome.internal4')}/>
+                            <Details detail={t('Welcome.internal5')}/>
+                            <Details detail={t('Welcome.internal6')}/>
+                            <Details detail={t('Welcome.internal7')}/>
+                            <Details detail={t('Welcome.internal8')}/>
+                            <Details detail={t('Welcome.internal9')}/>
+                            <Details detail={t('Welcome.internal10')}/>
+                            <Details detail={t('Welcome.internal11')}/>
                             </MoreContentDetails>
                         </Heading>
                         <Heading>
-                            <h3>External Features</h3>
+                        <h3>{t('Welcome.external')}</h3>
                             <MoreContentDetails>
-                            <Details detail='Balcony'/>
-                            <Details detail='BBQ'/>
-                            <Details detail='Borehole'/>
-                            <Details detail='CCTV'/>
-                            <Details detail='Electric Fence'/>
-                            <Details detail='Garden'/>
-                            <Details detail='Parking'/>
-                            <Details detail='Staff Quarters'/>
-                            <Details detail='Swimming Pool'/>
-                            <Details detail='Wheelchair Access'/>
+                            <Details detail={t('Welcome.external1')}/>
+                            <Details detail={t('Welcome.external2')}/>
+                            <Details detail={t('Welcome.external3')}/>
+                            <Details detail={t('Welcome.external4')}/>
+                            <Details detail={t('Welcome.external5')}/>
+                            <Details detail={t('Welcome.external6')}/>
+                            <Details detail={t('Welcome.external7')}/>
+                            <Details detail={t('Welcome.external8')}/>
+                            <Details detail={t('Welcome.external9')}/>
+                            <Details detail={t('Welcome.external10')}/>
                             </MoreContentDetails>
                             </Heading>
                         <Heading>
-                            <h3>Nearby</h3>
+                        <h3>{t('Welcome.nearby')}</h3>
                             <MoreContentDetails>
-                            <Details detail='Bus Stop'/>
-                            <Details detail='Golf Course'/>
-                            <Details detail='Hospital'/>
-                            <Details detail='Scenic View'/>
-                            <Details detail='School'/>
-                            <Details detail='Sea View'/>
+                            <Details detail={t('Welcome.nearby1')}/>
+                            <Details detail={t('Welcome.nearby2')}/>
+                            <Details detail={t('Welcome.nearby3')}/>
+                            <Details detail={t('Welcome.nearby4')}/>
+                            <Details detail={t('Welcome.nearby5')}/>
+                            <Details detail={t('Welcome.nearby6')}/>
                             </MoreContentDetails>
                         </Heading>
                     </More>: null}
                 
                 
-                {corporate? <Overlays location="Location or area"/>: <Overlays location="Location of property"/>}
+                 <Overlays location={t('Welcome.location')}/>
                 
             </Content>
             

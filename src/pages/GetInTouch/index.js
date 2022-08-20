@@ -8,8 +8,10 @@ import WhatsApp from '../../assets/images/getintouchwhatsapp.svg'
 import LocationBlack from '../../assets/images/location_black.svg'
 import WhatsAppBlack from '../../assets/images/whatsapp_black.svg'
 import CallBlack from '../../assets/images/call_black.svg'
+import { useTranslation } from "react-i18next";
 
 const GetInTouch = () => {
+    const {t, i18n} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -23,28 +25,36 @@ const GetInTouch = () => {
                 <GetInTouchForm>
                     <h2 style={{
                         marginBottom: 40
-                    }}>Get In Touch</h2>
+                    }}>{t('footer.getInTouch')}</h2>
                     <h3>Do you have any questions for us?</h3>
                     <h3 style={{
                         marginBottom: 70
                     }}>Just send us a message</h3>
                     
-                    <GetInTouchInput placeholder="Enter your name"/>
+                    <GetInTouchInput placeholder={t('getInTouch.nameHolder')}/>
                     
-                    <GetInTouchInput placeholder="Enter your email address"/>
+                    <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')}/>
                     
-                    <Message placeholder="Enter your message"/>
-                   <Submit>SUBMIT</Submit>
-                   <EstimationButton>
-                    <EstmationContent>
-                        GET FREE ESTIMATION
+                    <Message placeholder={t('getInTouch.messageHolder')}/>
+                   <Submit>{t('getInTouch.submit')}</Submit>
+                   {screen ? <EstimationButton>
+                    <EstmationContent style={{
+                        marginLeft: i18n.language==='fr'?10: 40
+                    }}>
+                        {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                   </EstimationButton>
+                   </EstimationButton>:<EstimationButton>
+                    <EstmationContent>
+                        {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>}
+                   
                    
                     <h2 style={{
                         marginBottom: 40
-                    }}>You can also reach us through</h2>
+                    }}>{t('getInTouch.reach')}</h2>
                     <div style={{
                     width: screen ? 300: 500,
                     color: 'black',

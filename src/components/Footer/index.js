@@ -8,6 +8,7 @@ import Instagram from '../../assets/images/instagram.svg'
 import Twitter from '../../assets/images/twitter.svg'
 import Youtube from '../../assets/images/youtube.svg'
 import Arrow from '../../assets/images/arrow_up.svg'
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
     const Top = () =>{
@@ -16,6 +17,7 @@ const Footer = () => {
             behavior: "smooth",
         });
     };
+    const {t} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -25,20 +27,20 @@ const Footer = () => {
     return(
         <Wrapper>
             <FooterContent>
-                <Footerservices><FooterTitle>Services</FooterTitle>
-                <h3>Rental Management</h3>
-                <h3>Property Valuation</h3>
+                <Footerservices><FooterTitle>{t('footer.services')}</FooterTitle>
+                <h3>{t('footer.rental')}</h3>
+                <h3>{t('footer.property')}</h3>
                 
                 </Footerservices>
                 <Footerservices>
-                <FooterTitle>Quick Links</FooterTitle>
-                <h3>Buy</h3>
-                <h3>Sell</h3>
-                <h3>Rent</h3>
-                <h3>Real Estate Projects</h3>
+                <FooterTitle>{t('footer.quickLinks')}</FooterTitle>
+                <h3>{t('footer.buy')}</h3>
+                <h3>{t('footer.sell')}</h3>
+                <h3>{t('footer.rent')}</h3>
+                <h3>{t('footer.realEstate')}</h3>
                 </Footerservices>
                 <Footerservices>
-                <FooterTitle>Get In Touch</FooterTitle>
+                <FooterTitle>{t('footer.getInTouch')}</FooterTitle>
                 <div style={{
                     marginBottom: 13
                 }}><img src={Location} alt="location" style={{
@@ -57,7 +59,7 @@ const Footer = () => {
                 </Footerservices>
                 <Footerservices style={{
                     
-                }}><FooterTitle>Follow Us</FooterTitle>
+                }}><FooterTitle>{t('footer.socialMedia')}</FooterTitle>
                 {screen ? <SocialMedia>
                     <img src={Facebook} alt="facebook"/>
                     <img src={Instagram} alt="instagram"/>

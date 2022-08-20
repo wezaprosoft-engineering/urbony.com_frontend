@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ManagementContact = styled.div`
 width: 30%;
+font-family: "Roboto";
 @media screen and (max-width: 414px){
     width: 80%;
     margin-top: 60px;
@@ -12,6 +13,7 @@ width: 30%;
 export const ManagementContent = styled.div`
 margin-top: 50px;
 margin-bottom: 50px;
+font-family: "Roboto";
 `;
 
 export const ManagementCard = styled.div`
@@ -23,6 +25,7 @@ border-radius: 10px;
 background: #FFFFFF;
 margin: 20px;
 text-align: center;
+font-family: "Roboto";
 
 @media screen and (max-width: 414px) {
     width: 100%;
@@ -33,6 +36,7 @@ text-align: center;
 export const Benefits = styled.div`
 display: flex;
 margin-left: 60px;
+font-family: "Roboto";
 @media screen and (max-width:414px) {
     margin-left: 10px;
 }
@@ -40,7 +44,7 @@ margin-left: 60px;
 
 export const ManagementText = styled.div`
    width: 500px;
-   
+   font-family: "Roboto";
    padding-top: 33px;
    margin-left: 80px;
    color: white;
@@ -62,6 +66,7 @@ export const ManagementContentUpper = styled.div`
     height: auto;
     min-height: 787px;
     background-color: rgba(46, 15, 89,0.6);
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
         min-height: 490px;
         

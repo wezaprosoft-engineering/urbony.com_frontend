@@ -1,10 +1,11 @@
 import React from "react";
 import {  Head, Line, Title, Wrapper } from "../../Popular/Popular.styles";
 import { Container, InputRequest, RequestForm, Select, Star, SubmitButton, Content} from "./SellerRequestForm.styles";
+import { useTranslation } from "react-i18next";
 
 const SellerRequestForm = props => {
     
-    
+    const {t} = useTranslation();
     
     return (
         <Wrapper style={{
@@ -20,27 +21,27 @@ const SellerRequestForm = props => {
                 </Title>
                 <RequestForm>
                     <Container>
-                        <h2>Last Name<Star>*</Star></h2>
-                        <InputRequest placeholder="Enter your last name" inputMode="text"/>
+                        <h2>{t('sellerRequestForm.lastName')}<Star>*</Star></h2>
+                        <InputRequest placeholder={t('sellerRequestForm.lastNameHolder')} inputMode="text"/>
                     </Container>
                     <Container>
-                        <h2>First Name<Star>*</Star></h2>
-                        <InputRequest placeholder="Enter your first name" inputMode="text"/>
+                        <h2>{t('sellerRequestForm.firstName')}<Star>*</Star></h2>
+                        <InputRequest placeholder={t('sellerRequestForm.firstNameHolder')} inputMode="text"/>
                     </Container>
                     <Container>
-                        <h2>Email Address<Star>*</Star></h2>
-                        <InputRequest placeholder="Enter your email address" inputMode="email"/>
+                        <h2>{t('sellerRequestForm.email')}<Star>*</Star></h2>
+                        <InputRequest placeholder={t('sellerRequestForm.emailHolder')} inputMode="email"/>
                     </Container>
                     <Container>
-                        <h2>Phone number<Star>*</Star></h2>
-                        <InputRequest placeholder="Enter your phone number" inputMode="numeric"/>
+                        <h2>{t('sellerRequestForm.phoneNumber')}<Star>*</Star></h2>
+                        <InputRequest placeholder={t('sellerRequestForm.phoneNumberHolder')} inputMode="numeric"/>
                     </Container>
                     <Container>
-                        <h2>Location of property sale<Star>*</Star></h2>
-                        <InputRequest placeholder="Enter location"/>
+                        <h2>{t('sellerRequestForm.locationOfProperty')}<Star>*</Star></h2>
+                        <InputRequest placeholder={t('sellerRequestForm.locationHolder')}/>
                     </Container>
                     <Container>
-                        <h2>Type of property<Star>*</Star></h2>
+                        <h2>{t('sellerRequestForm.typeOfProperty')}<Star>*</Star></h2>
                         <Select>
                         <option disabled>Select type of property</option>
                             <option value="Commercial Property">Commercial Property</option>
@@ -56,11 +57,11 @@ const SellerRequestForm = props => {
                     }}><input type="checkbox" style={{
                         marginRight: 20
                     }}/>
-                    <h4>I have read and accept the general conditions and the privacy policy of the site <Star>*</Star></h4>
+                    <h4>{t('sellerRequestForm.condition')} <Star>*</Star></h4>
                     </div>
-                    <div style={{width: '100%'}}><h3>Fields marked <Star>*</Star> are mandatory</h3></div>
+                    <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     
-                    <SubmitButton>Submit Request</SubmitButton>
+                    <SubmitButton>{t('sellerRequestForm.submit')}</SubmitButton>
                     
                 </RequestForm>
             </Content>

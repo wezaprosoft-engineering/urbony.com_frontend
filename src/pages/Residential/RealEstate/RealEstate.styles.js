@@ -10,10 +10,11 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 box-sizing: border-box;
 margin-top: 200px;
+font-family: "Roboto";
 
 @media screen and (max-width: 414px) {
     width: 95%;
-    height: 782px;
+    height: 800px;
     display: inline;
     border-radius: 0px;
     margin-top: 20px;
@@ -26,6 +27,7 @@ export const CardContent = styled.div`
 height: 100%;
 background-size: cover;
 width: 50%;
+font-family: "Roboto";
 
 @media screen and (max-width: 414px){
     width: 100%;
@@ -36,6 +38,7 @@ width: 50%;
 `;
 export const TextContent= styled.div`
 width: 60%;
+font-family: "Roboto";
 @media screen and (max-width: 414px) {
     width: 100%;
     height: 482px;
@@ -65,6 +68,7 @@ export const WrapperDescription2 = styled.div`
     h2{
         margin-left: 30px;
         margin-top: -20px;
+        font-family: "Roboto";
     }
     
     @media screen and (max-width: 414px) {
@@ -113,7 +117,8 @@ export const CardButtons = styled.button`
     border-radius: 20px 0px 10px 0px;
     font-size: 40px;
     cursor: pointer;
-    margin-top: 27px;
+    margin-top: 30px;
+    font-family: "Roboto";
 
     @media screen and (max-width: 414px){
         margin-top: 0px;

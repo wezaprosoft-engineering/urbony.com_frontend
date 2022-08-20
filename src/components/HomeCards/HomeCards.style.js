@@ -8,7 +8,7 @@ export const HomeCards = styled.div`
     margin-top: 30px;
     margin-right: 50px;
     border-radius: 5px 5px 5px 5px;
-    
+    font-family: "Roboto";
     @media screen and (max-width: 414px) {
         display: none;
     }
@@ -48,7 +48,7 @@ align-items: center;
    height: 30px;
    margin-top: 25px;
    margin-bottom: 10px;
-   margin-right: 90px;
+   margin-right: 20px;
 }
 
 `;
@@ -61,6 +61,7 @@ export const CardButton = styled.button`
     border-color: transparent;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Roboto";
 
     @media screen and (max-width: 414px) {
         width: 100px;

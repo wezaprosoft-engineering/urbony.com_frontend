@@ -10,7 +10,9 @@ import StatisticMin from '../../assets/images/statistic_min.svg'
 import { ArrowCircle, ArrowContainer, CardButton, CardsContainer, Container, DetailsContainer, HomeCards } from "./HomeCards.style";
 import ArrowLeft from '../../assets/images/arrow_left.svg'
 import ArrowRight from '../../assets/images/arrow_rigt.svg'
+import { useTranslation } from "react-i18next";
 const HomeCard = props =>{
+    const {t} = useTranslation();
     return(
         <>
         <HomeCards>
@@ -33,7 +35,7 @@ const HomeCard = props =>{
         }}>
         <img alt="bed-icon" src={Bed} style={{
             marginRight: 10
-        }}/><h5>4 Bed</h5>
+        }}/><h5>4 {t('Card.bed')}</h5>
         </div>
         <div style={{
             display: 'flex',
@@ -128,7 +130,7 @@ const HomeCard = props =>{
         }}>
         <img alt="bed-icon" src={BedMin} style={{
             marginRight: 10
-        }}/><h5>4 Bed</h5>
+        }}/><h5>4 {t('Card.bed')}</h5>
         </div>
         <div style={{
             display: 'flex',

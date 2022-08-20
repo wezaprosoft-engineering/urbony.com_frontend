@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
     margin: 60px;
+    font-family: "Roboto";
     @media screen and (max-width: 414px){
        margin: 10px;
     }

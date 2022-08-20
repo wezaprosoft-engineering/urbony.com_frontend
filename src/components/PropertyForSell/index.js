@@ -9,7 +9,9 @@ import { Button } from "../Header/Header.styles";
 import { Content } from "./PropertyForSell.styles";
 import {useLocation} from 'react-router-dom'
 import { useGlobalState, setGlobalState } from "../../store/state";
+import { useTranslation } from "react-i18next";
 const PropertyForSell = props =>{
+    const {t} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -48,19 +50,19 @@ const PropertyForSell = props =>{
                     location.pathname==='/rent'? <h2 style={{
                         fontWeight: 500,
                         color: 'rgba(46,15,89,1)'
-                    }}>Our property for rent</h2>:
+                    }}>{t('rent.text2')}</h2>:
                     <h2 style={{
                         fontWeight: 500,
                         color: 'rgba(46,15,89,1)'
-                    }}>Our property for sell</h2>
+                    }}>{t('propertyForSell.title')}</h2>
                 }
                 
             </Title>
             {screen? null: <Title>
                     <h2 style={{
                             fontWeight: 500
-                        }}>Sort By: </h2>
-                        <Input placeholder='Price' type='number' style={{
+                        }}>{t('propertyForSell.filterBy')}</h2>
+                        <Input placeholder={t('propertyForSell.price')} type='number' style={{
                             backgroundColor: 'rgba(46,15,89,1)',
                             textAlign: 'center',
                             width: 255,
@@ -77,20 +79,20 @@ const PropertyForSell = props =>{
            </Head>
            <Home> {screen? <>
                         {card1 ?
-                            <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} next={Card2}/>:<>
-                            {card2 ? <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House2} next={Card3} prev={Card1}/>: 
+                            <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} next={Card2}/>:<>
+                            {card2 ? <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House2} next={Card3} prev={Card1}/>: 
                             
-                            <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House3} prev={Card2}/>}
+                            <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House3} prev={Card2}/>}
                             </>
                         }
                         </>: 
            <>
-                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"}housePicture={House1} />
-                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
-                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
-                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
-                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
-                    <HomeCard buttonText={location.pathname==='/rent'? 'SOLD': 'Buy'} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"}housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
+                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.sold'): t('Card.buy')} buttonColor={location.pathname==='/rent' ? "rgba(46,15,89,1)": "rgba(255, 0, 0 ,1)"} housePicture={House1} />
            </>}
          
            </Home>
@@ -103,7 +105,7 @@ const PropertyForSell = props =>{
             fontWeight: 700,
             fontSize: 25,
             marginTop: 100
-           }}>View All</Button></>}</> }
+           }}>{t('propertyForSell.view')}</Button></>}</> }
            
             </Content>
         </Wrapper>
