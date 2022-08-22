@@ -45,8 +45,8 @@ export const CorporateText = styled.div`
         width: 95%;
         justify-content: left;
         margin-left: 10px;
-        margin-top: 80px;
-        padding-top: 0px;
+        
+        padding-top: 120px;
         margin-right: 10px;
     }
 `;
