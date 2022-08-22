@@ -5,7 +5,7 @@ export const SellWrapper = styled.div`
    backdrop-filter: blur(7px);
    background-size: cover;
    width: 100%;
-   height: 787px;
+   height: 500px;
    @media screen and (max-width: 414px){
         width: 100%;
         background-size: cover;

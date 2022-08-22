@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { EstimationButton, EstmationContent, Estimator } from "../GetInTouch/GetInTouch.styles";
-import {  Wrapper} from "../../components/WelcomeSection/Welcome.styles";
+import {  Wrapper } from "../../components/WelcomeSection/Welcome.styles";
 import { CardButton, Content, Head, Line, Title } from "../../components/Popular/Popular.styles";
 import { Benefits, ManagementCard, ManagementContact, ManagementContent, ManagementText, ManagementContentUpper, ManagementOffer } from "./Management.styles";
 import Nice from '../../assets/images/nice.svg'
@@ -25,10 +25,10 @@ const Management = () => {
             <ManagementContentUpper>
             <ManagementText>
                     <h1>{t('management.first')}</h1>
-                    <h1>{t('management.third')}</h1>
-                    <h2 style={{
-                        marginTop: 100
-                    }}>{t('management.third')}</h2>
+                    <h1>{t('management.second')}</h1>
+                    <h1 style={{
+                        marginTop: 70
+                    }}>{t('management.third')}</h1>
                 </ManagementText>
             </ManagementContentUpper>
         </Wrapper>

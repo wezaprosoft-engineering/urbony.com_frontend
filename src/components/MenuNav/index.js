@@ -148,7 +148,7 @@ const MenuNav = props =>{
             <MenuHeader>
                 <h3 onClick={handleClick}>{t('Header.en')}</h3>
                 <MenuButton onClick={getIntouch}>{t('Header.GetInTouch')}</MenuButton>
-                <img src={WhatsAppLogo} alt='whatsapp-logo'/>
+                <img src={WhatsAppLogo} alt='whatsapp-logo' onClick={() => window.location.href='whatsapp://send?phone=+41766797463&text=Hello%20there'}/>
             </MenuHeader>
             {corporate? <Menu>
             <h3 onClick={makeOffices}>{t('NavBar.offices')}</h3>

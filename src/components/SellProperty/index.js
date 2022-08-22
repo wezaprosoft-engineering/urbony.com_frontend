@@ -4,8 +4,10 @@ import arrow from '../../assets/images/arrow.svg'
 import { StepContent, StepDevelopped, Steps, TextContent } from "./SellPropert.styles";
 import Step from '../../assets/images/step.svg'
 import { useTranslation } from "react-i18next";
+import {useLocation} from 'react-router-dom'
 const SellProperty = props =>{
     const {t} = useTranslation();
+    const location = useLocation();
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
     const [step3, setStep3] = useState(false);
@@ -53,8 +55,11 @@ const SellProperty = props =>{
             <Content>
                 <Title>
                     <Head>
-                        <Line/>
-                        <h3>{props.title}</h3>
+                        {location.pathname==='/sell'? null:<Line style={{
+                            marginTop: 29
+                        }}/>}
+                        
+                        <h2>{props.title}</h2>
                     </Head>
                     <Head style={{
                         color: "rgba(217,11,66,1)"
@@ -66,8 +71,8 @@ const SellProperty = props =>{
                 <div style={{
                         color: "rgba(46,15,89,1)"
                         }}>
-                <h2>{props.title1}</h2>
-                <h3>{props.proposition}</h3>
+                <h1>{props.title1}</h1>
+                <h2>{props.proposition}</h2>
                 </div>
 
                 <div style={{

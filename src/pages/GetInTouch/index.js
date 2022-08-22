@@ -89,7 +89,7 @@ const GetInTouch = () => {
                     width: '18.75px',
                     height: '25px',
                     
-                }}/>} <h4>+257 75 78 89 74</h4></div>
+                }}/>} <h4>{t('contact.phoneNumber')}</h4></div>
                 <div style={{
                     color: 'black',
                     justifyContent: 'center',
@@ -102,7 +102,7 @@ const GetInTouch = () => {
                 }}/>:<img src={WhatsApp} alt="whatsapp" style={{
                     marginRight: 10,
                     
-                }}/>}<h4> +41 76 679 74 63</h4></div>
+                }}/>}<h4>{t('contact.whatsApp')}</h4></div>
                 </GetInTouchForm>
             </Content>
             
