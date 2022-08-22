@@ -2,7 +2,7 @@
   "name": "urbony.com_frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wezaprosoft-engineering.github.io/urbony.com_frontend/",
+  //"homepage": "https://wezaprosoft-engineering.github.io/urbony.com_frontend/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
