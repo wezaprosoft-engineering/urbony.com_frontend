@@ -53,12 +53,13 @@ const Corporates = props =>{
         <>
         <Wrapper1 style={{
             backgroundImage:`url(${Office})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            
         }}>
             <CorporateContentUpper>
                 <CorporateText>
-                <h2>{t('corporate.title')}</h2>
-                <h2>{props.title}</h2>
+                <h1>{t('corporate.title')}</h1>
+                <h1>{props.title}</h1>
                 </CorporateText>
             </CorporateContentUpper>
         </Wrapper1>

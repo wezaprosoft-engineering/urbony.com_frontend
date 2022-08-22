@@ -34,9 +34,9 @@ font-family: "Robotto";
 `;
 
 export const CorporateText = styled.div`
-   width: 500px;
+   width: 90%;
    font-family: "Robotto";
-   padding-top: 350px;
+   padding-top: 200px;
    margin-left: 80px;
    color: white;
    @media screen and (max-width: 414px){
@@ -53,11 +53,10 @@ export const CorporateText = styled.div`
 
 export const CorporateContentUpper = styled.div`
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    
     height: auto;
     font-family: "Robotto";
-    min-height: 787px;
+    min-height: 480px;
     background-color: rgba(46, 15, 89,0.6);
     @media screen and (max-width: 414px){
         min-height: 490px;

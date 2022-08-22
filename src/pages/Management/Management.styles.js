@@ -3,9 +3,11 @@ import styled from "styled-components";
 export const ManagementContact = styled.div`
 width: 30%;
 font-family: "Roboto";
+margin-right: 70px;
 @media screen and (max-width: 414px){
     width: 80%;
     margin-top: 60px;
+    margin-right: 0px;
 
 }
 `;
@@ -43,11 +45,12 @@ font-family: "Roboto";
 `;
 
 export const ManagementText = styled.div`
-   width: 500px;
+   width: 60%;
    font-family: "Roboto";
    padding-top: 33px;
    margin-left: 80px;
    color: white;
+   font-size: larger;
    @media screen and (max-width: 414px){
        margin-left: 0px;
        padding-left: 0px;

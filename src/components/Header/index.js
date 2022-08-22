@@ -92,7 +92,7 @@ const Header = () => {
                 <TextMenu style={{
                     fontWeight: 400
                 }}>{t('Header.Or')}</TextMenu>
-                <LogoWhatsapp src={whatsapp}/>
+                <LogoWhatsapp src={whatsapp} onClick={() => window.location.href='whatsapp://send?phone=+41766797463&text=Hello%20there'}/>
             </ContactContent>
         </Content>
 

@@ -306,5 +306,9 @@
         "book": "Reserver",
         "sold": "VENDU",
         "rent": "Louer"
+    },
+    "contact": {
+        "phoneNumber" : "+257 75 78 89 74",
+        "whatsApp": "+41 76 679 74 63"
     }
 }

@@ -46,16 +46,16 @@ const Footer = () => {
                 }}><img src={Location} alt="location" style={{
                     marginRight: 10,
                 }}/> Boulevard de l’Uprona N°91, 3ème Étage, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bujumbura, Burundi</div>
                 <div style={{
                     marginBottom: 13
                 }}><img src={Call} alt="phone-call" style={{
                     marginRight: 10
-                }}/> +257 75 78 89 74</div>
+                }}/> {t('contact.phoneNumber')}</div>
                 <div><img src={WhatsApp} alt="whatsapp" style={{
                     marginRight: 10
-                }}/> +41 76 679 74 63</div>
+                }}/> {t('contact.whatsApp')}</div>
                 </Footerservices>
                 <Footerservices style={{
                     
