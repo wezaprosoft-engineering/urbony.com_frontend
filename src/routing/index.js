@@ -20,7 +20,7 @@ import { useGlobalState } from "../store/state";
 const Routing = () =>{
     const [mobileMenu] = useGlobalState("mobileMenu")
     return(
-        <Router>
+        <Router basename='/index.html'>
             <Header/>
             <NavBar/>
             {mobileMenu ? <MenuNav/>: null}
