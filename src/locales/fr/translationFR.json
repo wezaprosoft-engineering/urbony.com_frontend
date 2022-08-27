@@ -4,7 +4,7 @@
         "corporate": "ENTREPRISE",
         "en": "EN",
         "Or": "Ou",
-        "GetInTouch": "Etrer en contact"
+        "GetInTouch": "Entrer en contact"
     },
     "NavBar":{
         "sell":"VENDRE",
@@ -62,7 +62,7 @@
         "nearby5": "Ecole",
         "nearby6": "Vue sur la mer",
         "residentialOption1": "Sélectionner",
-        "residentialOption2": "Loger",
+        "residentialOption2": "Maison",
         "residentialOption3": "Appartement",
         "residentialOption4": "Studio",
         "residentialOption5": "Société d'actifs privés",
@@ -73,7 +73,7 @@
         "residentialOption10": "Des bureaux",
         "residentialOption11": "Magasins",
         "residentialOption12": "Industriel",
-        "location": "Emplacement de la propriete",
+        "location": "Emplacement de la propriété",
         "minimum": "Entrer le prix minimal",
         "maximum": "Entrer le prix maximal",
         "rentMinimum": "Loyer minimal",
@@ -98,7 +98,12 @@
         "exigence": "",
         "submit":"ENVOYER MA DEMANDE",
         "field": "Les champs marqués",
-        "mandatory": "sont obligatoires"
+        "mandatory": "sont obligatoires",
+        "option0": "Sélectionnez votre bien",
+        "option1":"Bien commercial",
+        "option2":"Bien industriel",
+        "option3":"Bien de commerce de détail",
+        "option4":"Bien à usage mixte"
     },
     "footer":{
         "services": "Prestations de service",
@@ -116,13 +121,13 @@
     "sellProperty":{
         "start": "Commencer à vendre",
         "step1": "Étape 1",
-        "step1Title": "Search for a tenant",
+        "step1Title": "Vous cherchez un client",
         "step1Content1": "Un premier contact totalement gratuit !",
         "step1Content2": "Contact avec un expert de l’immobilier",
         "step1Content3": "Une étape essentielle pour bien démarrer",
         "step1Content4": "Une visite approfondie de votre bien par un de nos experts",
         "step1Content5": "Analyse de documents (charges, plans, baux…)",
-        "step1Content6": "Remise d’un dossier d’évaluation (« Exemple : Focus on My Property »)",
+        "step1Content6": "Remise d’un dossier d’évaluation",
         "step2": "Étape 2",
         "step2Title": "Nous préparons votre dossier de vente sous tous ses aspects :",
         "step2Content1": "Juridique",
@@ -178,6 +183,40 @@
         "card2Content3": "Gestion locative avec garantie loyers impayés",
         "card2Content4": "Gestion locative avec garantie loyers impayés à partir de 10.000 BIF HT TVA/mois",
         "request": "DEMANDER UNE OFFRE"
+
+    },
+    "propertyManagement":{
+        "step1Title": "Recherche de votre locataire",
+        "step1Content1": "Visite d’un bien immobilier par un professionnel",
+        "step1Content2": "Recherche du candidat locataire",
+        "step1Content3": "Vérification de la solvabilité",
+        "step1Content4": "Rédaction du bail",
+        "step1Content5": "Signature du bail",
+        "step1Content6": "Mise en place des garanties bancaires",
+        "step1Content7": "État des lieux d'entrée",
+        "step1Content8": "Performance Énergétique des Bâtiments (PEB)",
+        "step1Content9": "Remise des clés",
+        "step1Content10": "Enregistrement du bail",
+        "step1Content11": "Mise en place des détecteurs incendies",
+        "step2Title": "Gestion de votre locataire",
+        "step2Content1": "Contact avec un expert de l’immobilier",
+        "step2Content2": "Relation locataire",
+        "step2Content3": "Suivi des travaux et entretiens",
+        "step2Content4": "Suivi quotidien des encaissements de loyers et charges",
+        "step2Content5": "Assurances et contentieux",
+        "step2Content6": "Suivi des sinistres",
+        "step2Content7": "Recouvrement du loyer",
+        "step2Content8": "Gestion comptable : charges et loyers",
+        "step2Content9": "Suivi du contrat de bail",
+        "step3Title": "Fin de bail",
+        "step3Content1": "Clé d’une habitation à côté d’une maison miniature",
+        "step3Content2": "État des lieux et dégâts locatifs",
+        "step3Content3": "Libération de la garantie",
+        "step3Content4": "Régularisation des charges",
+        "step3Content5": "Reprise des compteurs",
+        "step3Content6": "Réévaluation de la valeur de votre bien",
+        "step3Content7": "Remise en location du bien",
+        "step3Conclusion": "Urbony GESTION, une équipe qui prend en charge la gestion quotidienne de votre bien immobilier immobilier et vous accompagne dans toutes les étapes de la relation avec vos locataires."
 
     },
     "aboutUs":{

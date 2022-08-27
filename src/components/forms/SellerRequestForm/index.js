@@ -43,11 +43,11 @@ const SellerRequestForm = props => {
                     <Container>
                         <h2>{t('sellerRequestForm.typeOfProperty')}<Star>*</Star></h2>
                         <Select>
-                        <option disabled>Select type of property</option>
-                            <option value="Commercial Property">Commercial Property</option>
-                            <option value="Industrial Property">Industrial Property</option>
-                            <option value="Retail Property">Retail Property</option>
-                            <option value="Mixed-use Property">Mixed-use Property</option>
+                        <option>{t('sellerRequestForm.option0')}</option>
+                            <option value="Commercial Property">{t('sellerRequestForm.option1')}</option>
+                            <option value="Industrial Property">{t('sellerRequestForm.option2')}</option>
+                            <option value="Retail Property">{t('sellerRequestForm.option3')}</option>
+                            <option value="Mixed-use Property">{t('sellerRequestForm.option4')}</option>
                         </Select>
                         
                     </Container>
