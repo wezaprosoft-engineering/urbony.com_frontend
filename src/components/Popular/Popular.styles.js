@@ -56,6 +56,7 @@ color: black;
 export const Home = styled.div`
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 `;
 
 export const HomeCards = styled.div`
