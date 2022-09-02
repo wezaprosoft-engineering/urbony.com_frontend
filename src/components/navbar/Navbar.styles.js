@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content= styled.div`
-    display: flex;
+    
     padding: 7px 0;
     margin: 0 auto;
     margin-left: 72px;
@@ -37,4 +37,26 @@ margin: 0;
         display: none;
     }
 
+`;
+export const LoginContent = styled.div`
+display: flex;
+margin-right: 3%;
+margin-left: 10px;
+cursor: pointer;
+height: 65px;
+
+`;
+export const LoginLogo = styled.img`
+    width: 30px;
+    height: 30px;
+    margin-top: 15px;
+    
+`;
+
+export const ContentText = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+export const Container = styled.div`
+display: flex;
 `;

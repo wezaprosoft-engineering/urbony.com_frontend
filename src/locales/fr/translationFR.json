@@ -15,7 +15,8 @@
         "aboutUs": "A PROPOS DE NOUS",
         "offices": "DES BUREAUX",
         "commercialSpace":"ESPACE COMMERCIAL",
-        "industrialSpace": "ESPACE INDUSTRIEL"
+        "industrialSpace": "ESPACE INDUSTRIEL",
+        "login": "CONNECTEZ-VOUS"
     },
     "Welcome":{
         "text1":"Le premier réseau immobilier créé par des agents immobiliers.",
@@ -349,5 +350,101 @@
     "contact": {
         "phoneNumber" : "+257 75 78 89 74",
         "whatsApp": "+41 76 679 74 63"
+    },
+    "login": {
+        "Login": "Connectez-vous",
+        "sell": "Vendez avec urbony en ayant vos propriétés sur notre liste de propriétés à vendre et à louer",
+        "email": "Addresse e-mail",
+        "Password": "Mot de passe",
+        "passwordHolder": "Entrez votre mot de passe",
+        "member": "Pas encore membre?",
+        "create": "Créez votre compte"
+    },
+    "creation":{
+        "create": "Créez votre compte",
+        "fullName": "Nom & prénom",
+        "nameHolder": "Entre votre nom & prénom",
+        "password": "Créez un mot de passe",
+        "passwordHolder": "Entrez votre mot de passe",
+        "confirmPassword": "Confirmez votre mot de passe",
+        "method": "Choisissez votre méthode de paiement",
+        "charge": "Vous serez crédité de",
+        "createAccount": "Créez votre compte",
+        "card": "Numéro de carte",
+        "cardHolder": "Entre votre numéro de carte",
+        "expiration": "Date d'expiration",
+        "year": "Année",
+        "mobile": "Numéro de portable",
+        "mobileHolder": "Entrez votre numéro de portable"
+    },
+    "myProperties": {
+        "sell": "Mes propriétés à vendre",
+        "rent": "Mes propriétés à louer",
+        "add": "Ajouter une propriétée",
+        "edit": "MODIFIER"
+    },
+    "addProperty": {
+        "sell": "Ajouter une propriété à vendre",
+        "image": "Ajouter les images de la propriété",
+        "select": "Cliquez pour sélectionner les images",
+        "details": "Ajouter les détails de la propriété",
+        "price": "Fixer le prix",
+        "priceHolder": "Enter le prix",
+        "living": "Superficie du salon (m2)",
+        "livingHolder": "Entrer la superficie du salon",
+        "land": "Superficie du terrain  (m2)",
+        "landHolder": "Entrer la superficies du terrain",
+        "bathroom": "Salles de bain",
+        "bathroomHolder": "Entrer le nombre de salles de bain",
+        "shower": "Douches",
+        "showerHolder": "Entrer le nombre de douches",
+        "add": "Ajouter la propriété"
+    },
+    "basic": {
+        "title": "De base",
+        "title2" : "Gratuit",
+        "1": "Recherche et ajout de propriété",
+        "2": "Recherche et ajout de location",
+        "3": "Estimations",
+        "4": "Renseigner",
+        "5": "Détails",
+        "6": "Publication limitée à 4 Images par propriété",
+        "7": "Carte valeur propriété Heatmap d’Urbony",
+        "started": "COMMENCER"
+    },
+    "Pro": {
+        "title": "Pro (Vente et location rapide recommandée)",
+        "1": "Recherche et ajout de propriété",
+        "2": "Recherche et ajout de location",
+        "3": "Estimations",
+        "4": "Renseigner",
+        "5": "Détails",
+        "6": "Publication limitée à 8 Images par propriété",
+        "7": "Carte valeur propriété Heatmap d’Urbony",
+        "8": "Analyse du marché",
+        "9": "Analyse de la propriété",
+        "10": "Publiez votre bien en premier",
+        "11": "Rapports de propriété",
+        "12": "Rapports CMA (analyse comparative de marché)"
+    },
+    "Expert": {
+        "Title": "Expert & Entreprise",
+        "1": "Recherche et ajout de propriété",
+        "2": "Recherche et ajout de location",
+        "3": "Estimations",
+        "4": "Renseigner",
+        "5": "Détails",
+        "6": "Publication illimitée d'images par propriété",
+        "7": "Carte valeur propriété Heatmap d’Urbony",
+        "8": "Analyse du marché",
+        "9": "Analyse de la propriété",
+        "10": "Publiez votre bien en premier",
+        "11": "Rapports de propriété",
+        "12": "Rapports CMA (analyse comparative de marché)",
+        "13": "Analyse des experts",
+        "14": "Prévision de valeur",
+        "15": "Analyse des clients",
+        "16": "Expert CMA (analyse comparative de marché)",
+        "17": "Le home staging de votre bien"
     }
 }

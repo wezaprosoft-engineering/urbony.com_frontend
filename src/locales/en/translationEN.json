@@ -15,7 +15,8 @@
         "aboutUs": "ABOUT US",
         "offices": "OFFICES",
         "commercialSpace":"COMMERCIAL SPACE",
-        "industrialSpace": "INDUSTRIAL SPACE"
+        "industrialSpace": "INDUSTRIAL SPACE",
+        "login": "LOGIN"
     },
     "Welcome":{
         "text1":"The first real estate network created by real estate agents for real estate agents",
@@ -353,5 +354,102 @@
     "contact": {
         "phoneNumber" : "+257 75 78 89 74",
         "whatsApp": "+41 76 679 74 63"
+    },
+    "login": {
+        "Login": "Login",
+        "sell": "Sell with urbony by having your properties on our list of properties for sell and rent",
+        "email": "Email Address",
+        "Password": "Password",
+        "passwordHolder": "Enter your password",
+        "member": "Not a member yet?",
+        "create": "Create an account"
+    },
+    "creation":{
+        "create": "Create an account",
+        "fullName": "Full Name",
+        "nameHolder": "Enter your full name",
+        "password": "Create Password",
+        "passwordHolder": "Enter Password",
+        "confirmPassword": "Confirm password",
+        "method": "Select payment method",
+        "charge": "You will be charged",
+        "createAccount": "Create Account",
+        "card": "Card Number",
+        "cardHolder": "Enter Card Number",
+        "expiration": "Expiration date",
+        "year": "Year",
+        "mobile": "Mobile Number",
+        "mobileHolder": "Enter mobile number"
+
+    },
+    "myProperties": {
+        "sell": "My properties for sell",
+        "rent": "My properties for rent",
+        "add": "Add Property",
+        "edit": "EDIT"
+    },
+    "addProperty": {
+        "sell": "Add property for sell",
+        "image": "Upload property images",
+        "select": "Click to select images",
+        "details": "Add property details",
+        "price": "Set price",
+        "priceHolder": "Enter price",
+        "living": "Living Area space (m2)",
+        "livingHolder": "Enter living area space",
+        "land": "Land Area (m2)",
+        "landHolder": "Enter land area",
+        "bathroom": "Bathrooms",
+        "bathroomHolder": "Enter number of bathrooms",
+        "shower": "Shower rooms",
+        "showerHolder": "Enter number of shower rooms",
+        "add": "Add Property"
+    },
+    "basic": {
+        "title": "Basic",
+        "title2" : "Free of charge",
+        "1": "Property search and add",
+        "2": "Rental search and add",
+        "3": "Estimates",
+        "4": "Enquires",
+        "5": "Details",
+        "6": "Limited publishing 4 Images by property",
+        "7": "Urbony Value Heatmaps",
+        "started": "GET STARTED"
+    },
+    "Pro": {
+        "title": "Pro (quick sale recommended)",
+        "1": "Property Search and Add",
+        "2": "Rental Search and Add",
+        "3": "Estimates",
+        "4": "Enquire",
+        "5": "Details",
+        "6": "Limited publishing 8 Images by property",
+        "7": "Urbony Value Heatmaps",
+        "8": "Market Analytics",
+        "9": "Property Analytics",
+        "10": "Publish your property first",
+        "11": "Property Reports",
+        "12": "CMA (comparative market analysis) Reports"
+    },
+    "Expert": {
+        "Title": "Expert & Enterprise",
+        "1": "Property Search and Add",
+        "2": "Rental Search and Add",
+        "3": "Estimates",
+        "4": "Enquire",
+        "5": "Details",
+        "6": "Unlimited publishing Images by property",
+        "7": "Urbony Value Heatmaps",
+        "8": "Market Analytics",
+        "9": "Property Analytics",
+        "10": "Publish your property first",
+        "11": "Property Reports",
+        "12": "CMA (comparative market analysis) Reports",
+        "13": "Expert Analytics",
+        "14": "Value Forecasting",
+        "15": "Client analytics",
+        "16": "CMA (comparative market analysis) Expert",
+        "17": "Home Staging"
     }
 }

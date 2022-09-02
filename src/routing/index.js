@@ -5,12 +5,17 @@ import Header from "../components/Header";
 import MenuNav from "../components/MenuNav";
 import NavBar from "../components/navbar";
 import AboutUs from "../pages/AboutUs";
+import AddProperty from "../pages/addProperty";
+import AccountCreation from "../pages/Authentication/AccountCreation";
+import Login from "../pages/Authentication/Login";
+import SignUp from "../pages/Authentication/SignUp";
 import CommercialSpace from "../pages/Corporate/CommercialSpace";
 import IndustrialSpace from "../pages/Corporate/IndustrialSpace";
 import Offices from "../pages/Corporate/Offices";
 import GetInTouch from "../pages/GetInTouch";
 import Home from "../pages/Home";
 import Management from "../pages/Management";
+import MyProperties from "../pages/MyProperties";
 import Buy from "../pages/Residential/Buy";
 import RealEstate from "../pages/Residential/RealEstate";
 import Rent from "../pages/Residential/Rent";
@@ -36,6 +41,11 @@ const Routing = () =>{
                 <Route path="/management" element={<Management/>}/>
                 <Route path="/about-us" element={<AboutUs/>}/>
                 <Route path="/get-in-touch" element={<GetInTouch/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/sign-up" element={<SignUp/>}/>
+                <Route path="/account-creation" element={<AccountCreation/>}/>
+                <Route path="/myproperties" element={<MyProperties/>}/>
+                <Route path="/add-property" element={<AddProperty/>}/>
             </Routes>
             <Footer/>
         </Router>
