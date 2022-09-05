@@ -418,7 +418,8 @@
         "started": "GET STARTED"
     },
     "Pro": {
-        "title": "Pro (quick sale recommended)",
+        "title": "Pro",
+        "subtitle": "Quick sale recommended",
         "1": "Property Search and Add",
         "2": "Rental Search and Add",
         "3": "Estimates",
@@ -434,6 +435,7 @@
     },
     "Expert": {
         "Title": "Expert & Enterprise",
+        "subtitle": "Ideal for companies and investors",
         "1": "Property Search and Add",
         "2": "Rental Search and Add",
         "3": "Estimates",
@@ -450,6 +452,7 @@
         "14": "Value Forecasting",
         "15": "Client analytics",
         "16": "CMA (comparative market analysis) Expert",
-        "17": "Home Staging"
+        "17": "Management",
+        "18": "Home Staging"
     }
 }

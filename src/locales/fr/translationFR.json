@@ -413,7 +413,8 @@
         "started": "COMMENCER"
     },
     "Pro": {
-        "title": "Pro (Vente et location rapide recommandée)",
+        "title": "Pro",
+        "subtitle": "Vente et location rapide recommandée",
         "1": "Recherche et ajout de propriété",
         "2": "Recherche et ajout de location",
         "3": "Estimations",
@@ -429,6 +430,7 @@
     },
     "Expert": {
         "Title": "Expert & Entreprise",
+        "subtitle": "Idéal pour les entreprises et investisseurs",
         "1": "Recherche et ajout de propriété",
         "2": "Recherche et ajout de location",
         "3": "Estimations",
@@ -443,8 +445,9 @@
         "12": "Rapports CMA (analyse comparative de marché)",
         "13": "Analyse des experts",
         "14": "Prévision de valeur",
-        "15": "Analyse des clients",
+        "15": "Analyse de la clientèle",
         "16": "Expert CMA (analyse comparative de marché)",
-        "17": "Le home staging de votre bien"
+        "17": "Gestion",
+        "18": "Le home staging de votre bien"
     }
 }
