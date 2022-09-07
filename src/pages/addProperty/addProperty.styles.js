@@ -14,6 +14,9 @@ export const Content = styled.div`
     h3{
         color: rgba(46,15,89,1); 
     }
+    @media screen and (max-width: 414px){
+    margin-left: 5%;
+}
 `;
 
 export const BackgroundImage = styled.div`
@@ -32,6 +35,11 @@ background: #D9D9D9;
 border-radius: 5px;
 font-weight: 600;
 font-size: 15px;
+@media screen and (max-width: 414px){
+    width: 90%;
+    font-size: 17px;
+    height: 45px;
+}
 `;
 export const Select = styled.select`
 width: 50%;
@@ -40,6 +48,11 @@ background: #D9D9D9;
 border-radius: 5px;
 font-weight: 600;
 font-size: 15px;
+@media screen and (max-width: 414px){
+    width: 90%;
+    font-size: 17px;
+    height: 45px;
+}
 `;
 
 export const Button = styled.button`
@@ -54,4 +67,8 @@ font-size: 25px;
 color: white;
 margin-bottom: 100px;
 cursor: pointer;
+@media screen and (max-width: 414px){
+    width: 90%;
+    
+}
 `;

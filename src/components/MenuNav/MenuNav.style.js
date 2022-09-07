@@ -51,3 +51,15 @@ font-size: 20px;
 margin-left: 60px;
 margin-top: 100px;
 `;
+
+export const Button = styled.button`
+    width: 90%;
+    height: 48px;
+    background-color: #FFFFFF;
+    border-color: transparent;
+    color: #2E0F59;
+    font-family: "Roboto";
+    font-weight: 700;
+    margin: 30px auto auto 5%;
+    font-size: 20px;
+`;

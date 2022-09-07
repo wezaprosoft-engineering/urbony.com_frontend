@@ -21,7 +21,7 @@ const SignUp = () =>{
     return(
         <Wrapper>
             <Content>
-                <h2>Select plan and start selling with us</h2>
+                <h2>{t('basic.first')}</h2>
                 <div style={{
             display: 'flex',
             flexWrap: 'wrap'
@@ -31,12 +31,10 @@ const SignUp = () =>{
                 textAlign: 'center'
             }}>
                 <h2 style={{
-                    marginTop: 52,
-                    
-                }}>{t('management.card1Content1')}</h2>
-                <h3>{t('management.card1Content2')}</h3>
-                <h2>{t('management.asFrom')}</h2>
-                <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>{t('management.excl')}</h2>
+                    marginTop: 52
+                }}>{t('basic.title')}</h2>
+                <h3>{t('basic.title2')}</h3>
+                
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
@@ -44,9 +42,9 @@ const SignUp = () =>{
                     <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
-                        marginTop: 18
+                       
                     }}>
-                    <h4>{t('management.completeManagement')}</h4></div>
+                    <h4>{t('basic.1')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -57,18 +55,183 @@ const SignUp = () =>{
                         textAlign: 'left',
                         
                     }}>
-                    <h4>{t('management.periodicManagement')}</h4></div>
+                    <h4>{t('basic.2')}</h4></div>
                 </Benefits>
                 <Benefits>
-                {screen ? <img src={Bad} alt='bad' style={{
+                {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='bad'/>}
+                    <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
                         
                     }}>
-                    <h4>{t('management.rentInsurance')}</h4></div>
+                    <h4>{t('basic.3')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('basic.4')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('basic.5')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('basic.6')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('basic.7')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.8')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.9')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.10')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.11')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.12')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.13')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.14')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.15')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.16')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.17')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.18')}</h4></div>
                 </Benefits>
                 
                 {screen ? <CardButton style={{
@@ -77,7 +240,7 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>GET STARTED</CardButton>: <CardButton style={{
+                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
@@ -324,8 +487,8 @@ const SignUp = () =>{
                     color: 'white'
                 }}>{t('management.card2Content1')}</div>}
                
-            <h2>{t('management.card2Content2')}</h2>
-                <h3>{t('management.card2Content3')}</h3>
+               <h2>{t('Pro.title')}(<span style={{fontSize: 16}}>{t('Pro.subtitle')}</span>)</h2>
+                
                 <h2>{t('management.asFrom')}</h2>
                 <h2>150,000 BIF {t('management.excl')}</h2>
                 <Benefits>
@@ -335,9 +498,9 @@ const SignUp = () =>{
                     <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
-                        marginTop: 18
+                        
                     }}>
-                    <h4>{t('management.card2Content4')}</h4></div>
+                    <h4>{t('Pro.1')}</h4></div>
                 </Benefits>
                 <Benefits>
                     {screen ? <img src={Nice} alt='nice' style={{
@@ -347,9 +510,9 @@ const SignUp = () =>{
                     
                     <div style={{
                         textAlign: 'left',
-                        marginTop: 18
+                        
                     }}>
-                    <h4>{t('management.completeManagement')}</h4></div>
+                    <h4>{t('Pro.2')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -360,7 +523,7 @@ const SignUp = () =>{
                         textAlign: 'left',
                         
                     }}>
-                    <h4>{t('management.periodicManagement')}</h4></div>
+                    <h4>{t('Pro.3')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -371,7 +534,161 @@ const SignUp = () =>{
                         textAlign: 'left',
                         
                     }}>
-                    <h4>{t('management.rentInsurance')}</h4></div>
+                    <h4>{t('Pro.4')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.5')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.6')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.7')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.8')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.9')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.10')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.11')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Pro.12')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.13')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.14')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.15')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.16')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.17')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Bad} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.18')}</h4></div>
                 </Benefits>
                 {screen ? <CardButton style={{
                     width: '100%',
@@ -379,7 +696,7 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>{t('management.request')}</CardButton>: <CardButton style={{
+                }} onClick={()=>navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
@@ -629,10 +946,9 @@ const SignUp = () =>{
                 textAlign: 'center'
             }}>
                 <h2 style={{
-                    marginTop: 52,
-                    
-                }}>{t('management.card1Content1')}</h2>
-                <h3>{t('management.card1Content2')}</h3>
+                    marginTop: 52
+                }}>{t('Expert.Title')}</h2>
+                <h4>({t('Expert.subtitle')})</h4>
                 <h2>{t('management.asFrom')}</h2>
                 <h2><span style={{color: 'rgba(46,15,89,1)'}}>450,000 BIF </span>{t('management.excl')}</h2>
                 <Benefits>
@@ -642,9 +958,9 @@ const SignUp = () =>{
                     <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
-                        marginTop: 18
+                        
                     }}>
-                    <h4>{t('management.completeManagement')}</h4></div>
+                    <h4>{t('Expert.1')}</h4></div>
                 </Benefits>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -655,18 +971,183 @@ const SignUp = () =>{
                         textAlign: 'left',
                         
                     }}>
-                    <h4>{t('management.periodicManagement')}</h4></div>
+                    <h4>{t('Expert.2')}</h4></div>
                 </Benefits>
                 <Benefits>
-                {screen ? <img src={Bad} alt='bad' style={{
+                {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='bad'/>}
+                    <img src={Nice} alt='nice'/>}
                     <div style={{
                         textAlign: 'left',
                         
                     }}>
-                    <h4>{t('management.rentInsurance')}</h4></div>
+                    <h4>{t('Expert.3')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.4')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.5')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.6')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.7')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.8')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.9')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.10')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.11')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.12')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.13')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.14')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.15')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.16')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.17')}</h4></div>
+                </Benefits>
+                <Benefits>
+                {screen ? <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>: 
+                    <img src={Nice} alt='nice'/>}
+                    <div style={{
+                        textAlign: 'left',
+                        
+                    }}>
+                    <h4>{t('Expert.18')}</h4></div>
                 </Benefits>
                 
                 {screen ? <CardButton style={{
@@ -675,7 +1156,7 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>{t('basic.started')}</CardButton>: <CardButton style={{
+                }} onClick={()=>navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,

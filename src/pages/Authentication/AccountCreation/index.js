@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Content, Forms, Input, Payment, PaymentForm, PaymentMode, Wrapper } from "./AccountCreation.styles";
 import Card from '../../../assets/images/card.svg'
 import Mpesa from '../../../assets/images/mpesa.svg'
@@ -10,6 +10,12 @@ const AccountCreation = () =>{
     const {t} = useTranslation()
     const [mode, setMode] = useState('')
     const navigate = useNavigate()
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     function creation(){
         setGlobalState('loggedIn', true)
         navigate('/myproperties')
@@ -38,7 +44,9 @@ const AccountCreation = () =>{
                     <PaymentMode>
                     <input type="radio" value="mobile" name="mode" onChange={(e) => setMode(e.target.value)}/>
                     <img src={Mpesa} alt="m-pesa"/>
-                    <img src={Mobile} alt="ecocash-lumicash"/>
+                    <img src={Mobile} alt="ecocash-lumicash" style={{
+                        width: screen ? 170: 209
+                    }}/>
                     </PaymentMode>
                 </Payment>
 
@@ -52,11 +60,11 @@ const AccountCreation = () =>{
                         </div>
                         <div>
                             <h3>{t('creation.year')}</h3>
-                            <Input style={{width: '80%'}} placeholder="YY" type="number"/>
+                            <Input style={{width: '80%', marginTop: screen ? 23: 0}} placeholder="YY" type="number"/>
                         </div>
                         <div>
                             <h3>CVV</h3>
-                            <Input style={{width: '80%'}} placeholder="XXX" type="number"/>
+                            <Input style={{width: '80%',  marginTop: screen ? 23: 0}} placeholder="XXX" type="number"/>
                         </div>
                     </div>
                 </PaymentForm>:<>

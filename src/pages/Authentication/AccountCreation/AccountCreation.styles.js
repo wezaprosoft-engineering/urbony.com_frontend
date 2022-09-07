@@ -8,6 +8,9 @@ export const Content = styled.div`
  margin-top: 50px;
     margin-left: 89px;
     font-family: "Robotto";
+    @media screen and (max-width: 414px){
+        margin-left: 5%;
+    }
 `;
 
 export const Forms = styled.div`
@@ -24,6 +27,11 @@ font-family: "Roboto";
 font-weight: 700;
 color: rgba(46,15,89,0.6);
 font-size: 25px;
+@media screen and (max-width: 414px){
+    width: 90%;
+    font-size: 17px;
+    height: 45px;
+}
 `;
 
 export const Payment = styled.div`
@@ -45,4 +53,9 @@ border-color: transparent;
 color: white;
 font-weight: 700;
 cursor: pointer;
+@media screen and (max-width: 414px){
+    width: 90%;
+    font-size: 20px;
+    height: 45px;
+}
 `;

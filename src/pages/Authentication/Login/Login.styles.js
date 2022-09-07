@@ -8,6 +8,10 @@ export const Content = styled.div`
     margin-top: 50px;
     margin-left: 89px;
     font-family: "Robotto";
+    @media screen and (max-width: 414px){
+        margin-left: 5%;
+    }
+
 `;
 export const Form = styled.div`
 margin-top: 70px;
@@ -24,6 +28,11 @@ export const Input = styled.input`
     font-weight: 700;
     font-size: 15px;
     font-style: "Roboto";
+
+    @media screen and (max-width: 414px) {
+        height: 45px;
+        width: 90%;
+    }
 `;
 
 export const Button = styled.button`
@@ -37,4 +46,9 @@ export const Button = styled.button`
     border-color: transparent;
     margin-top: 50px;
     cursor: pointer;
+    @media screen and (max-width: 414px) {
+        height: 45px;
+        width: 93%;
+        font-size: 20px;
+    }
 `;
