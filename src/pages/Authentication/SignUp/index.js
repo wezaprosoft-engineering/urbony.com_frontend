@@ -258,7 +258,7 @@ const SignUp = () =>{
                 }}>{t('basic.title')}</h2>
                 <h3>{t('basic.title2')}</h3>
                 
-                <Benefits>
+                <Benefits style={{marginTop:111}}>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
@@ -468,7 +468,7 @@ const SignUp = () =>{
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
-                    marginTop: i18n.language==='fr' ?143 : 98,
+                    marginTop: i18n.language==='fr' ? 48 : 12,
                     marginBottom: 20
                 }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>}
             </ManagementCard>}
@@ -725,7 +725,7 @@ const SignUp = () =>{
                 
                 <h2>{t('management.asFrom')}</h2>
                 <h2>150,000 BIF {t('management.excl')}</h2>
-                <Benefits>
+                <Benefits style={{marginTop: 55}}>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
@@ -935,7 +935,7 @@ const SignUp = () =>{
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
-                    marginTop: i18n.language==='fr' ? 86 : 45,
+                    marginTop: i18n.language==='fr' ? 50 : 13,
                     marginBottom: 20
                 
                 }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>}
