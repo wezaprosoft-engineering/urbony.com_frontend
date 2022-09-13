@@ -73,8 +73,8 @@ const AccountCreation = () =>{
                     <Input type="number" placeholder={t('creation.mobileHolder')}/>
                 </PaymentForm>: null}
                 </>}
-                <h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3>
-                <Button onClick={creation}>{t('creation.createAccount')}</Button>
+               {/*<h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3> */} 
+                <Button onClick={creation} style={{marginTop: 30}}>{t('creation.createAccount')}</Button>
             </Forms>
             </Content>
         </Wrapper>
