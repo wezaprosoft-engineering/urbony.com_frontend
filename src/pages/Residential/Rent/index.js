@@ -12,8 +12,11 @@ import { EstimationButton, EstmationContent, Estimator } from "../../GetInTouch/
 import Popular from "../../../components/Popular";
 import PropertyForSell from "../../../components/PropertyForSell";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { setGlobalState } from "../../../store/state";
 
 const Rent = () => {
+    const navigate = useNavigate();
     const {t, i18n} = useTranslation();
     const [rentOut, setRentOut] = useState(false)
     const [liveIn, setLiveIn] = useState(true)
@@ -25,6 +28,17 @@ const Rent = () => {
     const LiveIn = () =>{
         setRentOut(false)
         setLiveIn(true)
+    }
+    const Estimate = () =>{
+        setGlobalState('buy', false)
+        setGlobalState('rent', false)
+        setGlobalState('sell', false)
+        setGlobalState('offices', false)
+        setGlobalState('industrialSpace', false)
+        setGlobalState('commercialSpace', false)
+        setGlobalState('management', false)
+        setGlobalState('aboutUs', false)
+        navigate('/free-estimation')
     }
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -212,14 +226,14 @@ const Rent = () => {
                 }}>{t('rent.button')}</Button>
 
                 <Popular margin='0px'/>
-                {screen ? <EstimationButton>
+                {screen ? <EstimationButton onClick={Estimate}>
                     <EstmationContent style={{
                         marginLeft: i18n.language==='fr'?10: 40
                     }}>
                     {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                   </EstimationButton>:<EstimationButton>
+                   </EstimationButton>:<EstimationButton onClick={Estimate}>
                     <EstmationContent>
                     {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>

@@ -10,6 +10,7 @@ import Popular from "../../../components/Popular";
 import { useTranslation } from "react-i18next";
 
 
+
 const Buy = () =>{
     const {t} = useTranslation();
     const [liveIn, setLiveIn] = useState(true)
@@ -23,6 +24,8 @@ const Buy = () =>{
         setInvest(true)
         setLiveIn(false)
     }
+
+    
     return(
         <>
         

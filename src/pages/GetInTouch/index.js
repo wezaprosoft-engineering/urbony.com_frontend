@@ -9,8 +9,10 @@ import LocationBlack from '../../assets/images/location_black.svg'
 import WhatsAppBlack from '../../assets/images/whatsapp_black.svg'
 import CallBlack from '../../assets/images/call_black.svg'
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const GetInTouch = () => {
+    const navigate = useNavigate()
     const {t, i18n} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -37,14 +39,14 @@ const GetInTouch = () => {
                     
                     <Message placeholder={t('getInTouch.messageHolder')}/>
                    <Submit>{t('getInTouch.submit')}</Submit>
-                   {screen ? <EstimationButton>
+                   {screen ? <EstimationButton onClick={()=>navigate('/free-estimation')}>
                     <EstmationContent style={{
                         marginLeft: i18n.language==='fr'?10: 40
                     }}>
                         {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                   </EstimationButton>:<EstimationButton>
+                   </EstimationButton>:<EstimationButton onClick={()=>navigate('/free-estimation')}>
                     <EstmationContent>
                         {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>

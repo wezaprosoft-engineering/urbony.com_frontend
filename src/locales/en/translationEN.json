@@ -455,5 +455,14 @@
         "16": "CMA (comparative market analysis) Expert",
         "17": "Management",
         "18": "Home Staging"
+    },
+    "Estimation": {
+        "main": "Urbony : Get a free evaluation of your property",
+        "title": "Get a free evaluation of your property and receive a response within 48 hours",
+        "subtitle": "Your contact details",
+        "subtitle2": "Property to be evaluated ",
+        "content": "Sell/Rent",
+        "content1": "Sell",
+        "content2": "Rent"
     }
 }

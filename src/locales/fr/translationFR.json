@@ -450,5 +450,14 @@
         "16": "Expert CMA (analyse comparative de marché)",
         "17": "Gestion",
         "18": "Le home staging de votre bien"
+    },
+    "Estimation": {
+        "main": "Urbony : Obtenez une évaluation gratuite de votre propriété",
+        "title": "Obtenez une évaluation gratuite de votre bien et recevez une réponse dans les 48h qui suivent",
+        "subtitle": "Détails de votre contact",
+        "subtitle2": "Propriété à évaluer",
+        "content": "Vendre/Location",
+        "content1": "Vendre",
+        "content2": "Location"
     }
 }

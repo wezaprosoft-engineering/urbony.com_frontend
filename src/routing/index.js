@@ -12,6 +12,7 @@ import SignUp from "../pages/Authentication/SignUp";
 import CommercialSpace from "../pages/Corporate/CommercialSpace";
 import IndustrialSpace from "../pages/Corporate/IndustrialSpace";
 import Offices from "../pages/Corporate/Offices";
+import FreeEstimation from "../pages/FreeEstimation";
 import GetInTouch from "../pages/GetInTouch";
 import Home from "../pages/Home";
 import Management from "../pages/Management";
@@ -20,6 +21,7 @@ import Buy from "../pages/Residential/Buy";
 import RealEstate from "../pages/Residential/RealEstate";
 import Rent from "../pages/Residential/Rent";
 import Sell from "../pages/Residential/Sell";
+import Searches from "../pages/Search";
 import { useGlobalState } from "../store/state";
 
 const Routing = () =>{
@@ -46,6 +48,8 @@ const Routing = () =>{
                 <Route path="/account-creation" element={<AccountCreation/>}/>
                 <Route path="/myproperties" element={<MyProperties/>}/>
                 <Route path="/add-property" element={<AddProperty/>}/>
+                <Route path="/free-estimation" element={<FreeEstimation/>}/>
+                <Route path="/search" element={<Searches/>}/>
             </Routes>
             <Footer/>
         </Router>
