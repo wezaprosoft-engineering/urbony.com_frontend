@@ -9,6 +9,11 @@ import { useTranslation } from "react-i18next";
 const AccountCreation = () =>{
     const {t} = useTranslation()
     const [mode, setMode] = useState('')
+    const url = 'https://urbony.onrender.com/api/register'
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirm, setConfirm] = useState('')
     const navigate = useNavigate()
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -20,6 +25,41 @@ const AccountCreation = () =>{
         setGlobalState('loggedIn', true)
         navigate('/myproperties')
     }
+
+    const register = async () => {
+        const body = JSON.stringify({name ,email, password});
+        if(password=== confirm){
+            try {
+                fetch(url, {
+                     method: 'POST',
+                     body: body,
+                     headers: {
+                         'Content-Type': 'application/json',
+                         'Accept': 'application/json',
+                     }
+                 }).then(res => {
+                     if (res.ok){
+                         return res.json()
+                     } else {
+                         throw res.json()
+                     }
+                 }).then(json =>{
+                    console.log(json)
+                    navigate('/login')
+                 }).catch(error =>{
+                     console.log(error)
+                     
+                 });
+                 
+             } catch (error) {
+                 console.log(error)
+             }
+        } else{
+            return 'Password do not match'
+        }
+        
+        
+    }
     return(
         <Wrapper>
             <Content>
@@ -27,13 +67,13 @@ const AccountCreation = () =>{
             <h2>{t('login.sell')}</h2>
             <Forms>
                 <h3>{t('creation.fullName')}</h3>
-                <Input type="text" placeholder={t('creation.nameHolder')}/>
+                <Input type="text" placeholder={t('creation.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
                 <h3>{t('login.email')}</h3>
-                <Input type="email" placeholder={t('sellerRequestForm.emailHolder')}/>
+                <Input type="email" placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                 <h3>{t('creation.password')}</h3>
-                <Input type="password" placeholder={t('creation.passwordHolder')}/>
+                <Input type="password" placeholder={t('creation.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                 <h3>{t('creation.confirmPassword')}</h3>
-                <Input type="password" placeholder={t('creation.confirmPassword')}/>
+                <Input type="password" placeholder={t('creation.confirmPassword')} value={confirm} onChange={(e) => {setConfirm(e.target.value)}}/>
 
                 <Payment>
                     <h3>{t('creation.method')}</h3>
@@ -74,7 +114,7 @@ const AccountCreation = () =>{
                 </PaymentForm>: null}
                 </>}
                {/*<h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3> */} 
-                <Button onClick={creation} style={{marginTop: 30}}>{t('creation.createAccount')}</Button>
+                <Button onClick={register} style={{marginTop: 30}}>{t('creation.createAccount')}</Button>
             </Forms>
             </Content>
         </Wrapper>

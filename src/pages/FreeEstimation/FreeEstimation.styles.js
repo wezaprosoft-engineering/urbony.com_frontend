@@ -13,6 +13,8 @@ export const Forms = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
+    background-color: aliceblue;
+    width: 73.3%;
 `;
 
 export const Input = styled.input`

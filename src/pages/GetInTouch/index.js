@@ -14,12 +14,51 @@ import { useNavigate } from "react-router-dom";
 const GetInTouch = () => {
     const navigate = useNavigate()
     const {t, i18n} = useTranslation();
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+    const [feedBack, setFeedBack] = useState('')
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+
+    const url = 'https://urbony.onrender.com/api/intouch'
+
+    const touch = () =>{
+        const body = JSON.stringify({name, email, message})
+        try {
+            fetch(url, {
+                method: 'POST',
+                body: body,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+                
+            }).then(json =>{
+                setFeedBack(json.message)
+                console.log(json.message)
+               
+                
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return(
         <Wrapper>
             <Content>
@@ -33,12 +72,13 @@ const GetInTouch = () => {
                         marginBottom: 70
                     }}>Just send us a message</h3>
                     
-                    <GetInTouchInput placeholder={t('getInTouch.nameHolder')}/>
+                    <GetInTouchInput placeholder={t('getInTouch.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
                     
-                    <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')}/>
+                    <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                     
-                    <Message placeholder={t('getInTouch.messageHolder')}/>
-                   <Submit>{t('getInTouch.submit')}</Submit>
+                    <Message placeholder={t('getInTouch.messageHolder')} value={message} onChange={(e) => {setMessage(e.target.value)}}/>
+                   <Submit onClick={touch}>{t('getInTouch.submit')}</Submit>
+                   <h2>{feedBack}</h2>
                    {screen ? <EstimationButton onClick={()=>navigate('/free-estimation')}>
                     <EstmationContent style={{
                         marginLeft: i18n.language==='fr'?10: 40

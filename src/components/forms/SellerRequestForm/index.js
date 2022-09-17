@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {  Head, Line, Title, Wrapper } from "../../Popular/Popular.styles";
 import { Container, InputRequest, RequestForm, Select, Star, SubmitButton, Content} from "./SellerRequestForm.styles";
 import { useTranslation } from "react-i18next";
@@ -6,6 +6,13 @@ import { useTranslation } from "react-i18next";
 const SellerRequestForm = props => {
     
     const {t} = useTranslation();
+    const [firstName, setFirstName] = useState('')
+        const [lastName, setLastName] = useState('')
+        const [email, setEmail] = useState('')
+        const [phoneNumber, setPhoneNumber] = useState('')
+        const [location, setLocation] = useState('')
+        const [options, setOptions] = useState('')
+        const requestType = 'SELL'
     
     return (
         <Wrapper style={{

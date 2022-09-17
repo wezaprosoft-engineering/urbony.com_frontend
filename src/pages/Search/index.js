@@ -35,7 +35,7 @@ const Details = props =>{
         
         
         </MoreContent>: <MoreContent>
-        <Check type='checkbox'/>
+        <Check type='checkbox' value={props.value} onChange={props.onChange}/>
         <h4>{props.detail}</h4> 
         </MoreContent>}
         
@@ -58,6 +58,21 @@ const Searches = () =>{
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
 
+    const [internal, setInternal] = useState([
+        {
+            value: "",
+        }
+    ])
+    const [external, setExternal] = useState([
+        {
+            value: "",
+        }
+    ])
+    const [nearby, setNearby] = useState([
+        {
+            value: "",
+        }
+    ])
     
 
     const MoreFilters = () =>{
@@ -174,39 +189,363 @@ const Searches = () =>{
                         {more ? <More>
                             <div>
                                 <h3>{t('Welcome.internal')}</h3>
-                                <Details detail={t('Welcome.internal1')}/>
-                                <Details detail={t('Welcome.internal2')}/>
-                                <Details detail={t('Welcome.internal3')}/>
-                                <Details detail={t('Welcome.internal4')}/>
-                                <Details detail={t('Welcome.internal5')}/>
-                                <Details detail={t('Welcome.internal6')}/>
-                                <Details detail={t('Welcome.internal7')}/>
-                                <Details detail={t('Welcome.internal8')}/>
-                                <Details detail={t('Welcome.internal9')}/>
-                                <Details detail={t('Welcome.internal10')}/>
-                                <Details detail={t('Welcome.internal11')}/>
+                                <Details detail={t('Welcome.internal1')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal1')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal1'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal2')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal2')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal2'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal3')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal3')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal3'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal4')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal4')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal4'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal5')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal5')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal5'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal6')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal6')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal6'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal7')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal7')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal7'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal8')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal8')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal8'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal9')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal9')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal9'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal10')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal10')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal10'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.internal11')} value={internal} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setInternal([...internal, {
+                                                value: t('Welcome.internal11')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                internal.filter((values) => values.value !== t('Welcome.internal11'))
+                                            );
+                                        }
+                                    }
+                                }/>
                             </div>
                             <div>
                                 <h3>{t('Welcome.external')}</h3>
-                                <Details detail={t('Welcome.external1')}/>
-                                <Details detail={t('Welcome.external2')}/>
-                                <Details detail={t('Welcome.external3')}/>
-                                <Details detail={t('Welcome.external4')}/>
-                                <Details detail={t('Welcome.external5')}/>
-                                <Details detail={t('Welcome.external6')}/>
-                                <Details detail={t('Welcome.external7')}/>
-                                <Details detail={t('Welcome.external8')}/>
-                                <Details detail={t('Welcome.external9')}/>
-                                <Details detail={t('Welcome.external10')}/>
+                                <Details detail={t('Welcome.external1')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external1')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external1'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external2')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external2')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external2'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external3')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external3')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external3'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external4')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external4')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external4'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external5')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external5')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external5'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external6')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external6')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external6'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external7')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external7')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external7'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external8')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external8')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external8'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external9')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external9')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external9'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.external10')} value={external} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setExternal([...external, {
+                                                value: t('Welcome.external10')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.external10'))
+                                            );
+                                        }
+                                    }
+                                }/>
                             </div>
                             <div>
                                 <h3>{t('Welcome.nearby')}</h3>
-                                <Details detail={t('Welcome.nearby1')}/>
-                                <Details detail={t('Welcome.nearby2')}/>
-                                <Details detail={t('Welcome.nearby3')}/>
-                                <Details detail={t('Welcome.nearby4')}/>
-                                <Details detail={t('Welcome.nearby5')}/>
-                                <Details detail={t('Welcome.nearby6')}/>
+                                <Details detail={t('Welcome.nearby1')} value={nearby} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setNearby([...nearby, {
+                                                value: t('Welcome.nearby1')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.nearby1'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.nearby2')} value={nearby} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setNearby([...nearby, {
+                                                value: t('Welcome.nearby2')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.nearby2'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.nearby3')} value={nearby} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setNearby([...nearby, {
+                                                value: t('Welcome.nearby3')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.nearby3'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.nearby4')} value={nearby} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setNearby([...nearby, {
+                                                value: t('Welcome.nearby4')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.nearby4'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.nearby5')} value={nearby} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setNearby([...nearby, {
+                                                value: t('Welcome.nearby5')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.nearby5'))
+                                            );
+                                        }
+                                    }
+                                }/>
+                                <Details detail={t('Welcome.nearby6')} value={nearby} onChange={
+                                    (e) =>{
+                                        if(e.target.checked){
+                                            setNearby([...nearby, {
+                                                value: t('Welcome.nearby6')
+                                            }])
+                                        } else{
+                                            setInternal(
+                                                external.filter((values) => values.value !== t('Welcome.nearby6'))
+                                            );
+                                        }
+                                    }
+                                }/>
                             </div>
                         </More>: null}
                         

@@ -15,7 +15,11 @@ import Warehouses from '../../assets/images/Warehouses.png'
 import Depots from '../../assets/images/Depots.png'
 import {useLocation} from 'react-router-dom'
 import { useTranslation } from "react-i18next";
-
+import Bed from '../../assets/images/bed.svg'
+import House from '../../assets/images/house.svg'
+import Statistic from '../../assets/images/statistic.svg'
+import { HomeCards, CardButton, CardsContainer } from "../HomeCards/HomeCards.style";
+import Location from '../../assets/images/location.svg'
 const Popular = props => {
     const {t} = useTranslation();
     const location = useLocation()
@@ -87,7 +91,167 @@ const Popular = props => {
         setGlobalState("corporatecard2", false)
         setGlobalState("corporatecard3", true)
     }
-    
+    const url = 'https://urbony.onrender.com/api/property/all/homes'
+    const rentUrl = 'https://urbony.onrender.com/api/property/all/rent'
+    const officeUrl = 'https://urbony.onrender.com/api/property/all/offices'
+    const commercialUrl = 'https://urbony.onrender.com/api/property/all/stores'
+    const IndustrialUrl = 'https://urbony.onrender.com/api/property/all/industrial'
+    const [officers, setOfficers] = useState('')
+    const [commercial, setCommercial] = useState('')
+    const [industrials, setIndustrials] = useState('')
+    const [popularHomes, setPopularHomes] = useState('')
+    const [popularRent, setPopularRent] = useState('')
+    const popular = () => {
+        try {
+            fetch(url,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               console.log(json)
+               setPopularHomes(json)
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() =>{
+        popular();
+    }, []);
+    const rent = () => {
+        try {
+            fetch(rentUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               console.log(json)
+               setPopularRent(json)
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() =>{
+        rent();
+    }, []);
+    const office = () => {
+        try {
+            fetch(officeUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               console.log(json)
+               setOfficers(json)
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() =>{
+        office();
+    }, []);
+
+    const commercialHouse = () => {
+        try {
+            fetch(commercialUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               console.log(json)
+               setCommercial(json)
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() =>{
+        commercialHouse();
+    }, []);
+    const industrialHouse = () => {
+        try {
+            fetch(IndustrialUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               console.log(json)
+               setIndustrials(json)
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() =>{
+        industrialHouse();
+    }, []);
     return(
         <Wrapper>
             <Content style={{
@@ -172,8 +336,7 @@ const Popular = props => {
                 {Industrial || Commercial || Offices ? <>{
                     screen ? <>
                         { <>
-                            {
-                                location.pathname==='/offices'? <>
+                            {location.pathname==='/offices'? <>
                                 {corporatecard1 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={CoworkingDesk} next={CorporateCard2}/>:
                             <>
                             {corporatecard2 ? <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={EnterpriseOffice} prev={CorporateCard1} next={CorporateCard3}/>:
@@ -201,11 +364,337 @@ const Popular = props => {
                             
                         }
                     </>:<Home>
-                    <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
-                    <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
-                    <CorporateCards buttonText={t('Card.book')} buttonColor="rgba(217, 11, 66 ,1)" housePicture={House1}/>
+                        {officers.length > 0 && location.pathname==='/offices'? <>
+                            {officers.map(
+                                (house =>(
+                                    <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 406,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        <div style={{
+            width: 90
+        }}></div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: `rgba(217, 11, 66 ,1)`
+            }}>{t('Card.book')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{house.price}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                                ))
+                            )}
+                        </>:<>
+                        {commercial.length > 0 && location.pathname==='/commercial-space' ? <>
+                            {commercial.map(
+                                house => (
+                                    <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 406,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        <div style={{
+            width: 90
+        }}></div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: `rgba(217, 11, 66 ,1)`
+            }}>{t('Card.book')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{house.price}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                                )
+                            )}
+                        </>:<>
+                        {industrials.length > 0 && location.pathname==='/industrial-space' ? <>
+                            {industrials.map(
+                                house => (
+                                    <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 406,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        <div style={{
+            width: 90
+        }}></div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: `rgba(217, 11, 66 ,1)`
+            }}>{t('Card.book')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{house.price}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                                )
+                            )}
+                        </>:<h2>Loading</h2>}
+                        </>}
+                        </>}
+                    
                 </Home>
                 }</>: <Home>
+                    {popularHomes.length > 0 && location.pathname!=='/rent'? <>
+                        <>
+                        {popularHomes.map(
+                            house =>(
+                                <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 406,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="bed-icon" src={Bed} style={{
+            marginRight: 10
+        }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: "rgba(217, 11, 66 ,1)" 
+            }}>{t('Card.book')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{house.price}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                            )
+                        )}
+                        </>
+                        
+                    </>: <>
+                        {popularRent.length > 0 && location.pathname==='/rent' ? <>
+                        {popularRent.map(
+                            house =>(
+                                <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 406,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="bed-icon" src={Bed} style={{
+            marginRight: 10
+        }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: "red" 
+            }}>{t('Card.rent')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{house.price}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                            )
+                        )}
+                        </>: <h2>Loading</h2>}
+                    </>}
                     {screen ?
                         <>
                         {card1 ?
@@ -220,10 +709,15 @@ const Popular = props => {
                         
                         
                     : <>
+                    {location.pathname==='/rent' ? 
+                <>
+                
+                </>:<>
+                
+                </>    
+                }
                     
-                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'):  t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House1} />
-                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'): t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House2} />
-                    <HomeCard buttonText={location.pathname==='/rent'? t('Card.rent'): t('Card.book')} buttonColor={location.pathname==='/rent' ? 'red': "rgba(217, 11, 66 ,1)"} housePicture={House3} /></>}
+                    </>}
                     
                 </Home>}
 

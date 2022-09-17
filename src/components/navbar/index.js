@@ -1,4 +1,4 @@
-import React ,{useEffect} from "react";
+import React ,{useEffect, useState} from "react";
 import { TextMenu } from "../Header/Header.styles";
 import { Content, Wrapper, TextMenu2, LoginContent, LoginLogo, ContentText, Container } from "./Navbar.styles";
 import { useGlobalState, setGlobalState } from "../../store/state";
@@ -24,6 +24,7 @@ const NavBar = () =>{
     const [getIntouch] = useGlobalState("getIntouch")
     const [loggedIn] = useGlobalState("loggedIn")
 
+   
     const makeSell = ()=>{
         setGlobalState("sell", true)
         setGlobalState("buy", false)
@@ -165,6 +166,9 @@ const NavBar = () =>{
             setGlobalState("industrialSpace", true)
         } 
     })
+
+    const full = localStorage.getItem('name')
+    
     return(
         <Wrapper>{corporate ? <Content>
             <ContentText>
@@ -180,7 +184,7 @@ const NavBar = () =>{
                 <TextMenu style={{
                     fontWeight: 700,
                     color: 'white'
-                }} >John</TextMenu>
+                }} >{full}</TextMenu>
             </LoginContent>: <LoginContent onClick={LoginPage}>
                 <LoginLogo src={Login}/>
                 <TextMenu style={{
@@ -203,7 +207,7 @@ const NavBar = () =>{
                 <TextMenu style={{
                     fontWeight: 700,
                     color: 'white'
-                }} >John</TextMenu>
+                }} >{full}</TextMenu>
             </LoginContent>: <LoginContent onClick={LoginPage}>
                 <LoginLogo src={Login}/>
                 <TextMenu style={{

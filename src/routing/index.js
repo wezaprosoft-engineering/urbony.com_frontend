@@ -22,10 +22,16 @@ import RealEstate from "../pages/Residential/RealEstate";
 import Rent from "../pages/Residential/Rent";
 import Sell from "../pages/Residential/Sell";
 import Searches from "../pages/Search";
-import { useGlobalState } from "../store/state";
+import { setGlobalState, useGlobalState } from "../store/state";
 
 const Routing = () =>{
     const [mobileMenu] = useGlobalState("mobileMenu")
+    const token = localStorage.getItem('token')
+    if (!token){
+        setGlobalState('loggedIn', false)
+    }else{
+        setGlobalState('loggedIn', true)
+    }
     return(
         <Router>
             <Header/>

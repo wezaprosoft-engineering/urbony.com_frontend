@@ -14,6 +14,13 @@ const FreeEstimation = () => {
         useEffect(()=> {
             window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
         }, []);
+        const [firstName, setFirstName] = useState('')
+        const [lastName, setLastName] = useState('')
+        const [email, setEmail] = useState('')
+        const [phoneNumber, setPhoneNumber] = useState('')
+        const [location, setLocation] = useState('')
+        const [options, setOptions] = useState('')
+        const requestType = 'ESTIMATE'
         return(
             <>
             
@@ -59,10 +66,11 @@ const FreeEstimation = () => {
 
                         <h3>{t('Estimation.subtitle2')} <Star>*</Star></h3>
                         <Forms>
-                            <div>
+                            <div style={{width: '100%'}}>
                                 <h4>{t('sellerRequestForm.locationOfProperty')}<Star>*</Star></h4>
-                                <Input style={{width: screen ? '95%' :1090}} placeholder={t('sellerRequestForm.locationHolder')}/>
+                                <Input style={{width: screen ? '95%' :'100%'}} placeholder={t('sellerRequestForm.locationHolder')}/>
                             </div>
+                            <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '100%'}}>
                             <div>
                                 <h4>{t('sellerRequestForm.typeOfProperty')} <Star>*</Star></h4>
                                 <Select>
@@ -80,6 +88,8 @@ const FreeEstimation = () => {
                             <option value={t('Estimation.content2')}>{t('Estimation.content2')}</option>
                                 </Select>
                             </div>
+                            </div>
+                            
                             
                         </Forms>
                         <div style={{
