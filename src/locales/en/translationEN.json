@@ -379,7 +379,8 @@
         "expiration": "Expiration date",
         "year": "Year",
         "mobile": "Mobile Number",
-        "mobileHolder": "Enter mobile number"
+        "mobileHolder": "Enter mobile number",
+        "required": "Please input the required information!"
 
     },
     "myProperties": {
@@ -408,7 +409,9 @@
     "basic": {
         "first": "Select plan and start selling with us",
         "title": "Basic",
-        "title2" : "Free of charge",
+        "title2" : "Get started now",
+        "title3": "Free of charge",
+        "title4": "Included all these services",
         "1": "Property search and add",
         "2": "Rental search and add",
         "3": "Estimates",
@@ -465,4 +468,5 @@
         "content1": "Sell",
         "content2": "Rent"
     }
+    
 }

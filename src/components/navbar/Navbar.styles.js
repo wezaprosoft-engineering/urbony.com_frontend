@@ -60,3 +60,14 @@ justify-content: space-between;
 export const Container = styled.div`
 display: flex;
 `;
+
+export const Menu = styled.div`
+    height: 40px;
+    align-items: center;
+    padding: 0.3rem;
+    transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    :hover{
+        background-color: rgba(46,15,89,0.3);
+    }
+    font-family: "Robotto";
+`;

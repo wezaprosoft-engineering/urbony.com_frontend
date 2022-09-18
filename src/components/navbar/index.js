@@ -1,6 +1,6 @@
 import React ,{useEffect, useState} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Content, Wrapper, TextMenu2, LoginContent, LoginLogo, ContentText, Container } from "./Navbar.styles";
+import { Content, Wrapper, TextMenu2, LoginContent, LoginLogo, ContentText, Container, Menu } from "./Navbar.styles";
 import { useGlobalState, setGlobalState } from "../../store/state";
 import {useNavigate, useLocation} from 'react-router-dom'
 import { useTranslation } from "react-i18next";
@@ -166,8 +166,40 @@ const NavBar = () =>{
             setGlobalState("industrialSpace", true)
         } 
     })
-
+    const [open, setOpen] = useState(false)
     const full = localStorage.getItem('name')
+    const logout = () =>{
+        localStorage.removeItem('token')
+        localStorage.removeItem('name')
+        window.location.reload(false)
+    }
+
+    function DropdownMenu(){
+        function DropdownItem(props){
+            return(
+                <Menu onClick={props.onClick}>
+                    <h3>{props.children}</h3>
+                </Menu>
+                
+            )
+
+        }
+        return(
+            <div style={{backgroundColor: 'lightgray',
+                zIndex:9999,
+                position: "absolute",
+                top: 190,
+                width: 170,
+                textAlign: 'center',
+                right: 45
+            }}>
+                <DropdownItem >Profile</DropdownItem>
+                <DropdownItem onClick={()=>navigate('/add-property')}>Add Property</DropdownItem>
+                <DropdownItem onClick={logout}>Logout</DropdownItem>
+               
+            </div>
+        )
+    }
     
     return(
         <Wrapper>{corporate ? <Content>
@@ -185,6 +217,7 @@ const NavBar = () =>{
                     fontWeight: 700,
                     color: 'white'
                 }} >{full}</TextMenu>
+                {open ?<DropdownMenu/>: null}
             </LoginContent>: <LoginContent onClick={LoginPage}>
                 <LoginLogo src={Login}/>
                 <TextMenu style={{
@@ -202,12 +235,13 @@ const NavBar = () =>{
             {management && !getIntouch ? <TextMenu2>{t('NavBar.management')}</TextMenu2>: <TextMenu onClick={makeManagement}>{t('NavBar.management')}</TextMenu>}
             {aboutUs && !getIntouch ? <TextMenu2>{t('NavBar.aboutUs')}</TextMenu2>: <TextMenu onClick={makeAboutUs}>{t('NavBar.aboutUs')}</TextMenu>}
             </Container>
-            {loggedIn ? <LoginContent style={{backgroundColor: 'rgba(46,15,89,1)', paddingLeft: 5}} onClick={() => navigate('myproperties')}>
+            {loggedIn ? <LoginContent style={{backgroundColor: 'rgba(46,15,89,1)', paddingLeft: 5}} onClick={() => {open ? setOpen(false): setOpen(true)}}>
                 <LoginLogo src={LoggedIn}/>
                 <TextMenu style={{
                     fontWeight: 700,
                     color: 'white'
                 }} >{full}</TextMenu>
+                {open ?<DropdownMenu/>: null}
             </LoginContent>: <LoginContent onClick={LoginPage}>
                 <LoginLogo src={Login}/>
                 <TextMenu style={{

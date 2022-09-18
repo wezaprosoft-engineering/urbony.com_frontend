@@ -33,6 +33,8 @@ const {setGlobalState, useGlobalState} = createGlobalState({
     corporatecard3: false,
     loggedIn: false,
     name: undefined,
+    free: true,
+    charge: undefined,
   
 });
 

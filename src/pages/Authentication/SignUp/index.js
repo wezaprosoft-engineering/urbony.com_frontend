@@ -6,6 +6,7 @@ import { CardButton } from "../../../components/Popular/Popular.styles";
 import Nice from '../../../assets/images/nice.svg'
 import Bad from '../../../assets/images/bad.svg'
 import { useNavigate } from "react-router-dom";
+import { setGlobalState } from "../../../store/state";
 
 const SignUp = () =>{
     const navigate = useNavigate()
@@ -17,6 +18,22 @@ const SignUp = () =>{
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
 
+    const base = () =>{
+        setGlobalState('free', true);
+        //setGlobalState('charge', 0);
+        navigate('/account-creation')
+    }
+
+    const pro = () =>{
+        setGlobalState('free', false);
+        //setGlobalState('charge', 150000);
+        navigate('/account-creation')
+    }
+    const premium = () =>{
+        setGlobalState('free', false);
+        //setGlobalState('charge', 450000);
+        navigate('/account-creation')
+    }
    
     return(
         <Wrapper>
@@ -31,9 +48,11 @@ const SignUp = () =>{
                 textAlign: 'center'
             }}>
                 <h2 style={{
-                    marginTop: 52
+                    marginTop: 55
                 }}>{t('basic.title')}</h2>
-                <h3>{t('basic.title2')}</h3>
+                <h3 style={{marginTop: -20 , fontWeight: "normal"}}>{t('basic.title2')}</h3>
+                <h2 style={{marginTop: 38}}>{t('basic.title3')}</h2>
+                <h3 style={{marginTop: -20 , fontWeight: "normal"}}>{t('basic.title4')}</h3>
                 
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -240,13 +259,13 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
+                }} onClick={base}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: 100
-                }}>GET STARTED</CardButton>}
+                }} onClick={base}>GET STARTED</CardButton>}
             </ManagementCard>:<ManagementCard style={{
                 margin: 10,
                 width: '30%',
@@ -254,11 +273,13 @@ const SignUp = () =>{
                 textAlign: 'center'
             }}>
                 <h2 style={{
-                    marginTop: 52
+                    marginTop: 55
                 }}>{t('basic.title')}</h2>
-                <h3>{t('basic.title2')}</h3>
+                <h3 style={{marginTop: -20 , fontWeight: "normal"}}>{t('basic.title2')}</h3>
+                <h2 style={{marginTop: 38}}>{t('basic.title3')}</h2>
+                <h3 style={{marginTop: -20 , fontWeight: "normal"}}>{t('basic.title4')}</h3>
                 
-                <Benefits style={{marginTop:111}}>
+                <Benefits style={{marginTop:10}}>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
@@ -463,14 +484,14 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
+                }} onClick={base}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: i18n.language==='fr' ? 48 : 12,
                     marginBottom: 20
-                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>}
+                }} onClick={base}>{t('basic.started')}</CardButton>}
             </ManagementCard>}
             {screen ? <ManagementCard style={{
                 background: '#2E0F59',
@@ -487,9 +508,9 @@ const SignUp = () =>{
                     color: 'white'
                 }}>{t('management.card2Content1')}</div>}
                
-               <h2>{t('Pro.title')}(<span style={{fontSize: 16}}>{t('Pro.subtitle')}</span>)</h2>
-                
-                <h2>{t('management.asFrom')}</h2>
+               <h2>{t('Pro.title')}</h2>
+                <h3 style={{marginTop: -20, fontWeight: 'normal'}}>{t('Pro.subtitle')}</h3>
+                <h4 style={{fontWeight: 'normal', marginTop: 40, marginBottom: -20}}>{t('management.asFrom')}</h4>
                 <h2>150,000 BIF {t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -696,13 +717,13 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }} onClick={()=>navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
+                }} onClick={pro}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>{t('management.request')}</CardButton>}
+                }} onClick={pro}>{t('management.request')}</CardButton>}
                 
             </ManagementCard>: <ManagementCard style={{
                 background: '#2E0F59',
@@ -721,11 +742,11 @@ const SignUp = () =>{
                     color: 'white'
                 }}></div>}
                
-            <h2>{t('Pro.title')}(<span style={{fontSize: 16}}>{t('Pro.subtitle')}</span>)</h2>
-                
-                <h2>{t('management.asFrom')}</h2>
+            <h2>{t('Pro.title')}</h2>
+                <h3 style={{marginTop: -20, fontWeight: 'normal'}}>{t('Pro.subtitle')}</h3>
+                <h4 style={{fontWeight: 'normal', marginTop: 40, marginBottom: -20}}>{t('management.asFrom')}</h4>
                 <h2>150,000 BIF {t('management.excl')}</h2>
-                <Benefits style={{marginTop: 55}}>
+                <Benefits style={{marginTop: 15}}>
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
@@ -930,7 +951,7 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                    
-                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
+                }} onClick={pro}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
@@ -938,7 +959,7 @@ const SignUp = () =>{
                     marginTop: i18n.language==='fr' ? 50 : 13,
                     marginBottom: 20
                 
-                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>}
+                }} onClick={pro}>{t('basic.started')}</CardButton>}
                 
             </ManagementCard>}
             {screen ? <ManagementCard style={{
@@ -946,10 +967,10 @@ const SignUp = () =>{
                 textAlign: 'center'
             }}>
                 <h2 style={{
-                    marginTop: 52
+                    marginTop: 57
                 }}>{t('Expert.Title')}</h2>
-                <h4>({t('Expert.subtitle')})</h4>
-                <h2>{t('management.asFrom')}</h2>
+                <h3 style={{marginTop: -20, fontWeight: 'normal'}}>{t('Expert.subtitle')}</h3>
+                <h4 style={{fontWeight: 'normal', marginTop: 40, marginBottom: -20}}>{t('management.asFrom')}</h4>
                 <h2><span style={{color: 'rgba(46,15,89,1)'}}>450,000 BIF </span>{t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -1156,13 +1177,13 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }} onClick={()=>navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
+                }} onClick={premium}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: 100
-                }}>{t('basic.started')}</CardButton>}
+                }}onClick={premium}>{t('basic.started')}</CardButton>}
             </ManagementCard>:<ManagementCard style={{
                 margin: 10,
                 width: '30%',
@@ -1170,10 +1191,10 @@ const SignUp = () =>{
                 textAlign: 'center'
             }}>
                 <h2 style={{
-                    marginTop: 52
+                    marginTop: 57
                 }}>{t('Expert.Title')}</h2>
-                <h4>({t('Expert.subtitle')})</h4>
-                <h2>{t('management.asFrom')}</h2>
+                <h3 style={{marginTop: -20, fontWeight: 'normal'}}>{t('Expert.subtitle')}</h3>
+                <h4 style={{fontWeight: 'normal', marginTop: 40, marginBottom: -20}}>{t('management.asFrom')}</h4>
                 <h2><span style={{color: 'rgba(46,15,89,1)'}}>450,000 BIF </span>{t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -1379,14 +1400,14 @@ const SignUp = () =>{
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>: <CardButton style={{
+                }} onClick={premium}>{t('basic.started')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: i18n.language==='fr' ? 47 : 10,
                     marginBottom: 20
-                }} onClick={()=> navigate('/account-creation')}>{t('basic.started')}</CardButton>}
+                }} onClick={premium}>{t('basic.started')}</CardButton>}
             </ManagementCard>}
             
            

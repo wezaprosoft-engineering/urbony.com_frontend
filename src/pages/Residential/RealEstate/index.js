@@ -2,7 +2,6 @@ import React ,{useState, useEffect} from "react";
 import { CardButton, Content, Head, Line, Title, Wrapper } from "../../../components/Popular/Popular.styles";
 import { Input } from "../../../components/WelcomeSection/Welcome.styles";
 import { CardContent, Description, RealEstateCard, TextContent, Description2Text,WrapperDescription2,CardButtons, Description2, Description2Content, LineEstate } from "./RealEstate.styles";
-import Estate from '../../../assets/images/realEstate.png'
 import { useTranslation } from "react-i18next";
 
 const RealEstate = () =>{
@@ -48,66 +47,7 @@ const RealEstate = () =>{
         realEstateProject();
     }, []);
 
-    const RealEstateCards = ()=>{
-        return(
-            <RealEstateCard style={{}}>
-                        <CardContent style={{
-                            backgroundImage: `url(${Estate})`,
-                        }}>
-
-                        </CardContent>
-                        <TextContent>
-                            <Description>
-                            <h1>{t('realEstate.residential')}</h1>
-                            <h2 style={{
-                                color: 'rgba(217, 11, 66, 1)',
-                                fontWeight: 500,
-                                
-                            }}>Makamba 103</h2>
-                            <h2 style={{
-                                fontWeight: 700
-                            }}>46 KOTS/{t('realEstate.ready')}</h2>
-
-                            <p style={{
-                                fontWeight: 400,
-                                marginTop: 50
-                            }}>{t('realEstate.text')}
-                            </p>
-
-                            <h2 style={{fontWeight: 500,
-                            color: 'rgba(46,15,89,1)',
-                            
-                            }} className='second'>{t('realEstate.delivery')} 23 July 2023</h2>
-                            
-                            </Description>
-                            <WrapperDescription2>
-                            <h2 className="price">{t('realEstate.price')}</h2>
-                            <Description2>
-                                
-                                <Description2Content>
-                                
-                                <LineEstate/>
-                                <Description2Text>
-                                <h2 style={{
-                                    fontSize: 25,
-                                    fontWeight: 500
-                                }}>{t('realEstate.studio')}</h2>
-                                <h2 style={{
-                                    color: 'rgba(46,15,89,1)'
-                                }}>BIF 120000</h2>
-                                </Description2Text>
-                                
-                                </Description2Content>
-                                <CardButtons>{t('realEstate.button')}</CardButtons>
-                                
-                            </Description2>
-                            </WrapperDescription2>
-                            
-                            
-                        </TextContent>
-           </RealEstateCard>
-        )
-    }
+ 
     return(
        <Wrapper>
         <Content style={{display: 'grid'}}>

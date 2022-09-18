@@ -375,7 +375,8 @@
         "expiration": "Date d'expiration",
         "year": "Année",
         "mobile": "Numéro de portable",
-        "mobileHolder": "Entrez votre numéro de portable"
+        "mobileHolder": "Entrez votre numéro de portable",
+        "required": "Entrez les infomations necessaire!"
     },
     "myProperties": {
         "sell": "Mes propriétés à vendre",
@@ -403,7 +404,9 @@
     "basic": {
         "first": "Sélectionnez un plan et commencez à vendre avec nous",
         "title": "De base",
-        "title2" : "Gratuit",
+        "title2" : "Commencez maintenant",
+        "title3": "Gratuit",
+        "title4": "Inclus tous ses services",
         "1": "Recherche et ajout de propriété",
         "2": "Recherche et ajout de location",
         "3": "Estimations",

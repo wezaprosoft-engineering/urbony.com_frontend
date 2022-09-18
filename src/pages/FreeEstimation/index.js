@@ -20,7 +20,46 @@ const FreeEstimation = () => {
         const [phoneNumber, setPhoneNumber] = useState('')
         const [location, setLocation] = useState('')
         const [options, setOptions] = useState('')
+        const [propertyTypesId, setPropertyTypesId] = useState('')
         const requestType = 'ESTIMATE'
+        const [message, setMessage] = useState('')
+        const url='https://urbony.onrender.com/api/estimate'
+        const estimate = async () => {
+            const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, options,propertyTypesId, requestType});
+            try {
+               fetch(url, {
+                    method: 'POST',
+                    body: body,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
+                    }
+                }).then(res => {
+                    if (res.ok){
+                        return res.json()
+                    } else {
+                        throw res.json()
+                    }
+                    
+                }).then(json =>{
+                    console.log(json)
+                    setMessage(json.message)
+                    
+    
+                   
+    
+                }).catch(error =>{
+                    console.log(error)
+                    
+                });
+    
+                
+            } catch (error) {
+                console.log(error)
+            }
+            
+        }
         return(
             <>
             
@@ -48,19 +87,19 @@ const FreeEstimation = () => {
                         <Forms>
                             <div>
                                 <h4>{t('sellerRequestForm.lastName')}<Star>*</Star></h4>
-                                <Input placeholder={t('sellerRequestForm.lastNameHolder')}/>
+                                <Input placeholder={t('sellerRequestForm.lastNameHolder')} value={lastName} onChange={(e) => {setLastName(e.target.value)}}/>
                             </div>
                             <div>
                                 <h4>{t('sellerRequestForm.firstName')} <Star>*</Star></h4>
-                                <Input placeholder={t('sellerRequestForm.firstNameHolder')} />
+                                <Input placeholder={t('sellerRequestForm.firstNameHolder')} value={firstName} onChange={(e) => {setFirstName(e.target.value)}}/>
                             </div>
                             <div>
                                 <h4>{t('sellerRequestForm.email')} <Star>*</Star></h4>
-                                <Input placeholder={t('sellerRequestForm.emailHolder')} type="email"/>
+                                <Input placeholder={t('sellerRequestForm.emailHolder')} type="email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                             </div>
                             <div>
                                 <h4>{t('sellerRequestForm.phoneNumber')} <Star>*</Star></h4>
-                                <Input placeholder={t('sellerRequestForm.phoneNumberHolder')} type="number"/>
+                                <Input placeholder={t('sellerRequestForm.phoneNumberHolder')} type="number" value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
                             </div>
                         </Forms>
 
@@ -68,24 +107,24 @@ const FreeEstimation = () => {
                         <Forms>
                             <div style={{width: '100%'}}>
                                 <h4>{t('sellerRequestForm.locationOfProperty')}<Star>*</Star></h4>
-                                <Input style={{width: screen ? '95%' :'100%'}} placeholder={t('sellerRequestForm.locationHolder')}/>
+                                <Input style={{width: screen ? '95%' :'100%'}} placeholder={t('sellerRequestForm.locationHolder')} value={location} onChange={(e) => {setLocation(e.target.value)}}/>
                             </div>
                             <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '100%'}}>
                             <div>
                                 <h4>{t('sellerRequestForm.typeOfProperty')} <Star>*</Star></h4>
-                                <Select>
+                                <Select id="options" value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
                                 <option>{t('sellerRequestForm.option0')}</option>
-                            <option value="Commercial Property">{t('sellerRequestForm.option1')}</option>
-                            <option value="Industrial Property">{t('sellerRequestForm.option2')}</option>
-                            <option value="Retail Property">{t('sellerRequestForm.option3')}</option>
-                            <option value="Mixed-use Property">{t('sellerRequestForm.option4')}</option>
+                            <option value="1">{t('sellerRequestForm.option1')}</option>
+                            <option value="2">{t('sellerRequestForm.option2')}</option>
+                            <option value="3">{t('sellerRequestForm.option3')}</option>
+                            <option value="4">{t('sellerRequestForm.option4')}</option>
                                 </Select>
                             </div>
                             <div>
                                 <h4>{t('Estimation.content')} <Star>*</Star></h4>
-                                <Select>
-                                <option value={t('Estimation.content1')}>{t('Estimation.content1')}</option>
-                            <option value={t('Estimation.content2')}>{t('Estimation.content2')}</option>
+                                <Select id="value" value={options} onChange={(e) => setOptions(e.target.value)}>
+                                <option value="SELL">{t('Estimation.content1')}</option>
+                            <option value="RENT">{t('Estimation.content2')}</option>
                                 </Select>
                             </div>
                             </div>
@@ -102,7 +141,8 @@ const FreeEstimation = () => {
                     </div>
 
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
-                    <Button>{t('sellerRequestForm.submit')}</Button>
+                    <Button onClick={estimate}>{t('sellerRequestForm.submit')}</Button>
+                    <h4>{message}</h4>
                     </Content>
                 </Wrapper>
                 <LastSales/>
