@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BackgroundImage, Content, Input, Wrapper, Select, Button } from "./addProperty.styles";
 import Upload from '../../assets/images/upload.svg'
 import { useTranslation } from "react-i18next";
@@ -7,15 +7,36 @@ import { useNavigate } from "react-router-dom";
 const AddProperty = () =>{
     const {t} = useTranslation()
     const navigate = useNavigate()
+    const [image, setImage] = useState(null)
     return(
         <Wrapper>
             <Content>
                 <h2>{t('addProperty.sell')}</h2>
                 <h3>{t('addProperty.image')}</h3>
+                {image ? <BackgroundImage style={{
+                    backgroundColor: 'transparent',
+                    backgroundImage: `url(${URL.createObjectURL(image)})`,
+                     backgroundSize: 'cover'
+                }}>
+
+
+                </BackgroundImage>: 
                 <BackgroundImage>
-                    <img src={Upload} alt="upload" style={{marginTop: 200}}/>
-                    <h4>{t('addProperty.select')}</h4>
-                </BackgroundImage>
+                <div>
+                <img src={Upload} alt="upload" style={{marginTop: 200}}/>
+                <h4>{t('addProperty.select')}</h4>
+                </div>
+                <input type="file" name="house" style={{marginLeft: 100}}
+                onChange={(event) => {
+                    console.log(event.target.files[0]);
+                    setImage(event.target.files[0]);
+                    console.log(image)
+                  }}
+                />
+                
+            </BackgroundImage>
+                }
+                
                 <h2>{t('addProperty.details')}</h2>
                 <h4>{t('addProperty.price')}</h4>
                 <Input type="number" placeholder={t('addProperty.priceHolder')}/>

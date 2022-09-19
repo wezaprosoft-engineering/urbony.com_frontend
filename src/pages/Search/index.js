@@ -68,6 +68,7 @@ const Searches = () =>{
             setMore(false)
         }
         const Overlays = props =>{
+            
             return(
                 <Overlay style={{
                     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25), -3px -4px 4px rgba(0, 0, 0, 0.25)'

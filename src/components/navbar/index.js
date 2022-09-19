@@ -194,7 +194,7 @@ const NavBar = () =>{
                 right: 45
             }}>
                 <DropdownItem >Profile</DropdownItem>
-                <DropdownItem onClick={()=>navigate('/add-property')}>Add Property</DropdownItem>
+                <DropdownItem onClick={()=>navigate('/myproperties')}>My Properties</DropdownItem>
                 <DropdownItem onClick={logout}>Logout</DropdownItem>
                
             </div>
