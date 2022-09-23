@@ -17,7 +17,6 @@ const GetInTouch = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
-    const [feedBack, setFeedBack] = useState('')
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -46,8 +45,13 @@ const GetInTouch = () => {
                 }
                 
             }).then(json =>{
-                setFeedBack(json.message)
+                
+                
                 console.log(json.message)
+                alert(json.message)
+                setName('')
+                setEmail('')
+                setMessage('')
                
                 
             }).catch(error =>{
@@ -78,7 +82,7 @@ const GetInTouch = () => {
                     
                     <Message placeholder={t('getInTouch.messageHolder')} value={message} onChange={(e) => {setMessage(e.target.value)}}/>
                    <Submit onClick={touch}>{t('getInTouch.submit')}</Submit>
-                   <h2>{feedBack}</h2>
+                   
                    {screen ? <EstimationButton onClick={()=>navigate('/free-estimation')}>
                     <EstmationContent style={{
                         marginLeft: i18n.language==='fr'?10: 40
