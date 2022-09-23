@@ -12,6 +12,8 @@ box-sizing: border-box;
 margin-top: 200px;
 font-family: "Roboto";
 
+
+
 @media screen and (max-width: 414px) {
     width: 95%;
     height: 800px;
@@ -21,6 +23,17 @@ font-family: "Roboto";
     margin-right: auto;
     margin-bottom:40px
 }
+
+@media screen and (max-width: 1040px){
+    height: 550px;
+}
+@media screen and (max-width: 1005px){
+    height: 580px;
+}
+@media screen and (max-width: 953px){
+    height: 607px;
+}
+
 `;
 
 export const CardContent = styled.div`

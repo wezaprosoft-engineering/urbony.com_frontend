@@ -21,7 +21,7 @@ const SellerRequestForm = props => {
              requestType = 'SELL'
         }
         
-        const [message, setMessage] = useState('')
+        
         const url='https://urbony.onrender.com/api/management'
         const sellerRequest = async () => {
             const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, propertyTypesId, requestType});
@@ -43,7 +43,13 @@ const SellerRequestForm = props => {
                     
                 }).then(json =>{
                     console.log(json)
-                    setMessage(json.message)
+                    alert(json.message)
+                    setFirstName('')
+                    setLastName('')
+                    setEmail('')
+                    setPhoneNumber('')
+                    setLocation('')
+                    setPropertyTypesId('')
                     
     
                    
@@ -115,7 +121,7 @@ const SellerRequestForm = props => {
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     
                     <SubmitButton onClick={sellerRequest}>{t('sellerRequestForm.submit')}</SubmitButton>
-                    <h4>{message}</h4>
+                    
                     
                 </RequestForm>
             </Content>

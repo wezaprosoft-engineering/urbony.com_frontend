@@ -40,8 +40,9 @@ const Login = () =>{
                 console.log(json.accessToken.token)
                 localStorage.setItem('token', json.accessToken.token)
                 localStorage.setItem('name', json.name)
+                localStorage.setItem('id', json.id)
                 setGlobalState('loggedIn', true)
-                navigate('/add-property')
+                navigate('/myproperties')
 
                
 

@@ -22,7 +22,6 @@ const FreeEstimation = () => {
         const [options, setOptions] = useState('')
         const [propertyTypesId, setPropertyTypesId] = useState('')
         const requestType = 'ESTIMATE'
-        const [message, setMessage] = useState('')
         const url='https://urbony.onrender.com/api/estimate'
         const estimate = async () => {
             const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, options,propertyTypesId, requestType});
@@ -44,8 +43,14 @@ const FreeEstimation = () => {
                     
                 }).then(json =>{
                     console.log(json)
-                    setMessage(json.message)
-                    
+                    alert(json.message)
+                    setFirstName('')
+                    setLastName('')
+                    setEmail('')
+                    setPhoneNumber('')
+                    setLocation('')
+                    setOptions('')
+                    setPropertyTypesId('')
     
                    
     
@@ -123,6 +128,7 @@ const FreeEstimation = () => {
                             <div>
                                 <h4>{t('Estimation.content')} <Star>*</Star></h4>
                                 <Select id="value" value={options} onChange={(e) => setOptions(e.target.value)}>
+                                <option value="SELECT">Select</option>
                                 <option value="SELL">{t('Estimation.content1')}</option>
                             <option value="RENT">{t('Estimation.content2')}</option>
                                 </Select>
@@ -142,7 +148,6 @@ const FreeEstimation = () => {
 
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     <Button onClick={estimate}>{t('sellerRequestForm.submit')}</Button>
-                    <h4>{message}</h4>
                     </Content>
                 </Wrapper>
                 <LastSales/>

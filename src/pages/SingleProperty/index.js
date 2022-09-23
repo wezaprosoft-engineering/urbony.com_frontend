@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Content, Details, DetailsContent, Wrapper } from "./SingleProperty.styles";
+import { Content, Details, DetailsContent, HouseImage, Wrapper } from "./SingleProperty.styles";
 import { useParams } from "react-router-dom";
 
 const SingleProperty = () =>{
@@ -44,52 +44,47 @@ const SingleProperty = () =>{
     }, [id]);
     return(
         <Wrapper>
-            <Content>Single property
-            <h2 style={{color: 'rgba(46,15,89,1)'}}>Details</h2>
-                {property.length > 0 ? <>
-                    {property.map(
-                        house => (
-                            
-                            <Details>
+            <Content>
                 
-                <DetailsContent>
+            
+            <Details>
+            <HouseImage src={property.coverImage} alt='cover-image'/>
+            <h2 style={{color: 'rgba(46,15,89,1)'}}>Details</h2>
+            <DetailsContent>
                     <h3>Price</h3>
-                    <h3>{house.price}</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{(property.price)?.toLocaleString()}</h3>
                 </DetailsContent>
                 <DetailsContent>
                     <h3>Bedrooms</h3>
-                    <h3>{house.bedrooms}</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.bedrooms}</h3>
                 </DetailsContent>
                 <DetailsContent>
                     <h3>location</h3>
-                    <h3>{house.location}</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.location}</h3>
                 </DetailsContent>
                 <DetailsContent>
                     <h3>Construction Year</h3>
-                    <h3>{house.constructionYear}</h3>
+                    <h3>{property.contructionYear}</h3>
                 </DetailsContent>
                 <DetailsContent>
                     <h3>Distance to road</h3>
-                    <h3>{house.distanceToroad}</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.distanceToRoad}</h3>
                 </DetailsContent>
                 <DetailsContent>
                     <h3>Living Area</h3>
-                    <h3>{house.livingArea}m2</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.livingArea}m2</h3>
                 </DetailsContent>
                 <DetailsContent>
                     <h3>Number of floors</h3>
-                    <h3>{house.floors}</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.floors}</h3>
                 </DetailsContent>
                 
                 <DetailsContent>
                     <h3>Options</h3>
-                    <h3>{house.options}</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.options}</h3>
                 </DetailsContent>
-                
             </Details>
-                        )
-                    )}
-                </>: <h2>Loading</h2>}
+            
             
             </Content>
             

@@ -393,12 +393,12 @@
         "priceHolder": "Enter le prix",
         "living": "Superficie du salon (m2)",
         "livingHolder": "Entrer la superficie du salon",
-        "land": "Superficie du terrain  (m2)",
-        "landHolder": "Entrer la superficies du terrain",
+        "bedroom": "Nombres de chambres",
+        "bedroomHolder": "Entrer le nombre de chambres",
         "bathroom": "Salles de bain",
         "bathroomHolder": "Entrer le nombre de salles de bain",
-        "shower": "Douches",
-        "showerHolder": "Entrer le nombre de douches",
+        "distance": "Distance de la maison a la rue principale",
+        "distanceHolder": "Entrer la distance de la maison a la rue principale",
         "add": "Ajouter la propriété"
     },
     "basic": {

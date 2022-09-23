@@ -3,9 +3,11 @@ import { CardButton, Content, Head, Line, Title, Wrapper } from "../../../compon
 import { Input } from "../../../components/WelcomeSection/Welcome.styles";
 import { CardContent, Description, RealEstateCard, TextContent, Description2Text,WrapperDescription2,CardButtons, Description2, Description2Content, LineEstate } from "./RealEstate.styles";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const RealEstate = () =>{
     const {t} = useTranslation();
+    const navigate = useNavigate()
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -133,7 +135,7 @@ const RealEstate = () =>{
                             <h2 style={{fontWeight: 500,
                             color: 'rgba(46,15,89,1)',
                             
-                            }} className='second'>{t('realEstate.delivery')} {estate.finishDate}</h2>
+                            }} className='second'>{t('realEstate.delivery')} {(estate.finishDate)?.toLocaleString()}</h2>
                             
                             </Description>
                             <WrapperDescription2>
@@ -154,7 +156,7 @@ const RealEstate = () =>{
                                 </Description2Text>
                                 
                                 </Description2Content>
-                                <CardButtons>{t('realEstate.button')}</CardButtons>
+                                <CardButtons onClick={()=>navigate(`/single-project/${estate.id}`)}>{t('realEstate.button')}</CardButtons>
                                 
                             </Description2>
                             </WrapperDescription2>

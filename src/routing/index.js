@@ -12,6 +12,7 @@ import SignUp from "../pages/Authentication/SignUp";
 import CommercialSpace from "../pages/Corporate/CommercialSpace";
 import IndustrialSpace from "../pages/Corporate/IndustrialSpace";
 import Offices from "../pages/Corporate/Offices";
+import EditProperty from "../pages/EditProperty";
 import FreeEstimation from "../pages/FreeEstimation";
 import GetInTouch from "../pages/GetInTouch";
 import Home from "../pages/Home";
@@ -22,6 +23,7 @@ import RealEstate from "../pages/Residential/RealEstate";
 import Rent from "../pages/Residential/Rent";
 import Sell from "../pages/Residential/Sell";
 import Searches from "../pages/Search";
+import SingleProject from "../pages/SingleProject";
 import SingleProperty from "../pages/SingleProperty";
 import { setGlobalState, useGlobalState } from "../store/state";
 
@@ -62,6 +64,9 @@ const Routing = () =>{
                 <Route path="/free-estimation" element={<FreeEstimation/>}/>
                 <Route path="/search" element={<Searches/>}/>
                 <Route path="/property/:id" element={<SingleProperty/>}/>
+                <Route path="/edit-property/:id" element={<EditProperty/>}/>
+                <Route path="/single-project/:id" element={<SingleProject/>}/>
+                
                 </>:<>
                 <Route path="*" element={<Navigate to="/" />}/>
                 <Route path="" element={<Home/>}/>
@@ -81,6 +86,8 @@ const Routing = () =>{
                 <Route path="/free-estimation" element={<FreeEstimation/>}/>
                 <Route path="/search" element={<Searches/>}/>
                 <Route path="/property/:id" element={<SingleProperty/>}/>
+                <Route path="/single-project/:id" element={<SingleProject/>}/>
+                
                 </>}
                 
             </Routes>

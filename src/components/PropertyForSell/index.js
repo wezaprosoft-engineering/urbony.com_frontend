@@ -7,7 +7,7 @@ import HomeCard from "../HomeCards";
 import { Input } from "../WelcomeSection/Welcome.styles";
 import { Button } from "../Header/Header.styles";
 import { Content } from "./PropertyForSell.styles";
-import {useLocation} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import { useTranslation } from "react-i18next";
 import Bed from '../../assets/images/bed.svg'
@@ -23,6 +23,7 @@ const PropertyForSell = props =>{
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+    const navigate = useNavigate()
     const location = useLocation()
     const [card1] = useGlobalState("forsellcard1")
     const [card2] = useGlobalState("forsellcard2")
@@ -47,6 +48,7 @@ const PropertyForSell = props =>{
     const [propertyForRent, setPropertyForRent] = useState('')
     const propertforsell = () => {
         try {
+            
             fetch(url,{
                 method: 'GET',
                 headers: {
@@ -73,7 +75,9 @@ const PropertyForSell = props =>{
     }
 
     useEffect(() =>{
+        
         propertforsell();
+        
     }, []);
     const properforrent = () => {
         try {
@@ -199,7 +203,7 @@ const PropertyForSell = props =>{
         }}>
             <CardButton style={{
                 backgroundColor: "red" 
-            }}>{t('Card.buy')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.buy')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -209,7 +213,7 @@ const PropertyForSell = props =>{
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>
@@ -269,7 +273,7 @@ const PropertyForSell = props =>{
         }}>
             <CardButton style={{
                 backgroundColor: "rgba(46,15,89,1)"
-            }}>{t('Card.sold')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.sold')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -279,7 +283,7 @@ const PropertyForSell = props =>{
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>

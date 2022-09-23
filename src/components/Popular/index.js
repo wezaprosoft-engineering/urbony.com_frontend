@@ -13,7 +13,7 @@ import Servicedoffices from '../../assets/images/Servicedoffices.png'
 import PrivateOffices from '../../assets/images/PrivateOffices.png'
 import Warehouses from '../../assets/images/Warehouses.png'
 import Depots from '../../assets/images/Depots.png'
-import {useLocation} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 import Bed from '../../assets/images/bed.svg'
 import House from '../../assets/images/house.svg'
@@ -23,6 +23,7 @@ import Location from '../../assets/images/location.svg'
 const Popular = props => {
     const {t} = useTranslation();
     const location = useLocation()
+    const navigate = useNavigate()
     const [Corporate] = useGlobalState("corporate")
     const [offices, setOffices] = useState(true)
     const [stores, setStores] = useState(false)
@@ -409,7 +410,7 @@ const Popular = props => {
         }}>
             <CardButton style={{
                 backgroundColor: `rgba(217, 11, 66 ,1)`
-            }}>{t('Card.book')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -419,7 +420,7 @@ const Popular = props => {
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>
@@ -471,7 +472,7 @@ const Popular = props => {
         }}>
             <CardButton style={{
                 backgroundColor: `rgba(217, 11, 66 ,1)`
-            }}>{t('Card.book')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -481,7 +482,7 @@ const Popular = props => {
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>
@@ -533,7 +534,7 @@ const Popular = props => {
         }}>
             <CardButton style={{
                 backgroundColor: `rgba(217, 11, 66 ,1)`
-            }}>{t('Card.book')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -543,7 +544,7 @@ const Popular = props => {
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>
@@ -607,7 +608,7 @@ const Popular = props => {
         }}>
             <CardButton style={{
                 backgroundColor: "rgba(217, 11, 66 ,1)" 
-            }}>{t('Card.book')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -617,7 +618,7 @@ const Popular = props => {
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>
@@ -677,7 +678,7 @@ const Popular = props => {
         }}>
             <CardButton style={{
                 backgroundColor: "red" 
-            }}>{t('Card.rent')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.rent')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -687,7 +688,7 @@ const Popular = props => {
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>

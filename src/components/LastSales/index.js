@@ -12,9 +12,11 @@ import { HomeCards, CardButton, CardsContainer } from "../HomeCards/HomeCards.st
 import { useGlobalState, setGlobalState } from "../../store/state";
 import { useTranslation } from "react-i18next";
 import Location from '../../assets/images/location.svg'
+import { useNavigate } from "react-router-dom";
 
 const LastSales = props =>{
     const {t} = useTranslation();
+    const navigate = useNavigate()
     const url = 'https://urbony.onrender.com/api/property/all/sold'
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -163,7 +165,7 @@ const LastSales = props =>{
         }}>
             <CardButton style={{
                 backgroundColor: "rgba(46, 15, 89 ,1)"
-            }}>{t('Card.sold')}</CardButton>
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.sold')}</CardButton>
             <div style={{
                 color: `rgba(46,15,89,1)`,
                 display: "flex",
@@ -173,7 +175,7 @@ const LastSales = props =>{
                     marginRight: 7,
                     color: 'black'
                 }}><h3>BIF</h3></div>
-                <h3>{house.price}</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
             
         </CardsContainer>
     </HomeCards>

@@ -398,12 +398,12 @@
         "priceHolder": "Enter price",
         "living": "Living Area space (m2)",
         "livingHolder": "Enter living area space",
-        "land": "Land Area (m2)",
-        "landHolder": "Enter land area",
+        "bedroom": "Number of bedrooms",
+        "bedroomHolder": "Enter number of bedrooms",
         "bathroom": "Bathrooms",
         "bathroomHolder": "Enter number of bathrooms",
-        "shower": "Shower rooms",
-        "showerHolder": "Enter number of shower rooms",
+        "distance": "Distance to road",
+        "distanceHolder": "Enter the distance from the road to the house",
         "add": "Add Property"
     },
     "basic": {
