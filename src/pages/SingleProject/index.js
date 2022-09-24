@@ -1,10 +1,15 @@
 import React,{useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Content, Details, DetailsContent, HouseImage, Wrapper } from "./SingleProject.styles";
-
+import { GetInTouchInput, Submit } from "../GetInTouch/GetInTouch.styles";
+import { useTranslation } from "react-i18next";
 const SingleProject = () =>{
     const {id} = useParams();
+    const {t} = useTranslation()
     const [project, setProject] = useState("")
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
     
     useEffect(() =>{
         const url = `https://urbony.onrender.com/api/project/${id}`
@@ -79,6 +84,12 @@ const SingleProject = () =>{
                 
                 
             </Details>
+            <div style={{marginTop: 70}}>
+            <GetInTouchInput placeholder={t('getInTouch.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
+            <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+            <GetInTouchInput placeholder={t('sellerRequestForm.phoneNumberHolder')} value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
+            <Submit>{t('getInTouch.submit')}</Submit>
+            </div>
             </Content>
         </Wrapper>
     )
