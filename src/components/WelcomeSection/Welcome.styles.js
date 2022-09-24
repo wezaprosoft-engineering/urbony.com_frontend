@@ -312,7 +312,7 @@ display: contents;
 `;
 export const MoreContentDetails = styled.div`
 @media screen and (max-width: 414px){
-   
+    width: 100%;
     -webkit-column-count: 2;
        -moz-column-count: 2;
             column-count: 2;

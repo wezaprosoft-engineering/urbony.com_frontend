@@ -5,9 +5,11 @@ import { StepContent, StepDevelopped, Steps, TextContent } from "./SellPropert.s
 import Step from '../../assets/images/step.svg'
 import { useTranslation } from "react-i18next";
 import {useLocation} from 'react-router-dom'
+import { useGlobalState } from "../../store/state";
 const SellProperty = props =>{
     const {t} = useTranslation();
     const location = useLocation();
+    const [corporate] = useGlobalState('corporate')
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
     const [step3, setStep3] = useState(false);
@@ -82,6 +84,7 @@ const SellProperty = props =>{
                         fontWeight: 400
                     }}>{props.step}</h3>
                 </div>
+                {corporate || location.pathname==='/management' ? <>
                 <Steps><div
                 style={{
                     paddingLeft: 30
@@ -101,7 +104,249 @@ const SellProperty = props =>{
                 </Steps>
                 {step1 ? <StepDevelopped>
                     <StepContent>
-                        <h2>Search for a tenant</h2>
+                        <h2>{t('propertyManagement.step1Title')}</h2>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content1')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content2')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content3')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content4')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content5')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content6')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content7')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content8')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content9')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content10')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step1" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step1Content11')}</h3>
+                        </TextContent>
+                        
+                    </StepContent>
+                </StepDevelopped>:null}
+                
+                <Steps><div
+                style={{
+                    paddingLeft: 30
+                }}
+                >{t('sellProperty.step2')}</div>
+                {
+                    step2 ? <div style={{
+                        fontWeight: 800,
+                        paddingRight: 30,
+                        cursor: "pointer",
+                    }} onClick={offStep2}>-</div>:  <div style={{
+                        fontWeight: 800,
+                        paddingRight: 30,
+                        cursor: "pointer",
+                    }} onClick={Step2}>+</div>
+                }
+                </Steps>
+                {step2 ? <StepDevelopped>
+                    <StepContent>
+                        <h2>{t('propertyManagement.step2Title')}</h2>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content1')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content2')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content3')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content4')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content5')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content6')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content7')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content8')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step2" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step2Content9')}</h3>
+                        </TextContent>
+                        
+                   
+                    </StepContent>
+                </StepDevelopped>:null}
+                <Steps><div
+                style={{
+                    paddingLeft: 30
+                }}
+                >{t('sellProperty.step3')}</div>
+                {
+                    step3 ? <div style={{
+                        fontWeight: 800,
+                        paddingRight: 30,
+                        cursor: "pointer",
+                    }} onClick={offStep3}>-</div>:  <div style={{
+                        fontWeight: 800,
+                        paddingRight: 30,
+                        cursor: "pointer",
+                    }} onClick={Step3}>+</div>
+                }
+                </Steps>
+                {step3 ? <StepDevelopped>
+                    <StepContent style={{
+                        height: '520px'
+                    }}>
+                        <h2>{t('propertyManagement.step3Title')}</h2>
+                        <TextContent>
+                        <img alt="step3" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step3Content1')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step3" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step3Content2')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step3" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step3Content3')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step3" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step3Content4')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step3" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step3Content5')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step3" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step3Content6')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <img alt="step3" src={Step} style={{
+                            marginRight: 10
+                        }}/>
+                        <h3>{t('propertyManagement.step3Content7')}</h3>
+                        </TextContent>
+                        <TextContent>
+                        <h3>{t('propertyManagement.step3Conclusion')}</h3>
+                        </TextContent>
+                        
+                        
+                        
+                    </StepContent>
+                </StepDevelopped>:null}
+                
+                </>: <>
+                <Steps><div
+                style={{
+                    paddingLeft: 30
+                }}
+                >{t('sellProperty.step1')}</div>{
+                    step1 ? <div style={{
+                        fontWeight: 800,
+                        paddingRight: 30,
+                        cursor: "pointer",
+                    }} onClick={offStep1}>-</div>:  <div style={{
+                        fontWeight: 800,
+                        paddingRight: 30,
+                        cursor: "pointer",
+                    }} onClick={Step1}>+</div>
+                }
+                
+                </Steps>
+                {step1 ? <StepDevelopped>
+                    <StepContent>
+                        <h2>{t('sellProperty.step1Title')}</h2>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
                             marginRight: 10
@@ -301,6 +546,7 @@ const SellProperty = props =>{
                         
                     </StepContent>
                 </StepDevelopped>:null}
+                </>}
             </Content>
         </Wrapper>
     )

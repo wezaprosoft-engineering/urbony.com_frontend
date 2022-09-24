@@ -4,7 +4,7 @@
         "corporate": "ENTREPRISE",
         "en": "EN",
         "Or": "Ou",
-        "GetInTouch": "Etrer en contact"
+        "GetInTouch": "Entrer en contact"
     },
     "NavBar":{
         "sell":"VENDRE",
@@ -15,7 +15,8 @@
         "aboutUs": "A PROPOS DE NOUS",
         "offices": "DES BUREAUX",
         "commercialSpace":"ESPACE COMMERCIAL",
-        "industrialSpace": "ESPACE INDUSTRIEL"
+        "industrialSpace": "ESPACE INDUSTRIEL",
+        "login": "CONNECTEZ-VOUS"
     },
     "Welcome":{
         "text1":"Le premier réseau immobilier créé par des agents immobiliers.",
@@ -62,7 +63,7 @@
         "nearby5": "Ecole",
         "nearby6": "Vue sur la mer",
         "residentialOption1": "Sélectionner",
-        "residentialOption2": "Loger",
+        "residentialOption2": "Maison",
         "residentialOption3": "Appartement",
         "residentialOption4": "Studio",
         "residentialOption5": "Société d'actifs privés",
@@ -73,7 +74,7 @@
         "residentialOption10": "Des bureaux",
         "residentialOption11": "Magasins",
         "residentialOption12": "Industriel",
-        "location": "Emplacement de la propriete",
+        "location": "Emplacement de la propriété",
         "minimum": "Entrer le prix minimal",
         "maximum": "Entrer le prix maximal",
         "rentMinimum": "Loyer minimal",
@@ -98,7 +99,12 @@
         "exigence": "",
         "submit":"ENVOYER MA DEMANDE",
         "field": "Les champs marqués",
-        "mandatory": "sont obligatoires"
+        "mandatory": "sont obligatoires",
+        "option0": "Sélectionnez votre bien",
+        "option1":"Bien commercial",
+        "option2":"Bien industriel",
+        "option3":"Bien de commerce de détail",
+        "option4":"Bien à usage mixte"
     },
     "footer":{
         "services": "Prestations de service",
@@ -116,13 +122,13 @@
     "sellProperty":{
         "start": "Commencer à vendre",
         "step1": "Étape 1",
-        "step1Title": "Search for a tenant",
+        "step1Title": "Vous cherchez un client",
         "step1Content1": "Un premier contact totalement gratuit !",
         "step1Content2": "Contact avec un expert de l’immobilier",
         "step1Content3": "Une étape essentielle pour bien démarrer",
         "step1Content4": "Une visite approfondie de votre bien par un de nos experts",
         "step1Content5": "Analyse de documents (charges, plans, baux…)",
-        "step1Content6": "Remise d’un dossier d’évaluation (« Exemple : Focus on My Property »)",
+        "step1Content6": "Remise d’un dossier d’évaluation",
         "step2": "Étape 2",
         "step2Title": "Nous préparons votre dossier de vente sous tous ses aspects :",
         "step2Content1": "Juridique",
@@ -178,6 +184,40 @@
         "card2Content3": "Gestion locative avec garantie loyers impayés",
         "card2Content4": "Gestion locative avec garantie loyers impayés à partir de 10.000 BIF HT TVA/mois",
         "request": "DEMANDER UNE OFFRE"
+
+    },
+    "propertyManagement":{
+        "step1Title": "Recherche de votre locataire",
+        "step1Content1": "Visite d’un bien immobilier par un professionnel",
+        "step1Content2": "Recherche du candidat locataire",
+        "step1Content3": "Vérification de la solvabilité",
+        "step1Content4": "Rédaction du bail",
+        "step1Content5": "Signature du bail",
+        "step1Content6": "Mise en place des garanties bancaires",
+        "step1Content7": "État des lieux d'entrée",
+        "step1Content8": "Performance Énergétique des Bâtiments (PEB)",
+        "step1Content9": "Remise des clés",
+        "step1Content10": "Enregistrement du bail",
+        "step1Content11": "Mise en place des détecteurs incendies",
+        "step2Title": "Gestion de votre locataire",
+        "step2Content1": "Contact avec un expert de l’immobilier",
+        "step2Content2": "Relation locataire",
+        "step2Content3": "Suivi des travaux et entretiens",
+        "step2Content4": "Suivi quotidien des encaissements de loyers et charges",
+        "step2Content5": "Assurances et contentieux",
+        "step2Content6": "Suivi des sinistres",
+        "step2Content7": "Recouvrement du loyer",
+        "step2Content8": "Gestion comptable : charges et loyers",
+        "step2Content9": "Suivi du contrat de bail",
+        "step3Title": "Fin de bail",
+        "step3Content1": "Clé d’une habitation à côté d’une maison miniature",
+        "step3Content2": "État des lieux et dégâts locatifs",
+        "step3Content3": "Libération de la garantie",
+        "step3Content4": "Régularisation des charges",
+        "step3Content5": "Reprise des compteurs",
+        "step3Content6": "Réévaluation de la valeur de votre bien",
+        "step3Content7": "Remise en location du bien",
+        "step3Conclusion": "Urbony GESTION, une équipe qui prend en charge la gestion quotidienne de votre bien immobilier immobilier et vous accompagne dans toutes les étapes de la relation avec vos locataires."
 
     },
     "aboutUs":{
@@ -242,7 +282,7 @@
         "text": "Bruxelles - Bâtiment Pompidou. Magnifique immeuble à seulement 200m du métro Yser. Immeuble parfaitement situé composé de 46 kots/appartements.",
         "delivery" : "Date de livraison:",
         "price": "Prix",
-        "studio": "Studio à partir de :",
+        "studio": "à partir de :",
         "button": "Découvrir",
         "load": "Voir plus"
     },
@@ -308,7 +348,119 @@
         "rent": "Louer"
     },
     "contact": {
-        "phoneNumber" : "+257 75 78 89 74",
+        "phoneNumber" : "+257 62 86 82 01",
         "whatsApp": "+41 76 679 74 63"
+    },
+    "login": {
+        "Login": "Connectez-vous",
+        "sell": "Vendez avec urbony en ayant vos propriétés sur notre liste de propriétés à vendre et à louer",
+        "email": "Addresse e-mail",
+        "Password": "Mot de passe",
+        "passwordHolder": "Entrez votre mot de passe",
+        "member": "Pas encore membre?",
+        "create": "Créez votre compte"
+    },
+    "creation":{
+        "create": "Créez votre compte",
+        "fullName": "Nom & prénom",
+        "nameHolder": "Entre votre nom & prénom",
+        "password": "Créez un mot de passe",
+        "passwordHolder": "Entrez votre mot de passe",
+        "confirmPassword": "Confirmez votre mot de passe",
+        "method": "Choisissez votre méthode de paiement",
+        "charge": "Vous serez crédité de",
+        "createAccount": "Créez votre compte",
+        "card": "Numéro de carte",
+        "cardHolder": "Entre votre numéro de carte",
+        "expiration": "Date d'expiration",
+        "year": "Année",
+        "mobile": "Numéro de portable",
+        "mobileHolder": "Entrez votre numéro de portable",
+        "required": "Entrez les infomations necessaire!"
+    },
+    "myProperties": {
+        "sell": "Mes propriétés à vendre",
+        "rent": "Mes propriétés à louer",
+        "add": "Ajouter une propriétée",
+        "edit": "MODIFIER"
+    },
+    "addProperty": {
+        "sell": "Ajouter une propriété à vendre",
+        "image": "Ajouter les images de la propriété",
+        "select": "Cliquez pour sélectionner les images",
+        "details": "Ajouter les détails de la propriété",
+        "price": "Fixer le prix",
+        "priceHolder": "Enter le prix",
+        "living": "Superficie du salon (m2)",
+        "livingHolder": "Entrer la superficie du salon",
+        "bedroom": "Nombres de chambres",
+        "bedroomHolder": "Entrer le nombre de chambres",
+        "bathroom": "Salles de bain",
+        "bathroomHolder": "Entrer le nombre de salles de bain",
+        "distance": "Distance de la maison a la rue principale",
+        "distanceHolder": "Entrer la distance de la maison a la rue principale",
+        "add": "Ajouter la propriété"
+    },
+    "basic": {
+        "first": "Sélectionnez un plan et commencez à vendre avec nous",
+        "title": "De base",
+        "title2" : "Commencez maintenant",
+        "title3": "Gratuit",
+        "title4": "Inclus tous ses services",
+        "1": "Recherche et ajout de propriété",
+        "2": "Recherche et ajout de location",
+        "3": "Estimations",
+        "4": "Renseigner",
+        "5": "Détails",
+        "6": "Publication limitée à 4 Images par propriété",
+        "7": "Carte valeur propriété Heatmap d’Urbony",
+        "started": "COMMENCER"
+    },
+    "Pro": {
+        "title": "Pro",
+        "subtitle": "Vente et location rapide recommandée",
+        "1": "Recherche et ajout de propriété",
+        "2": "Recherche et ajout de location",
+        "3": "Estimations",
+        "4": "Renseigner",
+        "5": "Détails",
+        "6": "Publication limitée à 8 Images par propriété",
+        "7": "Carte valeur propriété Heatmap d’Urbony",
+        "8": "Analyse du marché",
+        "9": "Analyse de la propriété",
+        "10": "Publiez votre bien en premier",
+        "11": "Rapports de propriété",
+        "12": "Rapports CMA (analyse comparative de marché)"
+    },
+    "Expert": {
+        "Title": "Premium",
+        "subtitle": "Idéal pour les entreprises et investisseurs",
+        "1": "Recherche et ajout de propriété",
+        "2": "Recherche et ajout de location",
+        "3": "Estimations",
+        "4": "Renseigner",
+        "5": "Détails",
+        "6": "Publication illimitée d'images par propriété",
+        "7": "Carte valeur propriété Heatmap d’Urbony",
+        "8": "Analyse du marché",
+        "9": "Analyse de la propriété",
+        "10": "Publiez votre bien en premier",
+        "11": "Rapports de propriété",
+        "12": "Rapports CMA (analyse comparative de marché)",
+        "13": "Analyse des experts",
+        "14": "Prévision de valeur",
+        "15": "Analyse de la clientèle",
+        "16": "Expert CMA (analyse comparative de marché)",
+        "17": "Gestion",
+        "18": "Le home staging de votre bien"
+    },
+    "Estimation": {
+        "main": "Urbony : Obtenez une évaluation gratuite de votre propriété",
+        "title": "Obtenez une évaluation gratuite de votre bien et recevez une réponse dans les 48h qui suivent",
+        "subtitle": "Détails de votre contact",
+        "subtitle2": "Propriété à évaluer",
+        "content": "Vendre/Location",
+        "content1": "Vendre",
+        "content2": "Location"
     }
 }

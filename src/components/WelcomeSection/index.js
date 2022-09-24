@@ -8,7 +8,7 @@ import ArrowUp from '../../assets/images/arrow_up2.svg'
 import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
 import { useTranslation } from "react-i18next";
-
+import { useNavigate } from "react-router-dom";
 
 const Details = props =>{
     
@@ -47,6 +47,7 @@ const Welcome = props =>{
     const {t} = useTranslation();
     const [corporate] = useGlobalState("corporate");
     const [more, setMore] = useState(false);
+    const navigate = useNavigate()
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -75,7 +76,9 @@ const Welcome = props =>{
         setMore(false)
     }
     const Overlays = props =>{
+        const navigate = useNavigate()
         return(
+            
             <Overlay>
                     <SubOverlay>
                     <OverlayContent><h2>{t('Welcome.type')}</h2>
@@ -144,7 +147,7 @@ const Welcome = props =>{
                     <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select"/></OverlayContent>}
                     
                     
-                    <OverlayContent><Search><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
+                    <OverlayContent><Search onClick={()=>navigate('/search')}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
                     </SubOverlay>
                     
                     
@@ -282,7 +285,7 @@ const Welcome = props =>{
                 <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number"/>
                 {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')}/>}
                 
-                <WelcomeButton>
+                <WelcomeButton onClick={()=>navigate('/search')}>
                     <div style={{
                         display: 'flex',
                         margin: 'auto auto auto auto',

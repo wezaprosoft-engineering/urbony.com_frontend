@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, MenuButton, MenuContent, MenuHeader } from "./MenuNav.style";
+import { Button, Menu, MenuButton, MenuContent, MenuHeader } from "./MenuNav.style";
 import WhatsAppLogo from '../../assets/images/whatsapp_mobile.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import {useNavigate} from 'react-router-dom'
@@ -143,6 +143,21 @@ const MenuNav = props =>{
         navigate('/get-in-touch')
         setGlobalState('mobileMenu', false)
     }
+    const LoginPage = ()=>{
+        setGlobalState("sell", false)
+        setGlobalState("buy", false)
+        setGlobalState("rent", false)
+        setGlobalState("realEstate", false)
+        setGlobalState("management", false)
+        setGlobalState("aboutUs", false)
+        setGlobalState("offices", false)
+        setGlobalState("commercialSpace", false)
+        setGlobalState("industrialSpace", false)
+        setGlobalState("getIntouch", false);
+        setGlobalState('mobileMenu', false);
+        navigate('/login')
+        
+    }
     return(
         <MenuContent>
             <MenuHeader>
@@ -166,7 +181,7 @@ const MenuNav = props =>{
             <h3 onClick={makeManagement}>{t('NavBar.management')}</h3>
             <h3 onClick={makeAboutUs}>{t('NavBar.aboutUs')}</h3>
         </Menu>}
-            
+            <Button onClick={LoginPage}>{t('NavBar.login')}</Button>
         </MenuContent>
     )
 }

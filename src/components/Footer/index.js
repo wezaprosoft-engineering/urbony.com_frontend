@@ -42,12 +42,11 @@ const Footer = () => {
                 <Footerservices>
                 <FooterTitle>{t('footer.getInTouch')}</FooterTitle>
                 <div style={{
-                    marginBottom: 13
+                    marginBottom: 13,
+                    display: 'flex'
                 }}><img src={Location} alt="location" style={{
                     marginRight: 10,
-                }}/> Boulevard de l’Uprona N°91, 3ème Étage, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bujumbura, Burundi</div>
+                }}/> <div style={{marginTop:25}}>Boulevard de l’Uprona N°91, 3ème Étage, Bujumbura, Burundi</div></div>
                 <div style={{
                     marginBottom: 13
                 }}><img src={Call} alt="phone-call" style={{

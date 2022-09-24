@@ -9,7 +9,10 @@ import Estimation from '../../assets/images/estimation.svg'
 import SellerRequestForm from "../../components/forms/SellerRequestForm";
 import SellProperty from "../../components/SellProperty";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { setGlobalState } from "../../store/state";
 const Management = () => {
+    const navigate = useNavigate()
     const {t, i18n} = useTranslation();
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -17,7 +20,17 @@ const Management = () => {
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
-    
+    const Estimate = () =>{
+        setGlobalState('buy', false)
+        setGlobalState('rent', false)
+        setGlobalState('sell', false)
+        setGlobalState('offices', false)
+        setGlobalState('industrialSpace', false)
+        setGlobalState('commercialSpace', false)
+        setGlobalState('management', false)
+        setGlobalState('aboutUs', false)
+        navigate('/free-estimation')
+    }
     
     return(
         <>
@@ -356,7 +369,7 @@ const Management = () => {
                 
             </ManagementCard>}
             
-            {screen ?  <EstimationButton style={{
+            {screen ?  <EstimationButton onClick={Estimate} style={{
                 marginLeft: '8%',
                 width: 282
             }}>
@@ -366,7 +379,7 @@ const Management = () => {
                         {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                   </EstimationButton>:  <EstimationButton style={{
+                   </EstimationButton>:  <EstimationButton onClick={Estimate} style={{
                     borderRadius: 10
             }}>
                     <EstmationContent>

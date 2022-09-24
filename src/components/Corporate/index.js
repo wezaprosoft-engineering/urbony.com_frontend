@@ -18,9 +18,12 @@ import Depots from '../../assets/images/Depots.png'
 
 import { useTranslation } from "react-i18next";
 import {useLocation} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { setGlobalState } from "../../store/state";
 import { EstimationButton, Estimator, EstmationContent } from "../../pages/GetInTouch/GetInTouch.styles";
 const Corporates = props =>{
     const {t} = useTranslation();
+    const navigate = useNavigate();
     const [tenant, setTenant] = useState(true)
     const [buyer, setBuyer] = useState(false)
     const [owner, setOwner] = useState(false)
@@ -31,6 +34,18 @@ const Corporates = props =>{
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+
+    const Estimate = () =>{
+        setGlobalState('buy', false)
+        setGlobalState('rent', false)
+        setGlobalState('sell', false)
+        setGlobalState('offices', false)
+        setGlobalState('industrialSpace', false)
+        setGlobalState('commercialSpace', false)
+        setGlobalState('management', false)
+        setGlobalState('aboutUs', false)
+        navigate('/free-estimation')
+    }
 
     const makeTenant = () =>{
         setTenant(true)
@@ -207,12 +222,12 @@ const Corporates = props =>{
                 <Popular margin="0px" Offices={t('popular.Industrial')}/>}
                 </>
             }
-                {screen ? <EstimationButton>
+                {screen ? <EstimationButton onClick={Estimate}>
                     <EstmationContent>
                     {t('estimation.est')}
                         <Estimator src={Estimation} alt='estimation'/>
                     </EstmationContent>
-                </EstimationButton>: <EstimationButton style={{
+                </EstimationButton>: <EstimationButton onClick={Estimate} style={{
                     borderRadius: 10
                 }}>
                     <EstmationContent>

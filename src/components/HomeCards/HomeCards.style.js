@@ -6,7 +6,7 @@ export const HomeCards = styled.div`
     background: rgba(217, 217, 217, 1);
     margin-bottom: 30px;
     margin-top: 30px;
-    margin-right: 50px;
+    margin-right: 20px;
     border-radius: 5px 5px 5px 5px;
     font-family: "Roboto";
     @media screen and (max-width: 414px) {
