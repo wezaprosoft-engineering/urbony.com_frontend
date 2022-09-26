@@ -7,6 +7,7 @@ import NavBar from "../components/navbar";
 import AboutUs from "../pages/AboutUs";
 import AddProperty from "../pages/addProperty";
 import AccountCreation from "../pages/Authentication/AccountCreation";
+import ForgotPassword from "../pages/Authentication/ForgotPassword";
 import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";
 import CommercialSpace from "../pages/Corporate/CommercialSpace";
@@ -57,6 +58,7 @@ const Routing = () =>{
                 <Route path="/about-us" element={<AboutUs/>}/>
                 <Route path="/get-in-touch" element={<GetInTouch/>}/>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/forgot-password" element={<ForgotPassword/>}/>
                 <Route path="/sign-up" element={<SignUp/>}/>
                 <Route path="/account-creation" element={<AccountCreation/>}/>
                 <Route path="/myproperties" element={<MyProperties/>}/>
@@ -81,6 +83,7 @@ const Routing = () =>{
                 <Route path="/about-us" element={<AboutUs/>}/>
                 <Route path="/get-in-touch" element={<GetInTouch/>}/>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/forgot-password" element={<ForgotPassword/>}/>
                 <Route path="/sign-up" element={<SignUp/>}/>
                 <Route path="/account-creation" element={<AccountCreation/>}/>
                 <Route path="/free-estimation" element={<FreeEstimation/>}/>

@@ -3,6 +3,8 @@ import {  Head, Line, Title, Wrapper } from "../../Popular/Popular.styles";
 import { Container, InputRequest, RequestForm, Select, Star, SubmitButton, Content} from "./SellerRequestForm.styles";
 import { useTranslation } from "react-i18next";
 import {useLocation} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SellerRequestForm = props => {
     
@@ -43,7 +45,8 @@ const SellerRequestForm = props => {
                     
                 }).then(json =>{
                     console.log(json)
-                    alert(json.message)
+                    toast(json.message, 
+                        {position: toast.POSITION.TOP_RIGHT})
                     setFirstName('')
                     setLastName('')
                     setEmail('')
@@ -121,7 +124,7 @@ const SellerRequestForm = props => {
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     
                     <SubmitButton onClick={sellerRequest}>{t('sellerRequestForm.submit')}</SubmitButton>
-                    
+                    <ToastContainer progressClassName="toastProgress"/>
                     
                 </RequestForm>
             </Content>

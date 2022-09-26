@@ -3,6 +3,7 @@ import { Button, Content, Forms, Input, Payment, PaymentForm, PaymentMode, Wrapp
 import Card from '../../../assets/images/card.svg'
 import Mpesa from '../../../assets/images/mpesa.svg'
 import Mobile from '../../../assets/images/ecocashlumicash.svg'
+import Paypal from '../../../assets/images/paypal.png'
 import {  useGlobalState } from "../../../store/state";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -84,10 +85,11 @@ const AccountCreation = () =>{
                     <h3>{t('creation.method')}</h3>
                     <PaymentMode>
                         <input type="radio" value="card" name="mode" onChange={(e) => setMode(e.target.value)}/>
-                        <img src={Card} alt="card"/>
+                        <img src={Paypal} alt="paypal"/>
                     </PaymentMode>
                     <PaymentMode>
                     <input type="radio" value="mobile" name="mode" onChange={(e) => setMode(e.target.value)}/>
+                    <img src={Card} alt="card"/>
                     <img src={Mpesa} alt="m-pesa"/>
                     <img src={Mobile} alt="ecocash-lumicash" style={{
                         width: screen ? 170: 209

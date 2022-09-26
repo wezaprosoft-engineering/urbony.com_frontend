@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from "react";
-import { Button, Content, Form, Input, Wrapper } from "./Login.styles";
-import { Link } from "react-router-dom";
+import { Content, Form, Wrapper, Input, Button } from "../Login/Login.styles";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import { setGlobalState } from "../../../store/state";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const Login = () =>{
-    const navigate = useNavigate()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const url = 'https://urbony.onrender.com/api/login'
+const ForgotPassword = () =>{
     const {t} = useTranslation()
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -18,8 +14,12 @@ const Login = () =>{
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
-    const login = async () => {
-        const body = JSON.stringify({email, password});
+    const [email, setEmail] = useState('')
+    const url = 'https://urbony.onrender.com/api/forgotpassword'
+    
+    
+    const reset = async () => {
+        const body = JSON.stringify({email});
         try {
            fetch(url, {
                 method: 'POST',
@@ -27,6 +27,7 @@ const Login = () =>{
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXJib255LmNvbSIsImlhdCI6MTY2NDEzMjc4N30.Ef4YFhXx7cJ1_trOLoKdTJJGE33UG5RNF3vS30G7oog'
                 }
             }).then(res => {
                 if (res.ok){
@@ -36,13 +37,11 @@ const Login = () =>{
                 }
                 
             }).then(json =>{
-                console.log(json)
-                console.log(json.accessToken.token)
-                localStorage.setItem('token', json.accessToken.token)
-                localStorage.setItem('name', json.name)
-                localStorage.setItem('id', json.id)
-                setGlobalState('loggedIn', true)
-                navigate('/myproperties')
+                console.log(json.message)
+                
+                toast(json.message, 
+                    {position: toast.POSITION.TOP_RIGHT})
+                
 
                
 
@@ -57,42 +56,33 @@ const Login = () =>{
         }
         
     }
-    
-    
     return(
         <Wrapper>
             <Content>
-                <h2 style={{
+            <h2 style={{
                     color:'rgba(46,15,89,1)',
                     fontSize: screen ? 30:45
-                }}>{t('login.Login')}</h2>
+                }}>Forgot Password</h2>
 
                 <h3 style={{
                     color:'rgba(46,15,89,1)',
                     fontSize: screen? 20:35
-                }}>{t('login.sell')}</h3>
+                }}>Enter your email account to receive the password reset link.</h3>
                 <Form>
                 <h4 style={{
                     color: screen ? 'rgba(46,15,89,1)' : 'black'
                 }}>{t('login.email')}</h4>
                 <Input type="email" placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                <h4 style={{
-                    color: screen ? 'rgba(46,15,89,1)' : 'black'
-                }}>{t('login.Password')}</h4>
-                <Input type="password" placeholder={t('login.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                <h5 style={{fontSize: 17, 
-                    marginBottom: -10, 
-                    color: 'red', 
-                    marginLeft: screen? '53%':'71.5%',
-                    cursor: 'pointer'}} onClick={()=> navigate('/forgot-password')}>Forgot Password?</h5>
-                <Button onClick={login}>{t('login.Login')}</Button>
+                <Button style={{marginTop: 100}} onClick={reset}>Send Link</Button>
                 <h3 style={{
-                    fontSize: screen ? 20:35
+                    fontSize: screen ? 20:35,
+                    marginTop: 100
                 }}>{t('login.member')}<Link to='/sign-up'>{t('login.create')}</Link></h3>
                 </Form>
+                <ToastContainer progressClassName="toastProgress"/>
             </Content>
         </Wrapper>
     )
 }
 
-export default Login;
+export default ForgotPassword;
