@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from "react";
 import { Content, Details, DetailsContent, HouseImage, Wrapper } from "./SingleProperty.styles";
 import { useParams } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
+import { GetInTouchInput, Submit } from "../GetInTouch/GetInTouch.styles";
 const SingleProperty = () =>{
-
+    const {t} = useTranslation()
     const {id} = useParams();
     const [property, setProperty] = useState("")
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
    
 
     
@@ -84,6 +88,12 @@ const SingleProperty = () =>{
                     <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.options}</h3>
                 </DetailsContent>
             </Details>
+            <div style={{marginTop: 70}}>
+            <GetInTouchInput placeholder={t('getInTouch.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
+            <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+            <GetInTouchInput placeholder={t('sellerRequestForm.phoneNumberHolder')} value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
+            <Submit>{t('getInTouch.submit')}</Submit>
+            </div>
             
             
             </Content>

@@ -5,6 +5,8 @@ import { Button, Content, Forms, Input, Select, Wrapper } from "./FreeEstimation
 import LastSales from "../../components/LastSales";
 import { Star } from "../../components/forms/SellerRequestForm/SellerRequestForm.styles";
 import { useTranslation } from "react-i18next";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const FreeEstimation = () => {
     
         const {t} = useTranslation()
@@ -43,7 +45,8 @@ const FreeEstimation = () => {
                     
                 }).then(json =>{
                     console.log(json)
-                    alert(json.message)
+                    toast(json.message, 
+                        {position: toast.POSITION.TOP_RIGHT})
                     setFirstName('')
                     setLastName('')
                     setEmail('')
@@ -148,6 +151,7 @@ const FreeEstimation = () => {
 
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     <Button onClick={estimate}>{t('sellerRequestForm.submit')}</Button>
+                    <ToastContainer progressClassName="toastProgress"/>
                     </Content>
                 </Wrapper>
                 <LastSales/>
