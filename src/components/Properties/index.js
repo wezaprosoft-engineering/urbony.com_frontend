@@ -9,6 +9,17 @@ import arrow from '../../assets/images/arrow.svg'
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { setGlobalState } from "../../store/state";
+import { ArrowCircle, ArrowContainer, DetailsContainer, Container } from "../HomeCards/HomeCards.style";
+import ArrowLeft from '../../assets/images/arrow_left.svg'
+import ArrowRight from '../../assets/images/arrow_rigt.svg'
+import LocationMin from '../../assets/images/location_min.svg'
+import BedMin from '../../assets/images/bed_min.svg'
+
+import HouseMin from '../../assets/images/house_min.svg'
+
+import StatisticMin from '../../assets/images/statistic_min.svg'
+
+
 const Properties = props =>{
     const {t} = useTranslation()
     const navigate = useNavigate()
@@ -71,6 +82,41 @@ const Properties = props =>{
     }, []);
 
     const title = props.lineTitle
+
+    const [activeIndexRent, setActiveIndexRent] = useState(1)
+    const [activeIndexSell, setActiveIndexSell] = useState(1)
+
+    const nextRent = () =>{
+        if(activeIndexRent === properties.length){
+            setActiveIndexRent(1)
+        }else{
+            setActiveIndexRent(activeIndexRent + 1)
+        }
+    }
+
+    const prevRent = () =>{
+        if(activeIndexSell === 1){
+            setActiveIndexSell(properties.length)
+        }else{
+            setActiveIndexSell(activeIndexSell - 1)
+        }
+    }
+
+    const nextSell = () =>{
+        if(activeIndexSell === sellProperties.length){
+            setActiveIndexSell(1)
+        }else{
+            setActiveIndexSell(activeIndexSell + 1)
+        }
+    }
+
+    const prevSell = () =>{
+        if(activeIndexSell === 1){
+            setActiveIndexSell(sellProperties.length)
+        }else{
+            setActiveIndexSell(activeIndexSell - 1)
+        }
+    }
 
     return(
         <Wrapper>
@@ -157,6 +203,111 @@ const Properties = props =>{
     </HomeCards>
                             )
                         )}
+                        {sellProperties.slice(0, activeIndexSell).map(house =>(
+                            <Container style={{
+                                backgroundImage: `url(${house.property.coverImage})`,
+                                backgroundSize: 'cover'
+                            }} key={house.id}>
+                                <ArrowContainer>
+                                    <ArrowCircle onClick={prevSell}>
+                                        <img src={ArrowLeft} alt="arrow-left" style={{
+                                            marginLeft: 17,
+                                            
+                                            marginTop: 16
+                        
+                                        }}/>
+                                    </ArrowCircle>
+                                    <ArrowCircle onClick={nextSell}>
+                                    <img src={ArrowRight} alt="arrow-right" style={{
+                                            marginLeft: 22,
+                                            
+                                            marginTop: 17
+                        
+                                        }}/>
+                                    </ArrowCircle>
+                                </ArrowContainer>
+                                <DetailsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                   
+                                    marginLeft: 12,
+                                    color: 'white',
+                                    height: 20,
+                                    marginBottom: 15
+                                    
+                                }}><img alt="location-icon" src={LocationMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 20,
+                                    marginTop: 20
+                                    
+                                    
+                                }}/> <h4 style={{
+                                    size: 20,
+                                    fontWeight: 700,
+                                    
+                                    
+                                }}>{house.property.location}</h4></div>
+                                <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10
+                                }}/><h5>{house.property.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white'
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10
+                                }}/>  <h5>{house.property.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0
+                                }}/>
+                                    <h5>{house.property.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
+                                <CardsContainer style={{
+                                    marginTop: 0
+                                    
+                                }}>
+                                    <CardButton style={{
+                                        backgroundColor: "rgba(46,15,89,1)",
+                                        marginLeft: 10
+                                    }} onClick={()=> navigate(`/edit-property/${house.property.id}`)}>{t('myProperties.edit')}</CardButton>
+                                    <div style={{
+                                        color: 'white',
+                                        display: "flex",
+                                        
+                                    }}>
+                                        <div style={{
+                                            marginRight: 7,
+                                            
+                                        }}><h3>BIF</h3></div>
+                                        <h3>{(house.property.price)?.toLocaleString()}</h3></div>
+                                    
+                                </CardsContainer>
+                                        </DetailsContainer>
+                            </Container>
+                        )
+                    )}
+
                     </>: <h2>Loading</h2>}
                     </>:<>
                     {properties.length > 0 ? <>
@@ -226,6 +377,110 @@ const Properties = props =>{
     </HomeCards>
                             )
                         )}
+                        {properties.slice(0, activeIndexRent).map(house =>(
+                            <Container style={{
+                                backgroundImage: `url(${house.property.coverImage})`,
+                                backgroundSize: 'cover'
+                            }} key={house.id}>
+                                <ArrowContainer>
+                                    <ArrowCircle onClick={prevRent}>
+                                        <img src={ArrowLeft} alt="arrow-left" style={{
+                                            marginLeft: 17,
+                                            
+                                            marginTop: 16
+                        
+                                        }}/>
+                                    </ArrowCircle>
+                                    <ArrowCircle onClick={nextRent}>
+                                    <img src={ArrowRight} alt="arrow-right" style={{
+                                            marginLeft: 22,
+                                            
+                                            marginTop: 17
+                        
+                                        }}/>
+                                    </ArrowCircle>
+                                </ArrowContainer>
+                                <DetailsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                   
+                                    marginLeft: 12,
+                                    color: 'white',
+                                    height: 20,
+                                    marginBottom: 15
+                                    
+                                }}><img alt="location-icon" src={LocationMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 20,
+                                    marginTop: 20
+                                    
+                                    
+                                }}/> <h4 style={{
+                                    size: 20,
+                                    fontWeight: 700,
+                                    
+                                    
+                                }}>{house.property.location}</h4></div>
+                                <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10
+                                }}/><h5>{house.property.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white'
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10
+                                }}/>  <h5>{house.property.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0
+                                }}/>
+                                    <h5>{house.property.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
+                                <CardsContainer style={{
+                                    marginTop: 0
+                                    
+                                }}>
+                                    <CardButton style={{
+                                        backgroundColor: "rgba(46,15,89,1)",
+                                        marginLeft: 10
+                                    }} onClick={()=> navigate(`/edit-property/${house.property.id}`)}>{t('myProperties.edit')}</CardButton>
+                                    <div style={{
+                                        color: 'white',
+                                        display: "flex",
+                                        
+                                    }}>
+                                        <div style={{
+                                            marginRight: 7,
+                                            
+                                        }}><h3>BIF</h3></div>
+                                        <h3>{(house.property.price)?.toLocaleString()}</h3></div>
+                                    
+                                </CardsContainer>
+                                        </DetailsContainer>
+                            </Container>
+                        )
+                    )}
                     </>: <h2>Loading</h2>}
                     </>}
                     

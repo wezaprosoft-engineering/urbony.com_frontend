@@ -217,7 +217,7 @@ const Corporates = props =>{
                 }}>{tenant ? <>{props.tenant2}</>:<>{buyer? <>{props.buyer2}</>: <>{props.owner2}</>}</>}</Button>}</>: null}
                 {location.pathname==='/offices'? 
                 <Popular margin="0px" Offices={t('popular.Offices')}/>:<>
-                {location.pathname==='comercial-space'? 
+                {location.pathname==='/comercial-space'? 
                 <Popular margin="0px" Offices={t('popular.Stores')}/>:
                 <Popular margin="0px" Offices={t('popular.Industrial')}/>}
                 </>
