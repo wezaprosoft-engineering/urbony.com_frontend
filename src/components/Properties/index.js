@@ -18,6 +18,8 @@ import BedMin from '../../assets/images/bed_min.svg'
 import HouseMin from '../../assets/images/house_min.svg'
 
 import StatisticMin from '../../assets/images/statistic_min.svg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Properties = props =>{
@@ -67,11 +69,13 @@ const Properties = props =>{
                
             }).catch(error =>{
                 console.log(error)
-                alert('Kindly login again, your access has expired')
+                toast('Kindly login again, your access has expired', 
+                    {position: toast.POSITION.TOP_RIGHT})
+                    setGlobalState("loggedIn", false)
                 localStorage.removeItem('token')
                 localStorage.removeItem('name')
                 localStorage.removeItem('id')
-                setGlobalState("loggedIn", false)
+                
                 
                 
             });
@@ -486,6 +490,7 @@ const Properties = props =>{
                     
                     
                 </Home>
+                <ToastContainer progressClassName="toastProgress"/>
             </Content>
         </Wrapper>
     )

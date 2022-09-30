@@ -211,7 +211,7 @@ const NavBar = () =>{
             {management && !getIntouch  ? <TextMenu2>{t('NavBar.management')}</TextMenu2>: <TextMenu onClick={makeManagement}>{t('NavBar.management')}</TextMenu>}
             {aboutUs && !getIntouch  ? <TextMenu2>{t('NavBar.aboutUs')}</TextMenu2>: <TextMenu onClick={makeAboutUs}>{t('NavBar.aboutUs')}</TextMenu>}
             </Container>
-            {loggedIn ? <LoginContent style={{backgroundColor: 'rgba(46,15,89,1)'}} onClick={() => navigate('myproperties')}>
+            {loggedIn ? <LoginContent style={{backgroundColor: 'rgba(46,15,89,1)'}} onClick={() => {open ? setOpen(false): setOpen(true)}}>
                 <LoginLogo src={LoggedIn}/>
                 <TextMenu style={{
                     fontWeight: 700,

@@ -8,36 +8,19 @@ import search from '../../assets/images/search-icon.svg'
 import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
 import { TextMenu } from "../../components/Header/Header.styles";
-import {SearchIcon, Input, Overlay, OverlayContent, Search, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading, Checked  } from "../../components/WelcomeSection/Welcome.styles";
+import {SearchIcon, Input, Overlay, OverlayContent, Search, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading } from "../../components/WelcomeSection/Welcome.styles";
 import PropertyForSell from "../../components/PropertyForSell";
 
 
 const Details = props =>{
     
-    const [checked, setChecked] = useState(false)
-   
-    const [screen, setScreen] = useState(
-        window.matchMedia("(max-width: 414px)").matches
-    )
-    useEffect(()=> {
-        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
-    }, []);
+    
     return(
         <>
-        {screen ? <MoreContent>
-            {checked ? <>
-            <Check type='checkbox' checked={checked} onChange={() => setChecked(false)}/>
-            <h4>{props.detail}</h4> 
-            </>: <>
-            <Checked onClick={() => setChecked(true)}></Checked>
-        <h4>{props.detail}</h4> 
-            </>}
-        
-        
-        </MoreContent>: <MoreContent>
+         <MoreContent>
         <Check type='checkbox' value={props.value} onChange={props.onChange} checked={props.checked} id={props.id} key={props.myKey}/>
-        <h4>{props.detail}</h4> 
-        </MoreContent>}
+        <h4 style={{color: 'black'}}>{props.detail}</h4> 
+        </MoreContent>
         
                                
         </>)
@@ -328,7 +311,7 @@ const Searches = () =>{
                                         onChange={(e) => {
                                             // add to list
                                             details.checked = !details.checked
-                                            setInternalFeatures([...internalFeatures, internalFeatures])
+                                            setInternalFeatures([...internalFeatures])
                                              selectedInternal = internalFeatures.filter((item1) =>
                                                 item1.checked === true
                                             )
@@ -354,7 +337,7 @@ const Searches = () =>{
                                         onChange={(e) => {
                                             // add to list
                                             details.checked = !details.checked
-                                            setExternalFeatures([...externalFeatures, externalFeatures])
+                                            setExternalFeatures([...externalFeatures])
                                              selectedExternal = externalFeatures.filter((item2) =>
                                                 item2.checked === true
                                             )
@@ -380,7 +363,7 @@ const Searches = () =>{
                                         onChange={(e) => {
                                             // add to list
                                             details.checked = !details.checked
-                                            setNearbyFeatures([...nearbyFeatures, nearbyFeatures])
+                                            setNearbyFeatures([...nearbyFeatures])
                                              selectedNearby = nearbyFeatures.filter((item3) =>
                                                 item3.checked === true
                                             )
@@ -401,6 +384,7 @@ const Searches = () =>{
                     </Overlay>
             )
         }
+        
     return(
         <>
         <Wrapper>
@@ -412,23 +396,23 @@ const Searches = () =>{
                     <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
                     <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
                 </Select>:
-                <Select>
-                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                    <option value={t('Welcome.residentialOption2')}>{t('Welcome.residentialOption2')}</option>
-                    <option value={t('Welcome.residentialOption3')}>{t('Welcome.residentialOption3')}</option>
-                    <option value={t('Welcome.residentialOption4')}>{t('Welcome.residentialOption4')}</option>
-                    <option value={t('Welcome.residentialOption5')}>{t('Welcome.residentialOption5')}</option>
-                    <option value={t('Welcome.residentialOption6')} >{t('Welcome.residentialOption6')}</option>
-                    <option value={t('Welcome.residentialOption7')}>{t('Welcome.residentialOption7')}</option>
-                    <option value={t('Welcome.residentialOption8')}>{t('Welcome.residentialOption8')}</option>
-                    <option value={t('Welcome.residentialOption9')}>{t('Welcome.residentialOption9')}</option>
-                    <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                    <option value="1">{t('Welcome.residentialOption1')}</option>
+                    <option value="2">{t('Welcome.residentialOption2')}</option>
+                    <option value="3">{t('Welcome.residentialOption3')}</option>
+                    <option value="4">{t('Welcome.residentialOption4')}</option>
+                    <option value="5">{t('Welcome.residentialOption5')}</option>
+                    <option value="6" >{t('Welcome.residentialOption6')}</option>
+                    <option value="7">{t('Welcome.residentialOption7')}</option>
+                    <option value="8">{t('Welcome.residentialOption8')}</option>
+                    <option value="9">{t('Welcome.residentialOption9')}</option>
+                    <option value="10">{t('Welcome.residentialOption10')}</option>
+                    <option value="11" >{t('Welcome.residentialOption11')}</option>
+                    <option value="12">{t('Welcome.residentialOption12')}</option>
                 </Select>}
                 
-                <Select>
-                <option value="Select" >{t('Welcome.location')}</option>
+                <Select value={location} onChange={(e) => setLocation(e.target.value)}>
+                <option value="select"> {t('Welcome.location')}</option>
                         <option value="Bubanza">Bubanza</option>
                         <option value="Bujumbura Mairie">Bujumbura Mairie</option>
                         <option value="Bujumbura Rural">Bujumbura Rural</option>
@@ -449,10 +433,10 @@ const Searches = () =>{
                         <option value="Rumonge">Rumonge</option>
                 </Select>
                 <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number"/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number"/>
-                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')}/>}
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}}/>
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
                 
-                <WelcomeButton>
+                <WelcomeButton onClick={searchRequest}>
                     <div style={{
                         display: 'flex',
                         margin: 'auto auto auto auto',
@@ -465,50 +449,89 @@ const Searches = () =>{
                     <img src={ArrowUpMobile} alt='arrow-up-mobile' style={{
                         marginRight: 10
                     }}/>
-                    {moreMobile ? <h4 onClick={() => setMoreMobile(false)}>{t('Welcome.lessFilters')}</h4>: <h4 onClick={() => setMoreMobile(true)}>{t('Welcome.moreFilters')}</h4>}
+                    {moreMobile ? <h4 style={{color: 'rgba(46,15,89,1)'}} onClick={() => setMoreMobile(false)}>{t('Welcome.lessFilters')}</h4>: <h4 style={{color: 'rgba(46,15,89,1)'}} onClick={() => setMoreMobile(true)}>{t('Welcome.moreFilters')}</h4>}
                     
                 </MoreContentMobile>
                 {moreMobile ? <More>
-                        <Heading>
-                        <h3>{t('Welcome.internal')}</h3>
+                        <Heading >
+                        <h3 style={{color: 'black'}}>{t('Welcome.internal')}</h3>
                             <MoreContentDetails>
-                            <Details detail={t('Welcome.internal1')}/>
-                            <Details detail={t('Welcome.internal2')}/>
-                            <Details detail={t('Welcome.internal3')}/>
-                            <Details detail={t('Welcome.internal4')}/>
-                            <Details detail={t('Welcome.internal5')}/>
-                            <Details detail={t('Welcome.internal6')}/>
-                            <Details detail={t('Welcome.internal7')}/>
-                            <Details detail={t('Welcome.internal8')}/>
-                            <Details detail={t('Welcome.internal9')}/>
-                            <Details detail={t('Welcome.internal10')}/>
-                            <Details detail={t('Welcome.internal11')}/>
+                            {internalFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        myKey={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setInternalFeatures([...internalFeatures])
+                                             selectedInternal = internalFeatures.filter((item1) =>
+                                                item1.checked === true
+                                            )
+                                             console.log(selectedInternal)
+                                            
+                                          }}
+                                          
+                                        />
+                                   
+                                        
+                                    )
+                                })}
                             </MoreContentDetails>
                         </Heading>
                         <Heading>
-                        <h3>{t('Welcome.external')}</h3>
+                        <h3 style={{color: 'black'}}>{t('Welcome.external')}</h3>
                             <MoreContentDetails>
-                            <Details detail={t('Welcome.external1')}/>
-                            <Details detail={t('Welcome.external2')}/>
-                            <Details detail={t('Welcome.external3')}/>
-                            <Details detail={t('Welcome.external4')}/>
-                            <Details detail={t('Welcome.external5')}/>
-                            <Details detail={t('Welcome.external6')}/>
-                            <Details detail={t('Welcome.external7')}/>
-                            <Details detail={t('Welcome.external8')}/>
-                            <Details detail={t('Welcome.external9')}/>
-                            <Details detail={t('Welcome.external10')}/>
+                            {externalFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        myKey={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setExternalFeatures([...externalFeatures])
+                                             selectedExternal = externalFeatures.filter((item2) =>
+                                                item2.checked === true
+                                            )
+                                             console.log(selectedExternal)
+                                            
+                                          }}
+                                        />
+                                        
+                                    
+                                        
+                                    )
+                                })}
                             </MoreContentDetails>
                             </Heading>
                         <Heading>
-                        <h3>{t('Welcome.nearby')}</h3>
+                        <h3 style={{color: 'black'}}>{t('Welcome.nearby')}</h3>
                             <MoreContentDetails>
-                            <Details detail={t('Welcome.nearby1')}/>
-                            <Details detail={t('Welcome.nearby2')}/>
-                            <Details detail={t('Welcome.nearby3')}/>
-                            <Details detail={t('Welcome.nearby4')}/>
-                            <Details detail={t('Welcome.nearby5')}/>
-                            <Details detail={t('Welcome.nearby6')}/>
+                            {nearbyFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        key={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setNearbyFeatures([...nearbyFeatures])
+                                             selectedNearby = nearbyFeatures.filter((item3) =>
+                                                item3.checked === true
+                                            )
+                                             console.log(selectedNearby)
+                                            
+                                          }}
+                                        />
+                                        
+                                    
+                                        
+                                    )
+                                })}
                             </MoreContentDetails>
                         </Heading>
                     </More>: null}
