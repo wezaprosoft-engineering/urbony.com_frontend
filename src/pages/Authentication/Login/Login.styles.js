@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
 background: #FFFFFF;
+min-height: 70vh;
 `;
 
 export const Content = styled.div`

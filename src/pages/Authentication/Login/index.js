@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { setGlobalState } from "../../../store/state";
+import Loading from "../../../components/Spinner";
 
 
 const Login = () =>{
@@ -18,9 +19,18 @@ const Login = () =>{
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+    const [loading, setLoading] = useState(false)
+    const Top = () =>{
+        window.scrollTo({
+            top: 10,
+            behavior: "smooth",
+        });
+    };
     const login = async () => {
         const body = JSON.stringify({email, password});
         try {
+            Top()
+            setLoading(true)
            fetch(url, {
                 method: 'POST',
                 body: body,
@@ -42,12 +52,14 @@ const Login = () =>{
                 localStorage.setItem('name', json.name)
                 localStorage.setItem('id', json.id)
                 setGlobalState('loggedIn', true)
+                setLoading(false)
                 navigate('/myproperties')
 
                
 
             }).catch(error =>{
                 console.log(error)
+                setLoading(false)
                 
             });
 
@@ -61,7 +73,8 @@ const Login = () =>{
     
     return(
         <Wrapper>
-            <Content>
+            {loading ? (<Loading/>): (
+                <Content>
                 <h2 style={{
                     color:'rgba(46,15,89,1)',
                     fontSize: screen ? 30:45
@@ -84,13 +97,15 @@ const Login = () =>{
                     marginBottom: -10, 
                     color: 'red', 
                     marginLeft: screen? '53%':'71.5%',
-                    cursor: 'pointer'}} onClick={()=> navigate('/forgot-password')}>Forgot Password?</h5>
+                    cursor: 'pointer'}} onClick={()=> navigate('/forgot-password')}>{t('login.forgot')}</h5>
                 <Button onClick={login}>{t('login.Login')}</Button>
                 <h3 style={{
                     fontSize: screen ? 20:35
                 }}>{t('login.member')}<Link to='/sign-up'>{t('login.create')}</Link></h3>
                 </Form>
             </Content>
+            )}
+            
         </Wrapper>
     )
 }

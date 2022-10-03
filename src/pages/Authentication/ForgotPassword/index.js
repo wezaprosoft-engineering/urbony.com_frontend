@@ -62,18 +62,18 @@ const ForgotPassword = () =>{
             <h2 style={{
                     color:'rgba(46,15,89,1)',
                     fontSize: screen ? 30:45
-                }}>Forgot Password</h2>
+                }}>{t('forgot.title')}</h2>
 
                 <h3 style={{
                     color:'rgba(46,15,89,1)',
                     fontSize: screen? 20:35
-                }}>Enter your email account to receive the password reset link.</h3>
+                }}>{t('forgot.text')}</h3>
                 <Form>
                 <h4 style={{
                     color: screen ? 'rgba(46,15,89,1)' : 'black'
                 }}>{t('login.email')}</h4>
                 <Input type="email" placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                <Button style={{marginTop: 100}} onClick={reset}>Send Link</Button>
+                <Button style={{marginTop: 100}} onClick={reset}>{t('forgot.button')}</Button>
                 <h3 style={{
                     fontSize: screen ? 20:35,
                     marginTop: 100

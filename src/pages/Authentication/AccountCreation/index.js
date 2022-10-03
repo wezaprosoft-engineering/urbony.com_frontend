@@ -7,6 +7,7 @@ import Paypal from '../../../assets/images/paypal.png'
 import {  useGlobalState } from "../../../store/state";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Loading from "../../../components/Spinner";
 const AccountCreation = () =>{
     const {t} = useTranslation()
     const [mode, setMode] = useState('')
@@ -24,8 +25,15 @@ const AccountCreation = () =>{
     }, []);
  
     const [free] = useGlobalState('free')
+    const [loading, setLoading] = useState(false)
     
     const [string, setString] = useState('')
+    const Top = () =>{
+        window.scrollTo({
+            top: 10,
+            behavior: "smooth",
+        });
+    };
     const register = async () => {
         const body = JSON.stringify({name ,email, password});
         if(name.length===0 && email.length=== 0 && password.length===0){
@@ -33,6 +41,8 @@ const AccountCreation = () =>{
         } else{
             if(password=== confirm){
                 try {
+                    Top()
+                    setLoading(true)
                     fetch(url, {
                          method: 'POST',
                          body: body,
@@ -48,7 +58,7 @@ const AccountCreation = () =>{
                          }
                      }).then(json =>{
                         console.log(json)
-                       
+                        setLoading(false)
                         navigate('/login')
                      }).catch(error =>{
                          console.log(error)
@@ -68,66 +78,69 @@ const AccountCreation = () =>{
     }
     return(
         <Wrapper>
-            <Content>
-            <h1>{t('creation.create')}</h1>
-            <h2>{t('login.sell')}</h2>
-            <Forms>
-                <h3>{t('creation.fullName')}</h3>
-                <Input type="text" placeholder={t('creation.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
-                <h3>{t('login.email')}</h3>
-                <Input type="email" placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                <h3>{t('creation.password')}</h3>
-                <Input type="password" placeholder={t('creation.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                <h3>{t('creation.confirmPassword')}</h3>
-                <Input type="password" placeholder={t('creation.confirmPassword')} value={confirm} onChange={(e) => {setConfirm(e.target.value)}}/>
-                {free ? null : <>
-                    <Payment>
-                    <h3>{t('creation.method')}</h3>
-                    <PaymentMode>
-                        <input type="radio" value="card" name="mode" onChange={(e) => setMode(e.target.value)}/>
-                        <img src={Paypal} alt="paypal"/>
-                    </PaymentMode>
-                    <PaymentMode>
-                    <input type="radio" value="mobile" name="mode" onChange={(e) => setMode(e.target.value)}/>
-                    <img src={Card} alt="card"/>
-                    <img src={Mpesa} alt="m-pesa"/>
-                    <img src={Mobile} alt="ecocash-lumicash" style={{
-                        width: screen ? 170: 209
-                    }}/>
-                    </PaymentMode>
-                </Payment>
-                
-
-                {mode==='card' ? <PaymentForm>
-                    <h3>{t('creation.card')}</h3>
-                    <Input type="number" placeholder={t('creation.cardHolder')} style={{width: '83%'}}/>
-                    <div style={{display: 'flex'}}>
-                        <div>
-                            <h3>{t('creation.expiration')}</h3>
-                            <Input style={{width: '80%'}} placeholder="MM" type="number"/>
-                        </div>
-                        <div>
-                            <h3>{t('creation.year')}</h3>
-                            <Input style={{width: '80%', marginTop: screen ? 23: 0}} placeholder="YY" type="number"/>
-                        </div>
-                        <div>
-                            <h3>CVV</h3>
-                            <Input style={{width: '80%',  marginTop: screen ? 23: 0}} placeholder="XXX" type="number"/>
-                        </div>
-                    </div>
-                </PaymentForm>:<>
-                {mode==='mobile' ? <PaymentForm>
-                    <h3>{t('creation.mobile')}</h3>
-                    <Input type="number" placeholder={t('creation.mobileHolder')}/>
-                </PaymentForm>: null}
-                </>}
-                </>}
-                
-               {/*<h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3> */} 
-                <Button onClick={register} style={{marginTop: 30}}>{t('creation.createAccount')}</Button>
-                <h3 style={{color: 'red'}}>{string}</h3>
-            </Forms>
-            </Content>
+            {loading ? (<Loading/>): (
+                 <Content>
+                 <h1>{t('creation.create')}</h1>
+                 <h2>{t('login.sell')}</h2>
+                 <Forms>
+                     <h3>{t('creation.fullName')}</h3>
+                     <Input type="text" placeholder={t('creation.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
+                     <h3>{t('login.email')}</h3>
+                     <Input type="email" placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                     <h3>{t('creation.password')}</h3>
+                     <Input type="password" placeholder={t('creation.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                     <h3>{t('creation.confirmPassword')}</h3>
+                     <Input type="password" placeholder={t('creation.confirmPassword')} value={confirm} onChange={(e) => {setConfirm(e.target.value)}}/>
+                     {free ? null : <>
+                         <Payment>
+                         <h3>{t('creation.method')}</h3>
+                         <PaymentMode>
+                             <input type="radio" value="card" name="mode" onChange={(e) => setMode(e.target.value)}/>
+                             <img src={Paypal} alt="paypal"/>
+                         </PaymentMode>
+                         <PaymentMode>
+                         <input type="radio" value="mobile" name="mode" onChange={(e) => setMode(e.target.value)}/>
+                         <img src={Card} alt="card"/>
+                         <img src={Mpesa} alt="m-pesa"/>
+                         <img src={Mobile} alt="ecocash-lumicash" style={{
+                             width: screen ? 170: 209
+                         }}/>
+                         </PaymentMode>
+                     </Payment>
+                     
+     
+                     {mode==='card' ? <PaymentForm>
+                         <h3>{t('creation.card')}</h3>
+                         <Input type="number" placeholder={t('creation.cardHolder')} style={{width: '83%'}}/>
+                         <div style={{display: 'flex'}}>
+                             <div>
+                                 <h3>{t('creation.expiration')}</h3>
+                                 <Input style={{width: '80%'}} placeholder="MM" type="number"/>
+                             </div>
+                             <div>
+                                 <h3>{t('creation.year')}</h3>
+                                 <Input style={{width: '80%', marginTop: screen ? 23: 0}} placeholder="YY" type="number"/>
+                             </div>
+                             <div>
+                                 <h3>CVV</h3>
+                                 <Input style={{width: '80%',  marginTop: screen ? 23: 0}} placeholder="XXX" type="number"/>
+                             </div>
+                         </div>
+                     </PaymentForm>:<>
+                     {mode==='mobile' ? <PaymentForm>
+                         <h3>{t('creation.mobile')}</h3>
+                         <Input type="number" placeholder={t('creation.mobileHolder')}/>
+                     </PaymentForm>: null}
+                     </>}
+                     </>}
+                     
+                    {/*<h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3> */} 
+                     <Button onClick={register} style={{marginTop: 30}}>{t('creation.createAccount')}</Button>
+                     <h3 style={{color: 'red'}}>{string}</h3>
+                 </Forms>
+                 </Content>
+            )}
+           
         </Wrapper>
     )
 }

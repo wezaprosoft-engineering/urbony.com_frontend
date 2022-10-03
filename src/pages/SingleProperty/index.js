@@ -87,6 +87,10 @@ const SingleProperty = () =>{
                     <h3>Options</h3>
                     <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.options}</h3>
                 </DetailsContent>
+                <DetailsContent>
+                    <h3>Type</h3>
+                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.type?.name}</h3>
+                </DetailsContent>
             </Details>
             <div style={{marginTop: 70}}>
             <GetInTouchInput placeholder={t('getInTouch.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>

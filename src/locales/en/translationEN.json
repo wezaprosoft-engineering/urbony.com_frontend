@@ -361,8 +361,14 @@
         "email": "Email Address",
         "Password": "Password",
         "passwordHolder": "Enter your password",
+        "forgot": "Forgot Password?",
         "member": "Not a member yet?",
         "create": "Create an account"
+    },
+    "forgot": {
+        "title": "Forgot Password",
+        "text": "Enter your email account to receive the password link",
+        "button": "Send Link"
     },
     "creation":{
         "create": "Create an account",
