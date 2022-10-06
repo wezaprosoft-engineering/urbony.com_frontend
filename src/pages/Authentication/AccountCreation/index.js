@@ -8,6 +8,11 @@ import {  useGlobalState } from "../../../store/state";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Loading from "../../../components/Spinner";
+import Eye from '../../../assets/images/eye.png'
+import EyeOff from '../../../assets/images/eye-off.png'
+import { Iconcontainer } from "../Login/Login.styles";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AccountCreation = () =>{
     const {t} = useTranslation()
     const [mode, setMode] = useState('')
@@ -26,6 +31,7 @@ const AccountCreation = () =>{
  
     const [free] = useGlobalState('free')
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
     
     const [string, setString] = useState('')
     const Top = () =>{
@@ -34,6 +40,14 @@ const AccountCreation = () =>{
             behavior: "smooth",
         });
     };
+    const [shownPassword, setShownPassword] = useState(false)
+    const display = ()=>{
+        if(shownPassword){
+            setShownPassword(false)
+        } else{
+            setShownPassword(true)
+        }
+    }
     const register = async () => {
         const body = JSON.stringify({name ,email, password});
         if(name.length===0 && email.length=== 0 && password.length===0){
@@ -59,9 +73,13 @@ const AccountCreation = () =>{
                      }).then(json =>{
                         console.log(json)
                         setLoading(false)
+                        toast('Account created successfully! Kindly proceed to login now', 
+                            {position: toast.POSITION.TOP_RIGHT})
                         navigate('/login')
                      }).catch(error =>{
                          console.log(error)
+                         setLoading(false)
+                         setError('User with the same email exist')
                          
                      });
                      
@@ -88,9 +106,34 @@ const AccountCreation = () =>{
                      <h3>{t('login.email')}</h3>
                      <Input type="email" placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                      <h3>{t('creation.password')}</h3>
-                     <Input type="password" placeholder={t('creation.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                     <div style={{display: "flex"}}>
+                     <Input type={shownPassword? "text":"password"} placeholder={t('creation.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                     <Iconcontainer onClick={display}>
+                    {shownPassword ? <img src={EyeOff} style={{
+                    height: screen? 45:60,
+                    width: screen? 40:55
+                }} alt="eye-off"/>: <img src={Eye} style={{
+                    height: screen? 45:60,
+                    width: screen? 40:55
+                }} alt="eye-on"/>}
+                </Iconcontainer>
+                
+                     </div>
+                     
                      <h3>{t('creation.confirmPassword')}</h3>
-                     <Input type="password" placeholder={t('creation.confirmPassword')} value={confirm} onChange={(e) => {setConfirm(e.target.value)}}/>
+                     <div style={{display: "flex"}}>
+                     <Input type={shownPassword? "text":"password"} placeholder={t('creation.confirmPassword')} value={confirm} onChange={(e) => {setConfirm(e.target.value)}}/>
+                     <Iconcontainer onClick={display}>
+                    {shownPassword ? <img src={EyeOff} style={{
+                    height: screen? 45:60,
+                    width: screen? 40:55
+                }} alt="eye-off"/>: <img src={Eye} style={{
+                    height: screen? 45:60,
+                    width: screen? 40:55
+                }} alt="eye-on"/>}
+                </Iconcontainer>
+                     </div>
+                     
                      {free ? null : <>
                          <Payment>
                          <h3>{t('creation.method')}</h3>
@@ -137,7 +180,9 @@ const AccountCreation = () =>{
                     {/*<h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3> */} 
                      <Button onClick={register} style={{marginTop: 30}}>{t('creation.createAccount')}</Button>
                      <h3 style={{color: 'red'}}>{string}</h3>
+                     <h3 style={{color: 'red'}}>{error}</h3>
                  </Forms>
+                 <ToastContainer progressClassName="toastProgress"/>
                  </Content>
             )}
            

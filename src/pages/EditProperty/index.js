@@ -6,6 +6,7 @@ import { Input } from "../addProperty/addProperty.styles";
 import { useTranslation } from "react-i18next";
 import { Select } from "../addProperty/addProperty.styles";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Spinner";
 
 const EditProperty = () =>{
 
@@ -13,6 +14,7 @@ const EditProperty = () =>{
     const [property, setProperty] = useState("")
     const {t} = useTranslation()
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
    
 
     
@@ -20,6 +22,7 @@ const EditProperty = () =>{
         const url = `https://urbony.onrender.com/api/property/${id}`
         const propertyDetails = async () => {
             try {
+                setLoading(true)
                 fetch(url,{
                     method: 'GET',
                     headers: {
@@ -34,10 +37,12 @@ const EditProperty = () =>{
                     }
                 }).then(json =>{
                    console.log(json)
+                   setLoading(false)
                    setProperty(json)
                    
                    
                 }).catch(error =>{
+                    setLoading(false)
                     console.log(error)
                     
                 });
@@ -147,6 +152,7 @@ const EditProperty = () =>{
                 body = JSON.stringify({options})
             }
             try {
+                
                fetch(url, {
                     method: 'PATCH',
                     body: body,
@@ -164,6 +170,7 @@ const EditProperty = () =>{
                     
                 }).then(json =>{
                     console.log(json)
+                    
                     navigate('/myproperties')
                     
                     
@@ -171,6 +178,7 @@ const EditProperty = () =>{
                    
     
                 }).catch(error =>{
+                    
                     console.log(error)
                     
                 });
@@ -183,109 +191,112 @@ const EditProperty = () =>{
         }
     return(
         <Wrapper>
-            <Content>
+            {loading ? (<Loading/>):(
+                <Content>
                 
             
-            <Details>
-            <HouseImage src={property.coverImage} alt='cover-image'/>
-            <h2 style={{color: 'rgba(46,15,89,1)'}}>Details</h2>
-            <DetailsContent>
-                    <h3>Price</h3>
-                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{(property.price)?.toLocaleString()}</h3>
-                    <PencilLogo src={Pencil} onClick={handlePrice}/>
-                    
-                </DetailsContent>
-                {priceEdit ? <div style={{display: 'flex'}}>
-                    <Input style={{width: '30%', marginRight: 10}}
-                    type="number" value={price} onChange={(e) => setPrice(parseInt(e.target.value))}
-                    />
-                    <Button onClick={update}>Save</Button>
-                    </div>: null}
+                <Details>
+                <HouseImage src={property.coverImage} alt='cover-image'/>
+                <h2 style={{color: 'rgba(46,15,89,1)'}}>Details</h2>
                 <DetailsContent>
-                    <h3>Bedrooms</h3>
-                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.bedrooms}</h3>
-                    <PencilLogo src={Pencil} onClick={handleBedrooms}/>
-                </DetailsContent>
-                {bedroomsEdit ? <div style={{display: 'flex'}}>
-                    <Input style={{width: '30%', marginRight: 10}}
-                    type="number" value={bedrooms} onChange={(e) => setBedrooms(parseInt(e.target.value))}
-                    />
-                    <Button onClick={()=>update()}>Save</Button>
-                    </div>: null}
-                <DetailsContent>
-                    <h3>location</h3>
-                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.location}</h3>
-                    <PencilLogo src={Pencil} onClick={handleLocation}/>
-                </DetailsContent>
-                {locationEdit ? <div style={{display: 'flex'}}>
-                    <Input style={{width: '30%', marginRight: 10}}
-                    value={location} onChange={(e) => setLocation(e.target.value)}
-                    />
-                    <Button onClick={()=>update()}>Save</Button>
-                    </div>: null}
-                <DetailsContent>
-                    <h3>Construction Year</h3>
-                    <h3>{property.contructionYear}</h3>
-                    <PencilLogo src={Pencil} onClick={handleConstructionYear}/>
-                </DetailsContent>
-                {contructionYearEdit ? <div style={{display: 'flex'}}>
-                    <Input style={{width: '30%', marginRight: 10}}
-                    value={contructionYear} onChange={(e) => setConstructionYear(e.target.value)}
-                    />
-                    <Button onClick={()=>update()}>Save</Button>
-                    </div>: null}
-                <DetailsContent>
-                    <h3>Distance to road</h3>
-                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{(property.distanceToRoad)}</h3>
-                    <PencilLogo src={Pencil} onClick={handleDistance}/>
-                </DetailsContent>
-                {distanceToRoadEdit ? <div style={{display: 'flex'}}>
-                    <Input style={{width: '30%', marginRight: 10}}
-                    value={distanceToRoad} onChange={(e) => setDistanceToRoad(e.target.value)}
-                    />
-                    <Button onClick={()=>update()}>Save</Button>
-                    </div>: null}
-                <DetailsContent>
-                    <h3>Living Area</h3>
-                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.livingArea}m2</h3>
-                    <PencilLogo src={Pencil} onClick={handleLivingArea}/>
-                </DetailsContent>
-                {livingAreaEdit ? <div style={{display: 'flex'}}>
-                    <Input style={{width: '30%', marginRight: 10}}
-                    value={livingArea} onChange={(e) => setLivingArea(e.target.value)}
-                    />
-                    <Button onClick={()=>update()}>Save</Button>
-                    </div>: null}
-                <DetailsContent>
-                    <h3>Number of floors</h3>
-                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.floors}</h3>
-                    <PencilLogo src={Pencil} onClick={handleFloors}/>
-                </DetailsContent>
-                {floorsEdit ? <div style={{display: 'flex'}}>
-                    <Input style={{width: '30%', marginRight: 10}}
-                    type="number" value={floors} onChange={(e) => setFloors(parseInt(e.target.value))}
-                    />
-                    <Button onClick={()=>update()}>Save</Button>
-                    </div>: null}
-                <DetailsContent>
-                    <h3>Options</h3>
-                    <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.options}</h3>
-                    <PencilLogo src={Pencil} onClick={handleOptions}/>
-                </DetailsContent>
-                {optionsEdit ? <div style={{display: 'flex'}}>
-                <Select id="value" value={options} onChange={(e) => setOption(e.target.value)}
-                style={{width: '30%', marginRight: 10, height: 50}}
-                >
-                    <option value="Type">Select type</option>
-                                <option value="SELL">{t('Estimation.content1')}</option>
-                            <option value="RENT">{t('Estimation.content2')}</option>
-                                </Select>
-                    <Button onClick={()=>update()}>Save</Button>
-                    </div>: null}
-            </Details>
+                        <h3>Price</h3>
+                        <h3 style={{color: 'rgba(46,15,89,1)'}}>{(property.price)?.toLocaleString()}</h3>
+                        <PencilLogo src={Pencil} onClick={handlePrice}/>
+                        
+                    </DetailsContent>
+                    {priceEdit ? <div style={{display: 'flex'}}>
+                        <Input style={{width: '30%', marginRight: 10}}
+                        type="number" value={price} onChange={(e) => setPrice(parseInt(e.target.value))}
+                        />
+                        <Button onClick={update}>Save</Button>
+                        </div>: null}
+                    <DetailsContent>
+                        <h3>Bedrooms</h3>
+                        <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.bedrooms}</h3>
+                        <PencilLogo src={Pencil} onClick={handleBedrooms}/>
+                    </DetailsContent>
+                    {bedroomsEdit ? <div style={{display: 'flex'}}>
+                        <Input style={{width: '30%', marginRight: 10}}
+                        type="number" value={bedrooms} onChange={(e) => setBedrooms(parseInt(e.target.value))}
+                        />
+                        <Button onClick={()=>update()}>Save</Button>
+                        </div>: null}
+                    <DetailsContent>
+                        <h3>location</h3>
+                        <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.location}</h3>
+                        <PencilLogo src={Pencil} onClick={handleLocation}/>
+                    </DetailsContent>
+                    {locationEdit ? <div style={{display: 'flex'}}>
+                        <Input style={{width: '30%', marginRight: 10}}
+                        value={location} onChange={(e) => setLocation(e.target.value)}
+                        />
+                        <Button onClick={()=>update()}>Save</Button>
+                        </div>: null}
+                    <DetailsContent>
+                        <h3>Construction Year</h3>
+                        <h3>{property.contructionYear}</h3>
+                        <PencilLogo src={Pencil} onClick={handleConstructionYear}/>
+                    </DetailsContent>
+                    {contructionYearEdit ? <div style={{display: 'flex'}}>
+                        <Input style={{width: '30%', marginRight: 10}}
+                        value={contructionYear} onChange={(e) => setConstructionYear(e.target.value)}
+                        />
+                        <Button onClick={()=>update()}>Save</Button>
+                        </div>: null}
+                    <DetailsContent>
+                        <h3>Distance to road</h3>
+                        <h3 style={{color: 'rgba(46,15,89,1)'}}>{(property.distanceToRoad)}</h3>
+                        <PencilLogo src={Pencil} onClick={handleDistance}/>
+                    </DetailsContent>
+                    {distanceToRoadEdit ? <div style={{display: 'flex'}}>
+                        <Input style={{width: '30%', marginRight: 10}}
+                        value={distanceToRoad} onChange={(e) => setDistanceToRoad(e.target.value)}
+                        />
+                        <Button onClick={()=>update()}>Save</Button>
+                        </div>: null}
+                    <DetailsContent>
+                        <h3>Living Area</h3>
+                        <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.livingArea}m2</h3>
+                        <PencilLogo src={Pencil} onClick={handleLivingArea}/>
+                    </DetailsContent>
+                    {livingAreaEdit ? <div style={{display: 'flex'}}>
+                        <Input style={{width: '30%', marginRight: 10}}
+                        value={livingArea} onChange={(e) => setLivingArea(e.target.value)}
+                        />
+                        <Button onClick={()=>update()}>Save</Button>
+                        </div>: null}
+                    <DetailsContent>
+                        <h3>Number of floors</h3>
+                        <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.floors}</h3>
+                        <PencilLogo src={Pencil} onClick={handleFloors}/>
+                    </DetailsContent>
+                    {floorsEdit ? <div style={{display: 'flex'}}>
+                        <Input style={{width: '30%', marginRight: 10}}
+                        type="number" value={floors} onChange={(e) => setFloors(parseInt(e.target.value))}
+                        />
+                        <Button onClick={()=>update()}>Save</Button>
+                        </div>: null}
+                    <DetailsContent>
+                        <h3>Options</h3>
+                        <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.options}</h3>
+                        <PencilLogo src={Pencil} onClick={handleOptions}/>
+                    </DetailsContent>
+                    {optionsEdit ? <div style={{display: 'flex'}}>
+                    <Select id="value" value={options} onChange={(e) => setOption(e.target.value)}
+                    style={{width: '30%', marginRight: 10, height: 50}}
+                    >
+                        <option value="Type">Select type</option>
+                                    <option value="SELL">{t('Estimation.content1')}</option>
+                                <option value="RENT">{t('Estimation.content2')}</option>
+                                    </Select>
+                        <Button onClick={()=>update()}>Save</Button>
+                        </div>: null}
+                </Details>
+                
+                
+                </Content>
+            )}
             
-            
-            </Content>
             
         </Wrapper>
     )

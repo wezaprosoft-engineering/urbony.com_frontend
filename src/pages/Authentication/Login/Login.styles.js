@@ -35,6 +35,27 @@ export const Input = styled.input`
         width: 90%;
     }
 `;
+export const Iconcontainer = styled.div`
+    width: 5%;
+    height: 60px;
+    
+    color: rgba(46,15,89,1);
+    font-weight: 700;
+    font-size: 15px;
+    font-style: "Roboto";
+    border-color: rgba(46,15,89,1);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: -60px;
+    
+    
+
+    @media screen and (max-width: 414px) {
+        height: 45px;
+        width: 5%;
+        
+    }
+`;
 
 export const Button = styled.button`
     width: 80%;

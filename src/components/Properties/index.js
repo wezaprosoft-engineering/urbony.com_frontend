@@ -20,6 +20,7 @@ import HouseMin from '../../assets/images/house_min.svg'
 import StatisticMin from '../../assets/images/statistic_min.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from "../Spinner";
 
 
 const Properties = props =>{
@@ -28,7 +29,7 @@ const Properties = props =>{
     
     const [properties, setProperties] = useState('')
     const [sellProperties, setSellProperties] = useState('')
-    
+    const [loading, setLoading] = useState(false)
     
    
 
@@ -40,6 +41,7 @@ const Properties = props =>{
     let sell;
     
         try {
+            setLoading(true)
             fetch(url,{
                 method: 'GET',
                 headers: {
@@ -64,11 +66,13 @@ const Properties = props =>{
                                                 house.property.options === "SELL"
                                             )
                 console.log(rent)
+                setLoading(false)
                 setProperties(rent)
                 setSellProperties(sell)
                
             }).catch(error =>{
                 console.log(error)
+                setLoading(false)
                 toast('Kindly login again, your access has expired', 
                     {position: toast.POSITION.TOP_RIGHT})
                     setGlobalState("loggedIn", false)
@@ -124,7 +128,8 @@ const Properties = props =>{
 
     return(
         <Wrapper>
-            <Content>
+            {loading ? (<Loading/>):(
+                <Content>
                 <Title>
                     <Head>
                         <Line/>
@@ -312,7 +317,7 @@ const Properties = props =>{
                         )
                     )}
 
-                    </>: <h2>Loading</h2>}
+                    </>: <h2>No properties to display</h2>}
                     </>:<>
                     {properties.length > 0 ? <>
                         {properties.map(
@@ -485,13 +490,14 @@ const Properties = props =>{
                             </Container>
                         )
                     )}
-                    </>: <h2>Loading</h2>}
+                    </>: <h2>No properties to display</h2>}
                     </>}
                     
                     
                 </Home>
                 <ToastContainer progressClassName="toastProgress"/>
             </Content>
+            )}
         </Wrapper>
     )
 }
