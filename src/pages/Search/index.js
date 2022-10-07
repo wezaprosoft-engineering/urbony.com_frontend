@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useGlobalState } from "../../store/state";
 import ArrowDown from '../../assets/images/arrow_down.svg'
 import ArrowUp from '../../assets/images/arrow_up2.svg'
-import search from '../../assets/images/search-icon.svg'
+import Searches1 from '../../assets/images/search-icon.svg'
 import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
 import { TextMenu } from "../../components/Header/Header.styles";
@@ -50,7 +50,7 @@ const Searches = () =>{
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
-    const [search, setSearch] = useState('')
+    //const [search, setSearch] = useState('')
     const [internalFeatures, setInternalFeatures] = useState('')
     const [externalFeatures, setExternalFeatures] = useState('')
     const [nearbyFeatures, setNearbyFeatures] = useState('')
@@ -180,7 +180,7 @@ const Searches = () =>{
                 }
                 
             }).then(json =>{
-                setSearch(json)
+                //setSearch(json)
                 console.log(json)
                 
                 
@@ -280,7 +280,7 @@ const Searches = () =>{
                        {/* <h2>{state?.length}</h2>*/}
                         
                         
-                        <OverlayContent><Search onClick={searchRequest}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
+                        <OverlayContent><Search onClick={searchRequest}><SearchIcon src={Searches1}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
                         </SubOverlay>
                         
                         

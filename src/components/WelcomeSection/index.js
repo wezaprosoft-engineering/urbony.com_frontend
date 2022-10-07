@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading, Checked } from "./Welcome.styles";
+import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading } from "./Welcome.styles";
 import search from '../../assets/images/search-icon.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import ArrowDown from '../../assets/images/arrow_down.svg'
@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const Details = props =>{
     
     //const [checked, setChecked] = useState(false)
-    const [checked] = useGlobalState("checked")
+    
    
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -222,7 +222,7 @@ const Welcome = props =>{
     }
     
     const Overlays = props =>{
-        const navigate = useNavigate()
+        
         return(
             
             <Overlay>
