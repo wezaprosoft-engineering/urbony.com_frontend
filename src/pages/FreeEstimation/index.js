@@ -92,7 +92,7 @@ const FreeEstimation = () => {
                         <h2>{t('Estimation.title')}</h2>
                         <h3>{t('Estimation.subtitle')}</h3>
 
-                        <Forms>
+                        <Forms id="estimate">
                             <div>
                                 <h4>{t('sellerRequestForm.lastName')}<Star>*</Star></h4>
                                 <Input placeholder={t('sellerRequestForm.lastNameHolder')} value={lastName} onChange={(e) => {setLastName(e.target.value)}}/>
@@ -115,7 +115,7 @@ const FreeEstimation = () => {
                         <Forms>
                             <div style={{width: '100%'}}>
                                 <h4>{t('sellerRequestForm.locationOfProperty')}<Star>*</Star></h4>
-                                <Input style={{width: screen ? '95%' :'100%'}} placeholder={t('sellerRequestForm.locationHolder')} value={location} onChange={(e) => {setLocation(e.target.value)}}/>
+                                <Input style={{width: screen ? '95%' :513}} placeholder={t('sellerRequestForm.locationHolder')} value={location} onChange={(e) => {setLocation(e.target.value)}}/>
                             </div>
                             <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '100%'}}>
                             <div>

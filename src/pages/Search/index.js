@@ -10,6 +10,14 @@ import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
 import { TextMenu } from "../../components/Header/Header.styles";
 import {SearchIcon, Input, Overlay, OverlayContent, Search, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading } from "../../components/WelcomeSection/Welcome.styles";
 import PropertyForSell from "../../components/PropertyForSell";
+import { useLocation } from "react-router-dom";
+import { Home } from "../../components/Popular/Popular.styles";
+import { HomeCards, CardsContainer, CardButton } from "../../components/HomeCards/HomeCards.style";
+import { useNavigate } from "react-router-dom";
+import Bed from '../../assets/images/bed.svg'
+import House from '../../assets/images/house.svg'
+import Statistic from '../../assets/images/statistic.svg'
+import Location from '../../assets/images/location.svg'
 
 
 const Details = props =>{
@@ -34,19 +42,22 @@ const Searches = () =>{
     const [homeBuy] = useGlobalState("homeBuy");
     const [homeRent] = useGlobalState("homeRent")
     const [moreMobile, setMoreMobile] = useState(false)
-    
+    const {state} = useLocation()
+    const navigate = useNavigate()
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+    const [search, setSearch] = useState('')
     const [internalFeatures, setInternalFeatures] = useState('')
     const [externalFeatures, setExternalFeatures] = useState('')
     const [nearbyFeatures, setNearbyFeatures] = useState('')
     const [location, setLocation] = useState('')
     const [propertyTypesId, setPropertyTypesId] = useState('')
-    const [price, setPrice] = useState('')
+    const [min, setMin] = useState('')
+    const [max, setMax] = useState('')
     const [bedrooms, setBedrooms] = useState('')
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
@@ -151,7 +162,7 @@ const Searches = () =>{
     let selectedExternal;
     let selectedNearby
     const searchRequest = async () => {
-        const body = JSON.stringify({propertyTypesId, location, price, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        const body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
         try {
            fetch(searchUrl, {
                 method: 'POST',
@@ -169,6 +180,7 @@ const Searches = () =>{
                 }
                 
             }).then(json =>{
+                setSearch(json)
                 console.log(json)
                 
                 
@@ -260,11 +272,12 @@ const Searches = () =>{
                             <option value="Makamba">Makamba</option>
                             <option value="Rumonge">Rumonge</option>
                             </select></OverlayContent>
-                        <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/>
-                        <Input placeholder="Max" style={{width: 100, marginLeft: 5}} value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}}/></div></OverlayContent>
+                            <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
+                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
                         {corporate ? 
                         <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
                         <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
+                       {/* <h2>{state?.length}</h2>*/}
                         
                         
                         <OverlayContent><Search onClick={searchRequest}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
@@ -433,8 +446,8 @@ const Searches = () =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number"/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
                 {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
                 
                 <WelcomeButton onClick={searchRequest}>
@@ -537,6 +550,72 @@ const Searches = () =>{
                         </Heading>
                     </More>: null}
                 <Overlays location={t('Welcome.location')}/>
+                {state?.length > 0 ? 
+                    <Home>{state?.map(house =>(
+                        <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 406,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="bed-icon" src={Bed} style={{
+            marginRight: 10
+        }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: "red" 
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.buy')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                    ))}</Home>
+                :<h2 style={{textAlign: 'center'}}>No results obtained from your search</h2>}
             </Content>
         </Wrapper>
         <PropertyForSell/>

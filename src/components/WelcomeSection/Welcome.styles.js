@@ -299,6 +299,18 @@ margin-right: 10px;
    margin-right: 3px;
    height: 15px;
    width: 15px;
+   background: rgba(40,40,40,0.2);
+    color:black;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    :checked {
+        background: white;
+        
+        ::after{
+            content: '✔';
+            color: blue;
+        }
+    }
    
 }
 `;

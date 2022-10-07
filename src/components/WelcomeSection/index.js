@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 const Details = props =>{
     
-    const [checked, setChecked] = useState(false)
+    //const [checked, setChecked] = useState(false)
+    const [checked] = useGlobalState("checked")
    
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -23,13 +24,10 @@ const Details = props =>{
     return(
         <>
         {screen ? <MoreContent>
-            {checked ? <>
-            <Check type='checkbox' checked={checked} onChange={() => setChecked(false)}/>
+            
+            <Check type='checkbox' onChange={props.onChange}/>
             <h4>{props.detail}</h4> 
-            </>: <>
-            <Checked onClick={() => setChecked(true)}></Checked>
-        <h4>{props.detail}</h4> 
-            </>}
+            
         
         
         </MoreContent>: <MoreContent>
@@ -80,7 +78,8 @@ const Welcome = props =>{
     const [nearbyFeatures, setNearbyFeatures] = useState('')
     const [location, setLocation] = useState('')
     const [propertyTypesId, setPropertyTypesId] = useState('')
-    const [price, setPrice] = useState('')
+    const [min, setMin] = useState('')
+    const [max, setMax] = useState('')
     const [bedrooms, setBedrooms] = useState('')
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
@@ -185,7 +184,7 @@ const Welcome = props =>{
     let selectedExternal;
     let selectedNearby
     const searchRequest = async () => {
-        const body = JSON.stringify({propertyTypesId, location, price, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        const body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
         try {
            fetch(searchUrl, {
                 method: 'POST',
@@ -204,6 +203,7 @@ const Welcome = props =>{
                 
             }).then(json =>{
                 console.log(json)
+                navigate('/search', {state:json})
                 
                 
 
@@ -287,14 +287,14 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                         </select></OverlayContent>
-                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/>
-                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}}/></div></OverlayContent>
+                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
+                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
                     {corporate ? 
                     <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
                     <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
                     
                     
-                    <OverlayContent><Search onClick={()=>navigate('/search')}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
+                    <OverlayContent><Search onClick={searchRequest}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
                     </SubOverlay>
                     
                     
@@ -343,7 +343,9 @@ const Welcome = props =>{
                                              selectedInternal = internalFeatures.filter((item1) =>
                                                 item1.checked === true
                                             )
+                                            setGlobalState("checked", true)
                                              console.log(selectedInternal)
+                                             
                                             
                                           }}
                                           
@@ -369,6 +371,7 @@ const Welcome = props =>{
                                              selectedExternal = externalFeatures.filter((item2) =>
                                                 item2.checked === true
                                             )
+                                            setGlobalState("checked", true)
                                              console.log(selectedExternal)
                                             
                                           }}
@@ -395,7 +398,9 @@ const Welcome = props =>{
                                              selectedNearby = nearbyFeatures.filter((item3) =>
                                                 item3.checked === true
                                             )
+                                            setGlobalState("checked", true)
                                              console.log(selectedNearby)
+                                             
                                             
                                           }}
                                         />
@@ -470,11 +475,11 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number"/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
                 {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
                 
-                <WelcomeButton onClick={()=>navigate('/search')}>
+                <WelcomeButton onClick={searchRequest}>
                     <div style={{
                         display: 'flex',
                         margin: 'auto auto auto auto',
