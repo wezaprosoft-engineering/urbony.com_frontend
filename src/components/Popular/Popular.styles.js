@@ -57,6 +57,7 @@ export const Home = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    justify-content: space-between;
 `;
 
 export const HomeCards = styled.div`

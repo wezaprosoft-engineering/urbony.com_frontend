@@ -22,7 +22,7 @@ h4{
 }
 `;
 export const Input = styled.input`
-    width: 80%;
+    width: 50%;
     height: 55px;
     border-radius: 5px;
     color: rgba(46,15,89,1);
@@ -48,11 +48,14 @@ export const Iconcontainer = styled.div`
     cursor: pointer;
     margin-left: -60px;
     
+    padding-top: 10px;
+    
     
 
     @media screen and (max-width: 414px) {
         height: 45px;
         width: 5%;
+        padding-top: 4px;
         
     }
 `;

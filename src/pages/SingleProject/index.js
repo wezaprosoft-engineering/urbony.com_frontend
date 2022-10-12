@@ -90,7 +90,7 @@ const SingleProject = () =>{
                     
                     
                 </Details>
-                <div style={{marginTop: 70}}>
+                <div style={{marginTop: 70, width: '80%'}}>
                 <h2>Property booking form</h2>
                 <GetInTouchInput placeholder={t('getInTouch.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
                 <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>

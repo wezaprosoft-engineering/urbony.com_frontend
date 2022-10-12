@@ -283,9 +283,12 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
+                        
                        
                     }}>
                     <h4>{t('basic.1')}</h4></div>
@@ -294,7 +297,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -305,7 +310,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -316,7 +323,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -327,7 +336,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -338,7 +349,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -349,7 +362,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -360,7 +375,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -371,7 +388,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -382,7 +401,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -393,7 +414,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -404,7 +427,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -415,7 +440,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -426,7 +453,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -437,7 +466,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -448,7 +479,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -459,7 +492,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -470,7 +505,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -750,7 +787,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -761,7 +800,9 @@ const SignUp = () =>{
                     {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     
                     <div style={{
                         textAlign: 'left',
@@ -773,7 +814,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -784,7 +827,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -795,7 +840,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -806,7 +853,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -817,7 +866,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -828,7 +879,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -839,7 +892,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -850,7 +905,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -861,7 +918,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -872,7 +931,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -883,7 +944,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -894,7 +957,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -905,7 +970,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -916,7 +983,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -927,7 +996,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -938,7 +1009,9 @@ const SignUp = () =>{
                 {screen ? <img src={Bad} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Bad} alt='nice'/>}
+                    <img src={Bad} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1211,7 +1284,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1222,7 +1297,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1233,7 +1310,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1244,7 +1323,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1255,7 +1336,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1266,7 +1349,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1277,7 +1362,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1288,7 +1375,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1299,7 +1388,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1310,7 +1401,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1321,7 +1414,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1332,7 +1427,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1343,7 +1440,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1354,7 +1453,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1365,7 +1466,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1376,7 +1479,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         
@@ -1387,7 +1492,9 @@ const SignUp = () =>{
                 {screen ? <img src={Nice} alt='nice' style={{
                         marginRight: 20
                     }}/>: 
-                    <img src={Nice} alt='nice'/>}
+                    <img src={Nice} alt='nice' style={{
+                        marginRight: 20
+                    }}/>}
                     <div style={{
                         textAlign: 'left',
                         

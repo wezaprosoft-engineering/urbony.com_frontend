@@ -11,6 +11,7 @@ import SellProperty from "../../components/SellProperty";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { setGlobalState } from "../../store/state";
+
 const Management = () => {
     const navigate = useNavigate()
     const {t, i18n} = useTranslation();
@@ -32,6 +33,13 @@ const Management = () => {
         navigate('/free-estimation')
     }
     
+    const Form =()=>{
+        let offsetTop = document.getElementById('form').offsetTop;
+        window.scrollTo({
+            top: offsetTop-100,
+            behavior: 'smooth'
+        })
+    }
     return(
         <>
         <Wrapper>
@@ -158,7 +166,7 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: 100
-                }}>{t('management.request')}</CardButton>}
+                }} onClick={Form}>{t('management.request')}</CardButton>}
             </ManagementCard>:<ManagementCard>
                 <h2 style={{
                     marginTop: 52
@@ -206,13 +214,13 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>{t('management.request')}</CardButton>: <CardButton style={{
+                }} onClick={Form}>{t('management.request')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                     marginTop: 100
-                }}>{t('management.request')}</CardButton>}
+                }} onClick={Form}>{t('management.request')}</CardButton>}
             </ManagementCard>}
             {screen ? <ManagementCard style={{
                 background: '#2E0F59',
@@ -283,13 +291,13 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>{t('management.request')}</CardButton>: <CardButton style={{
+                }} onClick={Form}>{t('management.request')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>{t('management.request')}</CardButton>}
+                }} onClick={Form}>{t('management.request')}</CardButton>}
                 
             </ManagementCard>: <ManagementCard style={{
                 background: '#2E0F59',
@@ -359,13 +367,13 @@ const Management = () => {
                     fontWeight: 700,
                     fontSize: '20px',
                    
-                }}>{t('management.request')}</CardButton>: <CardButton style={{
+                }} onClick={Form}>{t('management.request')}</CardButton>: <CardButton style={{
                     width: '70%',
                     backgroundColor: 'red',
                     fontWeight: 700,
                     fontSize: '20px',
                 
-                }}>{t('management.request')}</CardButton>}
+                }} onClick={Form}>{t('management.request')}</CardButton>}
                 
             </ManagementCard>}
             
@@ -396,8 +404,10 @@ const Management = () => {
         </Content>
         
         </Wrapper>
-        
+        <div id="form">
         <SellerRequestForm text={t('Welcome.text2')}/>
+        </div>
+        
         </>
     )
 }

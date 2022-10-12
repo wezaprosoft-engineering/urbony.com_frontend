@@ -72,6 +72,9 @@ const Popular = props => {
     const [activeIndexPopularHomes, setActiveIndexPopularHomes] = useState(1)
     const [activeIndexPopularRent, setActiveIndexPopularRent] = useState(1)
 
+    
+
+
     const nextPopularRent = () =>{
         if(activeIndexPopularRent === popularRent.length){
             setActiveIndexPopularRent(1)
@@ -386,7 +389,7 @@ const Popular = props => {
                                 (house =>(
                                     <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -556,7 +559,7 @@ const Popular = props => {
                                 house => (
                                     <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -726,7 +729,7 @@ const Popular = props => {
                                 house => (
                                     <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -895,14 +898,526 @@ const Popular = props => {
                         </>}
                     
                 </Home>
-                </>: <Home>
-                    {popularHomes.length > 0 && location.pathname!=='/rent'? <>
+                </>: <Home>{Corporate && offices ? <>
+                    {officers.map(
+                                (house =>(
+                                    <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 436,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        <div style={{
+            width: 90
+        }}></div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: `rgba(217, 11, 66 ,1)`
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                                ))
+                            )}
+                            {officers.length > 0 ? <>
+                    
+                    {officers.slice(0, activeIndexOfficers).map(house =>(
+                        <Container style={{
+                            backgroundImage: `url(${house.coverImage})`,
+                            backgroundSize: 'cover'
+                        }} key={house.id}>
+                            <ArrowContainer>
+                                <ArrowCircle onClick={prevOfficers}>
+                                    <img src={ArrowLeft} alt="arrow-left" style={{
+                                        marginLeft: 17,
+                                        
+                                        marginTop: 16
+                    
+                                    }}/>
+                                </ArrowCircle>
+                                <ArrowCircle onClick={nextOfficers}>
+                                <img src={ArrowRight} alt="arrow-right" style={{
+                                        marginLeft: 22,
+                                        
+                                        marginTop: 17
+                    
+                                    }}/>
+                                </ArrowCircle>
+                            </ArrowContainer>
+                            <DetailsContainer>
+                            <div style={{
+                                display: 'flex',
+                               
+                                marginLeft: 12,
+                                color: 'white',
+                                height: 20,
+                                marginBottom: 15
+                                
+                            }}><img alt="location-icon" src={LocationMin} style={{
+                                marginRight: 10,
+                                width: 15,
+                                height: 20,
+                                marginTop: 20
+                                
+                                
+                            }}/> <h4 style={{
+                                size: 20,
+                                fontWeight: 700,
+                                
+                                
+                            }}>{house.location}</h4></div>
+                            <CardsContainer>
+                            <div style={{
+                                display: 'flex',
+                                marginTop: 0,
+                                marginLeft: 12,
+                                color:'white' 
+                            }}>
+                            <img alt="bed-icon" src={BedMin} style={{
+                                marginRight: 10
+                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                marginTop: 0,
+                                color:'white'
+                                
+                            }}>
+                            <img alt="house-icon" src={HouseMin} style={{
+                                marginRight: 10
+                            }}/>  <h5>{house.livingArea} m</h5>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                
+                                marginLeft: 12,
+                                color:'white',
+                                marginRight: 30,
+                            }}>
+                            <img alt="size-icon" src={StatisticMin} style={{
+                                marginRight: 10,
+                                marginTop: 0
+                            }}/>
+                                <h5>{house.distanceToRoad}m</h5>
+                            </div>
+                            </CardsContainer>
+                            <CardsContainer style={{
+                                marginTop: 0
+                                
+                            }}>
+                                <CardButton style={{
+                                    backgroundColor: "rgba(217,11,66,1)",
+                                    marginLeft: 10
+                                }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
+                                <div style={{
+                                    color: 'white',
+                                    display: "flex",
+                                    
+                                }}>
+                                    <div style={{
+                                        marginRight: 7,
+                                        
+                                    }}><h3>BIF</h3></div>
+                                    <h3>{(house.price).toLocaleString()}</h3></div>
+                                
+                            </CardsContainer>
+                                    </DetailsContainer>
+                        </Container>
+                    )
+                )}
+
+                </>:null}
+                </>:<>
+                {Corporate && stores ? <>
+                    {commercial.map(
+                                house => (
+                                    <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 436,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        <div style={{
+            width: 90
+        }}></div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: `rgba(217, 11, 66 ,1)`
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                                )
+                            )}
+                            {commercial.length > 0 ? <>
+                    
+                    {commercial.slice(0, activeIndexCommercial).map(house =>(
+                        <Container style={{
+                            backgroundImage: `url(${house.coverImage})`,
+                            backgroundSize: 'cover'
+                        }} key={house.id}>
+                            <ArrowContainer>
+                                <ArrowCircle onClick={prevCommercial}>
+                                    <img src={ArrowLeft} alt="arrow-left" style={{
+                                        marginLeft: 17,
+                                        
+                                        marginTop: 16
+                    
+                                    }}/>
+                                </ArrowCircle>
+                                <ArrowCircle onClick={nextCommercial}>
+                                <img src={ArrowRight} alt="arrow-right" style={{
+                                        marginLeft: 22,
+                                        
+                                        marginTop: 17
+                    
+                                    }}/>
+                                </ArrowCircle>
+                            </ArrowContainer>
+                            <DetailsContainer>
+                            <div style={{
+                                display: 'flex',
+                               
+                                marginLeft: 12,
+                                color: 'white',
+                                height: 20,
+                                marginBottom: 15
+                                
+                            }}><img alt="location-icon" src={LocationMin} style={{
+                                marginRight: 10,
+                                width: 15,
+                                height: 20,
+                                marginTop: 20
+                                
+                                
+                            }}/> <h4 style={{
+                                size: 20,
+                                fontWeight: 700,
+                                
+                                
+                            }}>{house.location}</h4></div>
+                            <CardsContainer>
+                            <div style={{
+                                display: 'flex',
+                                marginTop: 0,
+                                marginLeft: 12,
+                                color:'white' 
+                            }}>
+                            <img alt="bed-icon" src={BedMin} style={{
+                                marginRight: 10
+                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                marginTop: 0,
+                                color:'white'
+                                
+                            }}>
+                            <img alt="house-icon" src={HouseMin} style={{
+                                marginRight: 10
+                            }}/>  <h5>{house.livingArea} m</h5>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                
+                                marginLeft: 12,
+                                color:'white',
+                                marginRight: 30,
+                            }}>
+                            <img alt="size-icon" src={StatisticMin} style={{
+                                marginRight: 10,
+                                marginTop: 0
+                            }}/>
+                                <h5>{house.distanceToRoad}m</h5>
+                            </div>
+                            </CardsContainer>
+                            <CardsContainer style={{
+                                marginTop: 0
+                                
+                            }}>
+                                <CardButton style={{
+                                    backgroundColor: "rgba(217, 11, 66 ,1)",
+                                    marginLeft: 10
+                                }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
+                                <div style={{
+                                    color: 'white',
+                                    display: "flex",
+                                    
+                                }}>
+                                    <div style={{
+                                        marginRight: 7,
+                                        
+                                    }}><h3>BIF</h3></div>
+                                    <h3>{(house.price).toLocaleString()}</h3></div>
+                                
+                            </CardsContainer>
+                                    </DetailsContainer>
+                        </Container>
+                    )
+                )}
+
+                </>:null}
+                </>:<>
+                { industrial? <>
+                    {industrials.length > 0 ? <>
+                            {industrials.map(
+                                house => (
+                                    <HomeCards key={house.id}>
+        <img alt="house" src={house.coverImage} style={{
+            width: 436,
+            height: 334
+        }}/>
+        <div style={{
+            display: 'flex',
+            
+            marginLeft: 12
+        }}><img alt="location-icon" src={Location} style={{
+            marginRight: 10
+        }}/> <h4>{house.location}</h4></div>
+        <CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.distanceToRoad}m</h5>
+        </div>
+        <div style={{
+            width: 90
+        }}></div>
+        </CardsContainer>
+        <CardsContainer style={{
+            
+            
+        }}>
+            <CardButton style={{
+                backgroundColor: `rgba(217, 11, 66 ,1)`
+            }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
+            <div style={{
+                color: `rgba(46,15,89,1)`,
+                display: "flex",
+                marginRight: 50
+            }}>
+                <div style={{
+                    marginRight: 7,
+                    color: 'black'
+                }}><h3>BIF</h3></div>
+                <h3>{(house.price)?.toLocaleString()}</h3></div>
+            
+        </CardsContainer>
+    </HomeCards>
+                                )
+                            )}
+                            {industrials.length > 0 ? <>
+                    
+                    {industrials.slice(0, activeIndexIndustrials).map(house =>(
+                        <Container style={{
+                            backgroundImage: `url(${house.coverImage})`,
+                            backgroundSize: 'cover'
+                        }} key={house.id}>
+                            <ArrowContainer>
+                                <ArrowCircle onClick={prevIndustrial}>
+                                    <img src={ArrowLeft} alt="arrow-left" style={{
+                                        marginLeft: 17,
+                                        
+                                        marginTop: 16
+                    
+                                    }}/>
+                                </ArrowCircle>
+                                <ArrowCircle onClick={nextIndustrial}>
+                                <img src={ArrowRight} alt="arrow-right" style={{
+                                        marginLeft: 22,
+                                        
+                                        marginTop: 17
+                    
+                                    }}/>
+                                </ArrowCircle>
+                            </ArrowContainer>
+                            <DetailsContainer>
+                            <div style={{
+                                display: 'flex',
+                               
+                                marginLeft: 12,
+                                color: 'white',
+                                height: 20,
+                                marginBottom: 15
+                                
+                            }}><img alt="location-icon" src={LocationMin} style={{
+                                marginRight: 10,
+                                width: 15,
+                                height: 20,
+                                marginTop: 20
+                                
+                                
+                            }}/> <h4 style={{
+                                size: 20,
+                                fontWeight: 700,
+                                
+                                
+                            }}>{house.location}</h4></div>
+                            <CardsContainer>
+                            <div style={{
+                                display: 'flex',
+                                marginTop: 0,
+                                marginLeft: 12,
+                                color:'white' 
+                            }}>
+                            <img alt="bed-icon" src={BedMin} style={{
+                                marginRight: 10
+                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                marginTop: 0,
+                                color:'white'
+                                
+                            }}>
+                            <img alt="house-icon" src={HouseMin} style={{
+                                marginRight: 10
+                            }}/>  <h5>{house.livingArea} m</h5>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                
+                                marginLeft: 12,
+                                color:'white',
+                                marginRight: 30,
+                            }}>
+                            <img alt="size-icon" src={StatisticMin} style={{
+                                marginRight: 10,
+                                marginTop: 0
+                            }}/>
+                                <h5>{house.distanceToRoad}m</h5>
+                            </div>
+                            </CardsContainer>
+                            <CardsContainer style={{
+                                marginTop: 0
+                                
+                            }}>
+                                <CardButton style={{
+                                    backgroundColor: "rgba(217, 11, 66 ,1)",
+                                    marginLeft: 10
+                                }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.book')}</CardButton>
+                                <div style={{
+                                    color: 'white',
+                                    display: "flex",
+                                    
+                                }}>
+                                    <div style={{
+                                        marginRight: 7,
+                                        
+                                    }}><h3>BIF</h3></div>
+                                    <h3>{(house.price).toLocaleString()}</h3></div>
+                                
+                            </CardsContainer>
+                                    </DetailsContainer>
+                        </Container>
+                    )
+                )}
+
+                </>:null}
+                        </>:<h2>Loading</h2>}
+                </>:<>
+                
+                {popularHomes.length > 0 && location.pathname!=='/rent'? <>
                         <>
                         {popularHomes.map(
                             house =>(
                                 <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -1080,7 +1595,7 @@ const Popular = props => {
                             house =>(
                                 <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -1252,6 +1767,10 @@ const Popular = props => {
                 </>:null}
                         </>: <h2>Loading</h2>}
                     </>}
+                </>}
+                </>}
+                </>}
+                    
                     
                     
                 </Home>}

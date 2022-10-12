@@ -98,11 +98,13 @@ const SingleProperty = () =>{
                         <h3 style={{color: 'rgba(46,15,89,1)'}}>{property.type?.name}</h3>
                     </DetailsContent>
                 </Details>
-                <div style={{marginTop: 70, display: 'initial'}}>
+                <div style={{marginTop: 70, width: '80%'}}>
                     <h2>Property booking form</h2>
                 <GetInTouchInput placeholder={t('getInTouch.nameHolder')} value={name} onChange={(e) => {setName(e.target.value)}}/>
                 <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                <GetInTouchInput placeholder={t('sellerRequestForm.phoneNumberHolder')} value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
+                <GetInTouchInput style={{
+                   
+                }} placeholder={t('sellerRequestForm.phoneNumberHolder')} value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
                 <Submit>{t('getInTouch.submit')}</Submit>
                 </div>
                 

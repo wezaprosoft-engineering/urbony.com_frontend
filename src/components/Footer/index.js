@@ -9,8 +9,13 @@ import Twitter from '../../assets/images/twitter.svg'
 import Youtube from '../../assets/images/youtube.svg'
 import Arrow from '../../assets/images/arrow_up.svg'
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { setGlobalState } from "../../store/state";
+
 
 const Footer = () => {
+
+    const navigate = useNavigate()
     const Top = () =>{
         window.scrollTo({
             top: 0,
@@ -24,6 +29,30 @@ const Footer = () => {
     useEffect(()=> {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
+    const sell = ()=>{
+        setGlobalState("buy", false)
+        setGlobalState("rent", false)
+        setGlobalState("realEstate", false)
+        navigate('/sell')
+    }
+    const buy = ()=>{
+        setGlobalState("sell", false)
+        setGlobalState("rent", false)
+        setGlobalState("realEstate", false)
+        navigate('/buy')
+    }
+    const rent = ()=>{
+        setGlobalState("buy", false)
+        setGlobalState("sell", false)
+        setGlobalState("realEstate", false)
+        navigate('/rent')
+    }
+    const realEstate = ()=>{
+        setGlobalState("buy", false)
+        setGlobalState("rent", false)
+        setGlobalState("sell", false)
+        navigate('/real-estate-project')
+    }
     return(
         <Wrapper>
             <FooterContent>
@@ -34,10 +63,10 @@ const Footer = () => {
                 </Footerservices>
                 <Footerservices>
                 <FooterTitle>{t('footer.quickLinks')}</FooterTitle>
-                <h3>{t('footer.buy')}</h3>
-                <h3>{t('footer.sell')}</h3>
-                <h3>{t('footer.rent')}</h3>
-                <h3>{t('footer.realEstate')}</h3>
+                <h3 style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={buy}>{t('footer.buy')}</h3>
+                <h3 style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={sell}>{t('footer.sell')}</h3>
+                <h3 style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={rent}>{t('footer.rent')}</h3>
+                <h3 style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={realEstate}>{t('footer.realEstate')}</h3>
                 </Footerservices>
                 <Footerservices>
                 <FooterTitle>{t('footer.getInTouch')}</FooterTitle>

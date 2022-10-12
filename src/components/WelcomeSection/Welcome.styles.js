@@ -292,6 +292,8 @@ h4{
 
 export const Check = styled.input`
 margin-right: 10px;
+width: 10px;
+height: 10px;
 
 @media screen and (max-width: 414px){
    box-sizing: border-box;

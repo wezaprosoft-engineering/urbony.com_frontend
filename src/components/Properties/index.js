@@ -150,7 +150,7 @@ const Properties = props =>{
                             house =>(
                                 <HomeCards key={house.property.id}>
         <img alt="house" src={house.property.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -324,7 +324,7 @@ const Properties = props =>{
                             house =>(
                                 <HomeCards key={house.property.id}>
         <img alt="house" src={house.property.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{

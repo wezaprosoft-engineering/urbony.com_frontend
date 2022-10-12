@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Content, Forms, Input, Payment, PaymentForm, PaymentMode, Wrapper } from "./AccountCreation.styles";
-import Card from '../../../assets/images/card.svg'
-import Mpesa from '../../../assets/images/mpesa.svg'
-import Mobile from '../../../assets/images/ecocashlumicash.svg'
+//import Card from '../../../assets/images/card.svg'
+//import Mpesa from '../../../assets/images/mpesa.svg'
+//import Mobile from '../../../assets/images/ecocashlumicash.svg'
 import Paypal from '../../../assets/images/paypal.png'
 import {  useGlobalState } from "../../../store/state";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const AccountCreation = () =>{
     const {t} = useTranslation()
-    const [mode, setMode] = useState('')
+    //const [mode, setMode] = useState('')
     const url = 'https://urbony.onrender.com/api/register'
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -110,11 +110,11 @@ const AccountCreation = () =>{
                      <Input type={shownPassword? "text":"password"} placeholder={t('creation.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                      <Iconcontainer onClick={display}>
                     {shownPassword ? <img src={EyeOff} style={{
-                    height: screen? 45:60,
-                    width: screen? 40:55
+                    height: screen? 45:40,
+                    width: screen? 40:35
                 }} alt="eye-off"/>: <img src={Eye} style={{
-                    height: screen? 45:60,
-                    width: screen? 40:55
+                    height: screen? 45:40,
+                    width: screen? 40:35
                 }} alt="eye-on"/>}
                 </Iconcontainer>
                 
@@ -125,11 +125,11 @@ const AccountCreation = () =>{
                      <Input type={shownPassword? "text":"password"} placeholder={t('creation.confirmPassword')} value={confirm} onChange={(e) => {setConfirm(e.target.value)}}/>
                      <Iconcontainer onClick={display}>
                     {shownPassword ? <img src={EyeOff} style={{
-                    height: screen? 45:60,
-                    width: screen? 40:55
+                    height: screen? 45:40,
+                    width: screen? 40:35
                 }} alt="eye-off"/>: <img src={Eye} style={{
-                    height: screen? 45:60,
-                    width: screen? 40:55
+                    height: screen? 45:40,
+                    width: screen? 40:35
                 }} alt="eye-on"/>}
                 </Iconcontainer>
                      </div>
@@ -138,21 +138,38 @@ const AccountCreation = () =>{
                          <Payment>
                          <h3>{t('creation.method')}</h3>
                          <PaymentMode>
-                             <input type="radio" value="card" name="mode" onChange={(e) => setMode(e.target.value)}/>
+                             <input type="radio" value="card" name="mode" />
                              <img src={Paypal} alt="paypal"/>
                          </PaymentMode>
-                         <PaymentMode>
+                         {/*<PaymentMode>
                          <input type="radio" value="mobile" name="mode" onChange={(e) => setMode(e.target.value)}/>
                          <img src={Card} alt="card"/>
                          <img src={Mpesa} alt="m-pesa"/>
                          <img src={Mobile} alt="ecocash-lumicash" style={{
                              width: screen ? 170: 209
                          }}/>
-                         </PaymentMode>
+                         </PaymentMode> */}
+                         
                      </Payment>
-                     
-     
-                     {mode==='card' ? <PaymentForm>
+                     <PaymentForm>
+                         <h3>{t('creation.card')}</h3>
+                         <Input type="number" placeholder={t('creation.cardHolder')} style={{width: '83%'}}/>
+                         <div style={{display: 'flex'}}>
+                             <div>
+                                 <h3>{t('creation.expiration')}</h3>
+                                 <Input style={{width: '80%'}} placeholder="MM" type="number"/>
+                             </div>
+                             <div>
+                                 <h3>{t('creation.year')}</h3>
+                                 <Input style={{width: '80%', marginTop: screen ? 23: 0}} placeholder="YY" type="number"/>
+                             </div>
+                             <div>
+                                 <h3>CVV</h3>
+                                 <Input style={{width: '80%',  marginTop: screen ? 23: 0}} placeholder="XXX" type="number"/>
+                             </div>
+                         </div>
+                     </PaymentForm>
+                     {/*{mode==='card' ? <PaymentForm>
                          <h3>{t('creation.card')}</h3>
                          <Input type="number" placeholder={t('creation.cardHolder')} style={{width: '83%'}}/>
                          <div style={{display: 'flex'}}>
@@ -174,7 +191,9 @@ const AccountCreation = () =>{
                          <h3>{t('creation.mobile')}</h3>
                          <Input type="number" placeholder={t('creation.mobileHolder')}/>
                      </PaymentForm>: null}
-                     </>}
+                     </>} */}
+     
+                     
                      </>}
                      
                     {/*<h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3> */} 

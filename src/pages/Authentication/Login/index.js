@@ -107,11 +107,11 @@ const Login = () =>{
                 <Input type={shownPassword ? "text" : "password"} placeholder={t('login.passwordHolder')} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                 <Iconcontainer onClick={display}>
                     {shownPassword ? <img src={EyeOff} style={{
-                    height: screen? 45:60,
-                    width: screen? 40:55
+                    height: screen? 45:40,
+                    width: screen? 40:35
                 }} alt="eye-off"/>: <img src={Eye} style={{
-                    height: screen? 45:60,
-                    width: screen? 40:55
+                    height: screen? 45:40,
+                    width: screen? 40:35
                 }} alt="eye-on"/>}
                 
                 </Iconcontainer>

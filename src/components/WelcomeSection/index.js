@@ -32,7 +32,9 @@ const Details = props =>{
         
         </MoreContent>: <MoreContent>
         <Check type='checkbox' value={props.value} onChange={props.onChange} checked={props.checked} id={props.id} key={props.myKey}/>
-        <h4>{props.detail}</h4> 
+        <h4 style={{
+            fontSize: 15
+        }}>{props.detail}</h4> 
         </MoreContent>}
         
                                
@@ -423,8 +425,8 @@ const Welcome = props =>{
             <Content>
                 <WelcomeText>
                     <h2>URBONY</h2>
-                    <h3>{t('Welcome.text1')}</h3>
-                    <h4>{t('Welcome.text2')}</h4>
+                    <h2>{t('Welcome.text1')}</h2>
+                    <h3>{t('Welcome.text2')}</h3>
                 </WelcomeText>
                 
 
