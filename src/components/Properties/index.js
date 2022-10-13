@@ -18,6 +18,9 @@ import BedMin from '../../assets/images/bed_min.svg'
 import HouseMin from '../../assets/images/house_min.svg'
 
 import StatisticMin from '../../assets/images/statistic_min.svg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from "../Spinner";
 
 
 const Properties = props =>{
@@ -26,7 +29,7 @@ const Properties = props =>{
     
     const [properties, setProperties] = useState('')
     const [sellProperties, setSellProperties] = useState('')
-    
+    const [loading, setLoading] = useState(false)
     
    
 
@@ -38,6 +41,7 @@ const Properties = props =>{
     let sell;
     
         try {
+            setLoading(true)
             fetch(url,{
                 method: 'GET',
                 headers: {
@@ -62,16 +66,20 @@ const Properties = props =>{
                                                 house.property.options === "SELL"
                                             )
                 console.log(rent)
+                setLoading(false)
                 setProperties(rent)
                 setSellProperties(sell)
                
             }).catch(error =>{
                 console.log(error)
-                alert('Kindly login again, your access has expired')
+                setLoading(false)
+                toast('Kindly login again, your access has expired', 
+                    {position: toast.POSITION.TOP_RIGHT})
+                    setGlobalState("loggedIn", false)
                 localStorage.removeItem('token')
                 localStorage.removeItem('name')
                 localStorage.removeItem('id')
-                setGlobalState("loggedIn", false)
+                
                 
                 
             });
@@ -120,7 +128,8 @@ const Properties = props =>{
 
     return(
         <Wrapper>
-            <Content>
+            {loading ? (<Loading/>):(
+                <Content>
                 <Title>
                     <Head>
                         <Line/>
@@ -141,7 +150,7 @@ const Properties = props =>{
                             house =>(
                                 <HomeCards key={house.property.id}>
         <img alt="house" src={house.property.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -308,14 +317,14 @@ const Properties = props =>{
                         )
                     )}
 
-                    </>: <h2>Loading</h2>}
+                    </>: <h2>No properties to display</h2>}
                     </>:<>
                     {properties.length > 0 ? <>
                         {properties.map(
                             house =>(
                                 <HomeCards key={house.property.id}>
         <img alt="house" src={house.property.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -481,12 +490,14 @@ const Properties = props =>{
                             </Container>
                         )
                     )}
-                    </>: <h2>Loading</h2>}
+                    </>: <h2>No properties to display</h2>}
                     </>}
                     
                     
                 </Home>
+                <ToastContainer progressClassName="toastProgress"/>
             </Content>
+            )}
         </Wrapper>
     )
 }

@@ -19,7 +19,7 @@ margin-bottom: 150px;
 `;
 
 export const Input = styled.input`
-width: 80%;
+width: 50%;
 height: 55px;
 border-radius: 5px;
 border: 1px solid #000000;

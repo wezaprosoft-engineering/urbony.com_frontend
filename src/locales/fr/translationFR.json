@@ -357,8 +357,14 @@
         "email": "Addresse e-mail",
         "Password": "Mot de passe",
         "passwordHolder": "Entrez votre mot de passe",
+        "forgot": "Mot de passe oublie?",
         "member": "Pas encore membre?",
         "create": "Créez votre compte"
+    },
+    "forgot": {
+        "title": "Mot de passe oublie",
+        "text": "Entrez votre addresse email pour restaurer votre mot de passe",
+        "button": "Envoyez le lien"
     },
     "creation":{
         "create": "Créez votre compte",

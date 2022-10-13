@@ -107,7 +107,7 @@ const LastSales = props =>{
                         house=>(
                             <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{

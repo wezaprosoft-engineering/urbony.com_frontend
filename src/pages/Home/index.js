@@ -17,7 +17,7 @@ const Home = ()=>{
     const [loading] = useGlobalState("loading")
     return(
         <>
-        {loading ? <Loading/>: <>
+        {loading ? (<Loading/>): (<>
         <Welcome/>
             
             {corporate ? null:<PropertyForSell/>} 
@@ -25,7 +25,7 @@ const Home = ()=>{
          {corporate ? <SellProperty title={t('sellProperty.corporateTitle')} title1={t('sellProperty.corporateTitle1')} step={t('sellProperty.corporateStep')}/>: <SellProperty title={t('sellProperty.residentialTitle')} title1={t('sellProperty.residentialTitle1')} proposition={t('sellProperty.residentialProposition')} step={t('sellProperty.residentialStep')}/>}
          <LastSales/>
          <SellerRequestForm text={t('Welcome.text2')}/>
-        </>}
+        </>)}
         
            
             </>

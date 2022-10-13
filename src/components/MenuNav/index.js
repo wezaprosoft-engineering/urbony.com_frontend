@@ -8,6 +8,7 @@ const MenuNav = props =>{
     const {t, i18n} = useTranslation();
     const [corporate] = useGlobalState("corporate")
     const navigate = useNavigate()
+    const [loggedIn] = useGlobalState("loggedIn")
     function handleClick(){
         if(i18n.language==='fr'){
             i18n.changeLanguage('en')
@@ -158,6 +159,11 @@ const MenuNav = props =>{
         navigate('/login')
         
     }
+    const logout = () =>{
+        localStorage.removeItem('token')
+        localStorage.removeItem('name')
+        window.location.reload(false)
+    }
     return(
         <MenuContent>
             <MenuHeader>
@@ -171,6 +177,11 @@ const MenuNav = props =>{
             <h3 onClick={makeIndustrialSpace}>{t('NavBar.industrialSpace')}</h3>
             <h3 onClick={makeManagement}>{t('NavBar.management')}</h3>
             <h3 onClick={makeAboutUs}>{t('NavBar.aboutUs')}</h3>
+            {loggedIn ? <>
+            <h3>Profile</h3>
+            <h3 onClick={()=>navigate('/myproperties')}>My properties</h3>
+            <h3 onClick={logout}>Logout</h3>
+            </>:null}
         </Menu>:
 
             <Menu>
@@ -180,8 +191,14 @@ const MenuNav = props =>{
             <h3 onClick={makeRealEstate}>{t('NavBar.realEstate')}</h3>
             <h3 onClick={makeManagement}>{t('NavBar.management')}</h3>
             <h3 onClick={makeAboutUs}>{t('NavBar.aboutUs')}</h3>
+            {loggedIn ? <>
+            <h3>Profile</h3>
+            <h3 onClick={()=>navigate('/myproperties')}>My properties</h3>
+            <h3 onClick={logout}>Logout</h3>
+            </>:null}
         </Menu>}
-            <Button onClick={LoginPage}>{t('NavBar.login')}</Button>
+
+            {loggedIn ? null:<Button onClick={LoginPage}>{t('NavBar.login')}</Button>}
         </MenuContent>
     )
 }

@@ -292,6 +292,8 @@ h4{
 
 export const Check = styled.input`
 margin-right: 10px;
+width: 10px;
+height: 10px;
 
 @media screen and (max-width: 414px){
    box-sizing: border-box;
@@ -299,6 +301,18 @@ margin-right: 10px;
    margin-right: 3px;
    height: 15px;
    width: 15px;
+   background: rgba(40,40,40,0.2);
+    color:black;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    :checked {
+        background: white;
+        
+        ::after{
+            content: '✔';
+            color: blue;
+        }
+    }
    
 }
 `;

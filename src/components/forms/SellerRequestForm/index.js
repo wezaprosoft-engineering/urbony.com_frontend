@@ -22,50 +22,56 @@ const SellerRequestForm = props => {
         }else{
              requestType = 'SELL'
         }
+        const [uncompleted, setUncompleted] = useState('')
         
         
         const url='https://urbony.onrender.com/api/management'
         const sellerRequest = async () => {
-            const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, propertyTypesId, requestType});
-            try {
-               fetch(url, {
-                    method: 'POST',
-                    body: body,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
-                    }
-                }).then(res => {
-                    if (res.ok){
-                        return res.json()
-                    } else {
-                        throw res.json()
-                    }
+            if(firstName.length===0 || lastName.length===0 || email.length===0 || phoneNumber.length ===0 || location.length ===0 || propertyTypesId.length===0){
+                setUncompleted('Please fill in the required information!!')
+            } else{
+                const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, propertyTypesId, requestType});
+                try {
+                   fetch(url, {
+                        method: 'POST',
+                        body: body,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
+                        }
+                    }).then(res => {
+                        if (res.ok){
+                            return res.json()
+                        } else {
+                            throw res.json()
+                        }
+                        
+                    }).then(json =>{
+                        console.log(json)
+                        toast(json.message, 
+                            {position: toast.POSITION.TOP_RIGHT})
+                        setFirstName('')
+                        setLastName('')
+                        setEmail('')
+                        setPhoneNumber('')
+                        setLocation('')
+                        setPropertyTypesId('')
+                        
+        
+                       
+        
+                    }).catch(error =>{
+                        console.log(error)
+                        
+                    });
+        
                     
-                }).then(json =>{
-                    console.log(json)
-                    toast(json.message, 
-                        {position: toast.POSITION.TOP_RIGHT})
-                    setFirstName('')
-                    setLastName('')
-                    setEmail('')
-                    setPhoneNumber('')
-                    setLocation('')
-                    setPropertyTypesId('')
-                    
-    
-                   
-    
-                }).catch(error =>{
+                } catch (error) {
                     console.log(error)
-                    
-                });
-    
-                
-            } catch (error) {
-                console.log(error)
+                }
             }
+           
             
         }
     
@@ -100,7 +106,27 @@ const SellerRequestForm = props => {
                     </Container>
                     <Container>
                         <h2>{t('sellerRequestForm.locationOfProperty')}<Star>*</Star></h2>
-                        <InputRequest placeholder={t('sellerRequestForm.locationHolder')} value={location} onChange={(e) => {setLocation(e.target.value)}}/>
+                        <Select value={location} onChange={(e) => setLocation(e.target.value)}>
+                <option value="Select" >{t('Welcome.location')}</option>
+                        <option value="Bubanza">Bubanza</option>
+                        <option value="Bujumbura Mairie">Bujumbura Mairie</option>
+                        <option value="Bujumbura Rural">Bujumbura Rural</option>
+                        <option value="Cibitoke">Cibitoke</option>
+                        <option value="Muramvya">Muramvya</option>
+                        <option value="Mwaro">Mwaro</option>
+                        <option value="Cankuzo">Cankuzo</option>
+                        <option value="Gitega">Gitega</option>
+                        <option value="Rutana">Rutana</option>
+                        <option value="Ruyigi">Ruyigi</option>
+                        <option value="Karusi">Karusi</option>
+                        <option value="Kayanza">Kayanza</option>
+                        <option value="Kirundo">Kirundo</option>
+                        <option value="Muyinga">Muyinga</option>
+                        <option value="Ngozi">Ngozi</option>
+                        <option value="Bururi">Bururi</option>
+                        <option value="Makamba">Makamba</option>
+                        <option value="Rumonge">Rumonge</option>
+                </Select>
                     </Container>
                     <Container>
                         <h2>{t('sellerRequestForm.typeOfProperty')}<Star>*</Star></h2>
@@ -124,6 +150,9 @@ const SellerRequestForm = props => {
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     
                     <SubmitButton onClick={sellerRequest}>{t('sellerRequestForm.submit')}</SubmitButton>
+                    <h4 style={{
+                        color: 'red'
+                    }}>{uncompleted}</h4>
                     <ToastContainer progressClassName="toastProgress"/>
                     
                 </RequestForm>

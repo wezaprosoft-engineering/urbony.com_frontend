@@ -36,6 +36,7 @@ const {setGlobalState, useGlobalState} = createGlobalState({
     free: true,
     charge: undefined,
     loading: false,
+    checked: false
   
 });
 

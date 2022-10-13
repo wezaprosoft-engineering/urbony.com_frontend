@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
 background: #FFFFFF;
+min-height: 70vh;
 `;
 
 export const Content = styled.div`
@@ -21,7 +22,7 @@ h4{
 }
 `;
 export const Input = styled.input`
-    width: 80%;
+    width: 50%;
     height: 55px;
     border-radius: 5px;
     color: rgba(46,15,89,1);
@@ -32,6 +33,30 @@ export const Input = styled.input`
     @media screen and (max-width: 414px) {
         height: 45px;
         width: 90%;
+    }
+`;
+export const Iconcontainer = styled.div`
+    width: 5%;
+    height: 60px;
+    
+    color: rgba(46,15,89,1);
+    font-weight: 700;
+    font-size: 15px;
+    font-style: "Roboto";
+    border-color: rgba(46,15,89,1);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: -60px;
+    
+    padding-top: 10px;
+    
+    
+
+    @media screen and (max-width: 414px) {
+        height: 45px;
+        width: 5%;
+        padding-top: 4px;
+        
     }
 `;
 

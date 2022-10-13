@@ -5,5 +5,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-    margin: 30px
+    margin: 60px;
+    font-family: "Roboto";
 `;

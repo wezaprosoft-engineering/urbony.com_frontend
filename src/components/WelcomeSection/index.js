@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading, Checked } from "./Welcome.styles";
+import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading } from "./Welcome.styles";
 import search from '../../assets/images/search-icon.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import ArrowDown from '../../assets/images/arrow_down.svg'
@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 const Details = props =>{
     
-    const [checked, setChecked] = useState(false)
+    //const [checked, setChecked] = useState(false)
+    
    
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
@@ -23,18 +24,17 @@ const Details = props =>{
     return(
         <>
         {screen ? <MoreContent>
-            {checked ? <>
-            <Check type='checkbox' checked={checked} onChange={() => setChecked(false)}/>
+            
+            <Check type='checkbox' onChange={props.onChange}/>
             <h4>{props.detail}</h4> 
-            </>: <>
-            <Checked onClick={() => setChecked(true)}></Checked>
-        <h4>{props.detail}</h4> 
-            </>}
+            
         
         
         </MoreContent>: <MoreContent>
-        <Check type='checkbox'/>
-        <h4>{props.detail}</h4> 
+        <Check type='checkbox' value={props.value} onChange={props.onChange} checked={props.checked} id={props.id} key={props.myKey}/>
+        <h4 style={{
+            fontSize: 15
+        }}>{props.detail}</h4> 
         </MoreContent>}
         
                                
@@ -75,8 +75,156 @@ const Welcome = props =>{
     const LessFilters = () =>{
         setMore(false)
     }
+    const [internalFeatures, setInternalFeatures] = useState('')
+    const [externalFeatures, setExternalFeatures] = useState('')
+    const [nearbyFeatures, setNearbyFeatures] = useState('')
+    const [location, setLocation] = useState('')
+    const [propertyTypesId, setPropertyTypesId] = useState('')
+    const [min, setMin] = useState('')
+    const [max, setMax] = useState('')
+    const [bedrooms, setBedrooms] = useState('')
+    const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
+    const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
+    const nearbyUrl = 'https://urbony.onrender.com/api/nearbyFeatures'
+    const searchUrl = 'https://urbony.onrender.com/api/property/search'
+    const internal = () => {
+        try {
+            fetch(internalUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               
+                json.map((item1) =>(
+                    item1.checked = false
+                ))
+               console.log(json)
+               setInternalFeatures(json)
+
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const external = () => {
+        try {
+            fetch(externalUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+                json.map((item2) =>(
+                    item2.checked = false
+                ))
+               console.log(json)
+               setExternalFeatures(json)
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const nearby = () => {
+        try {
+            fetch(nearbyUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+                json.map((item3) =>(
+                    item3.checked = false
+                ))
+               console.log(json)
+               setNearbyFeatures(json)
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        internal();
+        external();
+        nearby();
+    }, []);
+
+    let selectedInternal;
+    let selectedExternal;
+    let selectedNearby
+    const searchRequest = async () => {
+        const body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        try {
+           fetch(searchUrl, {
+                method: 'POST',
+                body: body,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+                
+            }).then(json =>{
+                console.log(json)
+                navigate('/search', {state:json})
+                
+                
+
+               
+
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+
+            
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+    
     const Overlays = props =>{
-        const navigate = useNavigate()
+        
         return(
             
             <Overlay>
@@ -99,19 +247,19 @@ const Welcome = props =>{
                     height: '65px',
                     fontWeight: 400,
                     fontSize: 'large'
-                }}>
-                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                    <option value={t('Welcome.residentialOption2')}>{t('Welcome.residentialOption2')}</option>
-                    <option value={t('Welcome.residentialOption3')}>{t('Welcome.residentialOption3')}</option>
-                    <option value={t('Welcome.residentialOption4')}>{t('Welcome.residentialOption4')}</option>
-                    <option value={t('Welcome.residentialOption5')}>{t('Welcome.residentialOption5')}</option>
-                    <option value={t('Welcome.residentialOption6')} >{t('Welcome.residentialOption6')}</option>
-                    <option value={t('Welcome.residentialOption7')}>{t('Welcome.residentialOption7')}</option>
-                    <option value={t('Welcome.residentialOption8')}>{t('Welcome.residentialOption8')}</option>
-                    <option value={t('Welcome.residentialOption9')}>{t('Welcome.residentialOption9')}</option>
-                    <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                    <option value="1" >{t('Welcome.residentialOption1')}</option>
+                    <option value="2">{t('Welcome.residentialOption2')}</option>
+                    <option value="3">{t('Welcome.residentialOption3')}</option>
+                    <option value="4">{t('Welcome.residentialOption4')}</option>
+                    <option value="5">{t('Welcome.residentialOption5')}</option>
+                    <option value="6" >{t('Welcome.residentialOption6')}</option>
+                    <option value="7">{t('Welcome.residentialOption7')}</option>
+                    <option value="8">{t('Welcome.residentialOption8')}</option>
+                    <option value="9">{t('Welcome.residentialOption9')}</option>
+                    <option value="10">{t('Welcome.residentialOption10')}</option>
+                    <option value="11" >{t('Welcome.residentialOption11')}</option>
+                    <option value="12">{t('Welcome.residentialOption12')}</option>
                     
                     </select>}
                     </OverlayContent>
@@ -120,7 +268,7 @@ const Welcome = props =>{
                         height: '65px',
                         fontWeight: 400,
                         fontSize: 'large'
-                    }}>
+                    }} value={location} onChange={(e) => setLocation(e.target.value)}>
                         <option value="Select" >{props.location}</option>
                         <option value="Bubanza">Bubanza</option>
                         <option value="Bujumbura Mairie">Bujumbura Mairie</option>
@@ -141,13 +289,14 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                         </select></OverlayContent>
-                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number"/><Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number"/></div></OverlayContent>
+                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
+                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
                     {corporate ? 
                     <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
-                    <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select"/></OverlayContent>}
+                    <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
                     
                     
-                    <OverlayContent><Search onClick={()=>navigate('/search')}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
+                    <OverlayContent><Search onClick={searchRequest}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
                     </SubOverlay>
                     
                     
@@ -182,41 +331,88 @@ const Welcome = props =>{
                     </div>}
                     {more ? <More>
                         <div>
-                            <h3>{t('Welcome.internal')}</h3>
-                            <Details detail={t('Welcome.internal1')}/>
-                            <Details detail={t('Welcome.internal2')}/>
-                            <Details detail={t('Welcome.internal3')}/>
-                            <Details detail={t('Welcome.internal4')}/>
-                            <Details detail={t('Welcome.internal5')}/>
-                            <Details detail={t('Welcome.internal6')}/>
-                            <Details detail={t('Welcome.internal7')}/>
-                            <Details detail={t('Welcome.internal8')}/>
-                            <Details detail={t('Welcome.internal9')}/>
-                            <Details detail={t('Welcome.internal10')}/>
-                            <Details detail={t('Welcome.internal11')}/>
-                        </div>
-                        <div>
-                            <h3>{t('Welcome.external')}</h3>
-                            <Details detail={t('Welcome.external1')}/>
-                            <Details detail={t('Welcome.external2')}/>
-                            <Details detail={t('Welcome.external3')}/>
-                            <Details detail={t('Welcome.external4')}/>
-                            <Details detail={t('Welcome.external5')}/>
-                            <Details detail={t('Welcome.external6')}/>
-                            <Details detail={t('Welcome.external7')}/>
-                            <Details detail={t('Welcome.external8')}/>
-                            <Details detail={t('Welcome.external9')}/>
-                            <Details detail={t('Welcome.external10')}/>
-                        </div>
-                        <div>
-                            <h3>{t('Welcome.nearby')}</h3>
-                            <Details detail={t('Welcome.nearby1')}/>
-                            <Details detail={t('Welcome.nearby2')}/>
-                            <Details detail={t('Welcome.nearby3')}/>
-                            <Details detail={t('Welcome.nearby4')}/>
-                            <Details detail={t('Welcome.nearby5')}/>
-                            <Details detail={t('Welcome.nearby6')}/>
-                        </div>
+                                <h3>{t('Welcome.internal')}</h3>
+                                {internalFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        myKey={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setInternalFeatures([...internalFeatures])
+                                             selectedInternal = internalFeatures.filter((item1) =>
+                                                item1.checked === true
+                                            )
+                                            setGlobalState("checked", true)
+                                             console.log(selectedInternal)
+                                             
+                                            
+                                          }}
+                                          
+                                        />
+                                   
+                                        
+                                    )
+                                })}
+                                
+                            </div>
+                            <div>
+                                <h3>{t('Welcome.external')}</h3>
+                                {externalFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        myKey={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setExternalFeatures([...externalFeatures])
+                                             selectedExternal = externalFeatures.filter((item2) =>
+                                                item2.checked === true
+                                            )
+                                            setGlobalState("checked", true)
+                                             console.log(selectedExternal)
+                                            
+                                          }}
+                                        />
+                                        
+                                    
+                                        
+                                    )
+                                })}
+                                
+                            </div>
+                            <div>
+                                <h3>{t('Welcome.nearby')}</h3>
+                                {nearbyFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        key={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setNearbyFeatures([...nearbyFeatures])
+                                             selectedNearby = nearbyFeatures.filter((item3) =>
+                                                item3.checked === true
+                                            )
+                                            setGlobalState("checked", true)
+                                             console.log(selectedNearby)
+                                             
+                                            
+                                          }}
+                                        />
+                                        
+                                    
+                                        
+                                    )
+                                })}
+                                
+                            </div>
                     </More>: null}
                     
                     
@@ -229,8 +425,8 @@ const Welcome = props =>{
             <Content>
                 <WelcomeText>
                     <h2>URBONY</h2>
-                    <h3>{t('Welcome.text1')}</h3>
-                    <h4>{t('Welcome.text2')}</h4>
+                    <h2>{t('Welcome.text1')}</h2>
+                    <h3>{t('Welcome.text2')}</h3>
                 </WelcomeText>
                 
 
@@ -245,22 +441,22 @@ const Welcome = props =>{
                     <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
                     <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
                 </Select>:
-                <Select>
-                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                    <option value={t('Welcome.residentialOption2')}>{t('Welcome.residentialOption2')}</option>
-                    <option value={t('Welcome.residentialOption3')}>{t('Welcome.residentialOption3')}</option>
-                    <option value={t('Welcome.residentialOption4')}>{t('Welcome.residentialOption4')}</option>
-                    <option value={t('Welcome.residentialOption5')}>{t('Welcome.residentialOption5')}</option>
-                    <option value={t('Welcome.residentialOption6')} >{t('Welcome.residentialOption6')}</option>
-                    <option value={t('Welcome.residentialOption7')}>{t('Welcome.residentialOption7')}</option>
-                    <option value={t('Welcome.residentialOption8')}>{t('Welcome.residentialOption8')}</option>
-                    <option value={t('Welcome.residentialOption9')}>{t('Welcome.residentialOption9')}</option>
-                    <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                    <option value="1" >{t('Welcome.residentialOption1')}</option>
+                    <option value="2">{t('Welcome.residentialOption2')}</option>
+                    <option value="3">{t('Welcome.residentialOption3')}</option>
+                    <option value="4">{t('Welcome.residentialOption4')}</option>
+                    <option value="5">{t('Welcome.residentialOption5')}</option>
+                    <option value="6" >{t('Welcome.residentialOption6')}</option>
+                    <option value="7">{t('Welcome.residentialOption7')}</option>
+                    <option value="8">{t('Welcome.residentialOption8')}</option>
+                    <option value="9">{t('Welcome.residentialOption9')}</option>
+                    <option value="10">{t('Welcome.residentialOption10')}</option>
+                    <option value="11" >{t('Welcome.residentialOption11')}</option>
+                    <option value="12">{t('Welcome.residentialOption12')}</option>
                 </Select>}
                 
-                <Select>
+                <Select value={location} onChange={(e) => setLocation(e.target.value)}>
                 <option value="Select" >{t('Welcome.location')}</option>
                         <option value="Bubanza">Bubanza</option>
                         <option value="Bujumbura Mairie">Bujumbura Mairie</option>
@@ -281,11 +477,11 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number"/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number"/>
-                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')}/>}
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
                 
-                <WelcomeButton onClick={()=>navigate('/search')}>
+                <WelcomeButton onClick={searchRequest}>
                     <div style={{
                         display: 'flex',
                         margin: 'auto auto auto auto',
@@ -302,46 +498,85 @@ const Welcome = props =>{
                     
                 </MoreContentMobile>
                 {moreMobile ? <More>
-                        <Heading>
+                    <Heading >
                         <h3>{t('Welcome.internal')}</h3>
                             <MoreContentDetails>
-                            <Details detail={t('Welcome.internal1')}/>
-                            <Details detail={t('Welcome.internal2')}/>
-                            <Details detail={t('Welcome.internal3')}/>
-                            <Details detail={t('Welcome.internal4')}/>
-                            <Details detail={t('Welcome.internal5')}/>
-                            <Details detail={t('Welcome.internal6')}/>
-                            <Details detail={t('Welcome.internal7')}/>
-                            <Details detail={t('Welcome.internal8')}/>
-                            <Details detail={t('Welcome.internal9')}/>
-                            <Details detail={t('Welcome.internal10')}/>
-                            <Details detail={t('Welcome.internal11')}/>
+                            {internalFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        myKey={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setInternalFeatures([...internalFeatures])
+                                             selectedInternal = internalFeatures.filter((item1) =>
+                                                item1.checked === true
+                                            )
+                                             console.log(selectedInternal)
+                                            
+                                          }}
+                                          
+                                        />
+                                   
+                                        
+                                    )
+                                })}
                             </MoreContentDetails>
                         </Heading>
                         <Heading>
                         <h3>{t('Welcome.external')}</h3>
                             <MoreContentDetails>
-                            <Details detail={t('Welcome.external1')}/>
-                            <Details detail={t('Welcome.external2')}/>
-                            <Details detail={t('Welcome.external3')}/>
-                            <Details detail={t('Welcome.external4')}/>
-                            <Details detail={t('Welcome.external5')}/>
-                            <Details detail={t('Welcome.external6')}/>
-                            <Details detail={t('Welcome.external7')}/>
-                            <Details detail={t('Welcome.external8')}/>
-                            <Details detail={t('Welcome.external9')}/>
-                            <Details detail={t('Welcome.external10')}/>
+                            {externalFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        myKey={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setExternalFeatures([...externalFeatures])
+                                             selectedExternal = externalFeatures.filter((item2) =>
+                                                item2.checked === true
+                                            )
+                                             console.log(selectedExternal)
+                                            
+                                          }}
+                                        />
+                                        
+                                    
+                                        
+                                    )
+                                })}
                             </MoreContentDetails>
                             </Heading>
-                        <Heading>
+                            <Heading>
                         <h3>{t('Welcome.nearby')}</h3>
                             <MoreContentDetails>
-                            <Details detail={t('Welcome.nearby1')}/>
-                            <Details detail={t('Welcome.nearby2')}/>
-                            <Details detail={t('Welcome.nearby3')}/>
-                            <Details detail={t('Welcome.nearby4')}/>
-                            <Details detail={t('Welcome.nearby5')}/>
-                            <Details detail={t('Welcome.nearby6')}/>
+                            {nearbyFeatures.map((details) => {
+                                    return(
+                                        <Details detail={details.name}
+                                        key={details.id}
+                                        id={details.id}
+                                        checked={details.checked}
+                                        onChange={(e) => {
+                                            // add to list
+                                            details.checked = !details.checked
+                                            setNearbyFeatures([...nearbyFeatures])
+                                             selectedNearby = nearbyFeatures.filter((item3) =>
+                                                item3.checked === true
+                                            )
+                                             console.log(selectedNearby)
+                                            
+                                          }}
+                                        />
+                                        
+                                    
+                                        
+                                    )
+                                })}
                             </MoreContentDetails>
                         </Heading>
                     </More>: null}

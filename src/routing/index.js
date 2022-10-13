@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MenuNav from "../components/MenuNav";
 import NavBar from "../components/navbar";
+import ScrollToTop from "../components/ScrollToTop";
 import AboutUs from "../pages/AboutUs";
 import AddProperty from "../pages/addProperty";
 import AccountCreation from "../pages/Authentication/AccountCreation";
@@ -39,12 +40,14 @@ const Routing = () =>{
     }
     return(
         <Router>
+            <ScrollToTop/>
             <Header/>
             <NavBar/>
             {mobileMenu ? <MenuNav/>: null}
             <Routes>
 
                 {loggedIn ? <>
+                
                 <Route path="*" element={<Navigate to="/" />}/>
                 <Route path="" element={<Home/>}/>
                 <Route path="/sell" element={<Sell/>}/>
@@ -63,13 +66,16 @@ const Routing = () =>{
                 <Route path="/account-creation" element={<AccountCreation/>}/>
                 <Route path="/myproperties" element={<MyProperties/>}/>
                 <Route path="/add-property" element={<AddProperty/>}/>
-                <Route path="/free-estimation" element={<FreeEstimation/>}/>
+                <Route path="/free-estimation"exa element={<FreeEstimation/>}/>
                 <Route path="/search" element={<Searches/>}/>
                 <Route path="/property/:id" element={<SingleProperty/>}/>
                 <Route path="/edit-property/:id" element={<EditProperty/>}/>
                 <Route path="/single-project/:id" element={<SingleProject/>}/>
                 
+                
+                
                 </>:<>
+                
                 <Route path="*" element={<Navigate to="/" />}/>
                 <Route path="" element={<Home/>}/>
                 <Route path="/sell" element={<Sell/>}/>
@@ -91,10 +97,13 @@ const Routing = () =>{
                 <Route path="/property/:id" element={<SingleProperty/>}/>
                 <Route path="/single-project/:id" element={<SingleProject/>}/>
                 
+                
+                
                 </>}
                 
             </Routes>
             <Footer/>
+            
         </Router>
     )
 }
