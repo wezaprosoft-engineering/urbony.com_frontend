@@ -40,6 +40,9 @@ const Management = () => {
             behavior: 'smooth'
         })
     }
+    //const [basicAmount, setBasicAmount] = useState('')
+    //const [premiumAmount, setPremiumAmount] = useState('')
+    
     return(
         <>
         <Wrapper>
@@ -118,7 +121,7 @@ const Management = () => {
                     
                 }}>{t('management.card1Content1')}</h2>
                 <h3>{t('management.card1Content2')}</h3>
-                <h2>{t('management.asFrom')}</h2>
+                <h2>{t('management.asFrom')} 2.43 USD</h2>
                 <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>{t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -172,7 +175,7 @@ const Management = () => {
                     marginTop: 52
                 }}>{t('management.card1Content1')}</h2>
                 <h3>{t('management.card1Content2')}</h3>
-                <h2>{t('management.asFrom')}</h2>
+                <h2>{t('management.asFrom')} 2.43 USD</h2>
                 <h2><span style={{color: 'rgba(46,15,89,1)'}}>5,000 BIF </span>{t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -238,7 +241,7 @@ const Management = () => {
                
             <h2>{t('management.card2Content2')}</h2>
                 <h3>{t('management.card2Content3')}</h3>
-                <h2>{t('management.asFrom')}</h2>
+                <h2>{t('management.asFrom')}  4.86 USD</h2>
                 <h2>10,000 BIF {t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{
@@ -314,7 +317,7 @@ const Management = () => {
                
             <h2>{t('management.card2Content2')}</h2>
                 <h3>{t('management.card2Content3')}</h3>
-                <h2>{t('management.asFrom')}</h2>
+                <h2>{t('management.asFrom')}  4.86 USD</h2>
                 <h2>10,000 BIF {t('management.excl')}</h2>
                 <Benefits>
                 {screen ? <img src={Nice} alt='nice' style={{

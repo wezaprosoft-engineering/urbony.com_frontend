@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Content, Forms, Input, Payment, PaymentForm, PaymentMode, Wrapper } from "./AccountCreation.styles";
+import { Button, Content, Forms, Input, Wrapper } from "./AccountCreation.styles";
 //import Card from '../../../assets/images/card.svg'
 //import Mpesa from '../../../assets/images/mpesa.svg'
 //import Mobile from '../../../assets/images/ecocashlumicash.svg'
-import Paypal from '../../../assets/images/paypal.png'
+//import Paypal from '../../../assets/images/paypal.png'
 import {  useGlobalState } from "../../../store/state";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Loading from "../../../components/Spinner";
 import Eye from '../../../assets/images/eye.png'
@@ -29,9 +29,11 @@ const AccountCreation = () =>{
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
  
+    const paymentUrl = 'https://urbony.onrender.com/api/payment/paypal'
     const [free] = useGlobalState('free')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const {state} = useLocation()
     
     const [string, setString] = useState('')
     const Top = () =>{
@@ -75,7 +77,14 @@ const AccountCreation = () =>{
                         setLoading(false)
                         toast('Account created successfully! Kindly proceed to login now', 
                             {position: toast.POSITION.TOP_RIGHT})
-                        navigate('/login')
+                        if(free){
+                            navigate('/login')
+                        }
+                        else{
+                            payment()
+
+                        }
+                        
                      }).catch(error =>{
                          console.log(error)
                          setLoading(false)
@@ -93,6 +102,67 @@ const AccountCreation = () =>{
         
         
         
+    }
+    const payment = ()=>{
+        const body = JSON.stringify({
+            "intent": "sale",
+  "payer": {
+    "payment_method": "paypal"
+  },
+  "redirect_urls": {
+    "return_url": "http://return.url",
+    "cancel_url": "http://cancel.url"
+  },
+  "transactions": [
+    {
+      "item_list": {
+        "items": [
+          {
+            "name": "Urbony.com",
+            "sku": `${state?.plan}`,
+            "price": `${state?.amount}`,
+            "currency": "USD",
+            "quantity": 1
+          }
+        ]
+      },
+      "amount": {
+        "currency": "USD",
+        "total": `${state?.amount}`,
+      },
+      "description": `This is the payment for the ${state?.plan} plan.`
+    }
+  ]
+        })
+
+        try {
+            fetch(paymentUrl, {
+                method: 'POST',
+                body: body,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               console.log(json)
+               window.open(json.href)
+               navigate('/login')
+               
+               
+            }).catch(error =>{
+                console.log(error)
+                
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
     }
     return(
         <Wrapper>
@@ -133,22 +203,21 @@ const AccountCreation = () =>{
                 }} alt="eye-on"/>}
                 </Iconcontainer>
                      </div>
-                     
-                     {free ? null : <>
+                     {/*{free ? null : <>
                          <Payment>
                          <h3>{t('creation.method')}</h3>
                          <PaymentMode>
                              <input type="radio" value="card" name="mode" />
                              <img src={Paypal} alt="paypal"/>
                          </PaymentMode>
-                         {/*<PaymentMode>
+                         <PaymentMode>
                          <input type="radio" value="mobile" name="mode" onChange={(e) => setMode(e.target.value)}/>
                          <img src={Card} alt="card"/>
                          <img src={Mpesa} alt="m-pesa"/>
                          <img src={Mobile} alt="ecocash-lumicash" style={{
                              width: screen ? 170: 209
                          }}/>
-                         </PaymentMode> */}
+                         </PaymentMode> 
                          
                      </Payment>
                      <PaymentForm>
@@ -169,7 +238,7 @@ const AccountCreation = () =>{
                              </div>
                          </div>
                      </PaymentForm>
-                     {/*{mode==='card' ? <PaymentForm>
+                     {mode==='card' ? <PaymentForm>
                          <h3>{t('creation.card')}</h3>
                          <Input type="number" placeholder={t('creation.cardHolder')} style={{width: '83%'}}/>
                          <div style={{display: 'flex'}}>
@@ -191,10 +260,11 @@ const AccountCreation = () =>{
                          <h3>{t('creation.mobile')}</h3>
                          <Input type="number" placeholder={t('creation.mobileHolder')}/>
                      </PaymentForm>: null}
-                     </>} */}
+                     </>} 
      
                      
-                     </>}
+                     </>} */}
+                     
                      
                     {/*<h3>{t('creation.charge')} <span style={{color: 'rgba(46,15,89,1)'}}>10,000 BIF</span></h3> */} 
                      <Button onClick={register} style={{marginTop: 30}}>{t('creation.createAccount')}</Button>

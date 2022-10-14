@@ -8,7 +8,7 @@ const AddProperty = () =>{
     const {t} = useTranslation()
     const navigate = useNavigate()
     const [image, setImage2] = useState(null)
-    const [coverImage, setImage] = useState(null)
+    const [coverImage, setCoverImage] = useState('')
     const [price, setPrice] = useState('')
     const [bedrooms, setBedrooms] = useState('')
     const [location, setLocation] = useState('')
@@ -59,6 +59,37 @@ const AddProperty = () =>{
             }
             
         }
+        const ImageUpload = async (file) => {
+            var formdata = new FormData();
+            formdata.append('file', file);
+            
+            try {
+               fetch('https://urbony.onrender.com/api/upload', {
+                    method: 'POST',
+                    body: formdata,
+                    redirect: 'follow'
+                }).then(res => {
+                    if (res.ok){
+                        return res.json()
+                    } else {
+                        throw res.json()
+                    }
+                    
+                }).then(json =>{
+                    console.log(json)
+                    setCoverImage(json.url)
+    
+                }).catch(error =>{
+                    console.log(error)
+                    
+                });
+    
+                
+            } catch (error) {
+                console.log(error)
+            }
+            
+        }
     return(
         <Wrapper>
             <Content>
@@ -81,9 +112,10 @@ const AddProperty = () =>{
                 onChange={(event) => {
                     console.log(event.target.files[0].name);
                     //setImage(event.target.files[0].name);
-                    setImage('https://firebasestorage.googleapis.com/v0/b/residential-c062f.appspot.com/o/urbony%2Fhouse.jpeg?alt=media&token=a6eeca99-9d50-45b9-9fb8-7ad8fc808055')
+                    //setImage('https://firebasestorage.googleapis.com/v0/b/residential-c062f.appspot.com/o/urbony%2Fhouse.jpeg?alt=media&token=a6eeca99-9d50-45b9-9fb8-7ad8fc808055')
                     setImage2(event.target.files[0]);
-                    console.log(image)
+                    //console.log(image)
+                    ImageUpload(event.target.files[0]);
                   }}
                 />
                 
