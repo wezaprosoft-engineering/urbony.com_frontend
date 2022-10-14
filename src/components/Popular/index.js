@@ -384,8 +384,8 @@ const Popular = props => {
                 }}>{t('popular.popularHomes')}</h2>}
                 
                 {Industrial || Commercial || Offices ? <>:<Home>
-                        {officers?.length > 0 && location.pathname==='/offices'? <>
-                            {officers?.map(
+                        {officers.length > 0 && location.pathname==='/offices'? <>
+                            {officers.map(
                                 (house =>(
                                     <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
@@ -447,7 +447,7 @@ const Popular = props => {
                             )}
                             {officers.length > 0 && location.pathname==='/offices'? <>
                     
-                    {officers.slice(0, activeIndexOfficers).map(house =>(
+                    {officers.slice(activeIndexOfficers - 1, activeIndexOfficers).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -617,7 +617,7 @@ const Popular = props => {
                             )}
                             {commercial.length > 0 && location.pathname==='/commercial-space'? <>
                     
-                    {commercial.slice(0, activeIndexCommercial).map(house =>(
+                    {commercial.slice(activeIndexCommercial - 1, activeIndexCommercial).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -787,7 +787,7 @@ const Popular = props => {
                             )}
                             {industrials.length > 0 && location.pathname==='/industrial-space'? <>
                     
-                    {industrials.slice(0, activeIndexIndustrials).map(house =>(
+                    {industrials.slice(activeIndexIndustrials - 1, activeIndexIndustrials).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -964,7 +964,7 @@ const Popular = props => {
                     
                             {officers.length > 0 ? <>
                     
-                    {officers.slice(0, activeIndexOfficers).map(house =>(
+                    {officers.slice(activeIndexOfficers - 1, activeIndexOfficers).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1134,7 +1134,7 @@ const Popular = props => {
                             )}
                             {commercial.length > 0 ? <>
                     
-                    {commercial.slice(0, activeIndexCommercial).map(house =>(
+                    {commercial.slice(activeIndexCommercial - 1, activeIndexCommercial).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1305,7 +1305,7 @@ const Popular = props => {
                             )}
                             {industrials.length > 0 ? <>
                     
-                    {industrials.slice(0, activeIndexIndustrials).map(house =>(
+                    {industrials.slice(activeIndexIndustrials - 1, activeIndexIndustrials).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1484,7 +1484,7 @@ const Popular = props => {
                         )}
                         {popularHomes.length > 0 && location.pathname!=='/rent'? <>
                     
-                    {popularHomes.slice(0, activeIndexPopularHomes).map(house =>(
+                    {popularHomes.slice(activeIndexPopularHomes - 1, activeIndexPopularHomes).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1662,7 +1662,7 @@ const Popular = props => {
                         )}
                         {popularRent.length > 0 && location.pathname==='/rent'? <>
                     
-                    {popularRent.slice(0, activeIndexPopularRent).map(house =>(
+                    {popularRent.slice(activeIndexPopularRent - 1, activeIndexPopularRent).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'

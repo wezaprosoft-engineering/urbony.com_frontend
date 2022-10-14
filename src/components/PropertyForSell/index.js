@@ -319,7 +319,7 @@ const PropertyForSell = (props, children) =>{
                     </>}
                     {propertyForSell.length > 0 && location.pathname!=='/rent'? <>
                     
-                        {propertyForSell.slice(0, activeIndex).map(house =>(
+                        {propertyForSell.slice(activeIndex -1, activeIndex).map(house =>(
                             <Container style={{
                                 backgroundImage: `url(${house.coverImage})`,
                                 backgroundSize: 'cover'
@@ -427,7 +427,7 @@ const PropertyForSell = (props, children) =>{
                     </>:null}
                     {propertyForRent.length > 0 && location.pathname==='/rent'? <>
                     
-                    {propertyForRent.slice(0, activeIndexRent).map(house =>(
+                    {propertyForRent.slice(activeIndexRent - 1, activeIndexRent).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'

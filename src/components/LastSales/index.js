@@ -172,7 +172,7 @@ const LastSales = props =>{
                     )}
                     
                     
-                    {sales.slice(0, activeIndexSales).map(house =>(
+                    {sales.slice(activeIndexSales - 1, activeIndexSales).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'

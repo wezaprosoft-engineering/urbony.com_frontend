@@ -212,7 +212,7 @@ const Properties = props =>{
     </HomeCards>
                             )
                         )}
-                        {sellProperties.slice(0, activeIndexSell).map(house =>(
+                        {sellProperties.slice(activeIndexSell - 1, activeIndexSell).map(house =>(
                             <Container style={{
                                 backgroundImage: `url(${house.property.coverImage})`,
                                 backgroundSize: 'cover'
@@ -386,7 +386,7 @@ const Properties = props =>{
     </HomeCards>
                             )
                         )}
-                        {properties.slice(0, activeIndexRent).map(house =>(
+                        {properties.slice(activeIndexRent - 1, activeIndexRent).map(house =>(
                             <Container style={{
                                 backgroundImage: `url(${house.property.coverImage})`,
                                 backgroundSize: 'cover'
