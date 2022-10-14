@@ -21,7 +21,7 @@ const SignUp = () =>{
     const base = () =>{
         setGlobalState('free', true);
         //setGlobalState('charge', 0);
-        navigate('/account-creation')
+        navigate('/account-creation',{state:{amount: 0, plan: 'basic'}})
     }
 
     const pro = () =>{

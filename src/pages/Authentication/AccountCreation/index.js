@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const AccountCreation = () =>{
     const {t} = useTranslation()
     //const [mode, setMode] = useState('')
-    const url = 'https://urbony.onrender.com/api/register'
+    const url = 'https://urbony.onrender.com/api/payment/paypal'
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -29,7 +29,7 @@ const AccountCreation = () =>{
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
  
-    const paymentUrl = 'https://urbony.onrender.com/api/payment/paypal'
+    
     const [free] = useGlobalState('free')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
@@ -51,7 +51,9 @@ const AccountCreation = () =>{
         }
     }
     const register = async () => {
-        const body = JSON.stringify({name ,email, password});
+        const amount = state.amount
+        const plan = state.plan
+        const body = JSON.stringify({name ,email, password, plan, amount});
         if(name.length===0 && email.length=== 0 && password.length===0){
             setString(t('creation.required'))
         } else{
@@ -81,7 +83,8 @@ const AccountCreation = () =>{
                             navigate('/login')
                         }
                         else{
-                            payment()
+                            window.open(json.href)
+                            navigate('/login')
 
                         }
                         
@@ -103,67 +106,7 @@ const AccountCreation = () =>{
         
         
     }
-    const payment = ()=>{
-        const body = JSON.stringify({
-            "intent": "sale",
-  "payer": {
-    "payment_method": "paypal"
-  },
-  "redirect_urls": {
-    "return_url": "http://return.url",
-    "cancel_url": "http://cancel.url"
-  },
-  "transactions": [
-    {
-      "item_list": {
-        "items": [
-          {
-            "name": "Urbony.com",
-            "sku": `${state?.plan}`,
-            "price": `${state?.amount}`,
-            "currency": "USD",
-            "quantity": 1
-          }
-        ]
-      },
-      "amount": {
-        "currency": "USD",
-        "total": `${state?.amount}`,
-      },
-      "description": `This is the payment for the ${state?.plan} plan.`
-    }
-  ]
-        })
-
-        try {
-            fetch(paymentUrl, {
-                method: 'POST',
-                body: body,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                }
-            }).then(res => {
-                if (res.ok){
-                    return res.json()
-                } else {
-                    throw res.json()
-                }
-            }).then(json =>{
-               console.log(json)
-               window.open(json.href)
-               navigate('/login')
-               
-               
-            }).catch(error =>{
-                console.log(error)
-                
-                
-            });
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    
     return(
         <Wrapper>
             {loading ? (<Loading/>): (

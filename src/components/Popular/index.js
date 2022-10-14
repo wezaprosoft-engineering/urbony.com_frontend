@@ -384,8 +384,8 @@ const Popular = props => {
                 }}>{t('popular.popularHomes')}</h2>}
                 
                 {Industrial || Commercial || Offices ? <>:<Home>
-                        {officers.length > 0 && location.pathname==='/offices'? <>
-                            {officers.map(
+                        {officers?.length > 0 && location.pathname==='/offices'? <>
+                            {officers?.map(
                                 (house =>(
                                     <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
@@ -899,6 +899,7 @@ const Popular = props => {
                     
                 </Home>
                 </>: <Home>{Corporate && offices ? <>
+                {officers.length > 0 ? <>
                     {officers.map(
                                 (house =>(
                                     <HomeCards key={house.id}>
@@ -959,6 +960,8 @@ const Popular = props => {
     </HomeCards>
                                 ))
                             )}
+                </>:<h2>No properties</h2>}
+                    
                             {officers.length > 0 ? <>
                     
                     {officers.slice(0, activeIndexOfficers).map(house =>(
