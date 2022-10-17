@@ -39,7 +39,7 @@ const AccountCreation = () =>{
     const Top = () =>{
         window.scrollTo({
             top: 10,
-            behavior: "smooth",
+            behavior: "auto",
         });
     };
     const [shownPassword, setShownPassword] = useState(false)

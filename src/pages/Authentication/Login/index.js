@@ -26,7 +26,7 @@ const Login = () =>{
     const Top = () =>{
         window.scrollTo({
             top: 10,
-            behavior: "smooth",
+            behavior: "auto",
         });
     };
     const login = async () => {

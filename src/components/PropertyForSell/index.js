@@ -135,6 +135,20 @@ const PropertyForSell = (props, children) =>{
     useEffect(() =>{
         properforrent();
     }, []);
+    const [searchValue, setSearchValue] = useState('')
+  
+    const search = ()=>{
+        
+        
+        const result = propertyForSell?.filter(house => house.price <= searchValue
+
+    )
+    
+    console.log([...result])
+    
+    setPropertyForSell(result)
+    
+}
     return(
         
         <Wrapper style={{
@@ -172,6 +186,13 @@ const PropertyForSell = (props, children) =>{
                             marginTop: 10,
                             marginLeft: 20,
                             borderColor: 'transparent'
+                        }}
+                        value={searchValue}
+                        onChange={(e)=>{
+                            setSearchValue(e.target.value)
+                            
+                            
+                            search()
                         }}/>
                     </Title>}
             

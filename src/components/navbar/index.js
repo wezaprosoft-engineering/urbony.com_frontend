@@ -193,7 +193,7 @@ const NavBar = () =>{
                 textAlign: 'center',
                 right: 45
             }}>
-                <DropdownItem >Profile</DropdownItem>
+                <DropdownItem onClick={()=>navigate('/profile')}>Profile</DropdownItem>
                 <DropdownItem onClick={()=>navigate('/myproperties')}>My Properties</DropdownItem>
                 <DropdownItem onClick={logout}>Logout</DropdownItem>
                
