@@ -16,7 +16,7 @@ font-family: "Roboto";
 
 @media screen and (max-width: 414px) {
     width: 95%;
-    height: 800px;
+    height: 748.5px;
     display: inline;
     border-radius: 0px;
     margin-top: 20px;
@@ -24,28 +24,32 @@ font-family: "Roboto";
     margin-bottom:40px
 }
 
-@media screen and (max-width: 1040px){
-    height: 550px;
-}
-@media screen and (max-width: 1005px){
-    height: 580px;
-}
-@media screen and (max-width: 953px){
-    height: 607px;
-}
+//@media screen and (max-width: 1040px){
+//    height: 550px;
+//}
+//@media screen and (max-width: 1005px){
+//    height: 580px;
+//}
+//@media screen and (max-width: 953px){
+  //  height: 607px;
+//}
 
 `;
 
 export const CardContent = styled.div`
-height: 100%;
+height: 99.99%;
 background-size: cover;
 width: 50%;
 font-family: "Roboto";
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
 
 @media screen and (max-width: 414px){
-    width: 100%;
+    width: 99.99%;
     height: 170px;
     background-size: cover;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 `;
@@ -90,7 +94,7 @@ export const WrapperDescription2 = styled.div`
             margin-top: 0px;
         }
         .price{
-        margin-top: 60px;
+        
         margin-left: 9px;
         margin-bottom: -20px;
     }

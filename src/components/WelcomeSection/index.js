@@ -236,11 +236,11 @@ const Welcome = props =>{
                         height: '65px',
                         fontWeight: 400,
                         fontSize: 'large'
-                    }}>
-                        <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                    }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                        <option value="1" >{t('Welcome.residentialOption1')}</option>
+                        <option value="10">{t('Welcome.residentialOption10')}</option>
+                    <option value="11" >{t('Welcome.residentialOption11')}</option>
+                    <option value="12">{t('Welcome.residentialOption12')}</option>
                         </select>
                 : <select style={{
                     width: 150,
@@ -290,7 +290,7 @@ const Welcome = props =>{
                         <option value="Rumonge">Rumonge</option>
                         </select></OverlayContent>
                     <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
-                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
+                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(parseInt(e.target.value))}}/></div></OverlayContent>
                     {corporate ? 
                     <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
                     <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
@@ -487,12 +487,16 @@ const Welcome = props =>{
                         margin: 'auto auto auto auto',
                         paddingLeft:  screen ? 85:130,
                         paddingRight: 130,
+                        alignItems: 'center',
+                        alignContent: 'center'
                         
-                    }}><img alt="search-min" src={SearchMin}/><h3>{t('Welcome.search')}</h3></div>
+                    }}><img alt="search-min" src={SearchMin} style={{width: 20, height: 20}}/><h3>{t('Welcome.search')}</h3></div>
                 </WelcomeButton>
                 <MoreContentMobile>
                     <img src={ArrowUpMobile} alt='arrow-up-mobile' style={{
-                        marginRight: 10
+                        marginRight: 10,
+                        width: 10,
+                        height: 30
                     }}/>
                     {moreMobile ? <h4 onClick={() => setMoreMobile(false)}>{t('Welcome.lessFilters')}</h4>: <h4 onClick={() => setMoreMobile(true)}>{t('Welcome.moreFilters')}</h4>}
                     
@@ -582,7 +586,7 @@ const Welcome = props =>{
                     </More>: null}
                 
                 
-                 <Overlays location={t('Welcome.location')}/>
+                 {Overlays ({location:t('Welcome.location')})}
                 
             </Content>
             

@@ -115,7 +115,27 @@ const FreeEstimation = () => {
                         <Forms>
                             <div style={{width: '100%'}}>
                                 <h4>{t('sellerRequestForm.locationOfProperty')}<Star>*</Star></h4>
-                                <Input style={{width: screen ? '95%' :513}} placeholder={t('sellerRequestForm.locationHolder')} value={location} onChange={(e) => {setLocation(e.target.value)}}/>
+                                <Select value={location} onChange={(e) => setLocation(e.target.value)}>
+                <option value="Select" >{t('Welcome.location')}</option>
+                        <option value="Bubanza">Bubanza</option>
+                        <option value="Bujumbura Mairie">Bujumbura Mairie</option>
+                        <option value="Bujumbura Rural">Bujumbura Rural</option>
+                        <option value="Cibitoke">Cibitoke</option>
+                        <option value="Muramvya">Muramvya</option>
+                        <option value="Mwaro">Mwaro</option>
+                        <option value="Cankuzo">Cankuzo</option>
+                        <option value="Gitega">Gitega</option>
+                        <option value="Rutana">Rutana</option>
+                        <option value="Ruyigi">Ruyigi</option>
+                        <option value="Karusi">Karusi</option>
+                        <option value="Kayanza">Kayanza</option>
+                        <option value="Kirundo">Kirundo</option>
+                        <option value="Muyinga">Muyinga</option>
+                        <option value="Ngozi">Ngozi</option>
+                        <option value="Bururi">Bururi</option>
+                        <option value="Makamba">Makamba</option>
+                        <option value="Rumonge">Rumonge</option>
+                </Select>
                             </div>
                             <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '100%'}}>
                             <div>

@@ -76,7 +76,7 @@ const Header = () => {
         <Content>
             <MenuContent>
                 <Logo alt="logo" src={urbonyLogo}/>
-                {mobileMenu ? <MenuButton alt="close" src={Closing} onClick={Close}/>:<MenuButton alt="menu" src={Menu} onClick={Open}/>}
+                {mobileMenu ? <MenuButton alt="close" src={Closing} style={{height: 50, width: 30}}onClick={Close}/>:<MenuButton alt="menu" src={Menu} style={{height: 50, width: 30}}onClick={Open}/>}
                 
                 {!Corporate ? <TextMenuHeader onClick={handleResidential}>{t('Header.residential')}</TextMenuHeader>: <TextMenu onClick={handleResidential}>{t('Header.residential')}</TextMenu>}
                 {Corporate ? <TextMenuHeader onClick={handleCorporate}>{t('Header.corporate')}</TextMenuHeader>: <TextMenu onClick={handleCorporate}>{t('Header.corporate')}</TextMenu>}

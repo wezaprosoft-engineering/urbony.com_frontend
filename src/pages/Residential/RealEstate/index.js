@@ -142,7 +142,7 @@ const RealEstate = () =>{
                               <h2 style={{fontWeight: 500,
                               color: 'rgba(46,15,89,1)',
                               
-                              }} className='second'>{t('realEstate.delivery')} {(estate.finishDate)?.toLocaleString()}</h2>
+                              }} className='second'>{t('realEstate.delivery')} {(estate.finishDate)}</h2>
                               
                               </Description>
                               <WrapperDescription2>
@@ -159,7 +159,7 @@ const RealEstate = () =>{
                                   }}>{estate.propertyType.name} {t('realEstate.studio')}</h2>
                                   <h2 style={{
                                       color: 'rgba(46,15,89,1)'
-                                  }}>BIF {estate.price}</h2>
+                                  }}>BIF {(estate.price)?.toLocaleString()}</h2>
                                   </Description2Text>
                                   
                                   </Description2Content>

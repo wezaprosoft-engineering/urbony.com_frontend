@@ -214,36 +214,53 @@ const PropertyForSell = (props, children) =>{
         }}><img alt="location-icon" src={Location} style={{
             marginRight: 10
         }}/> <h4>{house.location}</h4></div>
-        <CardsContainer>
-        <div style={{
-            display: 'flex',
-            
-            margin: 12
-        }}>
-        <img alt="bed-icon" src={Bed} style={{
-            marginRight: 10
-        }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-        </div>
-        <div style={{
-            display: 'flex',
-            
-            margin: 12
-        }}>
-        <img alt="house-icon" src={House} style={{
-            marginRight: 10
-        }}/>  <h5>{house.livingArea} m2</h5>
-        </div>
-        <div style={{
-            display: 'flex',
-            
-            margin: 12
-        }}>
-        <img alt="size-icon" src={Statistic} style={{
-            marginRight: 10
-        }}/>
-            <h5>{house.distanceToRoad}m</h5>
-        </div>
-        </CardsContainer>
+         <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
         <CardsContainer style={{
             
             
@@ -350,7 +367,9 @@ const PropertyForSell = (props, children) =>{
                                         <img src={ArrowLeft} alt="arrow-left" style={{
                                             marginLeft: 17,
                                             
-                                            marginTop: 16
+                                            marginTop: 16,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -358,7 +377,9 @@ const PropertyForSell = (props, children) =>{
                                     <img src={ArrowRight} alt="arrow-right" style={{
                                             marginLeft: 22,
                                             
-                                            marginTop: 17
+                                            marginTop: 17,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -390,20 +411,28 @@ const PropertyForSell = (props, children) =>{
                                     display: 'flex',
                                     marginTop: 0,
                                     marginLeft: 12,
-                                    color:'white' 
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="bed-icon" src={BedMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
                                 }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
                                 </div>
                                 <div style={{
                                     display: 'flex',
                                     marginTop: 0,
-                                    color:'white'
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                     
                                 }}>
                                 <img alt="house-icon" src={HouseMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
                                 }}/>  <h5>{house.livingArea} m</h5>
                                 </div>
                                 <div style={{
@@ -412,10 +441,14 @@ const PropertyForSell = (props, children) =>{
                                     marginLeft: 12,
                                     color:'white',
                                     marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="size-icon" src={StatisticMin} style={{
                                     marginRight: 10,
-                                    marginTop: 0
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
                                 }}/>
                                     <h5>{house.distanceToRoad}m</h5>
                                 </div>
@@ -458,7 +491,9 @@ const PropertyForSell = (props, children) =>{
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -466,7 +501,9 @@ const PropertyForSell = (props, children) =>{
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>

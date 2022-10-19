@@ -349,37 +349,49 @@ const SellProperty = props =>{
                         <h2>{t('sellProperty.step1Title')}</h2>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step1Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step1Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step1Content3')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step1Content4')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step1Content5')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step1" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step1Content6')}</h3>
                         </TextContent>
@@ -409,25 +421,33 @@ const SellProperty = props =>{
                         <h2>{t('sellProperty.step2Title')}</h2>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step2Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step2Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step2Content3')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step2" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step2Content4')}</h3>
                         </TextContent>
@@ -458,38 +478,50 @@ const SellProperty = props =>{
                         <h2>{t('sellProperty.step3Title')}</h2>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step3Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step3Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step3Content3')}</h3>
                         </TextContent>
                         <h2>{t('sellProperty.step3Title2')}</h2>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step3Content4')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step3Content5')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step3" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step3Content6')}</h3>
                         </TextContent>
@@ -519,25 +551,33 @@ const SellProperty = props =>{
                         <h2>{t('sellProperty.step4Title')}</h2>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step4Content1')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step4Content2')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step4Content3')}</h3>
                         </TextContent>
                         <TextContent>
                         <img alt="step4" src={Step} style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            width: 10,
+                            height: 17
                         }}/>
                         <h3>{t('sellProperty.step4Content4')}</h3>
                         </TextContent>

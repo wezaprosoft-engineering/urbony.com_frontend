@@ -549,7 +549,7 @@ const Searches = () =>{
                             </MoreContentDetails>
                         </Heading>
                     </More>: null}
-                <Overlays location={t('Welcome.location')}/>
+                    {Overlays ({location:t('Welcome.location')})}
                 {state?.length > 0 ? 
                     <Home>{state?.map(house =>(
                         <HomeCards key={house.id}>

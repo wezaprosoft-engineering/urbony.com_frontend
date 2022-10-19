@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     background-color: rgba(242, 242, 242, 1);
     max-height: 77px;
+    
     @media screen and (max-width: 414px){
         display: none;
     }
@@ -11,6 +12,7 @@ export const Wrapper = styled.div`
 export const Content= styled.div`
     
     padding: 7px 0;
+    
     margin: 0 auto;
     margin-left: 72px;
     transition: all 2s;
