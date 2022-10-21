@@ -479,7 +479,7 @@ const Welcome = props =>{
                 </Select>
                 <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
                 <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
-                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
                 
                 <WelcomeButton onClick={searchRequest}>
                     <div style={{
