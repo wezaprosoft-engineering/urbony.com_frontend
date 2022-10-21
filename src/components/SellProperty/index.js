@@ -4,11 +4,12 @@ import arrow from '../../assets/images/arrow.svg'
 import { StepContent, StepDevelopped, Steps, TextContent } from "./SellPropert.styles";
 import Step from '../../assets/images/step.svg'
 import { useTranslation } from "react-i18next";
-import {useLocation} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import { useGlobalState } from "../../store/state";
 const SellProperty = props =>{
     const {t} = useTranslation();
     const location = useLocation();
+    const navigate = useNavigate()
     const [corporate] = useGlobalState('corporate')
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
@@ -64,8 +65,9 @@ const SellProperty = props =>{
                         <h2>{props.title}</h2>
                     </Head>
                     <Head style={{
-                        color: "rgba(217,11,66,1)"
-                        }}>
+                        color: "rgba(217,11,66,1)",
+                        cursor: 'pointer'
+                        }} onClick={()=>navigate('/sign-up')}>
                             <h3>{t('sellProperty.start')}</h3>
                             <Arrow src={arrow}/>
                     </Head>
