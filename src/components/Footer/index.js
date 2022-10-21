@@ -103,7 +103,7 @@ const Footer = () => {
                 {screen ? <SocialMedia>
                     <img src={Facebook} style={{height: 30, width: 20}} alt="facebook"/>
                     <img src={Instagram} style={{height: 30, width: 20}}alt="instagram"/>
-                    <img src={Twitter}  style={{height: 30, width: 20}}alt="twitter"/>
+                    <img src={Twitter}  style={{height: 30, width: 20}}alt="twitter" onClick={()=>window.open('https://twitter.com/urbony?s=20&t=G9L7Kg0KCcxsW_EIx7rezw')}/>
                     <img src={Youtube}  alt="youtube" style={{
                         marginRight: 100, height: 30, width: 20
                     }} onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')}/>
@@ -111,7 +111,7 @@ const Footer = () => {
                 </SocialMedia>: <SocialMedia>
                     <img src={Facebook} alt="facebook" style={{cursor: 'pointer'}}/>
                     <img src={Instagram} alt="instagram" style={{cursor: 'pointer'}}/>
-                    <img src={Twitter} alt="twitter" style={{cursor: 'pointer'}}/>
+                    <img src={Twitter} alt="twitter" style={{cursor: 'pointer'}} onClick={()=>window.open('https://twitter.com/urbony?s=20&t=G9L7Kg0KCcxsW_EIx7rezw')}/>
                     <img src={Youtube} alt="youtube" onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')} style={{cursor: 'pointer'}}/>
                 </SocialMedia>}
                 
