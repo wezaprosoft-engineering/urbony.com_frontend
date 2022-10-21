@@ -435,11 +435,11 @@ const Welcome = props =>{
                     {homeRent ? <Button onClick={Rent}><TextButton2>{t('Welcome.rent')}</TextButton2></Button> : <Button2 onClick={Rent}><TextButton2>{t('Welcome.rent')}</TextButton2></Button2>}
                    
                 </Toggle>
-                {corporate? <Select>
-                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                {corporate? <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                    <option value="1" >{t('Welcome.residentialOption1')}</option>
+                        <option value="10">{t('Welcome.residentialOption10')}</option>
+                    <option value="11" >{t('Welcome.residentialOption11')}</option>
+                    <option value="12">{t('Welcome.residentialOption12')}</option>
                 </Select>:
                 <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
                     <option value="1" >{t('Welcome.residentialOption1')}</option>
