@@ -131,11 +131,18 @@ const SellerRequestForm = props => {
                     <Container>
                         <h2>{t('sellerRequestForm.typeOfProperty')}<Star>*</Star></h2>
                         <Select id="options" value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                        <option>{t('sellerRequestForm.option0')}</option>
-                            <option value="1">{t('sellerRequestForm.option1')}</option>
-                            <option value="2">{t('sellerRequestForm.option2')}</option>
-                            <option value="3">{t('sellerRequestForm.option3')}</option>
-                            <option value="4">{t('sellerRequestForm.option4')}</option>
+                    <option value="1" >{t('Welcome.residentialOption1')}</option>
+                    <option value="2">{t('Welcome.residentialOption2')}</option>
+                    <option value="3">{t('Welcome.residentialOption3')}</option>
+                    <option value="4">{t('Welcome.residentialOption4')}</option>
+                    <option value="5">{t('Welcome.residentialOption5')}</option>
+                    <option value="6" >{t('Welcome.residentialOption6')}</option>
+                    <option value="7">{t('Welcome.residentialOption7')}</option>
+                    <option value="8">{t('Welcome.residentialOption8')}</option>
+                    <option value="9">{t('Welcome.residentialOption9')}</option>
+                    <option value="10">{t('Welcome.residentialOption10')}</option>
+                    <option value="11" >{t('Welcome.residentialOption11')}</option>
+                    <option value="12">{t('Welcome.residentialOption12')}</option>
                         </Select>
                         
                     </Container>

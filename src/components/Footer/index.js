@@ -106,13 +106,13 @@ const Footer = () => {
                     <img src={Twitter}  style={{height: 30, width: 20}}alt="twitter"/>
                     <img src={Youtube}  alt="youtube" style={{
                         marginRight: 100, height: 30, width: 20
-                    }}/>
+                    }} onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')}/>
                     <Button onClick={Top}><img src={Arrow}  style={{height: 50, width: 30}}alt="arrow scroll-up"/></Button>
                 </SocialMedia>: <SocialMedia>
-                    <img src={Facebook} alt="facebook"/>
-                    <img src={Instagram} alt="instagram"/>
-                    <img src={Twitter} alt="twitter"/>
-                    <img src={Youtube} alt="youtube"/>
+                    <img src={Facebook} alt="facebook" style={{cursor: 'pointer'}}/>
+                    <img src={Instagram} alt="instagram" style={{cursor: 'pointer'}}/>
+                    <img src={Twitter} alt="twitter" style={{cursor: 'pointer'}}/>
+                    <img src={Youtube} alt="youtube" onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')} style={{cursor: 'pointer'}}/>
                 </SocialMedia>}
                 
                 </Footerservices>

@@ -292,7 +292,7 @@ const Welcome = props =>{
                     <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
                     <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(parseInt(e.target.value))}}/></div></OverlayContent>
                     {corporate ? 
-                    <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
+                    <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>:
                     <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
                     
                     

@@ -86,8 +86,9 @@ const LastSales = props =>{
                     </Head>
 
                     <Head style={{
-                        color: "rgba(217,11,66,1)"
-                        }}>
+                        color: "rgba(217,11,66,1)",
+                        cursor: 'pointer'
+                        }} onClick={()=>navigate('/search')}>
                         <h3>{t('popular.explore')}</h3>
                         <Arrow src={arrow}/>
                         
