@@ -289,11 +289,11 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                         </select></OverlayContent>
-                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} value={min} onChange={(e) => {
+                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min   BIF" style={{width: 100, marginRight: 5}} value={min} onChange={(e) => {
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMin(formated)}}/>
-                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => {
+                    <Input placeholder="Max   BIF" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => {
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMax(formated)}}/></div></OverlayContent>
@@ -483,11 +483,11 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')}  value={min} onChange={(e) => {
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum   BIF'): t('Welcome.minimum   BIF')}  value={min} onChange={(e) => {
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMin(formated)}}/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} value={max} onChange={(e) => {
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum   BIF'): t('Welcome.maximum  BIF')} value={max} onChange={(e) => {
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMax(formated)}}/>
