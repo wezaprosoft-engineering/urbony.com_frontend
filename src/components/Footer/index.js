@@ -101,16 +101,16 @@ const Footer = () => {
                     
                 }}><FooterTitle>{t('footer.socialMedia')}</FooterTitle>
                 {screen ? <SocialMedia>
-                    <img src={Facebook} style={{height: 30, width: 20}} alt="facebook"/>
-                    <img src={Instagram} style={{height: 30, width: 20}}alt="instagram"/>
+                    <img src={Facebook} style={{height: 30, width: 20}} alt="facebook" onClick={()=>window.open('https://www.facebook.com/profile.php?id=100086745292985')}/>
+                    <img src={Instagram} style={{height: 30, width: 20}}alt="instagram" onClick={()=>window.open('https://www.instagram.com/urbonyuplans/')}/>
                     <img src={Twitter}  style={{height: 30, width: 20}}alt="twitter" onClick={()=>window.open('https://twitter.com/urbony?s=20&t=G9L7Kg0KCcxsW_EIx7rezw')}/>
                     <img src={Youtube}  alt="youtube" style={{
                         marginRight: 100, height: 30, width: 20
                     }} onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')}/>
                     <Button onClick={Top}><img src={Arrow}  style={{height: 50, width: 30}}alt="arrow scroll-up"/></Button>
                 </SocialMedia>: <SocialMedia>
-                    <img src={Facebook} alt="facebook" style={{cursor: 'pointer'}}/>
-                    <img src={Instagram} alt="instagram" style={{cursor: 'pointer'}}/>
+                    <img src={Facebook} alt="facebook" style={{cursor: 'pointer'}} onClick={()=>window.open('https://www.facebook.com/profile.php?id=100086745292985')}/>
+                    <img src={Instagram} alt="instagram" style={{cursor: 'pointer'}} onClick={()=>window.open('https://www.instagram.com/urbonyuplans/')}/>
                     <img src={Twitter} alt="twitter" style={{cursor: 'pointer'}} onClick={()=>window.open('https://twitter.com/urbony?s=20&t=G9L7Kg0KCcxsW_EIx7rezw')}/>
                     <img src={Youtube} alt="youtube" onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')} style={{cursor: 'pointer'}}/>
                 </SocialMedia>}

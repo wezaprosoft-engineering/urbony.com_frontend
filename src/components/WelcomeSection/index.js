@@ -289,8 +289,14 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                         </select></OverlayContent>
-                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
-                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(parseInt(e.target.value))}}/></div></OverlayContent>
+                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} value={min} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMin(formated)}}/>
+                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMax(formated)}}/></div></OverlayContent>
                     {corporate ? 
                     <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>:
                     <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
@@ -477,8 +483,14 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')}  value={min} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMin(formated)}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} value={max} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMax(formated)}}/>
                 {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
                 
                 <WelcomeButton onClick={searchRequest}>
