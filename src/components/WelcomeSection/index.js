@@ -293,7 +293,7 @@ const Welcome = props =>{
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMin(formated)}}/>
-                    <Input placeholder="Max   BIF" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => {
+                    <Input placeholder="Max BIF" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => {
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMax(formated)}}/></div></OverlayContent>
@@ -483,11 +483,11 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? t('Welcome.rentMinimum   BIF'): t('Welcome.minimum   BIF')}  value={min} onChange={(e) => {
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')}  value={min} onChange={(e) => {
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMin(formated)}}/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum   BIF'): t('Welcome.maximum  BIF')} value={max} onChange={(e) => {
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} value={max} onChange={(e) => {
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMax(formated)}}/>
