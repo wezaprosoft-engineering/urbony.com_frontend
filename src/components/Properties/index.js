@@ -351,52 +351,35 @@ const Properties = props =>{
             marginRight: 10
         }}/> <h4>{house.property.location}</h4></div>
          <CardsContainer>
-                                <div style={{
-                                    display: 'flex',
-                                    marginTop: 0,
-                                    marginLeft: 12,
-                                    color:'white',
-                                    alignItems: 'center',
-                                    alignContent: 'center' 
-                                }}>
-                                <img alt="bed-icon" src={BedMin} style={{
-                                    marginRight: 10,
-                                    width: 15,
-                                    height: 60
-                                }}/><h5>{house.property.bedrooms} {t('Card.bed')}</h5>
-                                </div>
-                                <div style={{
-                                    display: 'flex',
-                                    marginTop: 0,
-                                    color:'white',
-                                    alignItems: 'center',
-                                    alignContent: 'center' 
-                                    
-                                }}>
-                                <img alt="house-icon" src={HouseMin} style={{
-                                    marginRight: 10,
-                                    width: 15,
-                                    height: 55
-                                }}/>  <h5>{house.property.livingArea} m</h5>
-                                </div>
-                                <div style={{
-                                    display: 'flex',
-                                    
-                                    marginLeft: 12,
-                                    color:'white',
-                                    marginRight: 30,
-                                    alignItems: 'center',
-                                    alignContent: 'center' 
-                                }}>
-                                <img alt="size-icon" src={StatisticMin} style={{
-                                    marginRight: 10,
-                                    marginTop: 0,
-                                    width: 15,
-                                    height: 55
-                                }}/>
-                                    <h5>{house.propertydistanceToRoad}m</h5>
-                                </div>
-                                </CardsContainer>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="bed-icon" src={Bed} style={{
+            marginRight: 10
+        }}/><h5>{house.property.bedrooms} {t('Card.bed')}</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="house-icon" src={House} style={{
+            marginRight: 10
+        }}/>  <h5>{house.property.livingArea} m2</h5>
+        </div>
+        <div style={{
+            display: 'flex',
+            
+            margin: 12
+        }}>
+        <img alt="size-icon" src={Statistic} style={{
+            marginRight: 10
+        }}/>
+            <h5>{house.property.distanceToRoad}m</h5>
+        </div>
+        </CardsContainer>
         <CardsContainer style={{
             
             

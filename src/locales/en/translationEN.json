@@ -401,7 +401,7 @@
         "select": "Click to select images",
         "details": "Add property details",
         "price": "Set price",
-        "priceHolder": "Enter price",
+        "priceHolder": "Enter price in BIF",
         "living": "Living Area space (m2)",
         "livingHolder": "Enter living area space",
         "bedroom": "Number of bedrooms",

@@ -69,6 +69,8 @@ const Searches = () =>{
     const [min, setMin] = useState('')
     const [max, setMax] = useState('')
     const [bedrooms, setBedrooms] = useState('')
+    const [area, setArea] = useState('')
+    const options = "SELL | RENT"
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
     const nearbyUrl = 'https://urbony.onrender.com/api/nearbyFeatures'
@@ -184,11 +186,17 @@ const Searches = () =>{
         nearby();
     }, []);
 
+    let body;
     let selectedInternal;
     let selectedExternal;
     let selectedNearby
     const searchRequest = async () => {
-        const body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        if(corporate){
+            setBedrooms(parseInt(0))
+             body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
+        }else{
+         body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        }
         try {
            fetch(searchUrl, {
                 method: 'POST',
@@ -302,8 +310,10 @@ const Searches = () =>{
                             <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
                     <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
                         {corporate ? 
-                        <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
-                        <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
+                        <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/></OverlayContent>:
+                        <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                            
+                       }/></OverlayContent>}
                        {/* <h2>{state?.length}</h2>*/}
                         
                         
@@ -475,7 +485,9 @@ const Searches = () =>{
                 </Select>
                 <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
                 <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
-                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                    
+                }/>}
                 
                 <WelcomeButton onClick={searchRequest}>
                     <div style={{

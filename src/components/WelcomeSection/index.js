@@ -82,7 +82,7 @@ const Welcome = props =>{
     const [propertyTypesId, setPropertyTypesId] = useState('')
     const [min, setMin] = useState('')
     const [max, setMax] = useState('')
-    const [bedrooms, setBedrooms] = useState(0)
+    const [bedrooms, setBedrooms] = useState('')
     const [area, setArea] = useState('')
     const options = "SELL | RENT"
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
@@ -189,6 +189,7 @@ const Welcome = props =>{
     let selectedNearby
     const searchRequest = async () => {
         if(corporate){
+            setBedrooms(parseInt(0))
              body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
         }else{
          body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
@@ -305,7 +306,9 @@ const Welcome = props =>{
                         setMax(formated)}}/></div></OverlayContent>
                     {corporate ? 
                     <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/></OverlayContent>:
-                    <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
+                    <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                        
+                    }/></OverlayContent>}
                     
                     
                     <OverlayContent><Search onClick={searchRequest}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
@@ -497,7 +500,9 @@ const Welcome = props =>{
                         const {value} = e.target
                         const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
                         setMax(formated)}}/>
-                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/>:
+                <Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                }/>}
                 
                 <WelcomeButton onClick={searchRequest}>
                     <div style={{
