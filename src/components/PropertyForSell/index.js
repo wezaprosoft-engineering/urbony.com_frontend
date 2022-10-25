@@ -200,7 +200,7 @@ const PropertyForSell = (props, children) =>{
            <Home>
            {propertyForSell.length > 0 && location.pathname!=='/rent'? <>
                         <>
-                        {propertyForSell.map(
+                        {propertyForSell.slice(0,9).map(
                             house =>(
                                 <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
@@ -591,7 +591,7 @@ const PropertyForSell = (props, children) =>{
              
          
            </Home>
-           {screen ? null:<>{location.pathname==='/buy' || location.pathname==='/rent'? null: <>
+           {screen ? null:<>{location.pathname==='/buy' || location.pathname==='/rent' || location.pathname==='/search'? null: <>
            <Button style={{
             width: 467,
             height: 54,
@@ -600,7 +600,7 @@ const PropertyForSell = (props, children) =>{
             fontWeight: 700,
             fontSize: 25,
             marginTop: 100
-           }}>{t('propertyForSell.view')}</Button></>}</> }
+           }} onClick={()=>navigate('/search', {state:propertyForSell})}>{t('propertyForSell.view')}</Button></>}</> }
            
             </Content>
         </Wrapper>

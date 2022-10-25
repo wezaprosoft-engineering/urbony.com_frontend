@@ -1509,7 +1509,7 @@ const Popular = props => {
                 
                 {popularHomes.length > 0 && location.pathname!=='/rent'? <>
                         <>
-                        {popularHomes.map(
+                        {popularHomes.slice(0,9).map(
                             house =>(
                                 <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
