@@ -356,5 +356,8 @@ display: flex;
 align-items: center;
 font-weight: 700;
 cursor: pointer;
+position: fixed;
 margin-left: 10px;
+z-index: 9999;
+top: 90vh
 `

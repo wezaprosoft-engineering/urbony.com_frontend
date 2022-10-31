@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BackgroundImage, Content, Input, Wrapper, Select, Button } from "./addProperty.styles";
 import Upload from '../../assets/images/upload.svg'
 import { useTranslation } from "react-i18next";
@@ -21,9 +21,11 @@ const AddProperty = () =>{
     const [bathrooms, setBathrooms] = useState('')
     const id = localStorage.getItem('id')
     const userId = parseInt(id)
+    var gallery = []
+    
     const url='https://urbony.onrender.com/api/property'
         const add = async () => {
-            const body = JSON.stringify({price, bedrooms, location, bathrooms, contructionYear, distanceToRoad,livingArea, floors, options, coverImage, propertyTypesId, userId});
+            const body = JSON.stringify({price, bedrooms, location, bathrooms, contructionYear,gallery, distanceToRoad,livingArea, floors, options, coverImage, propertyTypesId, userId});
             try {
                fetch(url, {
                     method: 'POST',
@@ -90,6 +92,76 @@ const AddProperty = () =>{
             }
             
         }
+        const ImagesUpload = async (files) => {
+            var formdata = new FormData();
+            formdata.append('files', files);
+            
+            try {
+               fetch('https://urbony.onrender.com/api/uploads', {
+                    method: 'POST',
+                    body: formdata,
+                    redirect: 'follow'
+                }).then(res => {
+                    if (res.ok){
+                        return res.json()
+                    } else {
+                        throw res.json()
+                    }
+                    
+                }).then(json =>{
+                    console.log(json)
+                    gallery.push(json)
+                    console.log(gallery)
+                    
+    
+                }).catch(error =>{
+                    console.log(error)
+                    
+                });
+    
+                
+            } catch (error) {
+                console.log(error)
+            }
+            
+        }
+        
+        const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+    const [property, setProperty] = useState('')
+
+const getProperty = ()=>{
+    try {
+        fetch(propertyUrl,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+            }
+        }).then(res => {
+            if (res.ok){
+                return res.json()
+            } else {
+                throw res.json()
+            }
+        }).then(json =>{
+           
+            
+           console.log(json)
+           setProperty(json)
+
+           
+        }).catch(error =>{
+            console.log(error)
+            
+        });
+    } catch (error) {
+        console.log(error)
+    }
+}
+useEffect(()=>{
+    
+    getProperty()
+}, []);
     return(
         <Wrapper>
             <Content>
@@ -104,6 +176,7 @@ const AddProperty = () =>{
 
                 </BackgroundImage>: 
                 <BackgroundImage>
+                    
                 <div>
                 <img src={Upload} alt="upload" style={{marginTop: 200}}/>
                 <h4>{t('addProperty.select')}</h4>
@@ -121,6 +194,14 @@ const AddProperty = () =>{
                 
             </BackgroundImage>
                 }
+                <input type="file" multiple accept="image/*" onChange={(event) => {
+                   // console.log(event.target.files[0].name);
+                    //setImage(event.target.files[0].name);
+                    //setImage('https://firebasestorage.googleapis.com/v0/b/residential-c062f.appspot.com/o/urbony%2Fhouse.jpeg?alt=media&token=a6eeca99-9d50-45b9-9fb8-7ad8fc808055')
+                   // setImage2(event.target.files[0]);
+                    //console.log(image)
+                    ImagesUpload(event.target.files[0]);
+                  }}/>
                 
                 <h2>{t('addProperty.details')}</h2>
                 <h4>{t('addProperty.price')}</h4>
@@ -143,18 +224,11 @@ const AddProperty = () =>{
                 <Input placeholder={t('addProperty.distanceHolder')} value={distanceToRoad} onChange={(e) => setDistanceToRoad(e.target.value)}/>
                 <h4>{t('sellerRequestForm.typeOfProperty')}</h4>
                 <Select  value={propertyTypesId} onChange={(e) => setPropertytypesId(parseInt(e.target.value))}>
-                    <option value="1" >{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                         </Select>
                 <h4>{t('sellerRequestForm.locationOfProperty')}</h4>
                 <Select value={location} onChange={(e) => setLocation(e.target.value)}>

@@ -16,16 +16,54 @@ const FreeEstimation = () => {
         })
     }
     
-        const {t} = useTranslation()
+        const {t, i18n} = useTranslation()
         const [screen, setScreen] = useState(
             window.matchMedia("(max-width: 414px)").matches
         )
         useEffect(()=> {
             window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
         }, []);
+        const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+        const [property, setProperty] = useState('')
+        const [checked, setChecked] = useState(false)
+
+    const getProperty = ()=>{
+        try {
+            fetch(propertyUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               
+                
+               console.log(json)
+               setProperty(json)
+
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        
+        getProperty()
+    }, []);
         useEffect(()=>{
             Form()
         },[]);
+
         const [firstName, setFirstName] = useState('')
         const [lastName, setLastName] = useState('')
         const [email, setEmail] = useState('')
@@ -35,8 +73,10 @@ const FreeEstimation = () => {
         const [propertyTypesId, setPropertyTypesId] = useState('')
         const requestType = 'ESTIMATE'
         const url='https://urbony.onrender.com/api/estimate'
+        const [error, setError] = useState('')
         const estimate = async () => {
-            const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, options,propertyTypesId, requestType});
+            if(checked){
+                const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, options,propertyTypesId, requestType});
             try {
                fetch(url, {
                     method: 'POST',
@@ -76,6 +116,10 @@ const FreeEstimation = () => {
             } catch (error) {
                 console.log(error)
             }
+            }else{
+                setError('You have to accept the terms and general conditions')
+            }
+            
             
         }
         
@@ -152,18 +196,11 @@ const FreeEstimation = () => {
                             <div>
                                 <h4>{t('sellerRequestForm.typeOfProperty')} <Star>*</Star></h4>
                                 <Select id="options" value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1" >{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                                {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                                 </Select>
                             </div>
                             <div>
@@ -183,12 +220,19 @@ const FreeEstimation = () => {
                         alignItems: 'center'
                     }}><input type="checkbox" style={{
                         marginRight: 20
+                    }} onChange={()=> {
+                        if(checked){
+                            setChecked(false)
+                        }else{
+                            setChecked(true)
+                        }
                     }}/>
-                    <h4>{t('sellerRequestForm.condition')} <Star>*</Star></h4>
+                    <h4>{t('sellerRequestForm.condition')} <a href={i18n.language==='fr' ? "https://firebasestorage.googleapis.com/v0/b/urbony-cb822.appspot.com/o/Conditions%20generales%20Urbony%20french.docx.pdf?alt=media&token=a14bd9f1-390b-4dcb-a305-e9a2e8b9ec4d": "https://firebasestorage.googleapis.com/v0/b/urbony-cb822.appspot.com/o/General%20Conditions%20Urbony%20english.docx.pdf?alt=media&token=6292114c-10f5-406a-8ee0-4f8e72e5c26c"} target="_blank" rel="noopener noreferrer">{t('sellerRequestForm.generalConditions')}</a><Star>*</Star></h4>
                     </div>
 
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     <Button onClick={estimate}>{t('sellerRequestForm.submit')}</Button>
+                    <h4 style={{color: 'red'}}>{error}</h4>
                     <ToastContainer progressClassName="toastProgress"/>
                     </Content>
                 </Wrapper>

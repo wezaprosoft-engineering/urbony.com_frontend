@@ -190,6 +190,42 @@ const Searches = () =>{
     let selectedInternal;
     let selectedExternal;
     let selectedNearby
+    const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+    const [property, setProperty] = useState('')
+
+const getProperty = ()=>{
+    try {
+        fetch(propertyUrl,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+            }
+        }).then(res => {
+            if (res.ok){
+                return res.json()
+            } else {
+                throw res.json()
+            }
+        }).then(json =>{
+           
+            
+           console.log(json)
+           setProperty(json)
+
+           
+        }).catch(error =>{
+            console.log(error)
+            
+        });
+    } catch (error) {
+        console.log(error)
+    }
+}
+useEffect(()=>{
+    
+    getProperty()
+}, []);
     const searchRequest = async () => {
         if(corporate){
             setBedrooms(parseInt(0))
@@ -262,10 +298,11 @@ const Searches = () =>{
                             fontWeight: 400,
                             fontSize: 'large'
                         }}>
-                            <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                            <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                        <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                        <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                           {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                             </select>
                     : <select style={{
                         width: 150,
@@ -273,18 +310,11 @@ const Searches = () =>{
                         fontWeight: 400,
                         fontSize: 'large'
                     }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}> 
-                        <option value="1" >{t('Welcome.residentialOption1')}</option>
-                        <option value="2">{t('Welcome.residentialOption2')}</option>
-                        <option value="3">{t('Welcome.residentialOption3')}</option>
-                        <option value="4">{t('Welcome.residentialOption4')}</option>
-                        <option value="5">{t('Welcome.residentialOption5')}</option>
-                        <option value="6" >{t('Welcome.residentialOption6')}</option>
-                        <option value="7">{t('Welcome.residentialOption7')}</option>
-                        <option value="8">{t('Welcome.residentialOption8')}</option>
-                        <option value="9">{t('Welcome.residentialOption9')}</option>
-                        <option value="10">{t('Welcome.residentialOption10')}</option>
-                        <option value="11" >{t('Welcome.residentialOption11')}</option>
-                        <option value="12">{t('Welcome.residentialOption12')}</option>
+                      {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                         
                         </select>}
                         </OverlayContent>
@@ -449,24 +479,18 @@ const Searches = () =>{
             <Content>
                 <h2 style={{color: 'rgba(46,15,89,1)', marginLeft: screen ? 7:25}}>Our houses for sell</h2>
                 {corporate? <Select>
-                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                    {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>:
                 <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1">{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                   {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>}
                 
                 <Select value={location} onChange={(e) => setLocation(e.target.value)}>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading, Estimation } from "./Welcome.styles";
+import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading} from "./Welcome.styles";
 import search from '../../assets/images/search-icon.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import ArrowDown from '../../assets/images/arrow_down.svg'
@@ -9,7 +9,7 @@ import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import Estimator from '../../assets/images/estimation.svg'
+
 
 const Details = props =>{
     
@@ -90,6 +90,38 @@ const Welcome = props =>{
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
     const nearbyUrl = 'https://urbony.onrender.com/api/nearbyFeatures'
     const searchUrl = 'https://urbony.onrender.com/api/property/search'
+    const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+    const [property, setProperty] = useState('')
+
+    const getProperty = ()=>{
+        try {
+            fetch(propertyUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               
+                
+               console.log(json)
+               setProperty(json)
+
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
     const internal = () => {
         try {
             fetch(internalUrl,{
@@ -183,6 +215,7 @@ const Welcome = props =>{
         internal();
         external();
         nearby();
+        getProperty()
     }, []);
     let body;
     let selectedInternal;
@@ -258,10 +291,11 @@ const Welcome = props =>{
                         fontWeight: 400,
                         fontSize: 'large'
                     }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                        <option value="1" >{t('Welcome.residentialOption1')}</option>
-                        <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                       {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                         </select>
                 : <select style={{
                     width: 150,
@@ -269,18 +303,12 @@ const Welcome = props =>{
                     fontWeight: 400,
                     fontSize: 'large'
                 }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1" >{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                    {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
+                 
                     
                     </select>}
                     </OverlayContent>
@@ -465,24 +493,18 @@ const Welcome = props =>{
                    
                 </Toggle>
                 {corporate? <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1" >{t('Welcome.residentialOption1')}</option>
-                        <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>:
                 <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1" >{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                     {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>}
                 
                 <Select value={location} onChange={(e) => setLocation(e.target.value)}>
@@ -624,15 +646,7 @@ const Welcome = props =>{
                 
                 
                  {Overlays ({location:t('Welcome.location')})}
-                 <Estimation
-                 onClick={()=>navigate('/free-estimation')}
-                 > <img src={Estimator} alt='estimation'
-                 style={{
-                    height: 30,
-                    marginLeft: 20,
-                    marginRight: 10
-                 }}
-                 />{t('estimation.est')}</Estimation>
+                 
                 
             </Content>
             
