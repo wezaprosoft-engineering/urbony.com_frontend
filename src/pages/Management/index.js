@@ -73,7 +73,7 @@ const Management = () => {
                 }}>{t('management.title')}</h1>
             </Head>
         </Title>
-        <ManagementOffer>
+        <ManagementOffer id='rental'>
             <ManagementContact>
                 <h2 style={{
                     

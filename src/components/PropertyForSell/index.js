@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Head, Title, Wrapper, Home } from "../Popular/Popular.styles";
-import { Input } from "../WelcomeSection/Welcome.styles";
 import { Button } from "../Header/Header.styles";
-import { Content } from "./PropertyForSell.styles";
+import { Content, Filter } from "./PropertyForSell.styles";
 import {useLocation, useNavigate} from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 import Bed from '../../assets/images/bed.svg'
@@ -135,18 +134,41 @@ const PropertyForSell = (props, children) =>{
     useEffect(() =>{
         properforrent();
     }, []);
-    const [searchValue, setSearchValue] = useState('')
+    const [ascending, setAscending] = useState(false)
   
     const search = ()=>{
+        var result;
+        if(location.pathname==='/rent'){
+            if(ascending){
+                result = propertyForRent?.sort((a,b) => b.price - a.price)
+                setAscending(false)
+            } else{
+                result = propertyForRent?.sort((a,b) => a.price - b.price)
+                setAscending(true)
+            }
+    
+             
+        
+        console.log(result)
+        
+        setPropertyForRent(result)
+        } else{
+            if(ascending){
+                result = propertyForSell?.sort((a,b) => b.price - a.price)
+                setAscending(false)
+            } else{
+                result = propertyForSell?.sort((a,b) => a.price - b.price)
+                setAscending(true)
+            }
+    
+             
+        
+        console.log(result)
+        
+        setPropertyForSell(result)
+        }
         
         
-        const result = propertyForSell?.filter(house => house.price <= searchValue
-
-    )
-    
-    console.log([...result])
-    
-    setPropertyForSell(result)
     
 }
     return(
@@ -175,25 +197,9 @@ const PropertyForSell = (props, children) =>{
                     <h2 style={{
                             fontWeight: 500
                         }}>{t('propertyForSell.filterBy')}</h2>
-                        <Input placeholder={t('propertyForSell.price')} type='number' style={{
-                            backgroundColor: 'rgba(46,15,89,1)',
-                            textAlign: 'center',
-                            width: 255,
-                            height: 45,
-                            borderRadius: 5,
-                            color: 'white',
-                            fontWeight: 500,
-                            marginTop: 10,
-                            marginLeft: 20,
-                            borderColor: 'transparent'
-                        }}
-                        value={searchValue}
-                        onChange={(e)=>{
-                            setSearchValue(e.target.value)
-                            
-                            
-                            search()
-                        }}/>
+                        
+                        <Filter onClick={search}>{ascending ? t('propertyForSell.descending'): t('propertyForSell.ascending')}</Filter>
+
                     </Title>}
             
            </Head>

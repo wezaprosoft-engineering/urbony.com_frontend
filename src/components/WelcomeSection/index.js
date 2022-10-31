@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading } from "./Welcome.styles";
+import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading, Estimation } from "./Welcome.styles";
 import search from '../../assets/images/search-icon.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import ArrowDown from '../../assets/images/arrow_down.svg'
@@ -9,6 +9,7 @@ import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Estimator from '../../assets/images/estimation.svg'
 
 const Details = props =>{
     
@@ -190,21 +191,22 @@ const Welcome = props =>{
     const searchRequest = async () => {
         if(corporate){
             setBedrooms(parseInt(0))
-            if(min.length===0){
-                setMin(0)
-            }
-            if(max.length===0){
-                setMax(1000000000000)
-            }
+            
              body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
         }else{
             if(min.length===0){
-                setMin(0)
-            }
-            if(max.length===0){
-                setMax(1000000000000)
-            }
+                body = JSON.stringify({propertyTypesId, location, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            } else if(max.length===0){
+                body = JSON.stringify({propertyTypesId, location, min, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            } else if(max.length===0 && min.length===0){
+                body = JSON.stringify({propertyTypesId, location, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            } else if(bedrooms.length===0){
+                body = JSON.stringify({propertyTypesId, location, min, max, selectedExternal, selectedInternal, selectedNearby});
+            } else if(min.length===0 && max.length===0 && bedrooms.length===0){
+                body = JSON.stringify({propertyTypesId, location, selectedExternal, selectedInternal, selectedNearby});
+            }else{
          body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            }
         }
         try {
            fetch(searchUrl, {
@@ -622,6 +624,15 @@ const Welcome = props =>{
                 
                 
                  {Overlays ({location:t('Welcome.location')})}
+                 <Estimation
+                 onClick={()=>navigate('/free-estimation')}
+                 > <img src={Estimator} alt='estimation'
+                 style={{
+                    height: 30,
+                    marginLeft: 20,
+                    marginRight: 10
+                 }}
+                 />{t('estimation.est')}</Estimation>
                 
             </Content>
             

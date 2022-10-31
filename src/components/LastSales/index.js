@@ -13,17 +13,35 @@ import ArrowLeft from '../../assets/images/arrow_left.svg'
 import ArrowRight from '../../assets/images/arrow_rigt.svg'
 import LocationMin from '../../assets/images/location_min.svg'
 import BedMin from '../../assets/images/bed_min.svg'
-
+import { EstimationButton, Estimator, EstmationContent } from "../../pages/GetInTouch/GetInTouch.styles";
 import HouseMin from '../../assets/images/house_min.svg'
 
 import StatisticMin from '../../assets/images/statistic_min.svg'
+import { setGlobalState } from "../../store/state";
+import Estimation from '../../assets/images/estimation.svg'
 
 const LastSales = props =>{
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     const navigate = useNavigate()
     const url = 'https://urbony.onrender.com/api/property/all/sold'
 
-
+    const Estimate = () =>{
+        setGlobalState('buy', false)
+        setGlobalState('rent', false)
+        setGlobalState('sell', false)
+        setGlobalState('offices', false)
+        setGlobalState('industrialSpace', false)
+        setGlobalState('commercialSpace', false)
+        setGlobalState('management', false)
+        setGlobalState('aboutUs', false)
+        navigate('/free-estimation')
+    }
     const [sales, setSales] = useState('')
     const [activeIndexSales, setActiveIndexSales] = useState(1)
     const next = () =>{
@@ -290,6 +308,7 @@ const LastSales = props =>{
                                 
                             </CardsContainer>
                                     </DetailsContainer>
+                                    
                         </Container>
                     )
                 )}
@@ -302,7 +321,24 @@ const LastSales = props =>{
                     
                     
                 </Home>
-                
+                {screen ?  <EstimationButton onClick={Estimate} style={{
+                marginLeft: '8%',
+                width: 282
+            }}>
+                    <EstmationContent style={{
+                        marginLeft: i18n.language==='fr'?10: 40
+                    }}>
+                        {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>:  <EstimationButton onClick={Estimate} style={{
+                    borderRadius: 10
+            }}>
+                    <EstmationContent>
+                    {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>}
             </Content>
             
         </Wrapper>

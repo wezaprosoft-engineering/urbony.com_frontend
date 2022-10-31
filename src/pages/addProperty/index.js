@@ -126,7 +126,7 @@ const AddProperty = () =>{
                 <h4>{t('addProperty.price')}</h4>
                 <Input placeholder={t('addProperty.priceHolder')} value={price} onChange={(e) => {
                 const {value} = e.target
-                const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                const formated = (Number(value.replace(/\D/g, ''))|| '')
                 setPrice(formated)
                 }}/>
                 <h4>{t('addProperty.living')}</h4>

@@ -95,7 +95,8 @@
         "locationOfProperty": "Location of property",
         "locationHolder" :"Enter location",
         "typeOfProperty":"Type of property",
-        "condition":"I have read and accept the general conditions and the privacy policy of the site",
+        "condition":"I have read and accept ",
+        "generalConditions": "the general conditions and the privacy policy of the site",
         "exigence": "",
         "submit":"Submit Request",
         "field": "Fields marked",
@@ -237,8 +238,10 @@
     },
     "propertyForSell":{
         "title": "Our property for sale",
-        "filterBy": "Sort by:",
+        "filterBy": "Sort price:",
         "price": "price",
+        "ascending": "Low to High",
+        "descending": "High to Low",
         "view": "View All"
     },
     "popular":{

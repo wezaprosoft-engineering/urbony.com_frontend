@@ -71,6 +71,7 @@ const Header = () => {
     }
     const [Corporate] = useGlobalState("corporate");
     const [mobileMenu] = useGlobalState("mobileMenu");
+    
     return(
     <Wrapper>
         <Content>

@@ -95,7 +95,8 @@
         "locationOfProperty": "Emplacement du bien à vendre",
         "locationHolder" :"Entrez l'emplacement ou la zone",
         "typeOfProperty":"Type de bien",
-        "condition":" J'ai lu et j'accepte les conditions générales et la politique de confidentialité du site en cliquant sur les liens",
+        "condition":" J'ai lu et j'accepte",
+        "generalConditions": " les conditions générales et la politique de confidentialité du site en cliquant sur les liens",
         "exigence": "",
         "submit":"ENVOYER MA DEMANDE",
         "field": "Les champs marqués",
@@ -235,8 +236,10 @@
     },
     "propertyForSell":{
         "title": "Nos propriétés à vendre",
-        "filterBy": "Trier par:",
+        "filterBy": "Trier le prix:",
         "price": "Prix",
+        "ascending": "Petit au grand",
+        "descending": "Grand au petit",
         "view": "Voir tout"
     },
     "popular":{

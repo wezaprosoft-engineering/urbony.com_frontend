@@ -3,6 +3,7 @@ import { CardButton, Content, Head, Line, Title, Wrapper } from "../../../compon
 import { Input } from "../../../components/WelcomeSection/Welcome.styles";
 import { CardContent, Description, RealEstateCard, TextContent, Description2Text,WrapperDescription2,CardButtons, Description2, Description2Content, LineEstate } from "./RealEstate.styles";
 import { useTranslation } from "react-i18next";
+import { Filter } from "../../../components/PropertyForSell/PropertyForSell.styles";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../../components/Spinner";
 
@@ -19,6 +20,7 @@ const RealEstate = () =>{
 
     const url = 'https://urbony.onrender.com/api/projects'
     const [realEstate, setRealEstate] = useState('')
+    const [ascending, setAscending] = useState(false)
 
     const realEstateProject = () => {
         try {
@@ -55,7 +57,23 @@ const RealEstate = () =>{
         realEstateProject();
     }, []);
 
- 
+    const search= () =>{
+        var result;
+        
+            if(ascending){
+                result = realEstate?.sort((a,b) => b.price - a.price)
+                setAscending(false)
+            } else{
+                result = realEstate?.sort((a,b) => a.price - b.price)
+                setAscending(true)
+            }
+    
+             
+        
+        console.log(result)
+        
+        setRealEstate(result)
+    }
     return(
        <Wrapper>
         {loading? (<Loading/>):(
@@ -76,18 +94,7 @@ const RealEstate = () =>{
                       <h2 style={{
                               fontWeight: 500
                           }}>{t('propertyForSell.filterBy')}</h2>
-                          <Input placeholder={t('propertyForSell.price')} type='number' style={{
-                              backgroundColor: 'rgba(46,15,89,1)',
-                              textAlign: 'center',
-                              width: 255,
-                              height: 45,
-                              borderRadius: 5,
-                              color: 'white',
-                              fontWeight: 500,
-                              marginTop: 10,
-                              marginLeft: 20,
-                              borderColor: 'transparent'
-                          }}/>
+                          <Filter onClick={search}>{ascending ? t('propertyForSell.descending'): t('propertyForSell.ascending')}</Filter>
                       </Title>}
               
              </Head>

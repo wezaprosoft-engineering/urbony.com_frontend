@@ -30,35 +30,27 @@ const Footer = () => {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
     const sell = ()=>{
-        setGlobalState("buy", false)
-        setGlobalState("rent", false)
-        setGlobalState("realEstate", false)
+        setGlobalState('corporate', false)
         navigate('/sell')
     }
     const buy = ()=>{
-        setGlobalState("sell", false)
-        setGlobalState("rent", false)
-        setGlobalState("realEstate", false)
+        setGlobalState('corporate', false)
         navigate('/buy')
     }
     const rent = ()=>{
-        setGlobalState("buy", false)
-        setGlobalState("sell", false)
-        setGlobalState("realEstate", false)
+        setGlobalState('corporate', false)
         navigate('/rent')
     }
     const realEstate = ()=>{
-        setGlobalState("buy", false)
-        setGlobalState("rent", false)
-        setGlobalState("sell", false)
+        setGlobalState('corporate', false)
         navigate('/real-estate-project')
     }
     return(
         <Wrapper>
             <FooterContent>
                 <Footerservices><FooterTitle>{t('footer.services')}</FooterTitle>
-                <h3>{t('footer.rental')}</h3>
-                <h3>{t('footer.property')}</h3>
+                <h3 onClick={()=>navigate('/management')} style={{cursor: 'pointer', textDecoration: 'underline'}}>{t('footer.rental')}</h3>
+                <h3 onClick={()=>navigate('/management')} style={{cursor: 'pointer', textDecoration: 'underline'}}>{t('footer.property')}</h3>
                 
                 </Footerservices>
                 <Footerservices>

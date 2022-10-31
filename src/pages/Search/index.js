@@ -193,12 +193,7 @@ const Searches = () =>{
     const searchRequest = async () => {
         if(corporate){
             setBedrooms(parseInt(0))
-            if(min.length===0){
-                setMin(0)
-            }
-            if(max.length===0){
-                setMax(1000000000000)
-            }
+            
              body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
         }else{
             if(min.length===0){

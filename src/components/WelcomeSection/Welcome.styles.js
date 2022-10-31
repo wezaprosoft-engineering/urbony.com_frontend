@@ -342,3 +342,19 @@ height: 15px;
   box-sizing: border-box;
   margin-left: 6px;
 `;
+
+export const Estimation = styled.button`
+background-color: red;
+color: white;
+width: 300px;
+height: 64px;
+border-radius: 30px 0px;
+box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+border-color: transparent;
+font-size: large;
+display: flex;
+align-items: center;
+font-weight: 700;
+cursor: pointer;
+margin-left: 10px;
+`
