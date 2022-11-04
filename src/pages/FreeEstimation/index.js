@@ -70,7 +70,7 @@ const FreeEstimation = () => {
         const [phoneNumber, setPhoneNumber] = useState('')
         const [location, setLocation] = useState('')
         const [options, setOptions] = useState('')
-        const [propertyTypesId, setPropertyTypesId] = useState('')
+        const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
         const requestType = 'ESTIMATE'
         const url='https://urbony.onrender.com/api/estimate'
         const [error, setError] = useState('')

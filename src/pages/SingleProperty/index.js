@@ -4,19 +4,22 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { GetInTouchInput, Submit } from "../GetInTouch/GetInTouch.styles";
 import Loading from "../../components/Spinner";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const SingleProperty = () =>{
     const {t} = useTranslation()
     const {id} = useParams();
     const [property, setProperty] = useState("")
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
+    const [phone, setPhoneNumber] = useState('')
     const [loading, setLoading] = useState(false)
-   
-
+    const bookingUrl = 'https://urbony.onrender.com/api/booking'
+    const link = `https://urbony.com/property/${id}`
     
     useEffect(() =>{
         const url = `https://urbony.onrender.com/api/property/${id}`
+       
         const propertyDetails = async () => {
             try {
                 setLoading(true)
@@ -51,6 +54,47 @@ const SingleProperty = () =>{
         propertyDetails();
         
     }, [id]);
+    const book = () =>{
+        try {
+            const body = JSON.stringify({name, email, link, phone})
+            fetch(bookingUrl, {
+                method: 'POST',
+                body: body,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+                
+            }).then(json =>{
+                console.log(json)
+                toast(json.message, 
+                    {position: toast.POSITION.TOP_RIGHT})
+                    setName('')
+                    setEmail('')
+                    setPhoneNumber('')
+                
+                
+                
+
+               
+
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    
     return(
         <Wrapper>
             {loading? (<Loading/>):(
@@ -104,11 +148,11 @@ const SingleProperty = () =>{
                 <GetInTouchInput placeholder={t('sellerRequestForm.emailHolder')} value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                 <GetInTouchInput style={{
                    
-                }} placeholder={t('sellerRequestForm.phoneNumberHolder')} value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
-                <Submit>{t('getInTouch.submit')}</Submit>
+                }} placeholder={t('sellerRequestForm.phoneNumberHolder')} value={phone} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
+                <Submit onClick={book}>{t('getInTouch.submit')}</Submit>
                 </div>
                 
-                
+                <ToastContainer progressClassName="toastProgress"/>
                 </Content>
             )}
             

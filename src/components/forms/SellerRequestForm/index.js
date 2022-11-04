@@ -15,7 +15,7 @@ const SellerRequestForm = props => {
         const [email, setEmail] = useState('')
         const [phoneNumber, setPhoneNumber] = useState('')
         const [location, setLocation] = useState('')
-        const [propertyTypesId, setPropertyTypesId] = useState('')
+        
         const [checked, setChecked] = useState(false)
         const [error, setError] = useState('')
         var requestType
@@ -117,6 +117,7 @@ const SellerRequestForm = props => {
         
         getProperty()
     }, []);
+    const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
     
     return (
         <Wrapper style={{

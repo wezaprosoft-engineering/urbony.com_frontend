@@ -6,7 +6,7 @@ const CorporateCardAppartment = props =>{
         <Wrapper style={{
             backgroundImage: `url(${props.CorporateCardAppartmentImage})`,
              
-        }}>
+        }} onClick={props.onClick}>
             <CorporateCardAppartmentText>
                 {props.CorporateCardAppartmentText}
             </CorporateCardAppartmentText>

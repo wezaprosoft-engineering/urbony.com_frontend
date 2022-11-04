@@ -58,15 +58,18 @@ const Welcome = props =>{
     const [homeBuy] = useGlobalState("homeBuy");
     const [homeRent] = useGlobalState("homeRent")
     const [moreMobile, setMoreMobile] = useState(false)
+    var options;
     const Rent = () =>{
         setGlobalState("homeBuy", false);
         setGlobalState("homeRent", true)
+        options = "RENT"
         
     }
     const Buy = () =>{
         
         setGlobalState("homeBuy", true);
         setGlobalState("homeRent", false)
+        options = "SELL"
         
     }
     
@@ -80,12 +83,12 @@ const Welcome = props =>{
     const [externalFeatures, setExternalFeatures] = useState('')
     const [nearbyFeatures, setNearbyFeatures] = useState('')
     const [location, setLocation] = useState('')
-    const [propertyTypesId, setPropertyTypesId] = useState('')
+   
     const [min, setMin] = useState('')
     const [max, setMax] = useState('')
     const [bedrooms, setBedrooms] = useState('')
     const [area, setArea] = useState('')
-    const options = "SELL | RENT"
+    
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
     const nearbyUrl = 'https://urbony.onrender.com/api/nearbyFeatures'
@@ -217,6 +220,7 @@ const Welcome = props =>{
         nearby();
         getProperty()
     }, []);
+    const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
     let body;
     let selectedInternal;
     let selectedExternal;
@@ -224,6 +228,7 @@ const Welcome = props =>{
     const searchRequest = async () => {
         if(corporate){
             setBedrooms(parseInt(0))
+            setPropertyTypesId(property[3]?.id)
             
              body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
         }else{
@@ -302,10 +307,10 @@ const Welcome = props =>{
                     height: '65px',
                     fontWeight: 400,
                     fontSize: 'large'
-                }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                }}   onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
                     {property.length > 0 ?(
-                        property.map(house=>(
-                            <option value={house.id} >{house.name}</option>
+                        property.map((house, index)=>(
+                            <option value={house.id} selected = {index === 0 ? 'selected':false}>{house.name}</option>
                         ))
                     ):<option>No Value</option>}
                  

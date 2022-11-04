@@ -65,7 +65,7 @@ const Searches = () =>{
     const [externalFeatures, setExternalFeatures] = useState('')
     const [nearbyFeatures, setNearbyFeatures] = useState('')
     const [location, setLocation] = useState('')
-    const [propertyTypesId, setPropertyTypesId] = useState('')
+    
     const [min, setMin] = useState('')
     const [max, setMax] = useState('')
     const [bedrooms, setBedrooms] = useState('')
@@ -226,18 +226,15 @@ useEffect(()=>{
     
     getProperty()
 }, []);
+const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
     const searchRequest = async () => {
         if(corporate){
             setBedrooms(parseInt(0))
+            setPropertyTypesId(property[3]?.id)
             
              body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
         }else{
-            if(min.length===0){
-                setMin(0)
-            }
-            if(max.length===0){
-                setMax(1000000000000)
-            }
+            
          body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
         }
         try {

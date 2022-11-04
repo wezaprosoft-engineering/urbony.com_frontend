@@ -17,15 +17,16 @@ const AddProperty = () =>{
     const [livingArea, setLivingArea] = useState('')
     const [floors, setFloors] = useState('')
     const [options, setOption] = useState('')
-    const [propertyTypesId, setPropertytypesId] = useState('')
+    
     const [bathrooms, setBathrooms] = useState('')
     const id = localStorage.getItem('id')
     const userId = parseInt(id)
     var gallery = []
+   // const [gallery, setGallery] = useState('')
     
     const url='https://urbony.onrender.com/api/property'
         const add = async () => {
-            const body = JSON.stringify({price, bedrooms, location, bathrooms, contructionYear,gallery, distanceToRoad,livingArea, floors, options, coverImage, propertyTypesId, userId});
+            const body = JSON.stringify({price, bedrooms, location, bathrooms, contructionYear, distanceToRoad,livingArea, floors, gallery, options, coverImage, propertyTypesId, userId});
             try {
                fetch(url, {
                     method: 'POST',
@@ -110,7 +111,8 @@ const AddProperty = () =>{
                     
                 }).then(json =>{
                     console.log(json)
-                    gallery.push(json)
+                   gallery.unshift(json)
+                   // setGallery(...pictures)
                     console.log(gallery)
                     
     
@@ -128,7 +130,7 @@ const AddProperty = () =>{
         
         const propertyUrl = 'https://urbony.onrender.com/api/property-types'
     const [property, setProperty] = useState('')
-
+    const [propertyTypesId, setPropertytypesId] = useState('')
 const getProperty = ()=>{
     try {
         fetch(propertyUrl,{
@@ -148,6 +150,7 @@ const getProperty = ()=>{
             
            console.log(json)
            setProperty(json)
+           setPropertytypesId(json[0].id)
 
            
         }).catch(error =>{
@@ -162,6 +165,7 @@ useEffect(()=>{
     
     getProperty()
 }, []);
+
     return(
         <Wrapper>
             <Content>
