@@ -341,8 +341,15 @@ const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
                             <option value="Makamba">Makamba</option>
                             <option value="Rumonge">Rumonge</option>
                             </select></OverlayContent>
-                            <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
-                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
+                            <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}}  value={min} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMin(formated)}}/>
+                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => 
+                    {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMax(formated)}}/></div></OverlayContent>
                         {corporate ? 
                         <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/></OverlayContent>:
                         <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))

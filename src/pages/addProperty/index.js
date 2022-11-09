@@ -9,7 +9,7 @@ const AddProperty = () =>{
     const navigate = useNavigate()
     const [image, setImage2] = useState(null)
     const [coverImage, setCoverImage] = useState('')
-    const [price, setPrice] = useState('')
+    const [prices, setPrice] = useState('')
     const [bedrooms, setBedrooms] = useState('')
     const [location, setLocation] = useState('')
     const [contructionYear, setConstructionYear] = useState('')
@@ -23,9 +23,12 @@ const AddProperty = () =>{
     const userId = parseInt(id)
     var gallery = []
    // const [gallery, setGallery] = useState('')
+   // const [gallery, setGallery] = useState('')
     
     const url='https://urbony.onrender.com/api/property'
         const add = async () => {
+            // eslint-disable-next-line
+            const price = parseFloat(prices.replace(/[^\d\.\-]/g, ""))
             const body = JSON.stringify({price, bedrooms, location, bathrooms, contructionYear, distanceToRoad,livingArea, floors, gallery, options, coverImage, propertyTypesId, userId});
             try {
                fetch(url, {
@@ -60,6 +63,7 @@ const AddProperty = () =>{
             } catch (error) {
                 console.log(error)
             }
+            
             
         }
         const ImageUpload = async (file) => {
@@ -98,6 +102,8 @@ const AddProperty = () =>{
             formdata.append('files', files);
             
             try {
+                console.log('launched')
+                console.log(files)
                fetch('https://urbony.onrender.com/api/uploads', {
                     method: 'POST',
                     body: formdata,
@@ -111,9 +117,9 @@ const AddProperty = () =>{
                     
                 }).then(json =>{
                     console.log(json)
-                   gallery.unshift(json)
+                   gallery.push(json)
                    // setGallery(...pictures)
-                    console.log(gallery)
+                 //   console.log(gallery)
                     
     
                 }).catch(error =>{
@@ -165,6 +171,63 @@ useEffect(()=>{
     
     getProperty()
 }, []);
+class ImagesUploading extends React.Component{
+    state = {
+        file: null
+      }
+    
+     handleFile(e){
+        let file = e.target.files
+        this.setState({file: file})
+      
+     }
+     handleUpload(e){
+      //  console.log(this.state, "THE STATE --- $$$")
+      let files = this.state.file
+      var formdata = new FormData();
+            formdata.append('files', files);
+            
+            try {
+               // console.log('launched')
+               // console.log(files)
+               fetch('https://urbony.onrender.com/api/uploads', {
+                    method: 'POST',
+                    body: formdata,
+                    redirect: 'follow'
+                }).then(res => {
+                    if (res.ok){
+                        return res.json()
+                    } else {
+                        throw res.json()
+                    }
+                    
+                }).then(json =>{
+                    console.log(json)
+                  // gallery.push(json)
+                   // setGallery(...pictures)
+                 //   console.log(gallery)
+                    
+    
+                }).catch(error =>{
+                    console.log(error)
+                    
+                });
+    
+                
+            } catch (error) {
+                console.log(error)
+            }
+     }
+      render(){
+        return(
+            <form encType="multipart/form-data" id="upload_gallery">
+                <label for="images" >Select images: </label>
+                <input type="file" multiple="multiple" name="files" accept="images/*" onChange={(e)=>{this.handleFile(e)}}/>
+                <button type="button" onClick={(e)=>this.handleUpload(e)}>Upload</button>
+                </form>
+        )
+      }
+}
 
     return(
         <Wrapper>
@@ -198,20 +261,15 @@ useEffect(()=>{
                 
             </BackgroundImage>
                 }
-                <input type="file" multiple accept="image/*" onChange={(event) => {
-                   // console.log(event.target.files[0].name);
-                    //setImage(event.target.files[0].name);
-                    //setImage('https://firebasestorage.googleapis.com/v0/b/residential-c062f.appspot.com/o/urbony%2Fhouse.jpeg?alt=media&token=a6eeca99-9d50-45b9-9fb8-7ad8fc808055')
-                   // setImage2(event.target.files[0]);
-                    //console.log(image)
-                    ImagesUpload(event.target.files[0]);
-                  }}/>
+                <ImagesUploading/>
+                
+                
                 
                 <h2>{t('addProperty.details')}</h2>
                 <h4>{t('addProperty.price')}</h4>
-                <Input placeholder={t('addProperty.priceHolder')} value={price} onChange={(e) => {
+                <Input placeholder={t('addProperty.priceHolder')} value={prices} onChange={(e) => {
                 const {value} = e.target
-                const formated = (Number(value.replace(/\D/g, ''))|| '')
+                const formated = (Number(value.replace(/\D/g, ''))|| '').toLocaleString()
                 setPrice(formated)
                 }}/>
                 <h4>{t('addProperty.living')}</h4>
