@@ -60,7 +60,7 @@ const FreeEstimation = () => {
     useEffect(()=>{
         
         getProperty()
-    }, []);
+    }, );
         useEffect(()=>{
             Form()
         },[]);

@@ -3,9 +3,9 @@ import { Content, Head, Line, Title, Wrapper, Home } from "../../../components/P
 import Step from '../../../assets/images/step.svg'
 import { CardText, AppartmentCard } from "../Buy/Buy.styles";
 import { Button } from "../../../components/Header/Header.styles";
-import HouseBuy1 from '../../../assets/images/housebuy1.png'
-import HouseBuy2 from '../../../assets/images/housebuy2.png'
-import HouseBuy3 from '../../../assets/images/housebuy3.png'
+import HouseBuy1 from '../../../assets/images/apartement.jpeg'
+import HouseBuy2 from '../../../assets/images/house.jpeg'
+import HouseBuy3 from '../../../assets/images/brand.jpeg'
 import Estimation from '../../../assets/images/estimation.svg'
 import LastSales from "../../../components/LastSales";
 import { EstimationButton, EstmationContent, Estimator } from "../../GetInTouch/GetInTouch.styles";

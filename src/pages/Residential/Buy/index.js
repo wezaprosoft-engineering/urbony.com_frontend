@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import { Content, Head, Home, Line, Title, Wrapper } from "../../../components/Popular/Popular.styles";
 import { CardText, AppartmentCard } from "./Buy.styles";
-import HouseBuy1 from '../../../assets/images/housebuy1.png'
-import HouseBuy2 from '../../../assets/images/housebuy2.png'
-import HouseBuy3 from '../../../assets/images/housebuy3.png'
+import HouseBuy1 from '../../../assets/images/apartement.jpeg'
+import HouseBuy2 from '../../../assets/images/house.jpeg'
+import HouseBuy3 from '../../../assets/images/brand.jpeg'
 import LastSales from "../../../components/LastSales";
 import PropertyForSell from "../../../components/PropertyForSell";
 import Popular from "../../../components/Popular";
