@@ -17,6 +17,7 @@
     "react-hooks-global-state": "^2.0.0-rc.0",
     "react-i18next": "^11.18.3",
     "react-icons": "^4.4.0",
+    "react-js-dialog-box": "^1.1.6",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-router-hash-link": "^2.4.3",

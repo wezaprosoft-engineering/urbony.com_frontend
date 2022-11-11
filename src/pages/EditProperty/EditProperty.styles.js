@@ -50,3 +50,16 @@ font-size: 16px;
 font-weight: 600;
 border-radius: 5px;
 `
+
+export const Delete = styled.button`
+width: 200px;
+height: 50px;
+background-color: red;
+border-color: transparent;
+color: white;
+font-size: 16px;
+font-weight: 600;
+border-radius: 5px;
+margin-top: 20px;
+cursor: pointer;
+`;
