@@ -130,20 +130,18 @@ const RealEstate = () =>{
                           </CardContent>
                           <TextContent>
                               <Description>
-                              <h1>{estate.name}</h1>
+                              <h1>Showcase your Real Estate Project with us</h1>
                               <h2 style={{
                                   color: 'rgba(217, 11, 66, 1)',
                                   fontWeight: 500,
                                   
-                              }}>{estate.location}</h2>
-                              <h2 style={{
-                                  fontWeight: 700
-                              }}>{estate.unit} KOTS/{t('realEstate.ready')}</h2>
+                              }}>Project Location</h2>
+                             
   
                               <p style={{
                                   fontWeight: 400,
-                                  marginTop: 50
-                              }}>{estate.description}
+                                  marginTop: 80
+                              }}>With a brief descripton of your real estate project
                               </p>
   
                               <h2 style={{fontWeight: 500,
@@ -163,10 +161,10 @@ const RealEstate = () =>{
                                   <h2 style={{
                                       fontSize: 25,
                                       fontWeight: 500
-                                  }}>{estate.propertyType.name} {t('realEstate.studio')}</h2>
+                                  }}>Set up pricing</h2>
                                   <h2 style={{
                                       color: 'rgba(46,15,89,1)'
-                                  }}>BIF {(estate.price)?.toLocaleString()}</h2>
+                                  }}>{(estate.price)?.toLocaleString()}</h2>
                                   </Description2Text>
                                   
                                   </Description2Content>

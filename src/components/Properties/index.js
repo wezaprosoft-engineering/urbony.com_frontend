@@ -16,7 +16,7 @@ import LocationMin from '../../assets/images/location_min.svg'
 import BedMin from '../../assets/images/bed_min.svg'
 
 import HouseMin from '../../assets/images/house_min.svg'
-
+import { Badge } from "./myProperties.styles";
 import StatisticMin from '../../assets/images/statistic_min.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -155,11 +155,25 @@ const Properties = props =>{
         }}/>
         <div style={{
             display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+        }}>
+            <div style={{
+            display: 'flex',
             
             marginLeft: 12
         }}><img alt="location-icon" src={Location} style={{
             marginRight: 10
         }}/> <h4>{house.property.location}</h4></div>
+        <Badge style={{
+            backgroundColor: !house.property.isApproved && !house.property.isDeclined ? 'darkorange':house.property.isApproved && !house.property.isDeclined ? 'green':'red',
+        }}>
+        {!house.property.isApproved && !house.property.isDeclined ? 'Pending': null}
+        {house.property.isApproved && !house.property.isDeclined ? 'Approved': null}
+        {!house.property.isApproved && house.property.isDeclined ? 'Declined': null}
+        </Badge>
+        </div>
+        
         <CardsContainer>
         <div style={{
             display: 'flex',
@@ -345,11 +359,24 @@ const Properties = props =>{
         }}/>
         <div style={{
             display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+        }}>
+            <div style={{
+            display: 'flex',
             
             marginLeft: 12
         }}><img alt="location-icon" src={Location} style={{
             marginRight: 10
         }}/> <h4>{house.property.location}</h4></div>
+        <Badge style={{
+            backgroundColor: !house.property.isApproved && !house.property.isDeclined ? 'darkorange':house.property.isApproved && !house.property.isDeclined ? 'green':'red',
+        }}>
+        {!house.property.isApproved && !house.property.isDeclined ? 'Pending': null}
+        {house.property.isApproved && !house.property.isDeclined ? 'Approved': null}
+        {!house.property.isApproved && house.property.isDeclined ? 'Declined': null}
+        </Badge>
+        </div>
          <CardsContainer>
         <div style={{
             display: 'flex',
