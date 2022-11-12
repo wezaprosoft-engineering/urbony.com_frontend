@@ -342,7 +342,7 @@ const PropertyForSell = (props, children) =>{
     </HomeCards>
                             )
                         )}
-                        </>: <h2>Loading</h2>}
+                        </>: <h2>No Properties to display</h2>}
                     </>}
                     {propertyForSell.length > 0 && location.pathname!=='/rent'? <>
                     
@@ -598,6 +598,7 @@ const PropertyForSell = (props, children) =>{
          
            </Home>
            {screen ? null:<>{location.pathname==='/buy' || location.pathname==='/rent' || location.pathname==='/search'? null: <>
+           {propertyForSell.length ?
            <Button style={{
             width: 467,
             height: 54,
@@ -606,7 +607,8 @@ const PropertyForSell = (props, children) =>{
             fontWeight: 700,
             fontSize: 25,
             marginTop: 100
-           }} onClick={()=>navigate('/search', {state:propertyForSell})}>{t('propertyForSell.view')}</Button></>}</> }
+           }} onClick={()=>navigate('/search', {state:propertyForSell})}>{t('propertyForSell.view')}</Button> :null}
+           </>}</> }
            
             </Content>
         </Wrapper>

@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Spinner";
 import { ReactDialogBox } from 'react-js-dialog-box'
 import 'react-js-dialog-box/dist/index.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditProperty = () =>{
 
@@ -199,8 +201,6 @@ const EditProperty = () =>{
                 fetch(url, {
                      method: 'DELETE',
                      headers: {
-                         'Content-Type': 'application/json',
-                         'Accept': 'application/json',
                          'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
                      }
                  }).then(res => {
@@ -213,6 +213,8 @@ const EditProperty = () =>{
                  }).then(json =>{
                      console.log(json)
                      setDialog(false)
+                     toast(json.message, 
+                        {position: toast.POSITION.TOP_RIGHT})
                      navigate('/myproperties')
                      
                      
@@ -374,9 +376,9 @@ const EditProperty = () =>{
                                     </Select>
                         <Button onClick={()=>update()}>Save</Button>
                         </div>: null}
-                        <Delete onClick={()=>setDialog(true)}>Delete</Delete>
+                        <Delete onClick={()=>setDialog(true)}>Remove Property</Delete>
                 </Details>
-                
+                <ToastContainer progressClassName="toastProgress"/>
                 
                 </Content>
             )}

@@ -1893,7 +1893,7 @@ const Popular = props => {
                 )}
 
                 </>:null}
-                        </>: <h2>Loading</h2>}
+                        </>: <h2>No Properties to display</h2>}
                     </>}
                 </>}
                 </>}

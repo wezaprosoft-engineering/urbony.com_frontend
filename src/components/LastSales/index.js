@@ -317,7 +317,7 @@ const LastSales = props =>{
                     
                     
                         </>
-                    ): <h3>Loading</h3>}
+                    ): <h3>No Properties to display</h3>}
                     
                     
                 </Home>
