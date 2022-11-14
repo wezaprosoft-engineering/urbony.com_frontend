@@ -122,21 +122,21 @@ const Corporates = props =>{
                 
                 {tenant? <>
                     {location.pathname==='/offices' ? <><CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText={t('corporate.enterpriseOffice')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText={t('corporate.privateOffice')}/>
+                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText={t('corporate.enterpriseOffice')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText={t('corporate.privateOffice')} onClick={()=>navigate('/search')}/>
                    
                 </CorporateCardContent></>: <>{
                     location.pathname==='/commercial-space' ?
                     <CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.smallSpace')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.largeSpace')}/>
+                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.smallSpace')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.largeSpace')} onClick={()=>navigate('/search')}/>
                     
                    
                 </CorporateCardContent>: <CorporateCardContent>
-                <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText={t('corporate.warehouses')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText={t('corporate.depots')}/>
+                <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText={t('corporate.warehouses')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText={t('corporate.depots')} onClick={()=>navigate('/search')}/>
                    
                 </CorporateCardContent>
                 }</>}
@@ -144,20 +144,20 @@ const Corporates = props =>{
                 {buyer ? <>
                 {location.pathname==='/offices' ? <CorporateCardContent>
                 <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText={t('corporate.enterpriseOffice')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText={t('corporate.privateOffice')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={EnterpriseOffice} CorporateCardAppartmentText={t('corporate.enterpriseOffice')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={PrivateOffices} CorporateCardAppartmentText={t('corporate.privateOffice')} onClick={()=>navigate('/search')}/>
                    
                 </CorporateCardContent>: <>{
                     location.pathname==='/commercial-space' ?
                     <CorporateCardContent>
-                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')}/>
+                    <CorporateCardAppartment CorporateCardAppartmentImage={Servicedoffices} CorporateCardAppartmentText={t('corporate.servicedOffices')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={CoworkingDesk} CorporateCardAppartmentText={t('corporate.coworkingDesk')} onClick={()=>navigate('/search')}/>
                     
                    
                 </CorporateCardContent>: <CorporateCardContent>
-                <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText={t('corporate.warehouses')}/>
-                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText={t('corporate.depots')}/>
+                <CorporateCardAppartment CorporateCardAppartmentImage={Warehouses} CorporateCardAppartmentText={t('corporate.warehouses')} onClick={()=>navigate('/search')}/>
+                    <CorporateCardAppartment  CorporateCardAppartmentImage={Depots} CorporateCardAppartmentText={t('corporate.depots')} onClick={()=>navigate('/search')}/>
                    
                 </CorporateCardContent>
                 }</>}

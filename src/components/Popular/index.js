@@ -316,8 +316,9 @@ const Popular = props => {
                     </Head>
 
                     <Head style={{
-                        color: "rgba(217,11,66,1)"
-                        }}>
+                        color: "rgba(217,11,66,1)",
+                        cursor: 'pointer'
+                        }} onClick={()=>navigate('/search')}>
                         <h3>{t('popular.explore')}</h3>
                         <Arrow src={arrow}/>
                         
@@ -447,7 +448,7 @@ const Popular = props => {
                             )}
                             {officers.length > 0 && location.pathname==='/offices'? <>
                     
-                    {officers.slice(0, activeIndexOfficers).map(house =>(
+                    {officers.slice(activeIndexOfficers - 1, activeIndexOfficers).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -457,7 +458,9 @@ const Popular = props => {
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -465,7 +468,9 @@ const Popular = props => {
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -492,41 +497,53 @@ const Popular = props => {
                                 
                                 
                             }}>{house.location}</h4></div>
-                            <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                             <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -617,7 +634,7 @@ const Popular = props => {
                             )}
                             {commercial.length > 0 && location.pathname==='/commercial-space'? <>
                     
-                    {commercial.slice(0, activeIndexCommercial).map(house =>(
+                    {commercial.slice(activeIndexCommercial - 1, activeIndexCommercial).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -627,7 +644,9 @@ const Popular = props => {
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -635,7 +654,9 @@ const Popular = props => {
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -663,40 +684,52 @@ const Popular = props => {
                                 
                             }}>{house.location}</h4></div>
                             <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -787,7 +820,7 @@ const Popular = props => {
                             )}
                             {industrials.length > 0 && location.pathname==='/industrial-space'? <>
                     
-                    {industrials.slice(0, activeIndexIndustrials).map(house =>(
+                    {industrials.slice(activeIndexIndustrials - 1, activeIndexIndustrials).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -797,7 +830,9 @@ const Popular = props => {
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -805,7 +840,9 @@ const Popular = props => {
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -832,41 +869,53 @@ const Popular = props => {
                                 
                                 
                             }}>{house.location}</h4></div>
-                            <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                             <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -899,6 +948,7 @@ const Popular = props => {
                     
                 </Home>
                 </>: <Home>{Corporate && offices ? <>
+                {officers.length > 0 ? <>
                     {officers.map(
                                 (house =>(
                                     <HomeCards key={house.id}>
@@ -959,9 +1009,11 @@ const Popular = props => {
     </HomeCards>
                                 ))
                             )}
+                </>:<h2>No properties</h2>}
+                    
                             {officers.length > 0 ? <>
                     
-                    {officers.slice(0, activeIndexOfficers).map(house =>(
+                    {officers.slice(activeIndexOfficers - 1, activeIndexOfficers).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -971,7 +1023,9 @@ const Popular = props => {
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -979,7 +1033,9 @@ const Popular = props => {
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -1007,40 +1063,52 @@ const Popular = props => {
                                 
                             }}>{house.location}</h4></div>
                             <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -1131,7 +1199,7 @@ const Popular = props => {
                             )}
                             {commercial.length > 0 ? <>
                     
-                    {commercial.slice(0, activeIndexCommercial).map(house =>(
+                    {commercial.slice(activeIndexCommercial - 1, activeIndexCommercial).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1141,7 +1209,9 @@ const Popular = props => {
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -1149,7 +1219,9 @@ const Popular = props => {
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -1176,41 +1248,53 @@ const Popular = props => {
                                 
                                 
                             }}>{house.location}</h4></div>
-                            <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                             <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -1302,7 +1386,7 @@ const Popular = props => {
                             )}
                             {industrials.length > 0 ? <>
                     
-                    {industrials.slice(0, activeIndexIndustrials).map(house =>(
+                    {industrials.slice(activeIndexIndustrials - 1, activeIndexIndustrials).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1347,41 +1431,53 @@ const Popular = props => {
                                 
                                 
                             }}>{house.location}</h4></div>
-                            <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                             <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -1413,7 +1509,7 @@ const Popular = props => {
                 
                 {popularHomes.length > 0 && location.pathname!=='/rent'? <>
                         <>
-                        {popularHomes.map(
+                        {popularHomes.slice(0,9).map(
                             house =>(
                                 <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
@@ -1481,7 +1577,7 @@ const Popular = props => {
                         )}
                         {popularHomes.length > 0 && location.pathname!=='/rent'? <>
                     
-                    {popularHomes.slice(0, activeIndexPopularHomes).map(house =>(
+                    {popularHomes.slice(activeIndexPopularHomes - 1, activeIndexPopularHomes).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1491,7 +1587,9 @@ const Popular = props => {
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -1499,7 +1597,9 @@ const Popular = props => {
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -1527,40 +1627,52 @@ const Popular = props => {
                                 
                             }}>{house.location}</h4></div>
                             <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -1659,7 +1771,7 @@ const Popular = props => {
                         )}
                         {popularRent.length > 0 && location.pathname==='/rent'? <>
                     
-                    {popularRent.slice(0, activeIndexPopularRent).map(house =>(
+                    {popularRent.slice(activeIndexPopularRent - 1, activeIndexPopularRent).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -1669,7 +1781,9 @@ const Popular = props => {
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -1677,7 +1791,9 @@ const Popular = props => {
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -1705,40 +1821,52 @@ const Popular = props => {
                                 
                             }}>{house.location}</h4></div>
                             <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -1765,7 +1893,7 @@ const Popular = props => {
                 )}
 
                 </>:null}
-                        </>: <h2>Loading</h2>}
+                        </>: <h2>No Properties to display</h2>}
                     </>}
                 </>}
                 </>}

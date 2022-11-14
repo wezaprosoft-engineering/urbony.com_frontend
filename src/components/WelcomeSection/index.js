@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { TextMenu } from "../Header/Header.styles";
-import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading } from "./Welcome.styles";
+import { Button, Button2, Content,SearchIcon, Input, Overlay, OverlayContent, Search, TextButton, TextButton2, Toggle, WelcomeText, Wrapper, SubOverlay, More, MoreContent, Check, Input2, WelcomeButton, Select, MoreContentMobile, MoreContentDetails, Heading} from "./Welcome.styles";
 import search from '../../assets/images/search-icon.svg'
 import { useGlobalState, setGlobalState } from "../../store/state";
 import ArrowDown from '../../assets/images/arrow_down.svg'
@@ -9,6 +9,7 @@ import SearchMin from '../../assets/images/searchmin.svg'
 import ArrowUpMobile from '../../assets/images/arrow_up_mobile.svg'
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+
 
 const Details = props =>{
     
@@ -57,15 +58,18 @@ const Welcome = props =>{
     const [homeBuy] = useGlobalState("homeBuy");
     const [homeRent] = useGlobalState("homeRent")
     const [moreMobile, setMoreMobile] = useState(false)
+    var options;
     const Rent = () =>{
         setGlobalState("homeBuy", false);
         setGlobalState("homeRent", true)
+        options = "RENT"
         
     }
     const Buy = () =>{
         
         setGlobalState("homeBuy", true);
         setGlobalState("homeRent", false)
+        options = "SELL"
         
     }
     
@@ -79,14 +83,48 @@ const Welcome = props =>{
     const [externalFeatures, setExternalFeatures] = useState('')
     const [nearbyFeatures, setNearbyFeatures] = useState('')
     const [location, setLocation] = useState('')
-    const [propertyTypesId, setPropertyTypesId] = useState('')
+   
     const [min, setMin] = useState('')
     const [max, setMax] = useState('')
     const [bedrooms, setBedrooms] = useState('')
+    const [area, setArea] = useState('')
+    
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
     const nearbyUrl = 'https://urbony.onrender.com/api/nearbyFeatures'
     const searchUrl = 'https://urbony.onrender.com/api/property/search'
+    const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+    const [property, setProperty] = useState('')
+
+    const getProperty = ()=>{
+        try {
+            fetch(propertyUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               
+                
+               console.log(json)
+               setProperty(json)
+
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
     const internal = () => {
         try {
             fetch(internalUrl,{
@@ -180,13 +218,34 @@ const Welcome = props =>{
         internal();
         external();
         nearby();
+        getProperty()
     }, []);
-
+    const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
+    let body;
     let selectedInternal;
     let selectedExternal;
     let selectedNearby
     const searchRequest = async () => {
-        const body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        if(corporate){
+            setBedrooms(parseInt(0))
+            setPropertyTypesId(property[3]?.id)
+            
+             body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
+        }else{
+            if(min.length===0){
+                body = JSON.stringify({propertyTypesId, location, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            } else if(max.length===0){
+                body = JSON.stringify({propertyTypesId, location, min, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            } else if(max.length===0 && min.length===0){
+                body = JSON.stringify({propertyTypesId, location, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            } else if(bedrooms.length===0){
+                body = JSON.stringify({propertyTypesId, location, min, max, selectedExternal, selectedInternal, selectedNearby});
+            } else if(min.length===0 && max.length===0 && bedrooms.length===0){
+                body = JSON.stringify({propertyTypesId, location, selectedExternal, selectedInternal, selectedNearby});
+            }else{
+         body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+            }
+        }
         try {
            fetch(searchUrl, {
                 method: 'POST',
@@ -236,30 +295,25 @@ const Welcome = props =>{
                         height: '65px',
                         fontWeight: 400,
                         fontSize: 'large'
-                    }}>
-                        <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                    }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                       {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                         </select>
                 : <select style={{
                     width: 150,
                     height: '65px',
                     fontWeight: 400,
                     fontSize: 'large'
-                }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1" >{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                }}   onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                    {property.length > 0 ?(
+                        property.map((house, index)=>(
+                            <option value={house.id} selected = {index === 0 ? 'selected':false}>{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
+                 
                     
                     </select>}
                     </OverlayContent>
@@ -289,11 +343,19 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                         </select></OverlayContent>
-                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
-                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
+                    <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min   BIF" style={{width: 100, marginRight: 5}} value={min} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMin(formated)}}/>
+                    <Input placeholder="Max BIF" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMax(formated)}}/></div></OverlayContent>
                     {corporate ? 
-                    <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
-                    <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
+                    <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/></OverlayContent>:
+                    <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                        
+                    }/></OverlayContent>}
                     
                     
                     <OverlayContent><Search onClick={searchRequest}><SearchIcon src={search}/><TextMenu style={{color: 'white', fontWeight: 700}}>{t('Welcome.search')}</TextMenu></Search></OverlayContent>
@@ -435,25 +497,19 @@ const Welcome = props =>{
                     {homeRent ? <Button onClick={Rent}><TextButton2>{t('Welcome.rent')}</TextButton2></Button> : <Button2 onClick={Rent}><TextButton2>{t('Welcome.rent')}</TextButton2></Button2>}
                    
                 </Toggle>
-                {corporate? <Select>
-                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                {corporate? <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>:
                 <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1" >{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                     {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>}
                 
                 <Select value={location} onChange={(e) => setLocation(e.target.value)}>
@@ -477,9 +533,17 @@ const Welcome = props =>{
                         <option value="Makamba">Makamba</option>
                         <option value="Rumonge">Rumonge</option>
                 </Select>
-                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
-                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
-                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
+                <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')}  value={min} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMin(formated)}}/>
+                <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} value={max} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMax(formated)}}/>
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/>:
+                <Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                }/>}
                 
                 <WelcomeButton onClick={searchRequest}>
                     <div style={{
@@ -487,12 +551,16 @@ const Welcome = props =>{
                         margin: 'auto auto auto auto',
                         paddingLeft:  screen ? 85:130,
                         paddingRight: 130,
+                        alignItems: 'center',
+                        alignContent: 'center'
                         
-                    }}><img alt="search-min" src={SearchMin}/><h3>{t('Welcome.search')}</h3></div>
+                    }}><img alt="search-min" src={SearchMin} style={{width: 20, height: 20}}/><h3>{t('Welcome.search')}</h3></div>
                 </WelcomeButton>
                 <MoreContentMobile>
                     <img src={ArrowUpMobile} alt='arrow-up-mobile' style={{
-                        marginRight: 10
+                        marginRight: 10,
+                        width: 10,
+                        height: 30
                     }}/>
                     {moreMobile ? <h4 onClick={() => setMoreMobile(false)}>{t('Welcome.lessFilters')}</h4>: <h4 onClick={() => setMoreMobile(true)}>{t('Welcome.moreFilters')}</h4>}
                     
@@ -582,7 +650,8 @@ const Welcome = props =>{
                     </More>: null}
                 
                 
-                 <Overlays location={t('Welcome.location')}/>
+                 {Overlays ({location:t('Welcome.location')})}
+                 
                 
             </Content>
             

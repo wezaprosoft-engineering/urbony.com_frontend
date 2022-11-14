@@ -34,4 +34,5 @@ padding-left: 20px;
 
 export const TextContent = styled.div`
 display: flex;
+align-items: center;
 `;

@@ -6,6 +6,7 @@ height: 212px;
 background-size: cover;
 margin: 10px;
 margin-right: 20px;
+cursor: pointer;
 `;
 
 export const CorporateCardAppartmentText = styled.div`

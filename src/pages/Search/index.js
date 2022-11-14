@@ -18,6 +18,15 @@ import Bed from '../../assets/images/bed.svg'
 import House from '../../assets/images/house.svg'
 import Statistic from '../../assets/images/statistic.svg'
 import Location from '../../assets/images/location.svg'
+import { ArrowCircle, ArrowContainer, DetailsContainer, Container } from "../../components/HomeCards/HomeCards.style";
+import ArrowLeft from '../../assets/images/arrow_left.svg'
+import ArrowRight from '../../assets/images/arrow_rigt.svg'
+import LocationMin from '../../assets/images/location_min.svg'
+import BedMin from '../../assets/images/bed_min.svg'
+
+import HouseMin from '../../assets/images/house_min.svg'
+
+import StatisticMin from '../../assets/images/statistic_min.svg'
 
 
 const Details = props =>{
@@ -44,6 +53,7 @@ const Searches = () =>{
     const [moreMobile, setMoreMobile] = useState(false)
     const {state} = useLocation()
     const navigate = useNavigate()
+    const [result, setResult] = useState(state)
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -55,14 +65,32 @@ const Searches = () =>{
     const [externalFeatures, setExternalFeatures] = useState('')
     const [nearbyFeatures, setNearbyFeatures] = useState('')
     const [location, setLocation] = useState('')
-    const [propertyTypesId, setPropertyTypesId] = useState('')
+    
     const [min, setMin] = useState('')
     const [max, setMax] = useState('')
     const [bedrooms, setBedrooms] = useState('')
+    const [area, setArea] = useState('')
+    const options = "SELL | RENT"
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
     const nearbyUrl = 'https://urbony.onrender.com/api/nearbyFeatures'
     const searchUrl = 'https://urbony.onrender.com/api/property/search'
+    const [activeSearchIndex, setActiveSearchIndex] = useState(1)
+    const next = () =>{
+        if(activeSearchIndex === result?.length){
+            setActiveSearchIndex(1)
+        }else{
+            setActiveSearchIndex(activeSearchIndex + 1)
+        }
+    }
+
+    const prev = () =>{
+        if(activeSearchIndex === 1){
+            setActiveSearchIndex(result?.length)
+        }else{
+            setActiveSearchIndex(activeSearchIndex - 1)
+        }
+    }
     const internal = () => {
         try {
             fetch(internalUrl,{
@@ -158,11 +186,57 @@ const Searches = () =>{
         nearby();
     }, []);
 
+    let body;
     let selectedInternal;
     let selectedExternal;
     let selectedNearby
+    const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+    const [property, setProperty] = useState('')
+
+const getProperty = ()=>{
+    try {
+        fetch(propertyUrl,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+            }
+        }).then(res => {
+            if (res.ok){
+                return res.json()
+            } else {
+                throw res.json()
+            }
+        }).then(json =>{
+           
+            
+           console.log(json)
+           setProperty(json)
+
+           
+        }).catch(error =>{
+            console.log(error)
+            
+        });
+    } catch (error) {
+        console.log(error)
+    }
+}
+useEffect(()=>{
+    
+    getProperty()
+}, []);
+const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
     const searchRequest = async () => {
-        const body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        if(corporate){
+            setBedrooms(parseInt(0))
+            setPropertyTypesId(property[3]?.id)
+            
+             body = JSON.stringify({propertyTypesId, location, min, max, bedrooms, area,options, selectedExternal, selectedInternal, selectedNearby})
+        }else{
+            
+         body = JSON.stringify({propertyTypesId, location, min, max, bedrooms,  selectedExternal, selectedInternal, selectedNearby});
+        }
         try {
            fetch(searchUrl, {
                 method: 'POST',
@@ -182,6 +256,7 @@ const Searches = () =>{
             }).then(json =>{
                 //setSearch(json)
                 console.log(json)
+                setResult(json)
                 
                 
 
@@ -220,10 +295,11 @@ const Searches = () =>{
                             fontWeight: 400,
                             fontSize: 'large'
                         }}>
-                            <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                            <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                        <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                        <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                           {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                             </select>
                     : <select style={{
                         width: 150,
@@ -231,18 +307,11 @@ const Searches = () =>{
                         fontWeight: 400,
                         fontSize: 'large'
                     }} value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}> 
-                        <option value="1" >{t('Welcome.residentialOption1')}</option>
-                        <option value="2">{t('Welcome.residentialOption2')}</option>
-                        <option value="3">{t('Welcome.residentialOption3')}</option>
-                        <option value="4">{t('Welcome.residentialOption4')}</option>
-                        <option value="5">{t('Welcome.residentialOption5')}</option>
-                        <option value="6" >{t('Welcome.residentialOption6')}</option>
-                        <option value="7">{t('Welcome.residentialOption7')}</option>
-                        <option value="8">{t('Welcome.residentialOption8')}</option>
-                        <option value="9">{t('Welcome.residentialOption9')}</option>
-                        <option value="10">{t('Welcome.residentialOption10')}</option>
-                        <option value="11" >{t('Welcome.residentialOption11')}</option>
-                        <option value="12">{t('Welcome.residentialOption12')}</option>
+                      {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                         
                         </select>}
                         </OverlayContent>
@@ -272,11 +341,20 @@ const Searches = () =>{
                             <option value="Makamba">Makamba</option>
                             <option value="Rumonge">Rumonge</option>
                             </select></OverlayContent>
-                            <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
-                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/></div></OverlayContent>
+                            <OverlayContent>{homeBuy ? <h2>{t('Welcome.price')}</h2>: <h2>{t('Welcome.rent_month')}</h2>}<div style={{display: 'flex', justifyContent: 'space-between' }}><Input placeholder="Min" style={{width: 100, marginRight: 5}}  value={min} onChange={(e) => {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMin(formated)}}/>
+                    <Input placeholder="Max" style={{width: 100, marginLeft: 5}}  value={max} onChange={(e) => 
+                    {
+                        const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                        setMax(formated)}}/></div></OverlayContent>
                         {corporate ? 
-                        <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number"/></OverlayContent>:
-                        <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/></OverlayContent>}
+                        <OverlayContent><h2>{t('Welcome.area')}</h2><Input placeholder="Square meter" type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/></OverlayContent>:
+                        <OverlayContent><h2>{t('Welcome.bedroom')}</h2><Input placeholder="Select" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                            
+                       }/></OverlayContent>}
                        {/* <h2>{state?.length}</h2>*/}
                         
                         
@@ -405,24 +483,18 @@ const Searches = () =>{
             <Content>
                 <h2 style={{color: 'rgba(46,15,89,1)', marginLeft: screen ? 7:25}}>Our houses for sell</h2>
                 {corporate? <Select>
-                    <option value={t('Welcome.residentialOption1')} >{t('Welcome.residentialOption1')}</option>
-                        <option value={t('Welcome.residentialOption10')}>{t('Welcome.residentialOption10')}</option>
-                    <option value={t('Welcome.residentialOption11')} >{t('Welcome.residentialOption11')}</option>
-                    <option value={t('Welcome.residentialOption12')}>{t('Welcome.residentialOption12')}</option>
+                    {property.length > 0 ?(
+                        property.slice(3,6).map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>:
                 <Select value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                    <option value="1">{t('Welcome.residentialOption1')}</option>
-                    <option value="2">{t('Welcome.residentialOption2')}</option>
-                    <option value="3">{t('Welcome.residentialOption3')}</option>
-                    <option value="4">{t('Welcome.residentialOption4')}</option>
-                    <option value="5">{t('Welcome.residentialOption5')}</option>
-                    <option value="6" >{t('Welcome.residentialOption6')}</option>
-                    <option value="7">{t('Welcome.residentialOption7')}</option>
-                    <option value="8">{t('Welcome.residentialOption8')}</option>
-                    <option value="9">{t('Welcome.residentialOption9')}</option>
-                    <option value="10">{t('Welcome.residentialOption10')}</option>
-                    <option value="11" >{t('Welcome.residentialOption11')}</option>
-                    <option value="12">{t('Welcome.residentialOption12')}</option>
+                   {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                 </Select>}
                 
                 <Select value={location} onChange={(e) => setLocation(e.target.value)}>
@@ -448,7 +520,9 @@ const Searches = () =>{
                 </Select>
                 <Input2 placeholder={homeRent? t('Welcome.rentMinimum'): t('Welcome.minimum')} type="number" value={min} onChange={(e) => {setMin(parseInt(e.target.value))}}/>
                 <Input2 placeholder={homeRent? t('Welcome.rentMaximum'): t('Welcome.maximum')} type="number" value={max} onChange={(e) => {setMax(e.target.value)}}/>
-                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number"/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => {setBedrooms(parseInt(e.target.value))}}/>}
+                {corporate ? <Input2 placeholder={t('Welcome.areaHolder')} type="number" value={area} onChange={(e) => {setArea(e.target.value)}}/>:<Input2 placeholder={t('Welcome.chambre')} value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))
+                    
+                }/>}
                 
                 <WelcomeButton onClick={searchRequest}>
                     <div style={{
@@ -549,12 +623,12 @@ const Searches = () =>{
                             </MoreContentDetails>
                         </Heading>
                     </More>: null}
-                <Overlays location={t('Welcome.location')}/>
-                {state?.length > 0 ? 
-                    <Home>{state?.map(house =>(
+                    {Overlays ({location:t('Welcome.location')})}
+                {result?.length > 0 ?<>
+                    <Home>{result?.map(house =>(
                         <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
-            width: 406,
+            width: 436,
             height: 334
         }}/>
         <div style={{
@@ -614,7 +688,130 @@ const Searches = () =>{
             
         </CardsContainer>
     </HomeCards>
-                    ))}</Home>
+                    ))}
+                    {result?.slice(activeSearchIndex -1, activeSearchIndex).map(house =>(
+                            <Container style={{
+                                backgroundImage: `url(${house.coverImage})`,
+                                backgroundSize: 'cover'
+                            }} key={house.id}>
+                                <ArrowContainer>
+                                    <ArrowCircle onClick={prev}>
+                                        <img src={ArrowLeft} alt="arrow-left" style={{
+                                            marginLeft: 17,
+                                            
+                                            marginTop: 16,
+                                            width: 17,
+                                            height: 30
+                        
+                                        }}/>
+                                    </ArrowCircle>
+                                    <ArrowCircle onClick={next}>
+                                    <img src={ArrowRight} alt="arrow-right" style={{
+                                            marginLeft: 22,
+                                            
+                                            marginTop: 17,
+                                            width: 17,
+                                            height: 30
+                        
+                                        }}/>
+                                    </ArrowCircle>
+                                </ArrowContainer>
+                                <DetailsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                   
+                                    marginLeft: 12,
+                                    color: 'white',
+                                    height: 20,
+                                    marginBottom: 15
+                                    
+                                }}><img alt="location-icon" src={LocationMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 20,
+                                    marginTop: 20
+                                    
+                                    
+                                }}/> <h4 style={{
+                                    size: 20,
+                                    fontWeight: 700,
+                                    
+                                    
+                                }}>{house.location}</h4></div>
+                                <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
+                                <CardsContainer style={{
+                                    marginTop: 0
+                                    
+                                }}>
+                                    <CardButton style={{
+                                        backgroundColor: "rgba(255, 0, 0 ,1)",
+                                        marginLeft: 10
+                                    }} onClick={()=> navigate(`/property/${house.id}`)}>{t('Card.buy')}</CardButton>
+                                    <div style={{
+                                        color: 'white',
+                                        display: "flex",
+                                        
+                                    }}>
+                                        <div style={{
+                                            marginRight: 7,
+                                            
+                                        }}><h3>BIF</h3></div>
+                                        <h3>{(house.price).toLocaleString()}</h3></div>
+                                    
+                                </CardsContainer>
+                                        </DetailsContainer>
+                            </Container>
+                        )
+                    )}
+                    </Home>
+                </> 
+                    
                 :<h2 style={{textAlign: 'center'}}>No results obtained from your search</h2>}
             </Content>
         </Wrapper>

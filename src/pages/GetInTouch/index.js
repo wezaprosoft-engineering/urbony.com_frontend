@@ -10,6 +10,8 @@ import WhatsAppBlack from '../../assets/images/whatsapp_black.svg'
 import CallBlack from '../../assets/images/call_black.svg'
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GetInTouch = () => {
     const navigate = useNavigate()
@@ -48,7 +50,8 @@ const GetInTouch = () => {
                 
                 
                 console.log(json.message)
-                alert(json.message)
+                toast(json.message, 
+                    {position: toast.POSITION.TOP_RIGHT})
                 setName('')
                 setEmail('')
                 setMessage('')
@@ -150,6 +153,7 @@ const GetInTouch = () => {
                     
                 }}/>}<h4>{t('contact.whatsApp')}</h4></div>
                 </GetInTouchForm>
+                <ToastContainer progressClassName="toastProgress"/>
             </Content>
             
         </Wrapper>

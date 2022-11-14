@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Head, Title, Wrapper, Home } from "../Popular/Popular.styles";
-import { Input } from "../WelcomeSection/Welcome.styles";
 import { Button } from "../Header/Header.styles";
-import { Content } from "./PropertyForSell.styles";
+import { Content, Filter } from "./PropertyForSell.styles";
 import {useLocation, useNavigate} from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 import Bed from '../../assets/images/bed.svg'
@@ -135,6 +134,43 @@ const PropertyForSell = (props, children) =>{
     useEffect(() =>{
         properforrent();
     }, []);
+    const [ascending, setAscending] = useState(false)
+  
+    const search = ()=>{
+        var result;
+        if(location.pathname==='/rent'){
+            if(ascending){
+                result = propertyForRent?.sort((a,b) => b.price - a.price)
+                setAscending(false)
+            } else{
+                result = propertyForRent?.sort((a,b) => a.price - b.price)
+                setAscending(true)
+            }
+    
+             
+        
+        console.log(result)
+        
+        setPropertyForRent(result)
+        } else{
+            if(ascending){
+                result = propertyForSell?.sort((a,b) => b.price - a.price)
+                setAscending(false)
+            } else{
+                result = propertyForSell?.sort((a,b) => a.price - b.price)
+                setAscending(true)
+            }
+    
+             
+        
+        console.log(result)
+        
+        setPropertyForSell(result)
+        }
+        
+        
+    
+}
     return(
         
         <Wrapper style={{
@@ -161,25 +197,16 @@ const PropertyForSell = (props, children) =>{
                     <h2 style={{
                             fontWeight: 500
                         }}>{t('propertyForSell.filterBy')}</h2>
-                        <Input placeholder={t('propertyForSell.price')} type='number' style={{
-                            backgroundColor: 'rgba(46,15,89,1)',
-                            textAlign: 'center',
-                            width: 255,
-                            height: 45,
-                            borderRadius: 5,
-                            color: 'white',
-                            fontWeight: 500,
-                            marginTop: 10,
-                            marginLeft: 20,
-                            borderColor: 'transparent'
-                        }}/>
+                        
+                        <Filter onClick={search}>{ascending ? t('propertyForSell.descending'): t('propertyForSell.ascending')}</Filter>
+
                     </Title>}
             
            </Head>
            <Home>
            {propertyForSell.length > 0 && location.pathname!=='/rent'? <>
                         <>
-                        {propertyForSell.map(
+                        {propertyForSell.slice(0,9).map(
                             house =>(
                                 <HomeCards key={house.id}>
         <img alt="house" src={house.coverImage} style={{
@@ -193,7 +220,7 @@ const PropertyForSell = (props, children) =>{
         }}><img alt="location-icon" src={Location} style={{
             marginRight: 10
         }}/> <h4>{house.location}</h4></div>
-        <CardsContainer>
+         <CardsContainer>
         <div style={{
             display: 'flex',
             
@@ -315,11 +342,11 @@ const PropertyForSell = (props, children) =>{
     </HomeCards>
                             )
                         )}
-                        </>: <h2>Loading</h2>}
+                        </>: <h2>No Properties to display</h2>}
                     </>}
                     {propertyForSell.length > 0 && location.pathname!=='/rent'? <>
                     
-                        {propertyForSell.slice(0, activeIndex).map(house =>(
+                        {propertyForSell.slice(activeIndex -1, activeIndex).map(house =>(
                             <Container style={{
                                 backgroundImage: `url(${house.coverImage})`,
                                 backgroundSize: 'cover'
@@ -329,7 +356,9 @@ const PropertyForSell = (props, children) =>{
                                         <img src={ArrowLeft} alt="arrow-left" style={{
                                             marginLeft: 17,
                                             
-                                            marginTop: 16
+                                            marginTop: 16,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -337,7 +366,9 @@ const PropertyForSell = (props, children) =>{
                                     <img src={ArrowRight} alt="arrow-right" style={{
                                             marginLeft: 22,
                                             
-                                            marginTop: 17
+                                            marginTop: 17,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -369,20 +400,28 @@ const PropertyForSell = (props, children) =>{
                                     display: 'flex',
                                     marginTop: 0,
                                     marginLeft: 12,
-                                    color:'white' 
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="bed-icon" src={BedMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
                                 }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
                                 </div>
                                 <div style={{
                                     display: 'flex',
                                     marginTop: 0,
-                                    color:'white'
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                     
                                 }}>
                                 <img alt="house-icon" src={HouseMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
                                 }}/>  <h5>{house.livingArea} m</h5>
                                 </div>
                                 <div style={{
@@ -391,10 +430,14 @@ const PropertyForSell = (props, children) =>{
                                     marginLeft: 12,
                                     color:'white',
                                     marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="size-icon" src={StatisticMin} style={{
                                     marginRight: 10,
-                                    marginTop: 0
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
                                 }}/>
                                     <h5>{house.distanceToRoad}m</h5>
                                 </div>
@@ -427,7 +470,7 @@ const PropertyForSell = (props, children) =>{
                     </>:null}
                     {propertyForRent.length > 0 && location.pathname==='/rent'? <>
                     
-                    {propertyForRent.slice(0, activeIndexRent).map(house =>(
+                    {propertyForRent.slice(activeIndexRent - 1, activeIndexRent).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -437,7 +480,9 @@ const PropertyForSell = (props, children) =>{
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -445,7 +490,9 @@ const PropertyForSell = (props, children) =>{
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -472,41 +519,53 @@ const PropertyForSell = (props, children) =>{
                                 
                                 
                             }}>{house.location}</h4></div>
-                            <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                           <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -538,7 +597,8 @@ const PropertyForSell = (props, children) =>{
              
          
            </Home>
-           {screen ? null:<>{location.pathname==='/buy' || location.pathname==='/rent'? null: <>
+           {screen ? null:<>{location.pathname==='/buy' || location.pathname==='/rent' || location.pathname==='/search'? null: <>
+           {propertyForSell.length ?
            <Button style={{
             width: 467,
             height: 54,
@@ -547,7 +607,8 @@ const PropertyForSell = (props, children) =>{
             fontWeight: 700,
             fontSize: 25,
             marginTop: 100
-           }}>{t('propertyForSell.view')}</Button></>}</> }
+           }} onClick={()=>navigate('/search', {state:propertyForSell})}>{t('propertyForSell.view')}</Button> :null}
+           </>}</> }
            
             </Content>
         </Wrapper>

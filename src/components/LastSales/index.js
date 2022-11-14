@@ -13,17 +13,35 @@ import ArrowLeft from '../../assets/images/arrow_left.svg'
 import ArrowRight from '../../assets/images/arrow_rigt.svg'
 import LocationMin from '../../assets/images/location_min.svg'
 import BedMin from '../../assets/images/bed_min.svg'
-
+import { EstimationButton, Estimator, EstmationContent } from "../../pages/GetInTouch/GetInTouch.styles";
 import HouseMin from '../../assets/images/house_min.svg'
 
 import StatisticMin from '../../assets/images/statistic_min.svg'
+import { setGlobalState } from "../../store/state";
+import Estimation from '../../assets/images/estimation.svg'
 
 const LastSales = props =>{
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
+    const [screen, setScreen] = useState(
+        window.matchMedia("(max-width: 414px)").matches
+    )
+    useEffect(()=> {
+        window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
+    }, []);
     const navigate = useNavigate()
     const url = 'https://urbony.onrender.com/api/property/all/sold'
 
-
+    const Estimate = () =>{
+        setGlobalState('buy', false)
+        setGlobalState('rent', false)
+        setGlobalState('sell', false)
+        setGlobalState('offices', false)
+        setGlobalState('industrialSpace', false)
+        setGlobalState('commercialSpace', false)
+        setGlobalState('management', false)
+        setGlobalState('aboutUs', false)
+        navigate('/free-estimation')
+    }
     const [sales, setSales] = useState('')
     const [activeIndexSales, setActiveIndexSales] = useState(1)
     const next = () =>{
@@ -86,8 +104,9 @@ const LastSales = props =>{
                     </Head>
 
                     <Head style={{
-                        color: "rgba(217,11,66,1)"
-                        }}>
+                        color: "rgba(217,11,66,1)",
+                        cursor: 'pointer'
+                        }} onClick={()=>navigate('/search')}>
                         <h3>{t('popular.explore')}</h3>
                         <Arrow src={arrow}/>
                         
@@ -172,7 +191,7 @@ const LastSales = props =>{
                     )}
                     
                     
-                    {sales.slice(0, activeIndexSales).map(house =>(
+                    {sales.slice(activeIndexSales - 1, activeIndexSales).map(house =>(
                         <Container style={{
                             backgroundImage: `url(${house.coverImage})`,
                             backgroundSize: 'cover'
@@ -182,7 +201,9 @@ const LastSales = props =>{
                                     <img src={ArrowLeft} alt="arrow-left" style={{
                                         marginLeft: 17,
                                         
-                                        marginTop: 16
+                                        marginTop: 16,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -190,7 +211,9 @@ const LastSales = props =>{
                                 <img src={ArrowRight} alt="arrow-right" style={{
                                         marginLeft: 22,
                                         
-                                        marginTop: 17
+                                        marginTop: 17,
+                                        width: 17,
+                                            height: 30
                     
                                     }}/>
                                 </ArrowCircle>
@@ -217,41 +240,53 @@ const LastSales = props =>{
                                 
                                 
                             }}>{house.location}</h4></div>
-                            <CardsContainer>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                marginLeft: 12,
-                                color:'white' 
-                            }}>
-                            <img alt="bed-icon" src={BedMin} style={{
-                                marginRight: 10
-                            }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                marginTop: 0,
-                                color:'white'
-                                
-                            }}>
-                            <img alt="house-icon" src={HouseMin} style={{
-                                marginRight: 10
-                            }}/>  <h5>{house.livingArea} m</h5>
-                            </div>
-                            <div style={{
-                                display: 'flex',
-                                
-                                marginLeft: 12,
-                                color:'white',
-                                marginRight: 30,
-                            }}>
-                            <img alt="size-icon" src={StatisticMin} style={{
-                                marginRight: 10,
-                                marginTop: 0
-                            }}/>
-                                <h5>{house.distanceToRoad}m</h5>
-                            </div>
-                            </CardsContainer>
+                             <CardsContainer>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    marginLeft: 12,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="bed-icon" src={BedMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
+                                }}/><h5>{house.bedrooms} {t('Card.bed')}</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    marginTop: 0,
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                    
+                                }}>
+                                <img alt="house-icon" src={HouseMin} style={{
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
+                                }}/>  <h5>{house.livingArea} m</h5>
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    
+                                    marginLeft: 12,
+                                    color:'white',
+                                    marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
+                                }}>
+                                <img alt="size-icon" src={StatisticMin} style={{
+                                    marginRight: 10,
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
+                                }}/>
+                                    <h5>{house.distanceToRoad}m</h5>
+                                </div>
+                                </CardsContainer>
                             <CardsContainer style={{
                                 marginTop: 0
                                 
@@ -273,6 +308,7 @@ const LastSales = props =>{
                                 
                             </CardsContainer>
                                     </DetailsContainer>
+                                    
                         </Container>
                     )
                 )}
@@ -281,11 +317,28 @@ const LastSales = props =>{
                     
                     
                         </>
-                    ): <h3>Loading</h3>}
+                    ): <h3>No Properties to display</h3>}
                     
                     
                 </Home>
-                
+                {screen ?  <EstimationButton onClick={Estimate} style={{
+                marginLeft: '8%',
+                width: 282
+            }}>
+                    <EstmationContent style={{
+                        marginLeft: i18n.language==='fr'?10: 40
+                    }}>
+                        {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>:  <EstimationButton onClick={Estimate} style={{
+                    borderRadius: 10
+            }}>
+                    <EstmationContent>
+                    {t('estimation.est')}
+                        <Estimator src={Estimation} alt='estimation'/>
+                    </EstmationContent>
+                   </EstimationButton>}
             </Content>
             
         </Wrapper>

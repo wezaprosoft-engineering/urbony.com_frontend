@@ -30,35 +30,27 @@ const Footer = () => {
         window.matchMedia("(max-width: 414px)").addEventListener('change', e =>setScreen(e.screen));
     }, []);
     const sell = ()=>{
-        setGlobalState("buy", false)
-        setGlobalState("rent", false)
-        setGlobalState("realEstate", false)
+        setGlobalState('corporate', false)
         navigate('/sell')
     }
     const buy = ()=>{
-        setGlobalState("sell", false)
-        setGlobalState("rent", false)
-        setGlobalState("realEstate", false)
+        setGlobalState('corporate', false)
         navigate('/buy')
     }
     const rent = ()=>{
-        setGlobalState("buy", false)
-        setGlobalState("sell", false)
-        setGlobalState("realEstate", false)
+        setGlobalState('corporate', false)
         navigate('/rent')
     }
     const realEstate = ()=>{
-        setGlobalState("buy", false)
-        setGlobalState("rent", false)
-        setGlobalState("sell", false)
+        setGlobalState('corporate', false)
         navigate('/real-estate-project')
     }
     return(
         <Wrapper>
             <FooterContent>
                 <Footerservices><FooterTitle>{t('footer.services')}</FooterTitle>
-                <h3>{t('footer.rental')}</h3>
-                <h3>{t('footer.property')}</h3>
+                <h3 onClick={()=>navigate('/management')} style={{cursor: 'pointer', textDecoration: 'underline'}}>{t('footer.rental')}</h3>
+                <h3 onClick={()=>navigate('/management')} style={{cursor: 'pointer', textDecoration: 'underline'}}>{t('footer.property')}</h3>
                 
                 </Footerservices>
                 <Footerservices>
@@ -71,36 +63,48 @@ const Footer = () => {
                 <Footerservices>
                 <FooterTitle>{t('footer.getInTouch')}</FooterTitle>
                 <div style={{
-                    marginBottom: 13,
-                    display: 'flex'
+                    marginBottom: 17,
+                    display: 'flex',
+                    alignItems: 'center'
                 }}><img src={Location} alt="location" style={{
                     marginRight: 10,
+                    width: screen ? 22: 28,
+                    height: screen ? 22: 28
                 }}/> <div style={{marginTop:25}}>Boulevard de l’Uprona N°91, 3ème Étage, Bujumbura, Burundi</div></div>
                 <div style={{
-                    marginBottom: 13
+                    marginBottom: 13,
+                    display: 'flex',
+                    alignItems: 'center'
                 }}><img src={Call} alt="phone-call" style={{
-                    marginRight: 10
+                    marginRight: 10,
+                    width: screen ? 22: 28,
+                    height: screen ? 22: 28
                 }}/> {t('contact.phoneNumber')}</div>
-                <div><img src={WhatsApp} alt="whatsapp" style={{
-                    marginRight: 10
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center'
+                }}><img src={WhatsApp} alt="whatsapp" style={{
+                    marginRight: 10,
+                    width: screen ? 22: 28,
+                    height: screen ? 22: 28
                 }}/> {t('contact.whatsApp')}</div>
                 </Footerservices>
                 <Footerservices style={{
                     
                 }}><FooterTitle>{t('footer.socialMedia')}</FooterTitle>
                 {screen ? <SocialMedia>
-                    <img src={Facebook} alt="facebook"/>
-                    <img src={Instagram} alt="instagram"/>
-                    <img src={Twitter} alt="twitter"/>
-                    <img src={Youtube} alt="youtube" style={{
-                        marginRight: 100
-                    }}/>
-                    <Button onClick={Top}><img src={Arrow} alt="arrow scroll-up"/></Button>
+                    <img src={Facebook} style={{height: 30, width: 20}} alt="facebook" onClick={()=>window.open('https://www.facebook.com/profile.php?id=100086745292985')}/>
+                    <img src={Instagram} style={{height: 30, width: 20}}alt="instagram" onClick={()=>window.open('https://www.instagram.com/urbonyuplans/')}/>
+                    <img src={Twitter}  style={{height: 30, width: 20}}alt="twitter" onClick={()=>window.open('https://twitter.com/urbony?s=20&t=G9L7Kg0KCcxsW_EIx7rezw')}/>
+                    <img src={Youtube}  alt="youtube" style={{
+                        marginRight: 100, height: 30, width: 20
+                    }} onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')}/>
+                    <Button onClick={Top}><img src={Arrow}  style={{height: 50, width: 30}}alt="arrow scroll-up"/></Button>
                 </SocialMedia>: <SocialMedia>
-                    <img src={Facebook} alt="facebook"/>
-                    <img src={Instagram} alt="instagram"/>
-                    <img src={Twitter} alt="twitter"/>
-                    <img src={Youtube} alt="youtube"/>
+                    <img src={Facebook} alt="facebook" style={{cursor: 'pointer'}} onClick={()=>window.open('https://www.facebook.com/profile.php?id=100086745292985')}/>
+                    <img src={Instagram} alt="instagram" style={{cursor: 'pointer'}} onClick={()=>window.open('https://www.instagram.com/urbonyuplans/')}/>
+                    <img src={Twitter} alt="twitter" style={{cursor: 'pointer'}} onClick={()=>window.open('https://twitter.com/urbony?s=20&t=G9L7Kg0KCcxsW_EIx7rezw')}/>
+                    <img src={Youtube} alt="youtube" onClick={()=>window.open('https://www.youtube.com/channel/UCS-bgyNPYQo8SIPlXASy6Iw')} style={{cursor: 'pointer'}}/>
                 </SocialMedia>}
                 
                 </Footerservices>

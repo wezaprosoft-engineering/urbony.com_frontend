@@ -1,5 +1,6 @@
 import {createGlobalState} from 'react-hooks-global-state';
 
+
 const {setGlobalState, useGlobalState} = createGlobalState({
     residential: true,
     corporate: false,
@@ -36,7 +37,7 @@ const {setGlobalState, useGlobalState} = createGlobalState({
     free: true,
     charge: undefined,
     loading: false,
-    checked: false
+    checked: false,
   
 });
 

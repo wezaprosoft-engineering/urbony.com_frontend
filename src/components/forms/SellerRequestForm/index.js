@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {  Head, Line, Title, Wrapper } from "../../Popular/Popular.styles";
 import { Container, InputRequest, RequestForm, Select, Star, SubmitButton, Content} from "./SellerRequestForm.styles";
 import { useTranslation } from "react-i18next";
@@ -8,14 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SellerRequestForm = props => {
     
-    const {t} = useTranslation();
+    const {t,i18n} = useTranslation();
     const locations = useLocation()
     const [firstName, setFirstName] = useState('')
         const [lastName, setLastName] = useState('')
         const [email, setEmail] = useState('')
         const [phoneNumber, setPhoneNumber] = useState('')
         const [location, setLocation] = useState('')
-        const [propertyTypesId, setPropertyTypesId] = useState('')
+        
+        const [checked, setChecked] = useState(false)
+        const [error, setError] = useState('')
         var requestType
         if(locations.pathname==='/management'){
             requestType = 'MANAGEMENT'
@@ -30,7 +32,8 @@ const SellerRequestForm = props => {
             if(firstName.length===0 || lastName.length===0 || email.length===0 || phoneNumber.length ===0 || location.length ===0 || propertyTypesId.length===0){
                 setUncompleted('Please fill in the required information!!')
             } else{
-                const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, propertyTypesId, requestType});
+                if(checked){
+                    const body = JSON.stringify({firstName, lastName, email, phoneNumber, location, propertyTypesId, requestType});
                 try {
                    fetch(url, {
                         method: 'POST',
@@ -70,10 +73,51 @@ const SellerRequestForm = props => {
                 } catch (error) {
                     console.log(error)
                 }
+                } else{
+                    setError('You have to accept the terms and general conditions')
+                }
+                
             }
            
             
         }
+        const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+        const [property, setProperty] = useState('')
+
+    const getProperty = ()=>{
+        try {
+            fetch(propertyUrl,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4`
+                }
+            }).then(res => {
+                if (res.ok){
+                    return res.json()
+                } else {
+                    throw res.json()
+                }
+            }).then(json =>{
+               
+                
+               console.log(json)
+               setProperty(json)
+
+               
+            }).catch(error =>{
+                console.log(error)
+                
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        
+        getProperty()
+    }, []);
+    const [propertyTypesId, setPropertyTypesId] = useState(property[0]?.id)
     
     return (
         <Wrapper style={{
@@ -131,11 +175,11 @@ const SellerRequestForm = props => {
                     <Container>
                         <h2>{t('sellerRequestForm.typeOfProperty')}<Star>*</Star></h2>
                         <Select id="options" value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
-                        <option>{t('sellerRequestForm.option0')}</option>
-                            <option value="1">{t('sellerRequestForm.option1')}</option>
-                            <option value="2">{t('sellerRequestForm.option2')}</option>
-                            <option value="3">{t('sellerRequestForm.option3')}</option>
-                            <option value="4">{t('sellerRequestForm.option4')}</option>
+                        {property.length > 0 ?(
+                        property.map(house=>(
+                            <option value={house.id} >{house.name}</option>
+                        ))
+                    ):<option>No Value</option>}
                         </Select>
                         
                     </Container>
@@ -144,8 +188,14 @@ const SellerRequestForm = props => {
                         alignItems: 'center'
                     }}><input type="checkbox" style={{
                         marginRight: 20
+                    }} onChange={()=> {
+                        if(checked){
+                            setChecked(false)
+                        }else{
+                            setChecked(true)
+                        }
                     }}/>
-                    <h4>{t('sellerRequestForm.condition')} <Star>*</Star></h4>
+                    <h4>{t('sellerRequestForm.condition')}<a href={i18n.language==='fr' ? "https://firebasestorage.googleapis.com/v0/b/urbony-cb822.appspot.com/o/Conditions%20generales%20Urbony%20french.docx.pdf?alt=media&token=a14bd9f1-390b-4dcb-a305-e9a2e8b9ec4d": "https://firebasestorage.googleapis.com/v0/b/urbony-cb822.appspot.com/o/General%20Conditions%20Urbony%20english.docx.pdf?alt=media&token=6292114c-10f5-406a-8ee0-4f8e72e5c26c"} target="_blank" rel="noopener noreferrer">{t('sellerRequestForm.generalConditions')}</a> <Star>*</Star></h4>
                     </div>
                     <div style={{width: '100%'}}><h3>{t('sellerRequestForm.field')} <Star>*</Star> {t('sellerRequestForm.mandatory')}</h3></div>
                     
@@ -153,6 +203,9 @@ const SellerRequestForm = props => {
                     <h4 style={{
                         color: 'red'
                     }}>{uncompleted}</h4>
+                     <h4 style={{
+                        color: 'red'
+                    }}>{error}</h4>
                     <ToastContainer progressClassName="toastProgress"/>
                     
                 </RequestForm>

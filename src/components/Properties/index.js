@@ -16,7 +16,7 @@ import LocationMin from '../../assets/images/location_min.svg'
 import BedMin from '../../assets/images/bed_min.svg'
 
 import HouseMin from '../../assets/images/house_min.svg'
-
+import { Badge } from "./myProperties.styles";
 import StatisticMin from '../../assets/images/statistic_min.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -155,11 +155,25 @@ const Properties = props =>{
         }}/>
         <div style={{
             display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+        }}>
+            <div style={{
+            display: 'flex',
             
             marginLeft: 12
         }}><img alt="location-icon" src={Location} style={{
             marginRight: 10
         }}/> <h4>{house.property.location}</h4></div>
+        <Badge style={{
+            backgroundColor: !house.property.isApproved && !house.property.isDeclined ? 'darkorange':house.property.isApproved && !house.property.isDeclined ? 'green':'red',
+        }}>
+        {!house.property.isApproved && !house.property.isDeclined ? 'Pending': null}
+        {house.property.isApproved && !house.property.isDeclined ? 'Approved': null}
+        {!house.property.isApproved && house.property.isDeclined ? 'Declined': null}
+        </Badge>
+        </div>
+        
         <CardsContainer>
         <div style={{
             display: 'flex',
@@ -212,7 +226,7 @@ const Properties = props =>{
     </HomeCards>
                             )
                         )}
-                        {sellProperties.slice(0, activeIndexSell).map(house =>(
+                        {sellProperties.slice(activeIndexSell - 1, activeIndexSell).map(house =>(
                             <Container style={{
                                 backgroundImage: `url(${house.property.coverImage})`,
                                 backgroundSize: 'cover'
@@ -222,7 +236,9 @@ const Properties = props =>{
                                         <img src={ArrowLeft} alt="arrow-left" style={{
                                             marginLeft: 17,
                                             
-                                            marginTop: 16
+                                            marginTop: 16,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -230,7 +246,9 @@ const Properties = props =>{
                                     <img src={ArrowRight} alt="arrow-right" style={{
                                             marginLeft: 22,
                                             
-                                            marginTop: 17
+                                            marginTop: 17,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -257,25 +275,33 @@ const Properties = props =>{
                                     
                                     
                                 }}>{house.property.location}</h4></div>
-                                <CardsContainer>
+                                 <CardsContainer>
                                 <div style={{
                                     display: 'flex',
                                     marginTop: 0,
                                     marginLeft: 12,
-                                    color:'white' 
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="bed-icon" src={BedMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
                                 }}/><h5>{house.property.bedrooms} {t('Card.bed')}</h5>
                                 </div>
                                 <div style={{
                                     display: 'flex',
                                     marginTop: 0,
-                                    color:'white'
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                     
                                 }}>
                                 <img alt="house-icon" src={HouseMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
                                 }}/>  <h5>{house.property.livingArea} m</h5>
                                 </div>
                                 <div style={{
@@ -284,10 +310,14 @@ const Properties = props =>{
                                     marginLeft: 12,
                                     color:'white',
                                     marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="size-icon" src={StatisticMin} style={{
                                     marginRight: 10,
-                                    marginTop: 0
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
                                 }}/>
                                     <h5>{house.property.distanceToRoad}m</h5>
                                 </div>
@@ -329,12 +359,25 @@ const Properties = props =>{
         }}/>
         <div style={{
             display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+        }}>
+            <div style={{
+            display: 'flex',
             
             marginLeft: 12
         }}><img alt="location-icon" src={Location} style={{
             marginRight: 10
         }}/> <h4>{house.property.location}</h4></div>
-        <CardsContainer>
+        <Badge style={{
+            backgroundColor: !house.property.isApproved && !house.property.isDeclined ? 'darkorange':house.property.isApproved && !house.property.isDeclined ? 'green':'red',
+        }}>
+        {!house.property.isApproved && !house.property.isDeclined ? 'Pending': null}
+        {house.property.isApproved && !house.property.isDeclined ? 'Approved': null}
+        {!house.property.isApproved && house.property.isDeclined ? 'Declined': null}
+        </Badge>
+        </div>
+         <CardsContainer>
         <div style={{
             display: 'flex',
             
@@ -386,7 +429,7 @@ const Properties = props =>{
     </HomeCards>
                             )
                         )}
-                        {properties.slice(0, activeIndexRent).map(house =>(
+                        {properties.slice(activeIndexRent - 1, activeIndexRent).map(house =>(
                             <Container style={{
                                 backgroundImage: `url(${house.property.coverImage})`,
                                 backgroundSize: 'cover'
@@ -396,7 +439,9 @@ const Properties = props =>{
                                         <img src={ArrowLeft} alt="arrow-left" style={{
                                             marginLeft: 17,
                                             
-                                            marginTop: 16
+                                            marginTop: 16,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -404,7 +449,9 @@ const Properties = props =>{
                                     <img src={ArrowRight} alt="arrow-right" style={{
                                             marginLeft: 22,
                                             
-                                            marginTop: 17
+                                            marginTop: 17,
+                                            width: 17,
+                                            height: 30
                         
                                         }}/>
                                     </ArrowCircle>
@@ -431,25 +478,33 @@ const Properties = props =>{
                                     
                                     
                                 }}>{house.property.location}</h4></div>
-                                <CardsContainer>
+                                 <CardsContainer>
                                 <div style={{
                                     display: 'flex',
                                     marginTop: 0,
                                     marginLeft: 12,
-                                    color:'white' 
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="bed-icon" src={BedMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 60
                                 }}/><h5>{house.property.bedrooms} {t('Card.bed')}</h5>
                                 </div>
                                 <div style={{
                                     display: 'flex',
                                     marginTop: 0,
-                                    color:'white'
+                                    color:'white',
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                     
                                 }}>
                                 <img alt="house-icon" src={HouseMin} style={{
-                                    marginRight: 10
+                                    marginRight: 10,
+                                    width: 15,
+                                    height: 55
                                 }}/>  <h5>{house.property.livingArea} m</h5>
                                 </div>
                                 <div style={{
@@ -458,10 +513,14 @@ const Properties = props =>{
                                     marginLeft: 12,
                                     color:'white',
                                     marginRight: 30,
+                                    alignItems: 'center',
+                                    alignContent: 'center' 
                                 }}>
                                 <img alt="size-icon" src={StatisticMin} style={{
                                     marginRight: 10,
-                                    marginTop: 0
+                                    marginTop: 0,
+                                    width: 15,
+                                    height: 55
                                 }}/>
                                     <h5>{house.property.distanceToRoad}m</h5>
                                 </div>

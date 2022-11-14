@@ -164,6 +164,16 @@ const MenuNav = props =>{
         localStorage.removeItem('name')
         window.location.reload(false)
     }
+    const profile =() =>{
+        setGlobalState("mobileMenu", false)
+        navigate('/profile')
+    }
+
+    const property = () =>{
+        setGlobalState("mobileMenu", false)
+        navigate('/myproperties')
+
+    }
     return(
         <MenuContent>
             <MenuHeader>
@@ -178,8 +188,8 @@ const MenuNav = props =>{
             <h3 onClick={makeManagement}>{t('NavBar.management')}</h3>
             <h3 onClick={makeAboutUs}>{t('NavBar.aboutUs')}</h3>
             {loggedIn ? <>
-            <h3>Profile</h3>
-            <h3 onClick={()=>navigate('/myproperties')}>My properties</h3>
+            <h3 onClick={profile}>Profile</h3>
+            <h3 onClick={property}>My properties</h3>
             <h3 onClick={logout}>Logout</h3>
             </>:null}
         </Menu>:
@@ -192,8 +202,8 @@ const MenuNav = props =>{
             <h3 onClick={makeManagement}>{t('NavBar.management')}</h3>
             <h3 onClick={makeAboutUs}>{t('NavBar.aboutUs')}</h3>
             {loggedIn ? <>
-            <h3>Profile</h3>
-            <h3 onClick={()=>navigate('/myproperties')}>My properties</h3>
+            <h3 onClick={profile}>Profile</h3>
+            <h3 onClick={property}>My properties</h3>
             <h3 onClick={logout}>Logout</h3>
             </>:null}
         </Menu>}

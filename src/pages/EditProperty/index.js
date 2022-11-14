@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Button, Content, Details, DetailsContent, HouseImage, PencilLogo, Wrapper } from "./EditProperty.styles";
+import { Button, Content, Delete, Details, DetailsContent, HouseImage, PencilLogo, Wrapper } from "./EditProperty.styles";
 import { useParams } from "react-router-dom";
 import Pencil from '../../assets/images/pencil.svg'
 import { Input } from "../addProperty/addProperty.styles";
@@ -7,6 +7,10 @@ import { useTranslation } from "react-i18next";
 import { Select } from "../addProperty/addProperty.styles";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Spinner";
+import { ReactDialogBox } from 'react-js-dialog-box'
+import 'react-js-dialog-box/dist/index.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditProperty = () =>{
 
@@ -15,7 +19,7 @@ const EditProperty = () =>{
     const {t} = useTranslation()
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
-   
+    const [dialog, setDialog] = useState(false)
 
     
     useEffect(() =>{
@@ -54,7 +58,7 @@ const EditProperty = () =>{
         propertyDetails();
         
     }, [id]);
-    const [price, setPrice] = useState('')
+    const [prices, setPrice] = useState('')
     const [priceEdit, setPriceEdit] = useState(false)
     const [bedrooms, setBedrooms] = useState('')
     const [bedroomsEdit, setBedroomsEdit] = useState(false)
@@ -135,6 +139,8 @@ const EditProperty = () =>{
         const update = async () => {
             var body;
             if(priceEdit){
+                // eslint-disable-next-line
+                const price = parseFloat(prices.replace(/[^\d\.\-]/g, ""))
                 body = JSON.stringify({price})
             }else if(bedroomsEdit){
                 body = JSON.stringify({bedrooms})
@@ -189,11 +195,67 @@ const EditProperty = () =>{
             }
             
         }
+        const deleteProperty = ()=>{
+            try {
+                
+                fetch(url, {
+                     method: 'DELETE',
+                     headers: {
+                         'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NjMxMzk1NDR9.CkIOYVAOZZNdpPbosprA9w0hCEwRyQLW0jdRaQUJTW4'
+                     }
+                 }).then(res => {
+                     if (res.ok){
+                         return res.json()
+                     } else {
+                         throw res.json()
+                     }
+                     
+                 }).then(json =>{
+                     console.log(json)
+                     setDialog(false)
+                     toast(json.message, 
+                        {position: toast.POSITION.TOP_RIGHT})
+                     navigate('/myproperties')
+                     
+                     
+     
+                    
+     
+                 }).catch(error =>{
+                     
+                     console.log(error)
+                     
+                 });
+     
+                 
+             } catch (error) {
+                 console.log(error)
+             }
+        }
     return(
         <Wrapper>
             {loading ? (<Loading/>):(
                 <Content>
-                
+                {dialog ?  <ReactDialogBox
+              closeBox={()=>setDialog(false)}
+              modalWidth='40%'
+              headerBackgroundColor='rgba(46,15,89,1)'
+              headerTextColor='white'
+              headerHeight='65'
+              closeButtonColor='white'
+              bodyBackgroundColor='white'
+              bodyTextColor='black'
+              bodyHeight='200px'
+              headerText='Confirmation'
+            >
+              <div>
+                <h2>Are you sure you want to remove this property?</h2>
+                <div style={{display: 'flex', justifyContent: 'space-around'}}>
+                    <Delete style={{width: 170}} onClick={deleteProperty}>Yes</Delete>
+                    <Delete style={{width: 170, backgroundColor: 'rgba(46,15,89,1)'}} onClick={()=>setDialog(false)}>No</Delete>
+                </div>
+              </div>
+            </ReactDialogBox>: null}
             
                 <Details>
                 <HouseImage src={property.coverImage} alt='cover-image'/>
@@ -206,7 +268,12 @@ const EditProperty = () =>{
                     </DetailsContent>
                     {priceEdit ? <div style={{display: 'flex'}}>
                         <Input style={{width: '30%', marginRight: 10}}
-                        type="number" value={price} onChange={(e) => setPrice(parseInt(e.target.value))}
+                         value={prices} onChange={(e) =>{
+                            const {value} = e.target
+                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                       
+                        setPrice(formated)}
+                        } 
                         />
                         <Button onClick={update}>Save</Button>
                         </div>: null}
@@ -227,9 +294,27 @@ const EditProperty = () =>{
                         <PencilLogo src={Pencil} onClick={handleLocation}/>
                     </DetailsContent>
                     {locationEdit ? <div style={{display: 'flex'}}>
-                        <Input style={{width: '30%', marginRight: 10}}
-                        value={location} onChange={(e) => setLocation(e.target.value)}
-                        />
+                    <Select value={location} onChange={(e) => setLocation(e.target.value)} style={{width: '30%', marginRight: 10}}>
+                <option value="select"> {t('Welcome.location')}</option>
+                        <option value="Bubanza">Bubanza</option>
+                        <option value="Bujumbura Mairie">Bujumbura Mairie</option>
+                        <option value="Bujumbura Rural">Bujumbura Rural</option>
+                        <option value="Cibitoke">Cibitoke</option>
+                        <option value="Muramvya">Muramvya</option>
+                        <option value="Mwaro">Mwaro</option>
+                        <option value="Cankuzo">Cankuzo</option>
+                        <option value="Gitega">Gitega</option>
+                        <option value="Rutana">Rutana</option>
+                        <option value="Ruyigi">Ruyigi</option>
+                        <option value="Karusi">Karusi</option>
+                        <option value="Kayanza">Kayanza</option>
+                        <option value="Kirundo">Kirundo</option>
+                        <option value="Muyinga">Muyinga</option>
+                        <option value="Ngozi">Ngozi</option>
+                        <option value="Bururi">Bururi</option>
+                        <option value="Makamba">Makamba</option>
+                        <option value="Rumonge">Rumonge</option>
+                </Select>
                         <Button onClick={()=>update()}>Save</Button>
                         </div>: null}
                     <DetailsContent>
@@ -291,8 +376,9 @@ const EditProperty = () =>{
                                     </Select>
                         <Button onClick={()=>update()}>Save</Button>
                         </div>: null}
+                        <Delete onClick={()=>setDialog(true)}>Remove Property</Delete>
                 </Details>
-                
+                <ToastContainer progressClassName="toastProgress"/>
                 
                 </Content>
             )}

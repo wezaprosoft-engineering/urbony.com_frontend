@@ -10,6 +10,7 @@ import AddProperty from "../pages/addProperty";
 import AccountCreation from "../pages/Authentication/AccountCreation";
 import ForgotPassword from "../pages/Authentication/ForgotPassword";
 import Login from "../pages/Authentication/Login";
+import Profile from "../pages/Authentication/Profile";
 import SignUp from "../pages/Authentication/SignUp";
 import CommercialSpace from "../pages/Corporate/CommercialSpace";
 import IndustrialSpace from "../pages/Corporate/IndustrialSpace";
@@ -28,11 +29,13 @@ import Searches from "../pages/Search";
 import SingleProject from "../pages/SingleProject";
 import SingleProperty from "../pages/SingleProperty";
 import { setGlobalState, useGlobalState } from "../store/state";
+import Estimate from "../components/EstimateButton";
 
 const Routing = () =>{
     const [mobileMenu] = useGlobalState("mobileMenu")
     const [loggedIn] = useGlobalState("loggedIn")
     const token = localStorage.getItem('token')
+    
     if (!token){
         setGlobalState('loggedIn', false)
     }else{
@@ -44,7 +47,12 @@ const Routing = () =>{
             <Header/>
             <NavBar/>
             {mobileMenu ? <MenuNav/>: null}
+            
+            <Estimate/>
+            
+            
             <Routes>
+                
 
                 {loggedIn ? <>
                 
@@ -71,6 +79,7 @@ const Routing = () =>{
                 <Route path="/property/:id" element={<SingleProperty/>}/>
                 <Route path="/edit-property/:id" element={<EditProperty/>}/>
                 <Route path="/single-project/:id" element={<SingleProject/>}/>
+                <Route path="/profile" element={<Profile/>}/>
                 
                 
                 
