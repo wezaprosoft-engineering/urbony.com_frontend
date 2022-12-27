@@ -50,5 +50,4 @@ jobs:
           username: "urbony@urbony.com"
           password: ${{ secrets.ftp_password }}
           local-dir: "build/"
-          server-dir: "/"
        
