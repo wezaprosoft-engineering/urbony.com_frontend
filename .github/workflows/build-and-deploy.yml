@@ -47,8 +47,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: "urbony.com"
-          username: "ca6gi_steve"
+          username: "urbony@urbony.com"
           password: ${{ secrets.ftp_password }}
           local-dir: "build/"
-          server-dir: "sites/"
+          server-dir: "/"
        
