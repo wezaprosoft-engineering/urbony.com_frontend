@@ -18,12 +18,16 @@ import urbonyLogo from '../../assets/images/Urbony.png'
 import { FaChevronLeft } from 'react-icons/fa';
 import GallerySlider from "../../components/Gallery/index";
 import './style.css';
+import FsLightbox from "fslightbox-react";
+
 
 const SingleProperty = () => {
     const { t } = useTranslation()
     const { id } = useParams();
     const [property, setProperty] = useState("")
-    const [gallery,setGallery] = useState([]);
+    const [toggler, setToggler] = useState(false);
+    const [gallery, setGallery] = useState([]);
+    const [sources, setSources] = useState([])
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhoneNumber] = useState('')
@@ -32,7 +36,9 @@ const SingleProperty = () => {
     const link = `https://urbony.com/property/${id}`
 
     const navigate = useNavigate();
-
+    const goFullscreen = () => {
+        setToggler(!toggler);
+    }
     useEffect(() => {
         const url = `https://urbony.onrender.com/api/property/${id}`
 
@@ -55,8 +61,14 @@ const SingleProperty = () => {
                     console.log(json)
                     setLoading(false)
                     setProperty(json);
-                    let gl = [{id:0,"url":json.coverImage}]
-                    setGallery(gl.concat(json.gallery))
+                    let gl = [{ id: 0, "url": json.coverImage }]
+                    setGallery(gl.concat(json.gallery));
+                    let images = [];
+                    gallery.forEach(item => {
+                        let img = item.url;
+                        images.push(img.replace(/ /g,"%20"));
+                    });
+                    setSources(images);
                 }).catch(error => {
                     setLoading(false)
                     console.log(error)
@@ -119,20 +131,25 @@ const SingleProperty = () => {
                             </div>
 
                         </HouseImage> */}
-                        <div style={{ display: 'flex',alignItems:'center', fontSize: '1.3em', fontWeight: 'bolder',marginBottom:'25px',cursor:'pointer' }} onClick={() => navigate(-1)}>                            <FaChevronLeft />
+                        <div style={{ display: 'flex', alignItems: 'center', fontSize: '1.3em', fontWeight: 'bolder', marginBottom: '25px', cursor: 'pointer' }} onClick={() => navigate(-1)}>                            <FaChevronLeft />
                             <span>Back</span>
                         </div>
-                       <div style={{marginTop:'20px'}}>
-                        <GallerySlider gallery={gallery}/>
+                        <div style={{ marginTop: '20px' }}>
+                            <GallerySlider gallery={gallery} slideshow={goFullscreen} />
+                            <FsLightbox
+                                toggler={toggler}
+                                sources={sources}
+                                type={"image"}
+                            />
                             {/* {property.gallery?.map(galleries => {
                                 return (
                                     <img src={galleries.url} alt="galleries" style={{ width: '20%', height: '20%', marginRight: 10, }} />
 
                                 )
                             })} */}
-                        </div> 
+                        </div>
                     </Details>
-                    <div className="propDesc" style={{ marginTop: 70,display:'flex',justifyContent:'space-between' }}>
+                    <div className="propDesc" style={{ marginTop: 70, display: 'flex', justifyContent: 'space-between' }}>
                         <DetailedContent className="feature">
                             <DetailedInside>
                                 <div>
@@ -170,7 +187,7 @@ const SingleProperty = () => {
 
                             </DetailedInside>
                         </DetailedContent>
-                        <PropertyForm className="form" style={{marginTop:'10px'}}>
+                        <PropertyForm className="form" style={{ marginTop: '10px' }}>
                             <div style={{ width: '90%', marginLeft: 'auto', marginRight: 'auto', display: 'flex', alignItems: 'center', marginTop: 10, justifyContent: 'space-between' }}>
                                 <h2>URBONY</h2>
                                 <img src={urbonyLogo} alt="logo" style={{ width: 170, height: 50 }} />
@@ -225,7 +242,7 @@ const SingleProperty = () => {
 
                             <div style={{ width: '33.33%' }}>
                                 {property.externalFeatures?.length > 0 ? <>{
-                                    property.externalFeatures?.map((feature,index) => {
+                                    property.externalFeatures?.map((feature, index) => {
                                         return (
                                             <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
                                                 <img src={Check} alt="check" width='15px' height='15px' />
@@ -237,7 +254,7 @@ const SingleProperty = () => {
                             </div>
                             <div style={{ width: '33.33%' }}>
                                 {property.internalFeatures?.length > 0 ? <>{
-                                    property.internalFeatures?.map((feature,index) => {
+                                    property.internalFeatures?.map((feature, index) => {
                                         return (
                                             <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
                                                 <img src={Check} alt="icon" width='15px' height='15px' />
@@ -249,7 +266,7 @@ const SingleProperty = () => {
                             </div>
                             <div style={{ width: '33.33%' }}>
                                 {property.nearbyFeatures?.length > 0 ? <>{
-                                    property.nearbyFeatures?.map((feature,index) => {
+                                    property.nearbyFeatures?.map((feature, index) => {
                                         return (
                                             <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
                                                 <img src={Check} alt="icon" width='15px' height='15px' />

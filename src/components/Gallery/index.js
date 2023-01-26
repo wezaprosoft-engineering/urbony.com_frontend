@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import Slide from './slide';
 import {FaArrowCircleRight, FaArrowCircleLeft} from 'react-icons/fa';
 
-export default function GallerySlider({gallery}) {
+export default function GallerySlider({gallery,slideshow}) {
 
  console.error('Gallery',gallery)
   return (
@@ -50,7 +50,7 @@ export default function GallerySlider({gallery}) {
       >
         {gallery && gallery.map((img) => (
           <SwiperSlide key={img.id} className="py-5 rounded" style={{borderRadius:'25px'}}>
-            <Slide cover={img.url} />
+            <Slide cover={img.url} handleClick={slideshow} />
           </SwiperSlide>
         ))}
       </Swiper>
