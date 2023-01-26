@@ -50,5 +50,4 @@ jobs:
           username: "ca6gi_steve"
           password: ${{ secrets.ftp_password }}
           local-dir: "build/"
-          server-dir: "sites/"
        
