@@ -36,11 +36,9 @@ export const HouseImage = styled.div`
 `;
 
 export const DetailedContent = styled.div`
-   width: 45%;
-   height: fit-content;
-   background-color: lightgray;
-   margin-top: 10px;
-  
+   border: 1px solid lightgray;
+   border-radius:10px;
+   width:45%
 `;
 export const DetailedInside = styled.div`
 display: flex;
@@ -52,17 +50,17 @@ margin-top: 20px;
 `;
 
 export const FeatureContent = styled.div`
-border: 1px solid transparent;
-width: 45%;
-height: fit-content;
+border: 1px solid lightgray;
+width: 42%;
 padding-left: 3%;
 justify-content: space-around;
+margin-top: 2%;
+border-radius: 10px;
 `;
 
 export const PropertyForm = styled.div`
-   width: 50%;
+   width: 45%;
    border:1px solid lightgray;
-   height: 500px;
-   margin-bottom: 50px;
+   border-radius:10px
    
 `;
