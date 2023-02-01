@@ -37,7 +37,7 @@ const SingleProperty = () => {
 
     const navigate = useNavigate();
     const goFullscreen = () => {
-        setToggler(!toggler);
+        // setToggler(!toggler);
     }
     useEffect(() => {
         const url = `https://urbony.onrender.com/api/property/${id}`
