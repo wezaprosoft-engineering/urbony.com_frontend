@@ -29,26 +29,24 @@ export const BackgroundImage = styled.div`
 `;
 
 export const Input = styled.input`
-width: 50%;
-height: 45px;
-background: #D9D9D9;
+width: 100%;
+height:40px;
 border-radius: 5px;
 font-weight: 600;
-font-size: 15px;
-@media screen and (max-width: 414px){
+font-size: 14px;
+@media screen and (max-width: 600px){
     width: 90%;
-    font-size: 17px;
+    font-size: 12px;
     height: 45px;
 }
 `;
 export const Select = styled.select`
-width: 50%;
+width: 100%;
 height: 45px;
-background: #D9D9D9;
 border-radius: 5px;
 font-weight: 600;
 font-size: 15px;
-@media screen and (max-width: 414px){
+@media screen and (max-width: 600px){
     width: 90%;
     font-size: 17px;
     height: 45px;
@@ -56,19 +54,18 @@ font-size: 15px;
 `;
 
 export const Button = styled.button`
-width: 65%;
-height: 45px;
 border-radius: 5px;
 border-color: transparent;
-margin-top: 50px;
+margin: auto;
 background: #FF0000;
 font-weight: 700;
 font-size: 25px;
 color: white;
-margin-bottom: 100px;
 cursor: pointer;
-@media screen and (max-width: 414px){
-    width: 90%;
-    
+padding: 10px;
+width: 40%;
+@media screen and (max-width: 600px){
+    width: 80%;
+   
 }
 `;

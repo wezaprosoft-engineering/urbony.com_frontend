@@ -307,14 +307,14 @@ const Welcome = props =>{
                     height: '65px',
                     fontWeight: 400,
                     fontSize: 'large'
-                }}   onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
+                }}   onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}
+                defaultValue="Loading"
+                >
                     {property.length > 0 ?(
                         property.map((house, index)=>(
                             <option value={house.id} selected = {index === 0 ? 'selected':false}>{house.name}</option>
                         ))
                     ):<option>No Value</option>}
-                 
-                    
                     </select>}
                     </OverlayContent>
                         <OverlayContent><h2>{t('Welcome.where')}</h2><select style={{

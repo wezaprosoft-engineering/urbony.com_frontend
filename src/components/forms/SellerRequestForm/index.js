@@ -177,7 +177,7 @@ const SellerRequestForm = props => {
                         <Select id="options" value={propertyTypesId} onChange={(e) => setPropertyTypesId(parseInt(e.target.value))}>
                         {property.length > 0 ?(
                         property.map(house=>(
-                            <option value={house.id} >{house.name}</option>
+                            <option value={house.id} key={house.id} >{house.name}</option>
                         ))
                     ):<option>No Value</option>}
                         </Select>

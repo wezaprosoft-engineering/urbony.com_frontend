@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { MoreContent, Check } from "../../components/WelcomeSection/Welcome.styles";
 import { setGlobalState } from "../../store/state";
 import Loading from "../../components/Spinner";
-import axios from 'axios'
-const Details = props => {
+import { FaChevronLeft } from "react-icons/fa";
+import axios from 'axios';
+import { Uploader } from "uploader";
+import { UploadDropzone } from "react-uploader";
+import './addProperty.css';
 
-    //const [checked, setChecked] = useState(false)
 
 
+const Details = (props) => {
     const [screen, setScreen] = useState(
         window.matchMedia("(max-width: 414px)").matches
     )
@@ -20,21 +23,18 @@ const Details = props => {
     }, []);
     return (
         <>
-            {screen ? <MoreContent>
+            {/* {screen ? <MoreContent>
 
                 <Check type='checkbox' onChange={props.onChange} />
                 <h4>{props.detail}</h4>
-
-
-
-            </MoreContent> : <MoreContent>
-                <Check type='checkbox' value={props.value} onChange={props.onChange} checked={props.checked} id={props.id} key={props.myKey} />
-                <h4 style={{
+            </MoreContent> :  */}
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <input type='checkbox' value={props.value} onChange={props.onChange} checked={props.checked} id={props.id} key={props.myKey} />
+                <span style={{
                     fontSize: 15
-                }}>{props.detail}</h4>
-            </MoreContent>}
-
-
+                }}>{props.detail}</span>
+            </div>
+            {/* } */}
         </>)
 
 }
@@ -44,19 +44,19 @@ const AddProperty = () => {
     const navigate = useNavigate()
     const [image, setImage2] = useState(null)
     const [coverImage, setCoverImage] = useState('')
-    const [prices, setPrice] = useState('')
-    const [bedrooms, setBedrooms] = useState('')
+    const [prices, setPrice] = useState(0)
+    const [bedrooms, setBedrooms] = useState(0)
     const [location, setLocation] = useState('')
-    const [contructionYear, setConstructionYear] = useState('')
+    const [contructionYear, setConstructionYear] = useState('2005')
     const [distanceToRoad, setDistanceToRoad] = useState('')
     const [livingArea, setLivingArea] = useState('')
-    const [floors, setFloors] = useState('')
+    const [floors, setFloors] = useState(0)
     const [options, setOption] = useState('')
     const [loading, setLoading] = useState(false)
-    const [bathrooms, setBathrooms] = useState('')
+    const [bathrooms, setBathrooms] = useState(0)
+    const [gallery, setGallery] = useState([])
     const id = localStorage.getItem('id')
     const userId = parseInt(id)
-    var gallery = []
     // const [gallery, setGallery] = useState('')
     // const [gallery, setGallery] = useState('')
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
@@ -76,6 +76,7 @@ const AddProperty = () => {
         // eslint-disable-next-line
         const price = parseFloat(prices.replace(/[^\d\.\-]/g, ""))
         const body = JSON.stringify({ price, bedrooms, location, nearbyFeatures, bathrooms, contructionYear, distanceToRoad, externalFeatures, livingArea, floors, gallery, internalFeatures, options, coverImage, propertyTypesId, userId });
+        console.log('BODY',body)
         try {
             fetch(url, {
                 method: 'POST',
@@ -96,21 +97,14 @@ const AddProperty = () => {
                 console.log(json)
                 navigate('/myproperties')
 
-
-
-
-
             }).catch(error => {
                 console.log(error)
 
             });
 
-
         } catch (error) {
             console.log(error)
         }
-
-
     }
     const ImageUpload = async (file) => {
         var formdata = new FormData();
@@ -311,6 +305,8 @@ const AddProperty = () => {
             console.log(error)
         }
     }
+    const uploader = Uploader({ apiKey: "public_12a1xx69nLWsSuLh1sH42PzUfeE3" });
+
     useEffect(() => {
         internal()
         external()
@@ -393,20 +389,55 @@ const AddProperty = () => {
         }
     }
 
-   
+
 
     return (
         <Wrapper>
             {loading ? (<Loading />) : (
-                <Content>
-                    <h2>{t('addProperty.sell')}</h2>
-                    <h3>{t('addProperty.image')}</h3>
-                    {image ? <BackgroundImage style={{
+                <Content className="main">
+                    <div style={{ display: 'flex', alignItems: 'center', fontSize: '1.3em', fontWeight: 'bolder', marginBottom: '25px', cursor: 'pointer', color: 'red' }} onClick={() => navigate(-1)}>
+                        < FaChevronLeft />
+                        <h3 style={{ marginLeft: '10px' }}>{t('addProperty.sell')}</h3>
+                    </div>
+                    <div className="uploads" style={{ display: 'flex', width: '90%', background: 'gray', justifyContent: "space-around", padding: '20px' }}>
+                        <div >
+                            <h3>{t('addProperty.image')}</h3>
+                            <UploadDropzone uploader={uploader}
+                                options=
+                                {{
+                                    multi: false,
+                                    editor: {
+                                        images: {
+                                            crop: true,
+                                        }
+                                    },
+                                    mimeTypes: ["image/jpeg", "image/png"],
+                                }}
+                                onUpdate={files => setCoverImage(files[0].fileUrl)}
+                            />
+                        </div>
+                        <div>
+                            <h3>{t('addProperty.select')}</h3>
+                            <UploadDropzone uploader={uploader}
+                                options=
+                                {{
+                                    multi: true,
+                                    editor: {
+                                        images: {
+                                            crop: true,
+                                        }
+                                    },
+                                    mimeTypes: ["image/jpeg", "image/png"],
+                                }}
+                                onUpdate={files => {let gl = [];files.map(x => gl.push(x.fileUrl));setGallery(gl)}}
+                            />
+                        </div>
+                    </div>
+                    {/* {image ? <BackgroundImage style={{
                         backgroundColor: 'transparent',
                         backgroundImage: `url(${URL.createObjectURL(image)})`,
                         backgroundSize: 'cover'
                     }}>
-
 
                     </BackgroundImage> :
                         <BackgroundImage>
@@ -427,163 +458,154 @@ const AddProperty = () => {
                             />
 
                         </BackgroundImage>
-                    }
-                    <ImagesUploading />
+                    } */}
+                    {/* <ImagesUploading /> */}
 
                     <h2>{t('addProperty.details')}</h2>
-                    <h4>{t('addProperty.price')}</h4>
-                    <Input placeholder={t('addProperty.priceHolder')} value={prices} onChange={(e) => {
-                        const { value } = e.target
-                        const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
-                        setPrice(formated)
-                    }} />
-                    <h4>{t('addProperty.living')}</h4>
-                    <Input placeholder={t('addProperty.livingHolder')} value={livingArea} onChange={(e) => setLivingArea(e.target.value)} />
-                    <h4>Number of floors</h4>
-                    <Input type="number" placeholder="Enter number of floors" value={floors} onChange={(e) => setFloors(parseInt(e.target.value))} />
-                    <h4>Construction year</h4>
-                    <Input placeholder="Enter construction year" value={contructionYear} onChange={(e) => setConstructionYear(e.target.value)} />
-                    <h4>{t('addProperty.bedroom')}</h4>
-                    <Input type="number" placeholder={t('addProperty.bedroomHolder')} value={bedrooms} onChange={(e) => setBedrooms(parseInt(e.target.value))} />
-                    <h4>{t('addProperty.bathroom')}</h4>
-                    <Input type="number" placeholder={t('addProperty.bathroomHolder')} value={bathrooms} onChange={(e) => setBathrooms(parseInt(e.target.value))} />
-                    <h4>{t('addProperty.distance')}</h4>
-                    <Input placeholder={t('addProperty.distanceHolder')} value={distanceToRoad} onChange={(e) => setDistanceToRoad(e.target.value)} />
-                    <h4>{t('sellerRequestForm.typeOfProperty')}</h4>
-                    <Select value={propertyTypesId} onChange={(e) => setPropertytypesId(parseInt(e.target.value))}>
-                        {property.length > 0 ? (
-                            property.map(house => (
-                                <option value={house.id} >{house.name}</option>
-                            ))
-                        ) : <option>No Value</option>}
-                    </Select>
-                    <h4>{t('sellerRequestForm.locationOfProperty')}</h4>
-                    <Select value={location} onChange={(e) => setLocation(e.target.value)}>
-                        <option value="select"> {t('Welcome.location')}</option>
-                        <option value="Bubanza">Bubanza</option>
-                        <option value="Bujumbura Mairie">Bujumbura Mairie</option>
-                        <option value="Bujumbura Rural">Bujumbura Rural</option>
-                        <option value="Cibitoke">Cibitoke</option>
-                        <option value="Muramvya">Muramvya</option>
-                        <option value="Mwaro">Mwaro</option>
-                        <option value="Cankuzo">Cankuzo</option>
-                        <option value="Gitega">Gitega</option>
-                        <option value="Rutana">Rutana</option>
-                        <option value="Ruyigi">Ruyigi</option>
-                        <option value="Karusi">Karusi</option>
-                        <option value="Kayanza">Kayanza</option>
-                        <option value="Kirundo">Kirundo</option>
-                        <option value="Muyinga">Muyinga</option>
-                        <option value="Ngozi">Ngozi</option>
-                        <option value="Bururi">Bururi</option>
-                        <option value="Makamba">Makamba</option>
-                        <option value="Rumonge">Rumonge</option>
-                    </Select>
-                    <h4>{t('Estimation.content')}</h4>
-                    <Select id="value" value={options} onChange={(e) => setOption(e.target.value)}>
-                        <option value="Type">Select type</option>
-                        <option value="SELL">{t('Estimation.content1')}</option>
-                        <option value="RENT">{t('Estimation.content2')}</option>
-                    </Select>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: "space-between",
-                        flexWrap: 'wrap',
-                        marginRight: '10%'
-                    }}>
-
-                        <div>
-                            <h3>{t('Welcome.internal')}</h3>
-                            {internalFeature.length > 0 ? <>
-                                {internalFeature.map((details) => {
-                                    return (
-                                        <Details detail={details.name}
-                                            myKey={details.id}
-                                            id={details.id}
-                                            checked={details.checked}
-                                            onChange={(e) => {
-                                                // add to list
-                                                details.checked = !details.checked
-                                                setInternalFeatures([...internalFeature])
-                                                internalFeatures1 = internalFeature.filter((item1) =>
-
-                                                    item1.checked === true
-
-                                                )
-
-                                                setGlobalState("checked", true)
-                                                internalFeatures1 = internalFeatures1.map((name) => name.name)
-                                                setInternal(internalFeatures1)
-                                                console.log(internalFeatures)
-
-
-                                            }}
-
-                                        />
-
-
-                                    )
-                                })}
-                            </> : null}
-
-
+                    <div className="property">
+                        <div className="propDetail">
+                            <h4>{t('addProperty.price')}</h4>
+                            <Input placeholder={t('addProperty.priceHolder')} value={prices} onChange={(e) => {
+                                const { value } = e.target
+                                const formated = (Number(value.replace(/\D/g, '')) || '').toLocaleString()
+                                setPrice(formated)
+                            }} />
+                            <h4>{t('addProperty.living')}</h4>
+                            <Input placeholder={t('addProperty.livingHolder')} value={livingArea} onChange={(e) => setLivingArea(e.target.value)} />
+                            <h4>Number of floors</h4>
+                            <Input type="number" placeholder="Enter number of floors" value={floors} onChange={(e) => setFloors(parseInt(e.target.value))} />
+                            <h4>Construction year</h4>
+                            <Input type="number" min="1900" max="2099" step="1" placeholder="Enter construction year" value={contructionYear} onChange={(e) => setConstructionYear(e.target.value)} />
+                            <h4>{t('addProperty.bedroom')}</h4>
+                            <Input type="number" placeholder={t('addProperty.bedroomHolder')} value={bedrooms} onChange={(e) => setBedrooms(parseInt(e.target.value))} />
+                            <h4>{t('addProperty.bathroom')}</h4>
+                            <Input type="number" placeholder={t('addProperty.bathroomHolder')} value={bathrooms} onChange={(e) => setBathrooms(parseInt(e.target.value))} />
+                            <h4>{t('addProperty.distance')}</h4>
+                            <Input placeholder={t('addProperty.distanceHolder')} value={distanceToRoad} onChange={(e) => setDistanceToRoad(e.target.value)} />
+                            <h4>{t('sellerRequestForm.typeOfProperty')}</h4>
+                            <Select value={propertyTypesId} onChange={(e) => setPropertytypesId(parseInt(e.target.value))}>
+                                {property.length > 0 ? (
+                                    property.map(house => (
+                                        <option value={house.id} >{house.name}</option>
+                                    ))
+                                ) : <option>No Value</option>}
+                            </Select>
+                            <h4>{t('sellerRequestForm.locationOfProperty')}</h4>
+                            <Select value={location} onChange={(e) => setLocation(e.target.value)}>
+                                <option value="select"> {t('Welcome.location')}</option>
+                                <option value="Bubanza">Bubanza</option>
+                                <option value="Bujumbura Mairie">Bujumbura Mairie</option>
+                                <option value="Bujumbura Rural">Bujumbura Rural</option>
+                                <option value="Cibitoke">Cibitoke</option>
+                                <option value="Muramvya">Muramvya</option>
+                                <option value="Mwaro">Mwaro</option>
+                                <option value="Cankuzo">Cankuzo</option>
+                                <option value="Gitega">Gitega</option>
+                                <option value="Rutana">Rutana</option>
+                                <option value="Ruyigi">Ruyigi</option>
+                                <option value="Karusi">Karusi</option>
+                                <option value="Kayanza">Kayanza</option>
+                                <option value="Kirundo">Kirundo</option>
+                                <option value="Muyinga">Muyinga</option>
+                                <option value="Ngozi">Ngozi</option>
+                                <option value="Bururi">Bururi</option>
+                                <option value="Makamba">Makamba</option>
+                                <option value="Rumonge">Rumonge</option>
+                            </Select>
+                            <h4>{t('Estimation.content')}</h4>
+                            <Select id="value" value={options} onChange={(e) => setOption(e.target.value)}>
+                                <option value="Type">Select type</option>
+                                <option value="SELL">{t('Estimation.content1')}</option>
+                                <option value="RENT">{t('Estimation.content2')}</option>
+                            </Select>
                         </div>
-                        <div>
-                            <h3>{t('Welcome.external')}</h3>
-                            {externalFeature.length > 0 ? <>
-                                {externalFeature.map((details) => {
-                                    return (
-                                        <Details detail={details.name}
-                                            myKey={details.id}
-                                            id={details.id}
-                                            checked={details.checked}
-                                            onChange={(e) => {
-                                                // add to list
-                                                details.checked = !details.checked
-                                                setExternalFeatures([...externalFeature])
-                                                externalFeatures1 = externalFeature.filter((item2) =>
-                                                    item2.checked === true
-                                                )
-                                                setGlobalState("checked", true)
-                                                externalFeatures1 = externalFeatures1.map((name) => name.name)
-                                                setExternal(externalFeatures1)
-                                                console.log(externalFeatures)
-                                            }}
-                                        />
-                                    )
-                                })}
-                            </> : null}
+                        <div className="amenities">
+                            <div>
+                                <h3>{t('Welcome.internal')}</h3>
+                                {internalFeature.length > 0 ? <>
+                                    {internalFeature.map((details) => {
+                                        return (
+                                            <Details detail={details.name}
+                                                myKey={details.id}
+                                                id={details.id}
+                                                checked={details.checked}
+                                                onChange={(e) => {
+                                                    // add to list
+                                                    details.checked = !details.checked
+                                                    setInternalFeatures([...internalFeature])
+                                                    internalFeatures1 = internalFeature.filter((item1) =>
+
+                                                        item1.checked === true
+                                                    )
+                                                    setGlobalState("checked", true)
+                                                    internalFeatures1 = internalFeatures1.map((name) => name.name)
+                                                    setInternal(internalFeatures1)
+                                                    console.log(internalFeatures)
+                                                }}
+                                            />
+                                        )
+                                    })}
+                                </> : null}
+                            </div>
+                            <div>
+                                <h3>{t('Welcome.external')}</h3>
+                                {externalFeature.length > 0 ? <>
+                                    {externalFeature.map((details) => {
+                                        return (
+                                            <Details detail={details.name}
+                                                myKey={details.id}
+                                                id={details.id}
+                                                checked={details.checked}
+                                                onChange={(e) => {
+                                                    // add to list
+                                                    details.checked = !details.checked
+                                                    setExternalFeatures([...externalFeature])
+                                                    externalFeatures1 = externalFeature.filter((item2) =>
+                                                        item2.checked === true
+                                                    )
+                                                    setGlobalState("checked", true)
+                                                    externalFeatures1 = externalFeatures1.map((name) => name.name)
+                                                    setExternal(externalFeatures1)
+                                                    console.log(externalFeatures)
+                                                }}
+                                            />
+                                        )
+                                    })}
+                                </> : null}
 
 
-                        </div>
-                        <div>
-                            <h3>{t('Welcome.nearby')}</h3>
-                            {nearbyFeature.length > 0 ? <>
-                                {nearbyFeature.map((details) => {
-                                    return (
-                                        <Details detail={details.name}
-                                            key={details.id}
-                                            id={details.id}
-                                            checked={details.checked}
-                                            onChange={(e) => {
-                                                // add to list
-                                                details.checked = !details.checked
-                                                setNearbyFeatures([...nearbyFeature])
-                                                nearbyFeatures1 = nearbyFeature.filter((item3) =>
-                                                    item3.checked === true
-                                                )
-                                                setGlobalState("checked", true)
-                                                nearbyFeatures1 = nearbyFeatures1.map((name) => name.name)
-                                                setNearby(nearbyFeatures1)
-                                                console.log(nearbyFeatures)
-                                            }}
-                                        />
-                                    )
-                                })}
-                            </> : null}
+                            </div>
+                            <div>
+                                <h3>{t('Welcome.nearby')}</h3>
+                                {nearbyFeature.length > 0 ? <>
+                                    {nearbyFeature.map((details) => {
+                                        return (
+                                            <Details detail={details.name}
+                                                key={details.id}
+                                                id={details.id}
+                                                checked={details.checked}
+                                                onChange={(e) => {
+                                                    // add to list
+                                                    details.checked = !details.checked
+                                                    setNearbyFeatures([...nearbyFeature])
+                                                    nearbyFeatures1 = nearbyFeature.filter((item3) =>
+                                                        item3.checked === true
+                                                    )
+                                                    setGlobalState("checked", true)
+                                                    nearbyFeatures1 = nearbyFeatures1.map((name) => name.name)
+                                                    setNearby(nearbyFeatures1)
+                                                    console.log(nearbyFeatures)
+                                                }}
+                                            />
+                                        )
+                                    })}
+                                </> : null}
+                            </div>
                         </div>
                     </div>
-                    <Button onClick={add}>{t('addProperty.add')}</Button>
+                    <div className="add_btn">
+                        <Button onClick={add}>{t('addProperty.add')}</Button>
+                    </div>
                 </Content>
             )}
         </Wrapper>

@@ -28,6 +28,7 @@
     "react-select": "^5.4.0",
     "react-simple-image-slider": "^2.4.1",
     "react-toastify": "^9.0.8",
+    "react-uploader": "^3.4.0",
     "styled-components": "^5.3.5",
     "swiper": "^8.4.6",
     "web-vitals": "^2.1.4"

@@ -400,8 +400,8 @@
     },
     "addProperty": {
         "sell": "Add property for sell",
-        "image": "Upload property images",
-        "select": "Click to select images",
+        "image": "Upload a cover Image",
+        "select": "Upload gallery Images",
         "details": "Add property details",
         "price": "Set price",
         "priceHolder": "Enter price in BIF",

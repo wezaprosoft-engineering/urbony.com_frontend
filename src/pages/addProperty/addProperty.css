@@ -1,0 +1,40 @@
+.propDetail{
+    padding: 0 2%;
+    width: 45%;
+}
+.amenities{
+    padding: 0 2%;
+    width: 45%;
+}
+.add_btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.property{
+    display: flex;
+    flex-direction: row;
+}
+@media only screen and (max-width: 600px) {
+    .uploads{
+        display: flex;
+        flex-direction: column;
+    }
+    .main{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .propDetail{
+        width: 100%;
+    }
+    .amenities{
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+        padding: 2%;
+    }
+    .property{
+        flex-direction: column;
+    }
+ }
