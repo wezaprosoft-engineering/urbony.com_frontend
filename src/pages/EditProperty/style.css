@@ -1,0 +1,24 @@
+.details{
+    display: flex;
+    justify-content: space-around;
+    padding: 2% 0;
+}
+.propd{
+    width: 45%;
+}
+.gallery{
+    width: 30%;
+}
+.delete{
+    display: flex;
+    justify-content: center;
+    padding: 2% 0;
+}
+@media only screen and (max-width: 600px) {
+    .details{
+        display: block;
+    }
+    .propd,.gallery{
+        width: 90%;
+    }
+}

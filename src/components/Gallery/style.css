@@ -24,3 +24,13 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+.delete-icon{
+  position: absolute;
+  right:0px;
+  top:0px;
+  padding: 20px;
+  background: red;
+  border-radius: 0 0 0 30px;
+  cursor: pointer;
+  color:white
+}

@@ -18,7 +18,7 @@ export const Details = styled.div`
 export const DetailsContent = styled.div`
 display: flex;
 justify-content: space-between;
-width: 40%;
+width: 100%;
 @media screen and (max-width: 414px){
    width: 90%;
 }
@@ -40,7 +40,7 @@ cursor: pointer;
 `;
 
 export const Button = styled.button`
-width: 20%;
+width: 50%;
 height: 50px;
 background-color: rgba(46,15,89,1);
 cursor: pointer;
