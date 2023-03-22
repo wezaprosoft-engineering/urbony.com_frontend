@@ -50,7 +50,7 @@ export default function GallerySlider({gallery,slideshow, editable = false}) {
       >
         {gallery && gallery.map((img,index) => (
           <SwiperSlide key={img.id} className="py-5 rounded" style={{borderRadius:'25px'}}>
-            <Slide cover={img.url} index={index} handleClick={slideshow} />
+            <Slide cover={img.url} index={index} handleClick={slideshow} editable={editable} />
           </SwiperSlide>
         ))}
       </Swiper>

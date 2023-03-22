@@ -4,7 +4,7 @@ import './style.css';
 import { FaTrash } from "react-icons/fa";
 
 
-export default function Slider({ cover, handleClick, index }) {
+export default function Slider({ cover, handleClick, index, editable }) {
     let image = cover.replace(/ /g, "%20")
     return (
         < React.Fragment >
@@ -16,9 +16,13 @@ export default function Slider({ cover, handleClick, index }) {
                 height: '500px',
                 borderRadius: '25px'
             }} >
-                <span className="delete-icon" onClick={handleClick(index)}>
+               {
+                editable=== true ?
+               <span className="delete-icon" onClick={handleClick(index)}>
                     <FaTrash />
                 </span>
+               :null
+               } 
             </Card>
         </React.Fragment>
 

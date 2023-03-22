@@ -50,7 +50,7 @@ const Login = () =>{
                 
             }).then(json =>{
                 console.log(json)
-                console.log(json.accessToken.token)
+                console.log('token',json.accessToken.token)
                 localStorage.setItem('token', json.accessToken.token)
                 localStorage.setItem('name', json.name)
                 localStorage.setItem('id', json.id)

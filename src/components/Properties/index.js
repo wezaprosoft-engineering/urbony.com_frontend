@@ -71,7 +71,7 @@ const Properties = props =>{
                 setSellProperties(sell)
                
             }).catch(error =>{
-                console.log(error)
+                console.log('error f',error)
                 setLoading(false)
                 toast('Kindly login again, your access has expired', 
                     {position: toast.POSITION.TOP_RIGHT})
@@ -84,7 +84,7 @@ const Properties = props =>{
                 
             });
         } catch (error) {
-            console.log(error)
+            console.log('beet',error)
         }
     
     }, []);
