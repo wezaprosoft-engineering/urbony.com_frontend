@@ -13,12 +13,13 @@ const Header = () => {
     const {t, i18n} = useTranslation();
     function handleClick(){
         if(i18n.language==='fr'){
-            i18n.changeLanguage('en')
+            i18n.changeLanguage('en');
+            window.location.reload(true);
         }
         else{
-            i18n.changeLanguage('fr')
+            i18n.changeLanguage('fr');
+            window.location.reload(true);
         }
-       // i18n.changeLanguage(lang)
         
     }
     const handleCorporate = () =>{

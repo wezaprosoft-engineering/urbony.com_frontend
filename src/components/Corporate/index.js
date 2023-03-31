@@ -100,11 +100,7 @@ const Corporates = props =>{
                     whiteSpace: 'nowrap',
                     overflow: 'auto',
                     justifyContent: 'space-between',
-                    
-                    
-                    
-                    
-                    
+      
                 }}>
                     {tenant? <H2>{props.tenant}</H2>:<NOFocus onClick={makeTenant}>{props.tenant}</NOFocus> }
                     {buyer? <H2>{props.buyer}</H2>:<NOFocus onClick={makeBuyer}>{props.buyer}</NOFocus> }

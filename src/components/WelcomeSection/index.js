@@ -45,7 +45,7 @@ const Details = props =>{
 
 
 const Welcome = props =>{
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
     const [corporate] = useGlobalState("corporate");
     const [more, setMore] = useState(false);
     const navigate = useNavigate()
@@ -92,8 +92,13 @@ const Welcome = props =>{
     const internalUrl = 'https://urbony.onrender.com/api/internalFeatures'
     const externalUrl = 'https://urbony.onrender.com/api/externalFeatures'
     const nearbyUrl = 'https://urbony.onrender.com/api/nearbyFeatures'
-    const searchUrl = 'https://urbony.onrender.com/api/property/search'
-    const propertyUrl = 'https://urbony.onrender.com/api/property-types'
+    const searchUrl = 'https://urbony.onrender.com/api/property/search';
+    let propertyUrl ;
+    if(i18n.language==='fr'){
+         propertyUrl = 'https://urbony.onrender.com/api/property-types?language=FR'
+    }else{
+         propertyUrl = 'https://urbony.onrender.com/api/property-types?language=EN'
+    }
     const [property, setProperty] = useState('')
 
     const getProperty = ()=>{
